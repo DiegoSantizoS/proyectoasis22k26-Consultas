@@ -94,6 +94,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ConsultaCompleja 500 001.resx">
+      <DependentUpon>ConsultaCompleja 500 001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultaSimple 400 001.resx">
+      <DependentUpon>ConsultaSimple 400 001.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ConsultasReutilizables.resx">
       <DependentUpon>ConsultasReutilizables.cs</DependentUpon>
     </EmbeddedResource>
