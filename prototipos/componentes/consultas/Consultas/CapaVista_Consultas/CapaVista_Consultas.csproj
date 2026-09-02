@@ -94,6 +94,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="UserControls\Agrupar&amp;Ordenar.resx">
+      <DependentUpon>Agrupar&amp;Ordenar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ConsultasReutilizables.resx">
       <DependentUpon>ConsultasReutilizables.cs</DependentUpon>
     </EmbeddedResource>
