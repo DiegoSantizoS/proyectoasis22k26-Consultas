@@ -49,6 +49,12 @@
     <Compile Include="UserControls\Agrupar&amp;Ordenar.Designer.cs">
       <DependentUpon>Agrupar&amp;Ordenar.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\BotonesConsulta.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\BotonesConsulta.Designer.cs">
+      <DependentUpon>BotonesConsulta.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\CondicionesComparacion.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultaSimple 400 001.resx">
       <DependentUpon>ConsultaSimple 400 001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\BotonesConsulta.resx">
+      <DependentUpon>BotonesConsulta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ConsultasReutilizables.resx">
       <DependentUpon>ConsultasReutilizables.cs</DependentUpon>
