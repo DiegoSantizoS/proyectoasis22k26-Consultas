@@ -94,6 +94,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="UserControls\Agrupar&amp;Ordenar.resx">
+      <DependentUpon>Agrupar&amp;Ordenar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConsultaCompleja 500 001.resx">
       <DependentUpon>ConsultaCompleja 500 001.cs</DependentUpon>
     </EmbeddedResource>
