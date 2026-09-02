@@ -94,6 +94,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="UserControls\CondicionesComparacion.resx">
+      <DependentUpon>CondicionesComparacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CondicionesLogica.resx">
+      <DependentUpon>CondicionesLogica.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ConsultasReutilizables.resx">
       <DependentUpon>ConsultasReutilizables.cs</DependentUpon>
     </EmbeddedResource>
