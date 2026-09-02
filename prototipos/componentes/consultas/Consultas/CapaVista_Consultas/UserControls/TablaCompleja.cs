@@ -15,6 +15,7 @@ namespace CapaVista_Consultas
         public TablaCompleja()
         {
             InitializeComponent();
+          
         }
     }
 }
