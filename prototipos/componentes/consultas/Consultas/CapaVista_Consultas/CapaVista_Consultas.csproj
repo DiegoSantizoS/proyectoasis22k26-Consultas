@@ -97,6 +97,12 @@
     <EmbeddedResource Include="UserControls\ConsultasReutilizables.resx">
       <DependentUpon>ConsultasReutilizables.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TablaCompleja.resx">
+      <DependentUpon>TablaCompleja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TablaSimple.resx">
+      <DependentUpon>TablaSimple.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
