@@ -104,6 +104,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "TablaSimple";
             this.Size = new System.Drawing.Size(830, 479);

@@ -37,58 +37,62 @@
             // 
             // agrupar_Ordenar1
             // 
-            this.agrupar_Ordenar1.Location = new System.Drawing.Point(11, 11);
-            this.agrupar_Ordenar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.agrupar_Ordenar1.Location = new System.Drawing.Point(15, 14);
+            this.agrupar_Ordenar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.agrupar_Ordenar1.Name = "agrupar_Ordenar1";
-            this.agrupar_Ordenar1.Size = new System.Drawing.Size(625, 87);
+            this.agrupar_Ordenar1.Size = new System.Drawing.Size(833, 107);
             this.agrupar_Ordenar1.TabIndex = 2;
             // 
             // tablaSimple1
             // 
-            this.tablaSimple1.Location = new System.Drawing.Point(11, 102);
-            this.tablaSimple1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tablaSimple1.Location = new System.Drawing.Point(15, 126);
+            this.tablaSimple1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tablaSimple1.Name = "tablaSimple1";
-            this.tablaSimple1.Size = new System.Drawing.Size(789, 255);
+            this.tablaSimple1.Size = new System.Drawing.Size(1052, 314);
             this.tablaSimple1.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(612, 32);
+            this.button1.Location = new System.Drawing.Point(816, 39);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 51);
+            this.button1.Size = new System.Drawing.Size(100, 63);
             this.button1.TabIndex = 3;
             this.button1.Text = "Filtrar";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(725, 53);
+            this.button2.Location = new System.Drawing.Point(967, 65);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 30);
+            this.button2.Size = new System.Drawing.Size(100, 37);
             this.button2.TabIndex = 4;
             this.button2.Text = "Restablecer";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(735, 371);
+            this.button3.Location = new System.Drawing.Point(980, 457);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 51);
+            this.button3.Size = new System.Drawing.Size(100, 63);
             this.button3.TabIndex = 5;
             this.button3.Text = "Consulta Compleja";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // ConsultaSimple_400_001
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(822, 430);
+            this.ClientSize = new System.Drawing.Size(1096, 529);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.agrupar_Ordenar1);
             this.Controls.Add(this.tablaSimple1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ConsultaSimple_400_001";
             this.Text = "ConsultaSimple_400_001";
             this.ResumeLayout(false);
