@@ -30,14 +30,9 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasDgvEmpleados = new System.Windows.Forms.DataGridView();
-            this.IdEmpleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Salario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.ConsultasCboTablas = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConsultasDgvEmpleados)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -60,14 +55,12 @@
             // 
             // ConsultasDgvEmpleados
             // 
+            this.ConsultasDgvEmpleados.AllowUserToAddRows = false;
+            this.ConsultasDgvEmpleados.AllowUserToDeleteRows = false;
+            this.ConsultasDgvEmpleados.AllowUserToResizeColumns = false;
+            this.ConsultasDgvEmpleados.AllowUserToResizeRows = false;
             this.ConsultasDgvEmpleados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ConsultasDgvEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ConsultasDgvEmpleados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdEmpleado,
-            this.Nombre,
-            this.Apellido,
-            this.Cargo,
-            this.Salario});
             this.ConsultasDgvEmpleados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasDgvEmpleados.Location = new System.Drawing.Point(3, 3);
             this.ConsultasDgvEmpleados.Name = "ConsultasDgvEmpleados";
@@ -76,43 +69,13 @@
             this.ConsultasDgvEmpleados.Size = new System.Drawing.Size(942, 515);
             this.ConsultasDgvEmpleados.TabIndex = 1;
             // 
-            // IdEmpleado
-            // 
-            this.IdEmpleado.HeaderText = "IdEmpleado";
-            this.IdEmpleado.MinimumWidth = 6;
-            this.IdEmpleado.Name = "IdEmpleado";
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.MinimumWidth = 6;
-            this.Nombre.Name = "Nombre";
-            // 
-            // Apellido
-            // 
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.MinimumWidth = 6;
-            this.Apellido.Name = "Apellido";
-            // 
-            // Cargo
-            // 
-            this.Cargo.HeaderText = "Cargo";
-            this.Cargo.MinimumWidth = 6;
-            this.Cargo.Name = "Cargo";
-            // 
-            // Salario
-            // 
-            this.Salario.HeaderText = "Salario";
-            this.Salario.MinimumWidth = 6;
-            this.Salario.Name = "Salario";
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.92357F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.07643F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.comboBox1, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.ConsultasCboTablas, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 524);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -133,15 +96,16 @@
             this.label1.Text = "Nombre de tabla";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // comboBox1
+            // ConsultasCboTablas
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(153, 17);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(786, 24);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.Text = "Empleados";
+            this.ConsultasCboTablas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ConsultasCboTablas.FormattingEnabled = true;
+            this.ConsultasCboTablas.Location = new System.Drawing.Point(153, 17);
+            this.ConsultasCboTablas.Name = "ConsultasCboTablas";
+            this.ConsultasCboTablas.Size = new System.Drawing.Size(786, 24);
+            this.ConsultasCboTablas.TabIndex = 1;
+            this.ConsultasCboTablas.Text = "Empleados";
+            this.ConsultasCboTablas.SelectedIndexChanged += new System.EventHandler(this.ConsultasCboTablas_SelectedIndexChanged);
             // 
             // TablaCompleja
             // 
@@ -163,13 +127,8 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView ConsultasDgvEmpleados;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdEmpleado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cargo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Salario;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox ConsultasCboTablas;
     }
 }

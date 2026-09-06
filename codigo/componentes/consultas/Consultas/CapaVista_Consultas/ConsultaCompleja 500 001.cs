@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaControlador_Consultas;
 
 namespace CapaVista_Consultas
 {
@@ -16,5 +17,6 @@ namespace CapaVista_Consultas
         {
             InitializeComponent();
         }
+       
     }
 }
