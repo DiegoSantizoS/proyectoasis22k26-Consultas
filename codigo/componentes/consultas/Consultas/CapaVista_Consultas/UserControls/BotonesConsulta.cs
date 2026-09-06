@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace CapaVista_Consultas
 {
-    public partial class TablaCompleja : UserControl
+    public partial class BotonesConsulta : UserControl
     {
-        public TablaCompleja()
+        public BotonesConsulta()
         {
             InitializeComponent();
+        }
+
+        private void BotonesConsulta_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

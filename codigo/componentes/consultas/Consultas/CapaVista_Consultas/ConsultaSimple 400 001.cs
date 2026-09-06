@@ -16,5 +16,12 @@ namespace CapaVista_Consultas
         {
             InitializeComponent();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ConsultaCompleja_500_001 consultaCompleja_500_001 = new ConsultaCompleja_500_001();
+            this.Hide();
+            consultaCompleja_500_001.Show();
+        }
     }
 }

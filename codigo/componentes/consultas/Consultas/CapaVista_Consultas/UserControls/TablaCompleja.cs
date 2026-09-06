@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace CapaVista_Consultas
 {
-    public partial class CondicionesComparacion : UserControl
+    public partial class TablaCompleja : UserControl
     {
-        public CondicionesComparacion()
+        public TablaCompleja()
         {
             InitializeComponent();
+          
         }
     }
 }

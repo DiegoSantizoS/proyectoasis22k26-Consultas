@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace CapaVista_Consultas
 {
-    public partial class CondicionesLogica : UserControl
+    public partial class CondicionesComparacion : UserControl
     {
-        public CondicionesLogica()
+        public CondicionesComparacion()
         {
             InitializeComponent();
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
