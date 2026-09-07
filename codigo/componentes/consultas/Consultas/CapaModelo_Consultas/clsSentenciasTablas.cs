@@ -10,7 +10,6 @@ namespace CapaModelo_Consultas {
         Conexion con = new Conexion(); 
         public OdbcDataAdapter OBtenerTabla(string Tabla) 
         { string consulta = "SELECT * FROM " + Tabla + ";"; 
-            Console.WriteLine(consulta); 
             OdbcDataAdapter daTabla = new OdbcDataAdapter(consulta, con.conexion()); return daTabla; 
         } 
         public OdbcDataAdapter GetTables() { 
