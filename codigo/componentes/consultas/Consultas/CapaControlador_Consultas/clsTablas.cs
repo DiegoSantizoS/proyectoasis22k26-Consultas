@@ -17,7 +17,13 @@ namespace CapaControlador_Consultas
         {
             OdbcDataAdapter daLlenarTablas = sentencias.OBtenerTabla(NombreTabla);
             DataTable dtLlenarTablas = new DataTable();
-            daLlenarTablas.Fill(dtLlenarTablas);
+            try { daLlenarTablas.Fill(dtLlenarTablas); 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al llenar la tabla: " + ex.Message);
+            }
+
             return dtLlenarTablas;
         }
         public DataTable ObtenerTablas()
