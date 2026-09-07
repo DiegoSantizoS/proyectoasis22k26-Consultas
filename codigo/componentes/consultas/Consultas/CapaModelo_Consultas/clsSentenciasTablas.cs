@@ -5,6 +5,7 @@ using System.Data.Odbc;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace CapaModelo_Consultas { 
     public class clsSentenciasTablas { 
         Conexion con = new Conexion(); 
