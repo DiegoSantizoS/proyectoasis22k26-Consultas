@@ -37,9 +37,9 @@ namespace CapaVista_Consultas
         }
         private void actuaizarDgvTablas(string tablaSeleccionada)
         {
-            ConsultasDgvEmpleados.DataSource = null;
+            ConsultasDgvComplejas.DataSource = null;
             DataTable dtTablas = tablas.LlenarTabla(tablaSeleccionada);
-            ConsultasDgvEmpleados.DataSource = dtTablas;
+            ConsultasDgvComplejas.DataSource = dtTablas;
         }
         private void ConsultasCboTablas_SelectedIndexChanged(object sender, EventArgs e)
         {

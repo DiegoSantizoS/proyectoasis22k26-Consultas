@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.ConsultasDgvEmpleados = new System.Windows.Forms.DataGridView();
+            this.ConsultasDgvComplejas = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.ConsultasCboTablas = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ConsultasDgvEmpleados)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConsultasDgvComplejas)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +42,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.ConsultasDgvEmpleados, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ConsultasDgvComplejas, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -53,21 +53,21 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(948, 585);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // ConsultasDgvEmpleados
+            // ConsultasDgvComplejas
             // 
-            this.ConsultasDgvEmpleados.AllowUserToAddRows = false;
-            this.ConsultasDgvEmpleados.AllowUserToDeleteRows = false;
-            this.ConsultasDgvEmpleados.AllowUserToResizeColumns = false;
-            this.ConsultasDgvEmpleados.AllowUserToResizeRows = false;
-            this.ConsultasDgvEmpleados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ConsultasDgvEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ConsultasDgvEmpleados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ConsultasDgvEmpleados.Location = new System.Drawing.Point(3, 3);
-            this.ConsultasDgvEmpleados.Name = "ConsultasDgvEmpleados";
-            this.ConsultasDgvEmpleados.RowHeadersWidth = 51;
-            this.ConsultasDgvEmpleados.RowTemplate.Height = 24;
-            this.ConsultasDgvEmpleados.Size = new System.Drawing.Size(942, 515);
-            this.ConsultasDgvEmpleados.TabIndex = 1;
+            this.ConsultasDgvComplejas.AllowUserToAddRows = false;
+            this.ConsultasDgvComplejas.AllowUserToDeleteRows = false;
+            this.ConsultasDgvComplejas.AllowUserToResizeColumns = false;
+            this.ConsultasDgvComplejas.AllowUserToResizeRows = false;
+            this.ConsultasDgvComplejas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ConsultasDgvComplejas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ConsultasDgvComplejas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConsultasDgvComplejas.Location = new System.Drawing.Point(3, 3);
+            this.ConsultasDgvComplejas.Name = "ConsultasDgvComplejas";
+            this.ConsultasDgvComplejas.RowHeadersWidth = 51;
+            this.ConsultasDgvComplejas.RowTemplate.Height = 24;
+            this.ConsultasDgvComplejas.Size = new System.Drawing.Size(942, 515);
+            this.ConsultasDgvComplejas.TabIndex = 1;
             // 
             // tableLayoutPanel2
             // 
@@ -116,7 +116,7 @@
             this.Name = "TablaCompleja";
             this.Size = new System.Drawing.Size(948, 585);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ConsultasDgvEmpleados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConsultasDgvComplejas)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
@@ -126,7 +126,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridView ConsultasDgvEmpleados;
+        private System.Windows.Forms.DataGridView ConsultasDgvComplejas;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox ConsultasCboTablas;
