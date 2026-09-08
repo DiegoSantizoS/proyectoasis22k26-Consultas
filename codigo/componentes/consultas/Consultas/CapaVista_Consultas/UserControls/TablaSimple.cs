@@ -39,11 +39,11 @@ namespace CapaVista_Consultas
                 ActualizarTabla();
             }
         }*/
-        public void ConsultasProcActualizarTabla(string nombreTabla)
+        public void ConsultasProcActualizarTabla(string tablaSeleccionada)
         {
             ConsultasDgvSimples.DataSource = null;
-            DataTable dt = tablas.LlenarTabla(nombreTabla);
-            ConsultasDgvSimples.DataSource = dt;
+            DataTable dtTablas = tablas.LlenarTabla(tablaSeleccionada);
+            ConsultasDgvSimples.DataSource = dtTablas;
         }
     }
 }

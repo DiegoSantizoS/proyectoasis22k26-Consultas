@@ -47,11 +47,9 @@
             // tablaSimple1
             // 
             this.tablaSimple1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.tablaSimple1.CargarAutomaticamente = true;
             this.tablaSimple1.Location = new System.Drawing.Point(15, 126);
             this.tablaSimple1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tablaSimple1.Name = "tablaSimple1";
-            this.tablaSimple1.NombreTabla = "empleado";
             this.tablaSimple1.Size = new System.Drawing.Size(1052, 314);
             this.tablaSimple1.TabIndex = 1;
             // 
