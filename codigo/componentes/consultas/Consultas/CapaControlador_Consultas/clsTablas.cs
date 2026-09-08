@@ -13,19 +13,29 @@ namespace CapaControlador_Consultas
     {
         clsSentenciasTablas sentencias = new clsSentenciasTablas();
 
-        public DataTable LlenarTabla (string NombreTabla)
+        public DataTable ConsutlasFuncLlenarTabla (string NombreTabla, int pagina, int registrosPorPagina)
         {
-            OdbcDataAdapter daLlenarTablas = sentencias.OBtenerTabla(NombreTabla);
+            OdbcDataAdapter daLlenarTablas = sentencias.ObtenerTabla(NombreTabla, pagina, registrosPorPagina);
             DataTable dtLlenarTablas = new DataTable();
-            daLlenarTablas.Fill(dtLlenarTablas);
+            try { daLlenarTablas.Fill(dtLlenarTablas); 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al llenar la tabla: " + ex.Message);
+            }
+
             return dtLlenarTablas;
         }
-        public DataTable ObtenerTablas()
+        public DataTable ConsultasFuncObtenerTablas()
         {
             OdbcDataAdapter daObtenerTablas = sentencias.GetTables();
             DataTable dtObtenerTablas = new DataTable();
             daObtenerTablas.Fill(dtObtenerTablas);
             return dtObtenerTablas;
+        }
+        public int ConsultasFuncContarRegistros(string NombreTabla)
+        {
+            return sentencias.ContarRegistros(NombreTabla);
         }
     }
 }
