@@ -44,7 +44,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(830, 479);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(849, 479);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // ConsultasDgvSimples
@@ -56,7 +56,7 @@
             this.ConsultasDgvSimples.Name = "ConsultasDgvSimples";
             this.ConsultasDgvSimples.RowHeadersWidth = 51;
             this.ConsultasDgvSimples.RowTemplate.Height = 24;
-            this.ConsultasDgvSimples.Size = new System.Drawing.Size(824, 473);
+            this.ConsultasDgvSimples.Size = new System.Drawing.Size(843, 473);
             this.ConsultasDgvSimples.TabIndex = 0;
             // 
             // TablaSimple
@@ -66,7 +66,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "TablaSimple";
-            this.Size = new System.Drawing.Size(830, 479);
+            this.Size = new System.Drawing.Size(849, 479);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ConsultasDgvSimples)).EndInit();
             this.ResumeLayout(false);
