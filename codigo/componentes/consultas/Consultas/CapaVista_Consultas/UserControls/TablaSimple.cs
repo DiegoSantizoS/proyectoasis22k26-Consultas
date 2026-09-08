@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 using CapaControlador_Consultas;
@@ -7,20 +8,42 @@ namespace CapaVista_Consultas
 {
     public partial class TablaSimple : UserControl
     {
-        //Insertar nombre de la tabla a consultar
-        string tabla = "empleado"; // Reemplaza con el nombre real de la tabla
         clsTablas tablas = new clsTablas();
+
         public TablaSimple()
         {
             InitializeComponent();
-            actuaizarDgvTablas(tabla);
+
+            //this.Load += TablaSimple_Load;
         }
 
-        private void actuaizarDgvTablas(string tablaSeleccionada)
+        /*private string _nombreTabla;
+        [Category("Consultas")]
+        [Description("Nombre de la tabla que se mostrará.")]
+        [TypeConverter(typeof(TablaConverter))]
+        public string NombreTabla
+        {
+            get { return _nombreTabla; }
+            set { _nombreTabla = value; }
+        }
+
+
+        [Category("Consultas")]
+        [Description("Indica si la tabla se carga automáticamente al iniciar.")]
+        public bool CargarAutomaticamente { get; set; } = true;
+
+        private void TablaSimple_Load(object sender, EventArgs e)
+        {
+            if (CargarAutomaticamente && !string.IsNullOrWhiteSpace(_nombreTabla))
+            {
+                ActualizarTabla();
+            }
+        }*/
+        public void ConsultasProcActualizarTabla(string nombreTabla)
         {
             ConsultasDgvSimples.DataSource = null;
-            DataTable dtTablas = tablas.LlenarTabla(tablaSeleccionada);
-            ConsultasDgvSimples.DataSource = dtTablas;
+            DataTable dt = tablas.LlenarTabla(nombreTabla);
+            ConsultasDgvSimples.DataSource = dt;
         }
     }
 }
