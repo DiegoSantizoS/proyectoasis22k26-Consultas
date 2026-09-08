@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.agrupar_Ordenar1 = new CapaVista_Consultas.Agrupar_Ordenar();
-            this.tablaSimple1 = new CapaVista_Consultas.TablaSimple();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.tablaSimple1 = new CapaVista_Consultas.UserControls.TablaSimple();
             this.SuspendLayout();
             // 
             // agrupar_Ordenar1
@@ -43,15 +43,6 @@
             this.agrupar_Ordenar1.Name = "agrupar_Ordenar1";
             this.agrupar_Ordenar1.Size = new System.Drawing.Size(833, 107);
             this.agrupar_Ordenar1.TabIndex = 2;
-            // 
-            // tablaSimple1
-            // 
-            this.tablaSimple1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.tablaSimple1.Location = new System.Drawing.Point(15, 126);
-            this.tablaSimple1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tablaSimple1.Name = "tablaSimple1";
-            this.tablaSimple1.Size = new System.Drawing.Size(1052, 314);
-            this.tablaSimple1.TabIndex = 1;
             // 
             // button1
             // 
@@ -84,16 +75,24 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // tablaSimple1
+            // 
+            this.tablaSimple1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.tablaSimple1.Location = new System.Drawing.Point(15, 107);
+            this.tablaSimple1.Name = "tablaSimple1";
+            this.tablaSimple1.Size = new System.Drawing.Size(833, 413);
+            this.tablaSimple1.TabIndex = 6;
+            // 
             // ConsultaSimple_400_001
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1096, 529);
+            this.Controls.Add(this.tablaSimple1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.agrupar_Ordenar1);
-            this.Controls.Add(this.tablaSimple1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ConsultaSimple_400_001";
             this.Text = "ConsultaSimple_400_001";
@@ -104,9 +103,10 @@
         #endregion
 
         private Agrupar_Ordenar agrupar_Ordenar1;
-        private TablaSimple tablaSimple1;
+        //private TablaSimple tablaSimple1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private UserControls.TablaSimple tablaSimple1;
     }
 }
