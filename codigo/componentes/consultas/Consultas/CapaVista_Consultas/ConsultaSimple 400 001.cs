@@ -32,7 +32,7 @@ namespace CapaVista_Consultas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("¡El botón sí está funcionando!");
+            MessageBox.Show("¡El botón sí está funcionando!");/*
             string campoOrden = agrupar_Ordenar1.comboBox1.Text;
             string campoBusqueda = agrupar_Ordenar1.comboBox2.Text;
             string operador = agrupar_Ordenar1.comboBox3.Text;
@@ -47,7 +47,7 @@ namespace CapaVista_Consultas
                 valorBusqueda,
                 campoOrden,
                 ordenAscendente
-            );
+            );*/
         }
 
         private void agrupar_Ordenar1_Load(object sender, EventArgs e)
