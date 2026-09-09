@@ -114,6 +114,7 @@
             this.tableLayoutPanel1.Controls.Add(this.ConsultasTxtValor, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.ConsultasBtnFiltrar, 5, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(1, 1);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.07463F));
@@ -199,10 +200,11 @@
             // 
             // Agrupar_Ordenar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Agrupar_Ordenar";
             this.Size = new System.Drawing.Size(857, 135);
             this.tableLayoutPanel1.ResumeLayout(false);
