@@ -50,30 +50,33 @@
             // 
             // btn_Limpiar
             // 
+            this.btn_Limpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
             this.btn_Limpiar.Location = new System.Drawing.Point(1011, 13);
             this.btn_Limpiar.Name = "btn_Limpiar";
             this.btn_Limpiar.Size = new System.Drawing.Size(150, 40);
             this.btn_Limpiar.TabIndex = 0;
             this.btn_Limpiar.Text = "Limpiar";
-            this.btn_Limpiar.UseVisualStyleBackColor = true;
+            this.btn_Limpiar.UseVisualStyleBackColor = false;
             // 
             // btn_EjecutarConsulta
             // 
+            this.btn_EjecutarConsulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
             this.btn_EjecutarConsulta.Location = new System.Drawing.Point(855, 13);
             this.btn_EjecutarConsulta.Name = "btn_EjecutarConsulta";
             this.btn_EjecutarConsulta.Size = new System.Drawing.Size(150, 40);
             this.btn_EjecutarConsulta.TabIndex = 1;
-            this.btn_EjecutarConsulta.Text = "Ejecutar Consulta";
-            this.btn_EjecutarConsulta.UseVisualStyleBackColor = true;
+            this.btn_EjecutarConsulta.Text = "Ejecutar consulta";
+            this.btn_EjecutarConsulta.UseVisualStyleBackColor = false;
             // 
             // btn_Generar
             // 
+            this.btn_Generar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
             this.btn_Generar.Location = new System.Drawing.Point(699, 13);
             this.btn_Generar.Name = "btn_Generar";
             this.btn_Generar.Size = new System.Drawing.Size(150, 40);
             this.btn_Generar.TabIndex = 2;
             this.btn_Generar.Text = "Generar";
-            this.btn_Generar.UseVisualStyleBackColor = true;
+            this.btn_Generar.UseVisualStyleBackColor = false;
             // 
             // BotonesConsulta
             // 

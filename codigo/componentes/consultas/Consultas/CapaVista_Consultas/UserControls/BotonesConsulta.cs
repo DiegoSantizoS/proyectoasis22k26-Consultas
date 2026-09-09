@@ -15,6 +15,13 @@ namespace CapaVista_Consultas
         public BotonesConsulta()
         {
             InitializeComponent();
+            // Estandarización EST-10 del Componente Consultas
+            this.BackColor = ClsEstandarizacionConsultas.Fondo;
+            pnl_Botones.BackColor = ClsEstandarizacionConsultas.Fondo;
+
+            ClsEstandarizacionConsultas.ConsultasMetAplicarFormatoBoton(btn_Generar);
+            ClsEstandarizacionConsultas.ConsultasMetAplicarFormatoBoton(btn_EjecutarConsulta);
+            ClsEstandarizacionConsultas.ConsultasMetAplicarFormatoBoton(btn_Limpiar);
         }
 
         private void BotonesConsulta_Load(object sender, EventArgs e)
