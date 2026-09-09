@@ -33,7 +33,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.agrupar_Ordenar1 = new CapaVista_Consultas.Agrupar_Ordenar();
-            this.tablaSimple1 = new CapaVista_Consultas.TablaSimple();
+            this.tablaSimple1 = new CapaVista_Consultas.UserControls.TablaSimple();
             this.SuspendLayout();
             // 
             // button1
