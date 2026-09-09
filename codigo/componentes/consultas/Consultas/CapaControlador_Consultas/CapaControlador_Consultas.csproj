@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsCondicionComparacion.cs" />
+    <Compile Include="clsCondicionLogica.cs" />
+    <Compile Include="clsConstructorconsultas.cs" />
     <Compile Include="clsTablas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
