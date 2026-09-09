@@ -36,5 +36,10 @@ namespace CapaVista_Consultas
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
