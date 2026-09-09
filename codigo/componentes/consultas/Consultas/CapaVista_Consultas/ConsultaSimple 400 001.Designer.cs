@@ -113,9 +113,10 @@
         #endregion
 
         private Agrupar_Ordenar agrupar_Ordenar1;
-        private TablaSimple tablaSimple1;
+        //private TablaSimple tablaSimple1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private UserControls.TablaSimple tablaSimple1;
     }
 }
