@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbologica = new System.Windows.Forms.ComboBox();
+            this.cbocampo = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtvalor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
@@ -43,10 +43,10 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 290F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.comboBox2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cbologica, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cbocampo, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.button1, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtvalor, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -60,24 +60,31 @@
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
-            // comboBox2
+            // cbologica
             // 
-            this.comboBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(362, 35);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(155, 24);
-            this.comboBox2.TabIndex = 1;
+            this.cbologica.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbologica.FormattingEnabled = true;
+            this.cbologica.Items.AddRange(new object[] {
+            "(AND)",
+            "(OR)"});
+            this.cbologica.Location = new System.Drawing.Point(362, 35);
+            this.cbologica.Name = "cbologica";
+            this.cbologica.Size = new System.Drawing.Size(155, 24);
+            this.cbologica.TabIndex = 1;
             // 
-            // comboBox1
+            // cbocampo
             // 
-            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(362, 120);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(155, 24);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cbocampo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbocampo.FormattingEnabled = true;
+            this.cbocampo.Items.AddRange(new object[] {
+            "nombre",
+            "apellido",
+            "telefono"});
+            this.cbocampo.Location = new System.Drawing.Point(362, 120);
+            this.cbocampo.Name = "cbocampo";
+            this.cbocampo.Size = new System.Drawing.Size(155, 24);
+            this.cbocampo.TabIndex = 0;
+            this.cbocampo.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -88,14 +95,15 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "agregar valor";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // txtvalor
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Location = new System.Drawing.Point(58, 230);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(174, 22);
-            this.textBox1.TabIndex = 2;
+            this.txtvalor.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtvalor.Location = new System.Drawing.Point(58, 230);
+            this.txtvalor.Name = "txtvalor";
+            this.txtvalor.Size = new System.Drawing.Size(174, 22);
+            this.txtvalor.TabIndex = 2;
             // 
             // label1
             // 
@@ -135,10 +143,10 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbocampo;
+        private System.Windows.Forms.ComboBox cbologica;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtvalor;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }

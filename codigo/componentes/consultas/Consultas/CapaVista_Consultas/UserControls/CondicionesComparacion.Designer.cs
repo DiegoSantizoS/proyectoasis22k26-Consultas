@@ -30,10 +30,10 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Cbo_Comparacion = new System.Windows.Forms.ComboBox();
+            this.Cbo_Campo = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Txtvalor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -44,10 +44,10 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.Cbo_Comparacion, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Cbo_Campo, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.button1, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.Txtvalor, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -70,23 +70,34 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "tipo de comparador";
             // 
-            // comboBox2
+            // Cbo_Comparacion
             // 
-            this.comboBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(272, 47);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(155, 24);
-            this.comboBox2.TabIndex = 2;
+            this.Cbo_Comparacion.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Cbo_Comparacion.FormattingEnabled = true;
+            this.Cbo_Comparacion.Items.AddRange(new object[] {
+            " = ",
+            "> ",
+            "< ",
+            ">= ",
+            "<= ",
+            "LIKE"});
+            this.Cbo_Comparacion.Location = new System.Drawing.Point(272, 47);
+            this.Cbo_Comparacion.Name = "Cbo_Comparacion";
+            this.Cbo_Comparacion.Size = new System.Drawing.Size(155, 24);
+            this.Cbo_Comparacion.TabIndex = 2;
             // 
-            // comboBox1
+            // Cbo_Campo
             // 
-            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(272, 166);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(155, 24);
-            this.comboBox1.TabIndex = 3;
+            this.Cbo_Campo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Cbo_Campo.FormattingEnabled = true;
+            this.Cbo_Campo.Items.AddRange(new object[] {
+            "nombre",
+            "apellido",
+            "telefono"});
+            this.Cbo_Campo.Location = new System.Drawing.Point(272, 166);
+            this.Cbo_Campo.Name = "Cbo_Campo";
+            this.Cbo_Campo.Size = new System.Drawing.Size(155, 24);
+            this.Cbo_Campo.TabIndex = 3;
             // 
             // button1
             // 
@@ -97,14 +108,15 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "agregar valor";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // Txtvalor
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Location = new System.Drawing.Point(29, 275);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(174, 22);
-            this.textBox1.TabIndex = 5;
+            this.Txtvalor.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Txtvalor.Location = new System.Drawing.Point(29, 275);
+            this.Txtvalor.Name = "Txtvalor";
+            this.Txtvalor.Size = new System.Drawing.Size(174, 22);
+            this.Txtvalor.TabIndex = 5;
             // 
             // label2
             // 
@@ -133,10 +145,10 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox Cbo_Comparacion;
+        private System.Windows.Forms.ComboBox Cbo_Campo;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Txtvalor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
     }
