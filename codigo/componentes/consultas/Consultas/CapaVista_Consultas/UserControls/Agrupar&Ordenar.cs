@@ -19,7 +19,11 @@ namespace CapaVista_Consultas
         public Agrupar_Ordenar()
         {
             InitializeComponent();
-            CargarDatosIniciales();
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            {
+                _controlador = new ClsControladorConsultas();
+                CargarDatosIniciales();
+            }
         }
 
        
