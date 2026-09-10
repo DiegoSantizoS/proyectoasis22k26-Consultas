@@ -13,6 +13,7 @@ namespace CapaVista_Consultas.UserControls
 {
     public partial class TablaSimple : UserControl
     {
+
         clsTablas tablas = new clsTablas();
         private int _PaginaActual = 10;
         private int _RegistrosPorPagina = 10;
@@ -22,9 +23,10 @@ namespace CapaVista_Consultas.UserControls
         private int _inicioRangoPagina = 1;
 
         private int _cantidadBotonesPagina = 5;
-        public TablaSimple()
+        public TablaSimple(string tabla)
         {
             InitializeComponent();
+            ConsultasProcActualizarTabla(tabla);
         }
 
         /*private string _nombreTabla;
@@ -52,10 +54,12 @@ namespace CapaVista_Consultas.UserControls
 
         public void ConsultasProcActualizarTabla(string tablaSeleccionada)
         {
+            _TablaSeleccionada = tablaSeleccionada;
             CalcularTotalPaginas();
             ConsultasDgvSimples.DataSource = null;
-            DataTable dtTablas = tablas.ConsutlasFuncLlenarTabla(tablaSeleccionada, _PaginaActual, _RegistrosPorPagina);
+            DataTable dtTablas = tablas.ConsutlasFuncLlenarTabla(_TablaSeleccionada, _PaginaActual, _RegistrosPorPagina);
             ConsultasDgvSimples.DataSource = dtTablas;
+            CrearBotonesPaginas(); 
 
         }
         private void CalcularTotalPaginas()
