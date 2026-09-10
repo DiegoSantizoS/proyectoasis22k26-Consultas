@@ -1,14 +1,14 @@
-﻿using System.Data.SqlClient;
+﻿using System.Data.Odbc;
 using System.Windows.Forms;
 
 namespace CapaModelo_Consultas
 {
     /// Mishel loeiza 9959-23-3457
     /// Representa los filtros de agrupamiento/ordenamiento elegidos por el usuario.
-    
+
     public class ClsAgruparOrdenarFiltros
     {
-        private string _cadenaConexion = "Data Source=.;Initial Catalog=TU_BD;Integrated Security=True";
+        private Conexion _conexion = new Conexion();
 
         public string Pub_sTabla { get; set; }
         public string Pub_sOrdenamiento { get; set; }
@@ -25,22 +25,31 @@ namespace CapaModelo_Consultas
         {
             cboDestino.Items.Clear();
 
-            string query = @"SELECT COLUMN_NAME 
-                              FROM INFORMATION_SCHEMA.COLUMNS 
-                              WHERE TABLE_NAME = @tabla";
+            string query = @"SELECT COLUMN_NAME
+                             FROM INFORMATION_SCHEMA.COLUMNS
+                             WHERE TABLE_SCHEMA = DATABASE()
+                             AND TABLE_NAME = ?";
 
-            using (SqlConnection conn = new SqlConnection(_cadenaConexion))
-            using (SqlCommand cmd = new SqlCommand(query, conn))
+            OdbcConnection conn = _conexion.conexion();
+
+            try
             {
-                cmd.Parameters.AddWithValue("@tabla", Pub_sTabla);
-                conn.Open();
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (OdbcCommand cmd = new OdbcCommand(query, conn))
                 {
-                    while (reader.Read())
+                    cmd.Parameters.AddWithValue("@tabla", Pub_sTabla);
+
+                    using (OdbcDataReader reader = cmd.ExecuteReader())
                     {
-                        cboDestino.Items.Add(reader["COLUMN_NAME"].ToString());
+                        while (reader.Read())
+                        {
+                            cboDestino.Items.Add(reader["COLUMN_NAME"].ToString());
+                        }
                     }
                 }
+            }
+            finally
+            {
+                _conexion.desconexion(conn);
             }
         }
 
