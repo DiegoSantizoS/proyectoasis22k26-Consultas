@@ -25,8 +25,13 @@ namespace CapaVista_Consultas
         public TablaCompleja()
         {
             InitializeComponent();
-            ConsultasProcPopularCboTablas();
 
+            InitializeComponent();
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            {
+                ClsEstandarizacionDataGridView.Estandarizar(ConsultasDgvComplejas);
+                ConsultasProcPopularCboTablas();
+            }
         }
 
         public void ConsultasProcPopularCboTablas()

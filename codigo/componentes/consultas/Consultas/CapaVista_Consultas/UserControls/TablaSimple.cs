@@ -25,6 +25,10 @@ namespace CapaVista_Consultas.UserControls
         public TablaSimple()
         {
             InitializeComponent();
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            {
+                ClsEstandarizacionDataGridView.Estandarizar(ConsultasDgvSimples);
+            }
         }
 
         /*private string _nombreTabla;

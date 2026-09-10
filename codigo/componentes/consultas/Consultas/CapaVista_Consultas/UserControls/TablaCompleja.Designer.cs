@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TablaCompleja));
             this.consultaTlpDgvComplejas = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasDgvComplejas = new System.Windows.Forms.DataGridView();
             this.ConsultasTlpComplejas = new System.Windows.Forms.TableLayoutPanel();
@@ -60,9 +61,9 @@
             this.consultaTlpDgvComplejas.Location = new System.Drawing.Point(0, 0);
             this.consultaTlpDgvComplejas.Name = "consultaTlpDgvComplejas";
             this.consultaTlpDgvComplejas.RowCount = 2;
-            this.consultaTlpDgvComplejas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.25648F));
-            this.consultaTlpDgvComplejas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.74353F));
-            this.consultaTlpDgvComplejas.Size = new System.Drawing.Size(954, 671);
+            this.consultaTlpDgvComplejas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.consultaTlpDgvComplejas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.consultaTlpDgvComplejas.Size = new System.Drawing.Size(720, 359);
             this.consultaTlpDgvComplejas.TabIndex = 0;
             // 
             // ConsultasDgvComplejas
@@ -95,12 +96,13 @@
             this.ConsultasDgvComplejas.DefaultCellStyle = dataGridViewCellStyle3;
             this.ConsultasDgvComplejas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasDgvComplejas.EnableHeadersVisualStyles = false;
-            this.ConsultasDgvComplejas.Location = new System.Drawing.Point(3, 3);
+            this.ConsultasDgvComplejas.Location = new System.Drawing.Point(0, 0);
+            this.ConsultasDgvComplejas.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasDgvComplejas.Name = "ConsultasDgvComplejas";
             this.ConsultasDgvComplejas.ReadOnly = true;
             this.ConsultasDgvComplejas.RowHeadersWidth = 51;
             this.ConsultasDgvComplejas.RowTemplate.Height = 24;
-            this.ConsultasDgvComplejas.Size = new System.Drawing.Size(948, 525);
+            this.ConsultasDgvComplejas.Size = new System.Drawing.Size(720, 259);
             this.ConsultasDgvComplejas.TabIndex = 1;
             // 
             // ConsultasTlpComplejas
@@ -113,13 +115,12 @@
             this.ConsultasTlpComplejas.Controls.Add(this.ConsultasCboTablas, 1, 1);
             this.ConsultasTlpComplejas.Controls.Add(this.ConsultasTlpPaginacion, 0, 0);
             this.ConsultasTlpComplejas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ConsultasTlpComplejas.Location = new System.Drawing.Point(3, 534);
+            this.ConsultasTlpComplejas.Location = new System.Drawing.Point(3, 262);
             this.ConsultasTlpComplejas.Name = "ConsultasTlpComplejas";
             this.ConsultasTlpComplejas.RowCount = 2;
-            this.ConsultasTlpComplejas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.ConsultasTlpComplejas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            this.ConsultasTlpComplejas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ConsultasTlpComplejas.Size = new System.Drawing.Size(948, 134);
+            this.ConsultasTlpComplejas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.ConsultasTlpComplejas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.ConsultasTlpComplejas.Size = new System.Drawing.Size(714, 94);
             this.ConsultasTlpComplejas.TabIndex = 2;
             // 
             // label1
@@ -128,9 +129,9 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(87)))), ((int)(((byte)(63)))));
-            this.label1.Location = new System.Drawing.Point(3, 60);
+            this.label1.Location = new System.Drawing.Point(3, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 74);
+            this.label1.Size = new System.Drawing.Size(110, 50);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre de tabla";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -141,9 +142,9 @@
             this.ConsultasCboTablas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.ConsultasCboTablas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(87)))), ((int)(((byte)(63)))));
             this.ConsultasCboTablas.FormattingEnabled = true;
-            this.ConsultasCboTablas.Location = new System.Drawing.Point(157, 85);
+            this.ConsultasCboTablas.Location = new System.Drawing.Point(119, 63);
             this.ConsultasCboTablas.Name = "ConsultasCboTablas";
-            this.ConsultasCboTablas.Size = new System.Drawing.Size(788, 24);
+            this.ConsultasCboTablas.Size = new System.Drawing.Size(592, 24);
             this.ConsultasCboTablas.TabIndex = 1;
             this.ConsultasCboTablas.Text = "Empleados";
             this.ConsultasCboTablas.SelectedIndexChanged += new System.EventHandler(this.ConsultasCboTablas_SelectedIndexChanged);
@@ -152,51 +153,59 @@
             // 
             this.ConsultasTlpPaginacion.ColumnCount = 3;
             this.ConsultasTlpComplejas.SetColumnSpan(this.ConsultasTlpPaginacion, 2);
-            this.ConsultasTlpPaginacion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.81741F));
-            this.ConsultasTlpPaginacion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.40977F));
-            this.ConsultasTlpPaginacion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.87898F));
+            this.ConsultasTlpPaginacion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.ConsultasTlpPaginacion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ConsultasTlpPaginacion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.ConsultasTlpPaginacion.Controls.Add(this.ConsultasBtnAnterior, 0, 0);
             this.ConsultasTlpPaginacion.Controls.Add(this.ConsultasBtnSiguiente, 2, 0);
             this.ConsultasTlpPaginacion.Controls.Add(this.ConsultasFlpPaginas, 1, 0);
             this.ConsultasTlpPaginacion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ConsultasTlpPaginacion.Location = new System.Drawing.Point(3, 3);
+            this.ConsultasTlpPaginacion.Location = new System.Drawing.Point(0, 0);
+            this.ConsultasTlpPaginacion.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasTlpPaginacion.Name = "ConsultasTlpPaginacion";
             this.ConsultasTlpPaginacion.RowCount = 1;
             this.ConsultasTlpPaginacion.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ConsultasTlpPaginacion.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
-            this.ConsultasTlpPaginacion.Size = new System.Drawing.Size(942, 54);
+            this.ConsultasTlpPaginacion.Size = new System.Drawing.Size(714, 50);
             this.ConsultasTlpPaginacion.TabIndex = 2;
             // 
             // ConsultasBtnAnterior
             // 
+            this.ConsultasBtnAnterior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnAnterior.BackgroundImage")));
+            this.ConsultasBtnAnterior.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ConsultasBtnAnterior.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnAnterior.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConsultasBtnAnterior.FlatAppearance.BorderSize = 0;
+            this.ConsultasBtnAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ConsultasBtnAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(87)))), ((int)(((byte)(63)))));
             this.ConsultasBtnAnterior.Location = new System.Drawing.Point(3, 3);
             this.ConsultasBtnAnterior.Name = "ConsultasBtnAnterior";
-            this.ConsultasBtnAnterior.Size = new System.Drawing.Size(142, 48);
+            this.ConsultasBtnAnterior.Size = new System.Drawing.Size(44, 44);
             this.ConsultasBtnAnterior.TabIndex = 0;
-            this.ConsultasBtnAnterior.Text = "Atras";
             this.ConsultasBtnAnterior.UseVisualStyleBackColor = true;
             this.ConsultasBtnAnterior.Click += new System.EventHandler(this.ConsultasBtnAnterior_Click);
             // 
             // ConsultasBtnSiguiente
             // 
+            this.ConsultasBtnSiguiente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnSiguiente.BackgroundImage")));
+            this.ConsultasBtnSiguiente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ConsultasBtnSiguiente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnSiguiente.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConsultasBtnSiguiente.FlatAppearance.BorderSize = 0;
+            this.ConsultasBtnSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ConsultasBtnSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(87)))), ((int)(((byte)(63)))));
-            this.ConsultasBtnSiguiente.Location = new System.Drawing.Point(785, 3);
+            this.ConsultasBtnSiguiente.Location = new System.Drawing.Point(667, 3);
             this.ConsultasBtnSiguiente.Name = "ConsultasBtnSiguiente";
-            this.ConsultasBtnSiguiente.Size = new System.Drawing.Size(154, 48);
+            this.ConsultasBtnSiguiente.Size = new System.Drawing.Size(44, 44);
             this.ConsultasBtnSiguiente.TabIndex = 1;
-            this.ConsultasBtnSiguiente.Text = "Adelante";
             this.ConsultasBtnSiguiente.UseVisualStyleBackColor = true;
             this.ConsultasBtnSiguiente.Click += new System.EventHandler(this.ConsultasBtnSiguiente_Click);
             // 
             // ConsultasFlpPaginas
             // 
             this.ConsultasFlpPaginas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ConsultasFlpPaginas.Location = new System.Drawing.Point(151, 3);
+            this.ConsultasFlpPaginas.Location = new System.Drawing.Point(53, 3);
             this.ConsultasFlpPaginas.Name = "ConsultasFlpPaginas";
-            this.ConsultasFlpPaginas.Size = new System.Drawing.Size(628, 48);
+            this.ConsultasFlpPaginas.Size = new System.Drawing.Size(608, 44);
             this.ConsultasFlpPaginas.TabIndex = 2;
             // 
             // button1
@@ -232,7 +241,7 @@
             this.Controls.Add(this.consultaTlpDgvComplejas);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.Name = "TablaCompleja";
-            this.Size = new System.Drawing.Size(954, 671);
+            this.Size = new System.Drawing.Size(720, 359);
             this.consultaTlpDgvComplejas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ConsultasDgvComplejas)).EndInit();
             this.ConsultasTlpComplejas.ResumeLayout(false);

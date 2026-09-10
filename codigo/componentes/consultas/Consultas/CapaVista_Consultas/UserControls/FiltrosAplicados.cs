@@ -1,5 +1,4 @@
-﻿using CapaControlador_Consultas;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,14 +10,14 @@ using System.Windows.Forms;
 
 namespace CapaVista_Consultas
 {
-    public partial class ConsultasReutilizables : UserControl
+    public partial class FiltrosAplicados : UserControl
     {
-        public ConsultasReutilizables()
+        public FiltrosAplicados()
         {
             InitializeComponent();
             if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
             {
-                ClsEstandarizacionDataGridView.Estandarizar(ConsultasDgvConsultasReutilizables);
+                ClsEstandarizacionDataGridView.Estandarizar(ConsultasDgvConsultasFiltros);
             }
         }
     }

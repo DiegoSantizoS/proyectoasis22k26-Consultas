@@ -86,5 +86,10 @@ namespace CapaVista_Consultas
         {
 
         }
+
+        private void ConsultasRdoDesc_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -21,6 +21,13 @@ namespace CapaVista_Consultas
         public ConsultaSimple_400_001()
         {
             InitializeComponent();
+
+        }
+
+        public ConsultaSimple_400_001( string tabla)
+        {
+            InitializeComponent();
+            tablaSimple1.ConsultasProcActualizarTabla(tabla);
         }
 
         private void button3_Click(object sender, EventArgs e)
