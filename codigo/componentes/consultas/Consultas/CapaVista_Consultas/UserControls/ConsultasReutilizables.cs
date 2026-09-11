@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaControlador_Consultas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,10 @@ namespace CapaVista_Consultas
         public ConsultasReutilizables()
         {
             InitializeComponent();
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            {
+                ClsEstandarizacionDataGridView.Estandarizar(ConsultasDgvConsultasReutilizables);
+            }
         }
     }
 }

@@ -7,16 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaControlador_Consultas;
 
 namespace CapaVista_Consultas
 {
-    public partial class ConsultaCompleja_500_001 : Form
+    public partial class FiltrosAplicados : UserControl
     {
-        public ConsultaCompleja_500_001()
+        public FiltrosAplicados()
         {
             InitializeComponent();
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            {
+                ClsEstandarizacionDataGridView.Estandarizar(ConsultasDgvConsultasFiltros);
+            }
         }
-       
     }
 }
