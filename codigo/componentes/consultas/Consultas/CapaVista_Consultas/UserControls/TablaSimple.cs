@@ -29,6 +29,11 @@ namespace CapaVista_Consultas.UserControls
             ConsultasProcActualizarTabla(tabla);
         }
 
+        public TablaSimple()
+        {
+            InitializeComponent();
+            ConsultasProcActualizarTabla("consulta"); //actualizar parametro
+        }
         /*private string _nombreTabla;
         [Category("Consultas")]
         [Description("Nombre de la tabla que se mostrará.")]
