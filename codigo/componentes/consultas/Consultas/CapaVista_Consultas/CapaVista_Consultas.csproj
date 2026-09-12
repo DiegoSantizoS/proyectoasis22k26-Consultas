@@ -48,6 +48,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClsEstandarizacionDataGridView.cs" />
+    <Compile Include="FrmMantenimientoConsultas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMantenimientoConsultas.Designer.cs">
+      <DependentUpon>FrmMantenimientoConsultas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CondicionesOrdenamientoAgrupacion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CondicionesOrdenamientoAgrupacion.Designer.cs">
+      <DependentUpon>CondicionesOrdenamientoAgrupacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FiltrosAplicados.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -111,6 +123,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmMantenimientoConsultas.resx">
+      <DependentUpon>FrmMantenimientoConsultas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CondicionesOrdenamientoAgrupacion.resx">
+      <DependentUpon>CondicionesOrdenamientoAgrupacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FiltrosAplicados.resx">
       <DependentUpon>FiltrosAplicados.cs</DependentUpon>
     </EmbeddedResource>

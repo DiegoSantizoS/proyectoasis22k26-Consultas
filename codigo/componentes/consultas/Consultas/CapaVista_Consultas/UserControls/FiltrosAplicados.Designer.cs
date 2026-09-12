@@ -48,7 +48,7 @@
             this.ConsultasTlpPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.ConsultasTlpPrincipal.ColumnCount = 2;
             this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasDgvConsultasFiltros, 0, 0);
             this.ConsultasTlpPrincipal.Controls.Add(this.flowLayoutPanel1, 1, 0);
             this.ConsultasTlpPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -71,7 +71,7 @@
             this.ConsultasDgvConsultasFiltros.Name = "ConsultasDgvConsultasFiltros";
             this.ConsultasDgvConsultasFiltros.RowHeadersWidth = 51;
             this.ConsultasDgvConsultasFiltros.RowTemplate.Height = 24;
-            this.ConsultasDgvConsultasFiltros.Size = new System.Drawing.Size(531, 290);
+            this.ConsultasDgvConsultasFiltros.Size = new System.Drawing.Size(506, 290);
             this.ConsultasDgvConsultasFiltros.TabIndex = 0;
             // 
             // Columna1
@@ -102,9 +102,10 @@
             this.flowLayoutPanel1.Controls.Add(this.ConsultasBtnEliminar);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(540, 3);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(512, 0);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(54, 290);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(85, 290);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // ConsultasBtnConsultar
@@ -118,10 +119,10 @@
             this.ConsultasBtnConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ConsultasBtnConsultar.Location = new System.Drawing.Point(0, 0);
             this.ConsultasBtnConsultar.Margin = new System.Windows.Forms.Padding(0);
-            this.ConsultasBtnConsultar.MaximumSize = new System.Drawing.Size(50, 50);
-            this.ConsultasBtnConsultar.MinimumSize = new System.Drawing.Size(50, 50);
+            this.ConsultasBtnConsultar.MaximumSize = new System.Drawing.Size(85, 85);
+            this.ConsultasBtnConsultar.MinimumSize = new System.Drawing.Size(85, 85);
             this.ConsultasBtnConsultar.Name = "ConsultasBtnConsultar";
-            this.ConsultasBtnConsultar.Size = new System.Drawing.Size(50, 50);
+            this.ConsultasBtnConsultar.Size = new System.Drawing.Size(85, 85);
             this.ConsultasBtnConsultar.TabIndex = 0;
             this.ConsultasBtnConsultar.UseVisualStyleBackColor = false;
             // 
@@ -134,12 +135,12 @@
             this.ConsultasBtnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnGuardar.FlatAppearance.BorderSize = 0;
             this.ConsultasBtnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnGuardar.Location = new System.Drawing.Point(0, 50);
+            this.ConsultasBtnGuardar.Location = new System.Drawing.Point(0, 85);
             this.ConsultasBtnGuardar.Margin = new System.Windows.Forms.Padding(0);
-            this.ConsultasBtnGuardar.MaximumSize = new System.Drawing.Size(50, 50);
-            this.ConsultasBtnGuardar.MinimumSize = new System.Drawing.Size(50, 50);
+            this.ConsultasBtnGuardar.MaximumSize = new System.Drawing.Size(85, 85);
+            this.ConsultasBtnGuardar.MinimumSize = new System.Drawing.Size(85, 85);
             this.ConsultasBtnGuardar.Name = "ConsultasBtnGuardar";
-            this.ConsultasBtnGuardar.Size = new System.Drawing.Size(50, 50);
+            this.ConsultasBtnGuardar.Size = new System.Drawing.Size(85, 85);
             this.ConsultasBtnGuardar.TabIndex = 1;
             this.ConsultasBtnGuardar.UseVisualStyleBackColor = false;
             // 
@@ -152,12 +153,12 @@
             this.ConsultasBtnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnEliminar.FlatAppearance.BorderSize = 0;
             this.ConsultasBtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnEliminar.Location = new System.Drawing.Point(0, 100);
+            this.ConsultasBtnEliminar.Location = new System.Drawing.Point(0, 170);
             this.ConsultasBtnEliminar.Margin = new System.Windows.Forms.Padding(0);
-            this.ConsultasBtnEliminar.MaximumSize = new System.Drawing.Size(50, 50);
-            this.ConsultasBtnEliminar.MinimumSize = new System.Drawing.Size(50, 50);
+            this.ConsultasBtnEliminar.MaximumSize = new System.Drawing.Size(85, 85);
+            this.ConsultasBtnEliminar.MinimumSize = new System.Drawing.Size(85, 85);
             this.ConsultasBtnEliminar.Name = "ConsultasBtnEliminar";
-            this.ConsultasBtnEliminar.Size = new System.Drawing.Size(50, 50);
+            this.ConsultasBtnEliminar.Size = new System.Drawing.Size(85, 85);
             this.ConsultasBtnEliminar.TabIndex = 2;
             this.ConsultasBtnEliminar.UseVisualStyleBackColor = false;
             // 
