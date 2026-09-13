@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasTlpPaginacion = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasFlpPaginas = new System.Windows.Forms.FlowLayoutPanel();
@@ -97,6 +98,8 @@
             this.ConsultasBtnAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ConsultasBtnAnterior.Location = new System.Drawing.Point(0, 1);
             this.ConsultasBtnAnterior.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasBtnAnterior.MaximumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnAnterior.MinimumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnAnterior.Name = "ConsultasBtnAnterior";
             this.ConsultasBtnAnterior.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnAnterior.TabIndex = 3;
@@ -114,6 +117,8 @@
             this.ConsultasBtnSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ConsultasBtnSiguiente.Location = new System.Drawing.Point(791, 1);
             this.ConsultasBtnSiguiente.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasBtnSiguiente.MaximumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnSiguiente.MinimumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnSiguiente.Name = "ConsultasBtnSiguiente";
             this.ConsultasBtnSiguiente.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnSiguiente.TabIndex = 4;
@@ -152,6 +157,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ConsultasDgvSimples.DefaultCellStyle = dataGridViewCellStyle3;
             this.ConsultasDgvSimples.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConsultasDgvSimples.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ConsultasDgvSimples.EnableHeadersVisualStyles = false;
             this.ConsultasDgvSimples.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ConsultasDgvSimples.GridColor = System.Drawing.Color.LightGray;
@@ -159,8 +165,14 @@
             this.ConsultasDgvSimples.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasDgvSimples.MultiSelect = false;
             this.ConsultasDgvSimples.Name = "ConsultasDgvSimples";
+            this.ConsultasDgvSimples.ReadOnly = true;
             this.ConsultasDgvSimples.RowHeadersVisible = false;
             this.ConsultasDgvSimples.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.ConsultasDgvSimples.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.ConsultasDgvSimples.RowTemplate.Height = 28;
             this.ConsultasDgvSimples.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ConsultasDgvSimples.Size = new System.Drawing.Size(865, 390);
@@ -168,12 +180,11 @@
             // 
             // UcTablaSimple
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.Controls.Add(this.ConsultasTlpPrincipal);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "TablaSimple";
+            this.Name = "UcTablaSimple";
             this.Size = new System.Drawing.Size(871, 480);
             this.ConsultasTlpPrincipal.ResumeLayout(false);
             this.ConsultasTlpPaginacion.ResumeLayout(false);

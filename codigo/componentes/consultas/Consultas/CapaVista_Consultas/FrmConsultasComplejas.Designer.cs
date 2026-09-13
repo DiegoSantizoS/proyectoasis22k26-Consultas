@@ -51,9 +51,9 @@
             this.ConsultasTlpPrincipal.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasTlpPrincipal.Name = "ConsultasTlpPrincipal";
             this.ConsultasTlpPrincipal.RowCount = 2;
-            this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 294F));
+            this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
             this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ConsultasTlpPrincipal.Size = new System.Drawing.Size(1122, 827);
+            this.ConsultasTlpPrincipal.Size = new System.Drawing.Size(1122, 703);
             this.ConsultasTlpPrincipal.TabIndex = 15;
             // 
             // ConsultasUcTablaCompleja
@@ -63,10 +63,10 @@
             this.ConsultasUcTablaCompleja.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasUcTablaCompleja.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ConsultasUcTablaCompleja.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ConsultasUcTablaCompleja.Location = new System.Drawing.Point(14, 308);
+            this.ConsultasUcTablaCompleja.Location = new System.Drawing.Point(14, 314);
             this.ConsultasUcTablaCompleja.Margin = new System.Windows.Forms.Padding(14);
             this.ConsultasUcTablaCompleja.Name = "ConsultasUcTablaCompleja";
-            this.ConsultasUcTablaCompleja.Size = new System.Drawing.Size(1094, 505);
+            this.ConsultasUcTablaCompleja.Size = new System.Drawing.Size(1094, 375);
             this.ConsultasUcTablaCompleja.TabIndex = 16;
             // 
             // ConsultasBtnSalir
@@ -100,7 +100,7 @@
             this.ConsultasGbxReutilizables.Margin = new System.Windows.Forms.Padding(6);
             this.ConsultasGbxReutilizables.Name = "ConsultasGbxReutilizables";
             this.ConsultasGbxReutilizables.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ConsultasGbxReutilizables.Size = new System.Drawing.Size(1019, 282);
+            this.ConsultasGbxReutilizables.Size = new System.Drawing.Size(1019, 288);
             this.ConsultasGbxReutilizables.TabIndex = 18;
             this.ConsultasGbxReutilizables.TabStop = false;
             this.ConsultasGbxReutilizables.Text = "Elegir una Consulta";
@@ -113,21 +113,21 @@
             this.ConsultasUcConsultasReutilizables.Location = new System.Drawing.Point(3, 25);
             this.ConsultasUcConsultasReutilizables.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasUcConsultasReutilizables.Name = "ConsultasUcConsultasReutilizables";
-            this.ConsultasUcConsultasReutilizables.Size = new System.Drawing.Size(1013, 253);
+            this.ConsultasUcConsultasReutilizables.Size = new System.Drawing.Size(1013, 259);
             this.ConsultasUcConsultasReutilizables.TabIndex = 0;
             // 
             // FrmConsultasComplejas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ClientSize = new System.Drawing.Size(1122, 827);
+            this.ClientSize = new System.Drawing.Size(1122, 703);
             this.Controls.Add(this.ConsultasTlpPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MinimumSize = new System.Drawing.Size(1140, 874);
+            this.MinimumSize = new System.Drawing.Size(1140, 750);
             this.Name = "FrmConsultasComplejas";
+            this.Text = "4002 – Consultas Complejas";
             this.ConsultasTlpPrincipal.ResumeLayout(false);
             this.ConsultasGbxReutilizables.ResumeLayout(false);
             this.ResumeLayout(false);

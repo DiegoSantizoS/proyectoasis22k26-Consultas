@@ -92,15 +92,14 @@
             // 
             // FrmMantenimientoConsultas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.ClientSize = new System.Drawing.Size(981, 292);
             this.Controls.Add(this.ConsultasTlpPrincipal);
             this.Font = new System.Drawing.Font("Segoe UI", 7.8F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMantenimientoConsultas";
-            this.Text = "4003 – MantenimientoComplejas";
+            this.Text = "4003 – Mantenimiento de Consultas";
             this.TopMost = true;
             this.ConsultasTlpPrincipal.ResumeLayout(false);
             this.ConsultasGbxCondicionesLogicas.ResumeLayout(false);

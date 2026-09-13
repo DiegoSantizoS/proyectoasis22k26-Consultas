@@ -27,6 +27,8 @@ namespace CapaVista_Consultas
             FormBorderStyle = FormBorderStyle.FixedSingle;
 
             MaximizeBox = false;
+
+            AutoScaleMode = AutoScaleMode.None;
         }
     }
 }

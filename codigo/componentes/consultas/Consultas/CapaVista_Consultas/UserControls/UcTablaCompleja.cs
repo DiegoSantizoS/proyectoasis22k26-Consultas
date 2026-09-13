@@ -220,5 +220,6 @@ namespace CapaVista_Consultas
 
             ConsultasProcActualizarTabla();
         }
+
     }
 }

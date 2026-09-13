@@ -117,8 +117,7 @@
             // 
             // FrmConsultasSimples
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.ClientSize = new System.Drawing.Size(1096, 653);
             this.Controls.Add(this.ConsultasTlpPrincipal);

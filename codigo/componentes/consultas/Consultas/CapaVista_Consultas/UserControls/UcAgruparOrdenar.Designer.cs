@@ -55,7 +55,7 @@
             this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33345F));
             this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3331F));
             this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasBtnRefrescar, 5, 0);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasTxtValor, 3, 1);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasCboOperador, 2, 1);
@@ -86,7 +86,7 @@
             this.ConsultasBtnRefrescar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnRefrescar.FlatAppearance.BorderSize = 0;
             this.ConsultasBtnRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnRefrescar.Location = new System.Drawing.Point(689, 10);
+            this.ConsultasBtnRefrescar.Location = new System.Drawing.Point(688, 10);
             this.ConsultasBtnRefrescar.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasBtnRefrescar.MaximumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnRefrescar.MinimumSize = new System.Drawing.Size(80, 80);
@@ -104,7 +104,7 @@
             this.ConsultasTxtValor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ConsultasTxtValor.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.ConsultasTxtValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.ConsultasTxtValor.Location = new System.Drawing.Point(449, 39);
+            this.ConsultasTxtValor.Location = new System.Drawing.Point(447, 39);
             this.ConsultasTxtValor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasTxtValor.Name = "ConsultasTxtValor";
             this.ConsultasTxtValor.Size = new System.Drawing.Size(141, 30);
@@ -120,10 +120,10 @@
             this.ConsultasCboOperador.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.ConsultasCboOperador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
             this.ConsultasCboOperador.FormattingEnabled = true;
-            this.ConsultasCboOperador.Location = new System.Drawing.Point(301, 39);
+            this.ConsultasCboOperador.Location = new System.Drawing.Point(300, 39);
             this.ConsultasCboOperador.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasCboOperador.Name = "ConsultasCboOperador";
-            this.ConsultasCboOperador.Size = new System.Drawing.Size(142, 31);
+            this.ConsultasCboOperador.Size = new System.Drawing.Size(141, 31);
             this.ConsultasCboOperador.TabIndex = 21;
             // 
             // ConsultasTlpOrdenamiento
@@ -214,7 +214,7 @@
             this.ConsultasLblOperador.BackColor = System.Drawing.Color.Transparent;
             this.ConsultasLblOperador.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.ConsultasLblOperador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.ConsultasLblOperador.Location = new System.Drawing.Point(334, 12);
+            this.ConsultasLblOperador.Location = new System.Drawing.Point(332, 12);
             this.ConsultasLblOperador.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasLblOperador.Name = "ConsultasLblOperador";
             this.ConsultasLblOperador.Size = new System.Drawing.Size(76, 19);
@@ -229,7 +229,7 @@
             this.ConsultasLblValor.BackColor = System.Drawing.Color.Transparent;
             this.ConsultasLblValor.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.ConsultasLblValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.ConsultasLblValor.Location = new System.Drawing.Point(496, 12);
+            this.ConsultasLblValor.Location = new System.Drawing.Point(494, 12);
             this.ConsultasLblValor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasLblValor.Name = "ConsultasLblValor";
             this.ConsultasLblValor.Size = new System.Drawing.Size(46, 19);
@@ -246,7 +246,7 @@
             this.ConsultasBtnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnIngresar.FlatAppearance.BorderSize = 0;
             this.ConsultasBtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnIngresar.Location = new System.Drawing.Point(598, 10);
+            this.ConsultasBtnIngresar.Location = new System.Drawing.Point(596, 10);
             this.ConsultasBtnIngresar.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasBtnIngresar.MaximumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnIngresar.MinimumSize = new System.Drawing.Size(80, 80);
@@ -269,13 +269,12 @@
             this.ConsultasCboCampo.Location = new System.Drawing.Point(153, 39);
             this.ConsultasCboCampo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasCboCampo.Name = "ConsultasCboCampo";
-            this.ConsultasCboCampo.Size = new System.Drawing.Size(142, 31);
+            this.ConsultasCboCampo.Size = new System.Drawing.Size(141, 31);
             this.ConsultasCboCampo.TabIndex = 20;
             // 
             // UcAgruparOrdenar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.Controls.Add(this.ConsultasTlpPrincipal);
             this.Margin = new System.Windows.Forms.Padding(0);

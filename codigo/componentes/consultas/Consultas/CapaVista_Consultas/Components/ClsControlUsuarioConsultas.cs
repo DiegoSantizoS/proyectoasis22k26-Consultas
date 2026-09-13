@@ -24,7 +24,7 @@ namespace CapaVista_Consultas.Components
 
             BackColor = ColorTranslator.FromHtml("#EDE7DA");
 
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
         }
     }
 }
