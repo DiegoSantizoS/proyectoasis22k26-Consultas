@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace CapaVista_Consultas
 {
-    public partial class UcConsultasReutilizables : ClsControlUsuarioConsultas
+    public partial class UcSeleccioneUnaConsulta : ClsControlUsuarioConsultas
     {
-        public UcConsultasReutilizables()
+        public UcSeleccioneUnaConsulta()
         {
             InitializeComponent();
         }
@@ -22,6 +22,11 @@ namespace CapaVista_Consultas
         {
             FrmMantenimientoConsultas FormularioMantenimientoConsultas = new FrmMantenimientoConsultas();
             FormularioMantenimientoConsultas.Show();
+        }
+
+        private void ConsultasBtnEliminar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

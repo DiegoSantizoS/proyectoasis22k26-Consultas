@@ -32,14 +32,16 @@
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasBtnRefrescar = new CapaVista_Consultas.ClsBotonConsultas();
             this.ConsultasBtnSalir = new CapaVista_Consultas.ClsBotonConsultas();
-            this.clsGrupoConsultas1 = new CapaVista_Consultas.Components.ClsGrupoConsultas();
-            this.clsListaDesplegableConsultas1 = new CapaVista_Consultas.Components.ClsListaDesplegableConsultas();
-            this.clsGrupoConsultas2 = new CapaVista_Consultas.Components.ClsGrupoConsultas();
-            this.ucConsultasReutilizables1 = new CapaVista_Consultas.UcConsultasReutilizables();
-            this.ConsultasUcTabla = new CapaVista_Consultas.UserControls.UcTablaSimple();
+            this.ConsultasGbxSeleccionTabla = new CapaVista_Consultas.Components.ClsGrupoConsultas();
+            this.ConsultasCboSeleccionTabla = new CapaVista_Consultas.Components.ClsListaComboBoxConsultas();
+            this.ConsultasGbxSeleccionConsulta = new CapaVista_Consultas.Components.ClsGrupoConsultas();
+            this.ConsultasUcConsultasReutilizables = new CapaVista_Consultas.UcSeleccioneUnaConsulta();
+            this.ConsultasUcTabla = new CapaVista_Consultas.UserControls.UcTabla();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.ConsultasTlpPrincipal.SuspendLayout();
-            this.clsGrupoConsultas1.SuspendLayout();
-            this.clsGrupoConsultas2.SuspendLayout();
+            this.ConsultasGbxSeleccionTabla.SuspendLayout();
+            this.ConsultasGbxSeleccionConsulta.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ConsultasTlpPrincipal
@@ -48,11 +50,10 @@
             this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
             this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasBtnRefrescar, 2, 1);
-            this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasBtnSalir, 2, 0);
-            this.ConsultasTlpPrincipal.Controls.Add(this.clsGrupoConsultas1, 0, 0);
-            this.ConsultasTlpPrincipal.Controls.Add(this.clsGrupoConsultas2, 0, 2);
+            this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasGbxSeleccionTabla, 0, 0);
+            this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasGbxSeleccionConsulta, 0, 1);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasUcTabla, 1, 0);
+            this.ConsultasTlpPrincipal.Controls.Add(this.flowLayoutPanel1, 2, 0);
             this.ConsultasTlpPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasTlpPrincipal.Location = new System.Drawing.Point(0, 0);
             this.ConsultasTlpPrincipal.Margin = new System.Windows.Forms.Padding(0);
@@ -63,6 +64,9 @@
             this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 400F));
             this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ConsultasTlpPrincipal.Size = new System.Drawing.Size(1332, 703);
             this.ConsultasTlpPrincipal.TabIndex = 15;
             // 
@@ -75,8 +79,8 @@
             this.ConsultasBtnRefrescar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnRefrescar.FlatAppearance.BorderSize = 0;
             this.ConsultasBtnRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnRefrescar.Location = new System.Drawing.Point(1248, 96);
-            this.ConsultasBtnRefrescar.Margin = new System.Windows.Forms.Padding(6);
+            this.ConsultasBtnRefrescar.Location = new System.Drawing.Point(0, 0);
+            this.ConsultasBtnRefrescar.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasBtnRefrescar.MaximumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnRefrescar.MinimumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnRefrescar.Name = "ConsultasBtnRefrescar";
@@ -93,8 +97,8 @@
             this.ConsultasBtnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnSalir.FlatAppearance.BorderSize = 0;
             this.ConsultasBtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnSalir.Location = new System.Drawing.Point(1248, 6);
-            this.ConsultasBtnSalir.Margin = new System.Windows.Forms.Padding(6);
+            this.ConsultasBtnSalir.Location = new System.Drawing.Point(0, 80);
+            this.ConsultasBtnSalir.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasBtnSalir.MaximumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnSalir.MinimumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnSalir.Name = "ConsultasBtnSalir";
@@ -103,73 +107,87 @@
             this.ConsultasBtnSalir.UseVisualStyleBackColor = false;
             this.ConsultasBtnSalir.Click += new System.EventHandler(this.ConsultasBtnSalir_Click_1);
             // 
-            // clsGrupoConsultas1
+            // ConsultasGbxSeleccionTabla
             // 
-            this.clsGrupoConsultas1.BackColor = System.Drawing.Color.Transparent;
-            this.clsGrupoConsultas1.Controls.Add(this.clsListaDesplegableConsultas1);
-            this.clsGrupoConsultas1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clsGrupoConsultas1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clsGrupoConsultas1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.clsGrupoConsultas1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.clsGrupoConsultas1.Location = new System.Drawing.Point(3, 3);
-            this.clsGrupoConsultas1.Name = "clsGrupoConsultas1";
-            this.ConsultasTlpPrincipal.SetRowSpan(this.clsGrupoConsultas1, 2);
-            this.clsGrupoConsultas1.Size = new System.Drawing.Size(394, 174);
-            this.clsGrupoConsultas1.TabIndex = 20;
-            this.clsGrupoConsultas1.TabStop = false;
-            this.clsGrupoConsultas1.Text = "clsGrupoConsultas1";
+            this.ConsultasGbxSeleccionTabla.BackColor = System.Drawing.Color.Transparent;
+            this.ConsultasGbxSeleccionTabla.Controls.Add(this.ConsultasCboSeleccionTabla);
+            this.ConsultasGbxSeleccionTabla.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConsultasGbxSeleccionTabla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConsultasGbxSeleccionTabla.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.ConsultasGbxSeleccionTabla.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            this.ConsultasGbxSeleccionTabla.Location = new System.Drawing.Point(5, 5);
+            this.ConsultasGbxSeleccionTabla.Margin = new System.Windows.Forms.Padding(5);
+            this.ConsultasGbxSeleccionTabla.Name = "ConsultasGbxSeleccionTabla";
+            this.ConsultasGbxSeleccionTabla.Size = new System.Drawing.Size(390, 80);
+            this.ConsultasGbxSeleccionTabla.TabIndex = 20;
+            this.ConsultasGbxSeleccionTabla.TabStop = false;
+            this.ConsultasGbxSeleccionTabla.Text = "Seleccione una tabla";
             // 
-            // clsListaDesplegableConsultas1
+            // ConsultasCboSeleccionTabla
             // 
-            this.clsListaDesplegableConsultas1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.clsListaDesplegableConsultas1.BackColor = System.Drawing.Color.White;
-            this.clsListaDesplegableConsultas1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.clsListaDesplegableConsultas1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clsListaDesplegableConsultas1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.clsListaDesplegableConsultas1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.clsListaDesplegableConsultas1.FormattingEnabled = true;
-            this.clsListaDesplegableConsultas1.Location = new System.Drawing.Point(20, 80);
-            this.clsListaDesplegableConsultas1.Name = "clsListaDesplegableConsultas1";
-            this.clsListaDesplegableConsultas1.Size = new System.Drawing.Size(342, 31);
-            this.clsListaDesplegableConsultas1.TabIndex = 0;
+            this.ConsultasCboSeleccionTabla.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ConsultasCboSeleccionTabla.BackColor = System.Drawing.Color.White;
+            this.ConsultasCboSeleccionTabla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ConsultasCboSeleccionTabla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConsultasCboSeleccionTabla.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ConsultasCboSeleccionTabla.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            this.ConsultasCboSeleccionTabla.FormattingEnabled = true;
+            this.ConsultasCboSeleccionTabla.Location = new System.Drawing.Point(18, 33);
+            this.ConsultasCboSeleccionTabla.Name = "ConsultasCboSeleccionTabla";
+            this.ConsultasCboSeleccionTabla.Size = new System.Drawing.Size(356, 31);
+            this.ConsultasCboSeleccionTabla.TabIndex = 0;
             // 
-            // clsGrupoConsultas2
+            // ConsultasGbxSeleccionConsulta
             // 
-            this.clsGrupoConsultas2.BackColor = System.Drawing.Color.Transparent;
-            this.clsGrupoConsultas2.Controls.Add(this.ucConsultasReutilizables1);
-            this.clsGrupoConsultas2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clsGrupoConsultas2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clsGrupoConsultas2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.clsGrupoConsultas2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.clsGrupoConsultas2.Location = new System.Drawing.Point(3, 183);
-            this.clsGrupoConsultas2.Name = "clsGrupoConsultas2";
-            this.clsGrupoConsultas2.Size = new System.Drawing.Size(394, 394);
-            this.clsGrupoConsultas2.TabIndex = 21;
-            this.clsGrupoConsultas2.TabStop = false;
-            this.clsGrupoConsultas2.Text = "clsGrupoConsultas2";
+            this.ConsultasGbxSeleccionConsulta.BackColor = System.Drawing.Color.Transparent;
+            this.ConsultasGbxSeleccionConsulta.Controls.Add(this.ConsultasUcConsultasReutilizables);
+            this.ConsultasGbxSeleccionConsulta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConsultasGbxSeleccionConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConsultasGbxSeleccionConsulta.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.ConsultasGbxSeleccionConsulta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            this.ConsultasGbxSeleccionConsulta.Location = new System.Drawing.Point(5, 95);
+            this.ConsultasGbxSeleccionConsulta.Margin = new System.Windows.Forms.Padding(5);
+            this.ConsultasGbxSeleccionConsulta.Name = "ConsultasGbxSeleccionConsulta";
+            this.ConsultasTlpPrincipal.SetRowSpan(this.ConsultasGbxSeleccionConsulta, 2);
+            this.ConsultasGbxSeleccionConsulta.Size = new System.Drawing.Size(390, 480);
+            this.ConsultasGbxSeleccionConsulta.TabIndex = 21;
+            this.ConsultasGbxSeleccionConsulta.TabStop = false;
+            this.ConsultasGbxSeleccionConsulta.Text = "Seleccione una consulta";
             // 
-            // ucConsultasReutilizables1
+            // ConsultasUcConsultasReutilizables
             // 
-            this.ucConsultasReutilizables1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ucConsultasReutilizables1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucConsultasReutilizables1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ucConsultasReutilizables1.Location = new System.Drawing.Point(3, 24);
-            this.ucConsultasReutilizables1.Margin = new System.Windows.Forms.Padding(0);
-            this.ucConsultasReutilizables1.Name = "ucConsultasReutilizables1";
-            this.ucConsultasReutilizables1.Size = new System.Drawing.Size(388, 367);
-            this.ucConsultasReutilizables1.TabIndex = 0;
+            this.ConsultasUcConsultasReutilizables.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasUcConsultasReutilizables.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConsultasUcConsultasReutilizables.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ConsultasUcConsultasReutilizables.Location = new System.Drawing.Point(3, 24);
+            this.ConsultasUcConsultasReutilizables.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasUcConsultasReutilizables.Name = "ConsultasUcConsultasReutilizables";
+            this.ConsultasUcConsultasReutilizables.Size = new System.Drawing.Size(384, 453);
+            this.ConsultasUcConsultasReutilizables.TabIndex = 0;
             // 
             // ConsultasUcTabla
             // 
             this.ConsultasUcTabla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.ConsultasUcTabla.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasUcTabla.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ConsultasUcTabla.Location = new System.Drawing.Point(403, 4);
-            this.ConsultasUcTabla.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ConsultasUcTabla.Location = new System.Drawing.Point(405, 5);
+            this.ConsultasUcTabla.Margin = new System.Windows.Forms.Padding(5);
             this.ConsultasUcTabla.Name = "ConsultasUcTabla";
             this.ConsultasTlpPrincipal.SetRowSpan(this.ConsultasUcTabla, 4);
-            this.ConsultasUcTabla.Size = new System.Drawing.Size(836, 695);
+            this.ConsultasUcTabla.Size = new System.Drawing.Size(832, 693);
             this.ConsultasUcTabla.TabIndex = 22;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.ConsultasBtnRefrescar);
+            this.flowLayoutPanel1.Controls.Add(this.ConsultasBtnSalir);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1247, 5);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.ConsultasTlpPrincipal.SetRowSpan(this.flowLayoutPanel1, 2);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(80, 170);
+            this.flowLayoutPanel1.TabIndex = 23;
             // 
             // FrmConsultasComplejas
             // 
@@ -182,10 +200,11 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MinimumSize = new System.Drawing.Size(1350, 750);
             this.Name = "FrmConsultasComplejas";
-            this.Text = "4002 – Consultas Complejas";
+            this.Text = "4002 – ConsultasComplejas";
             this.ConsultasTlpPrincipal.ResumeLayout(false);
-            this.clsGrupoConsultas1.ResumeLayout(false);
-            this.clsGrupoConsultas2.ResumeLayout(false);
+            this.ConsultasGbxSeleccionTabla.ResumeLayout(false);
+            this.ConsultasGbxSeleccionConsulta.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -194,10 +213,11 @@
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPrincipal;
         private ClsBotonConsultas ConsultasBtnSalir;
         private ClsBotonConsultas ConsultasBtnRefrescar;
-        private Components.ClsGrupoConsultas clsGrupoConsultas1;
-        private Components.ClsGrupoConsultas clsGrupoConsultas2;
-        private UcConsultasReutilizables ucConsultasReutilizables1;
-        private UserControls.UcTablaSimple ConsultasUcTabla;
-        private Components.ClsListaDesplegableConsultas clsListaDesplegableConsultas1;
+        private Components.ClsGrupoConsultas ConsultasGbxSeleccionTabla;
+        private Components.ClsGrupoConsultas ConsultasGbxSeleccionConsulta;
+        private UcSeleccioneUnaConsulta ConsultasUcConsultasReutilizables;
+        private UserControls.UcTabla ConsultasUcTabla;
+        private Components.ClsListaComboBoxConsultas ConsultasCboSeleccionTabla;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

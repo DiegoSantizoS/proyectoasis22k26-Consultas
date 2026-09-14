@@ -43,14 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constructores\ClsCondicionComparacion.cs" />
-    <Compile Include="Constructores\ClsCondicionLogica.cs" />
-    <Compile Include="Constructores\ClsConstructorconsultas.cs" />
-    <Compile Include="Entidades\ClsAgruparOrdenarFiltros.cs" />
-    <Compile Include="Consultas\ClsConsultasDatos.cs" />
-    <Compile Include="Consultas\ClsSentenciasTablas.cs" />
-    <Compile Include="Conexion\ClsConexion.cs" />
+    <Compile Include="Temporales\ClsCondicionComparacion.cs" />
+    <Compile Include="Temporales\ClsCondicionLogica.cs" />
+    <Compile Include="Temporales\ClsConstructorconsultas.cs" />
+    <Compile Include="Temporales\ClsAgruparOrdenarFiltros.cs" />
+    <Compile Include="Temporales\ClsConsultasDatos.cs" />
+    <Compile Include="Repositorios\ClsSentenciasTablas.cs" />
+    <Compile Include="Repositorios\ClsConexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Contratos\" />
+    <Folder Include="Entidades\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

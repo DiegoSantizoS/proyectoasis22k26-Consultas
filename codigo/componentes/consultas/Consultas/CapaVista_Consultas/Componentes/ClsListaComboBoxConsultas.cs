@@ -9,12 +9,12 @@ using System.Windows.Forms;
 
 namespace CapaVista_Consultas.Components
 {
-    public class ClsListaDesplegableConsultas : ComboBox
+    public class ClsListaComboBoxConsultas : ComboBox
     {
         private static readonly Color _ColorTexto =
             ColorTranslator.FromHtml("#2E4A63");
 
-        public ClsListaDesplegableConsultas()
+        public ClsListaComboBoxConsultas()
         {
             Font = new Font(
                 "Segoe UI",

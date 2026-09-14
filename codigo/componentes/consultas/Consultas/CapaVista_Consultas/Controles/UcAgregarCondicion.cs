@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace CapaVista_Consultas.UserControls
 {
-    public partial class UcCondicionesOrdenamientoAgrupacion : ClsControlUsuarioConsultas
+    public partial class UcAgregarCondicion : ClsControlUsuarioConsultas
     {
-        public UcCondicionesOrdenamientoAgrupacion()
+        public UcAgregarCondicion()
         {
             InitializeComponent();
             ConsultasMetCargarDatosIniciales();

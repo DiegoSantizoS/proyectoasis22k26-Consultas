@@ -46,9 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controladores\ClsControladorConsultas.cs" />
-    <Compile Include="Controladores\ClsControladorConsultaSimple.cs" />
-    <Compile Include="Tablas\ClsTablas.cs" />
+    <Compile Include="Temporales\ClsControladorConsultas.cs" />
+    <Compile Include="Temporales\ClsControladorConsultaSimple.cs" />
+    <Compile Include="ClsTablas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

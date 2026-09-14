@@ -47,34 +47,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\ClsBotonConsultas.cs">
+    <Compile Include="Componentes\ClsBotonConsultas.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Components\ClsBotonPaginacionConsultas.cs">
+    <Compile Include="Componentes\ClsBotonPaginacionConsultas.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Components\ClsBotonRadioConsultas.cs">
+    <Compile Include="Componentes\ClsBotonRadioConsultas.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Components\ClsCajaTextoConsultas.cs">
+    <Compile Include="Componentes\ClsCajaTextoConsultas.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Components\ClsControlUsuarioConsultas.cs">
+    <Compile Include="Componentes\ClsControlUsuarioConsultas.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\ClsEtiquetaConsultas.cs">
+    <Compile Include="Componentes\ClsEtiquetaConsultas.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Components\ClsGrupoConsultas.cs">
+    <Compile Include="Componentes\ClsGrupoConsultas.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Components\ClsListaDesplegableConsultas.cs">
+    <Compile Include="Componentes\ClsListaComboBoxConsultas.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Components\ClsTablaDatosConsultas.cs">
+    <Compile Include="Componentes\ClsTablaDatosConsultas.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Components\ClsBaseTerminus.cs">
+    <Compile Include="Componentes\ClsBaseTerminus.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmMantenimientoConsultas.cs">
@@ -83,16 +83,16 @@
     <Compile Include="FrmMantenimientoConsultas.Designer.cs">
       <DependentUpon>FrmMantenimientoConsultas.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UcCondicionesOrdenamientoAgrupacion.cs">
+    <Compile Include="Controles\UcAgregarCondicion.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UcCondicionesOrdenamientoAgrupacion.Designer.cs">
-      <DependentUpon>UcCondicionesOrdenamientoAgrupacion.cs</DependentUpon>
+    <Compile Include="Controles\UcAgregarCondicion.Designer.cs">
+      <DependentUpon>UcAgregarCondicion.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UcFiltrosAplicados.cs">
+    <Compile Include="Controles\UcFiltrosAplicados.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UcFiltrosAplicados.Designer.cs">
+    <Compile Include="Controles\UcFiltrosAplicados.Designer.cs">
       <DependentUpon>UcFiltrosAplicados.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -100,11 +100,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UcAgruparOrdenar.cs">
+    <Compile Include="Controles\UcAgregarFiltro.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UcAgruparOrdenar.Designer.cs">
-      <DependentUpon>UcAgruparOrdenar.cs</DependentUpon>
+    <Compile Include="Controles\UcAgregarFiltro.Designer.cs">
+      <DependentUpon>UcAgregarFiltro.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmConsultasComplejas.cs">
       <SubType>Form</SubType>
@@ -118,34 +118,28 @@
     <Compile Include="FrmConsultasSimples.Designer.cs">
       <DependentUpon>FrmConsultasSimples.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UcConsultasReutilizables.cs">
+    <Compile Include="Controles\UcSeleccioneUnaConsulta.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UcConsultasReutilizables.Designer.cs">
-      <DependentUpon>UcConsultasReutilizables.cs</DependentUpon>
+    <Compile Include="Controles\UcSeleccioneUnaConsulta.Designer.cs">
+      <DependentUpon>UcSeleccioneUnaConsulta.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControls\UcTablaCompleja.cs">
+    <Compile Include="Controles\UcTabla.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UcTablaCompleja.Designer.cs">
-      <DependentUpon>UcTablaCompleja.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UcTablaSimple.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\UcTablaSimple.Designer.cs">
-      <DependentUpon>UcTablaSimple.cs</DependentUpon>
+    <Compile Include="Controles\UcTabla.Designer.cs">
+      <DependentUpon>UcTabla.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FrmMantenimientoConsultas.resx">
       <DependentUpon>FrmMantenimientoConsultas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UcCondicionesOrdenamientoAgrupacion.resx">
-      <DependentUpon>UcCondicionesOrdenamientoAgrupacion.cs</DependentUpon>
+    <EmbeddedResource Include="Controles\UcAgregarCondicion.resx">
+      <DependentUpon>UcAgregarCondicion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UcFiltrosAplicados.resx">
+    <EmbeddedResource Include="Controles\UcFiltrosAplicados.resx">
       <DependentUpon>UcFiltrosAplicados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -153,8 +147,8 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UcAgruparOrdenar.resx">
-      <DependentUpon>UcAgruparOrdenar.cs</DependentUpon>
+    <EmbeddedResource Include="Controles\UcAgregarFiltro.resx">
+      <DependentUpon>UcAgregarFiltro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConsultasComplejas.resx">
       <DependentUpon>FrmConsultasComplejas.cs</DependentUpon>
@@ -162,18 +156,13 @@
     <EmbeddedResource Include="FrmConsultasSimples.resx">
       <DependentUpon>FrmConsultasSimples.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UcConsultasReutilizables.resx">
-      <DependentUpon>UcConsultasReutilizables.cs</DependentUpon>
+    <EmbeddedResource Include="Controles\UcSeleccioneUnaConsulta.resx">
+      <DependentUpon>UcSeleccioneUnaConsulta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UcTablaCompleja.resx">
-      <DependentUpon>UcTablaCompleja.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UcTablaSimple.resx">
-      <DependentUpon>UcTablaSimple.cs</DependentUpon>
+    <EmbeddedResource Include="Controles\UcTabla.resx">
+      <DependentUpon>UcTabla.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,12 +12,12 @@ using System.Windows.Forms;
 
 namespace CapaVista_Consultas
 {
-    public partial class UcAgruparOrdenar : ClsControlUsuarioConsultas
+    public partial class UcAgregarFiltro : ClsControlUsuarioConsultas
     {
         private readonly ClsControladorConsultas _controlador =
             new ClsControladorConsultas();
 
-        public UcAgruparOrdenar()
+        public UcAgregarFiltro()
         {
             InitializeComponent();
 
@@ -48,8 +48,6 @@ namespace CapaVista_Consultas
                 "Comienza con",
                 "Termina con"
             });
-
-            ConsultasRdoAscendente.Checked = true;
         }
     }
 }

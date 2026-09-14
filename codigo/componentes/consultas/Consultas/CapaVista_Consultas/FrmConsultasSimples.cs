@@ -30,7 +30,7 @@ namespace CapaVista_Consultas
             ConsultasUcTablaSimple.ConsultasProcActualizarTabla(tabla);
         }
 
-        private void ConsultasBtnComplejas_Click(object sender, EventArgs e)
+        private void ConsultasBtnComplejas_Click_1(object sender, EventArgs e)
         {
             FrmConsultasComplejas FormularioConsultasComplejas = new FrmConsultasComplejas();
             this.Hide();
