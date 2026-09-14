@@ -16,7 +16,7 @@ namespace CapaVista_Consultas.UserControls
     {
         private readonly ClsTablas Tablas = new ClsTablas();
         private int _PaginaActual = 1;
-        private int _RegistrosPorPagina = 10;
+        private int _RegistrosPorPagina = 15;
         private int _TotalRegistros = 0;
         private int _TotalPaginas = 0;
         private string _TablaSeleccionada = "";
@@ -32,6 +32,11 @@ namespace CapaVista_Consultas.UserControls
                 ConsultasDgvSimples.AutoGenerateColumns = true;
                 ConsultasProcActualizarTabla("tblConsulta");
             }
+        }
+
+        public void ConsultasMetAjustarAlturaFilas(int RegistrosPorPagina)
+        {
+            _RegistrosPorPagina = RegistrosPorPagina;
         }
 
         public UcTablaSimple(string tabla)

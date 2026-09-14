@@ -16,6 +16,7 @@ namespace CapaVista_Consultas
         public FrmConsultasComplejas()
         {
             InitializeComponent();
+            ConsultasUcTabla.ConsultasMetAjustarAlturaFilas(30);
         }
 
         private void ConsultasBtnSalir_Click_1(object sender, EventArgs e)

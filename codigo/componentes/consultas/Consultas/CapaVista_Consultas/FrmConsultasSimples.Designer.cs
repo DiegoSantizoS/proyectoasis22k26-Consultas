@@ -48,12 +48,12 @@
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasBtnComplejas, 1, 0);
             this.ConsultasTlpPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasTlpPrincipal.Location = new System.Drawing.Point(0, 0);
-            this.ConsultasTlpPrincipal.Margin = new System.Windows.Forms.Padding(2);
+            this.ConsultasTlpPrincipal.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasTlpPrincipal.Name = "ConsultasTlpPrincipal";
             this.ConsultasTlpPrincipal.RowCount = 2;
             this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 141F));
             this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ConsultasTlpPrincipal.Size = new System.Drawing.Size(1096, 653);
+            this.ConsultasTlpPrincipal.Size = new System.Drawing.Size(982, 678);
             this.ConsultasTlpPrincipal.TabIndex = 19;
             // 
             // ConsultasUcTablaSimple
@@ -62,10 +62,10 @@
             this.ConsultasTlpPrincipal.SetColumnSpan(this.ConsultasUcTablaSimple, 2);
             this.ConsultasUcTablaSimple.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasUcTablaSimple.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ConsultasUcTablaSimple.Location = new System.Drawing.Point(2, 145);
-            this.ConsultasUcTablaSimple.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.ConsultasUcTablaSimple.Location = new System.Drawing.Point(5, 146);
+            this.ConsultasUcTablaSimple.Margin = new System.Windows.Forms.Padding(5);
             this.ConsultasUcTablaSimple.Name = "ConsultasUcTablaSimple";
-            this.ConsultasUcTablaSimple.Size = new System.Drawing.Size(1092, 504);
+            this.ConsultasUcTablaSimple.Size = new System.Drawing.Size(972, 527);
             this.ConsultasUcTablaSimple.TabIndex = 18;
             // 
             // ConsultasGbxAgregarFiltro
@@ -76,11 +76,11 @@
             this.ConsultasGbxAgregarFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ConsultasGbxAgregarFiltro.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.ConsultasGbxAgregarFiltro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.ConsultasGbxAgregarFiltro.Location = new System.Drawing.Point(3, 4);
-            this.ConsultasGbxAgregarFiltro.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ConsultasGbxAgregarFiltro.Location = new System.Drawing.Point(5, 5);
+            this.ConsultasGbxAgregarFiltro.Margin = new System.Windows.Forms.Padding(5);
             this.ConsultasGbxAgregarFiltro.Name = "ConsultasGbxAgregarFiltro";
-            this.ConsultasGbxAgregarFiltro.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ConsultasGbxAgregarFiltro.Size = new System.Drawing.Size(999, 133);
+            this.ConsultasGbxAgregarFiltro.Padding = new System.Windows.Forms.Padding(0);
+            this.ConsultasGbxAgregarFiltro.Size = new System.Drawing.Size(881, 131);
             this.ConsultasGbxAgregarFiltro.TabIndex = 19;
             this.ConsultasGbxAgregarFiltro.TabStop = false;
             this.ConsultasGbxAgregarFiltro.Text = "Agregar Filtro";
@@ -90,10 +90,10 @@
             this.ConsultasUcAgruparOrdenar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.ConsultasUcAgruparOrdenar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasUcAgruparOrdenar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ConsultasUcAgruparOrdenar.Location = new System.Drawing.Point(3, 25);
-            this.ConsultasUcAgruparOrdenar.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasUcAgruparOrdenar.Location = new System.Drawing.Point(0, 21);
+            this.ConsultasUcAgruparOrdenar.Margin = new System.Windows.Forms.Padding(5);
             this.ConsultasUcAgruparOrdenar.Name = "ConsultasUcAgruparOrdenar";
-            this.ConsultasUcAgruparOrdenar.Size = new System.Drawing.Size(993, 104);
+            this.ConsultasUcAgruparOrdenar.Size = new System.Drawing.Size(881, 110);
             this.ConsultasUcAgruparOrdenar.TabIndex = 0;
             // 
             // ConsultasBtnComplejas
@@ -105,8 +105,8 @@
             this.ConsultasBtnComplejas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnComplejas.FlatAppearance.BorderSize = 0;
             this.ConsultasBtnComplejas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnComplejas.Location = new System.Drawing.Point(1010, 0);
-            this.ConsultasBtnComplejas.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasBtnComplejas.Location = new System.Drawing.Point(896, 5);
+            this.ConsultasBtnComplejas.Margin = new System.Windows.Forms.Padding(5);
             this.ConsultasBtnComplejas.MaximumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnComplejas.MinimumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnComplejas.Name = "ConsultasBtnComplejas";
@@ -119,10 +119,11 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ClientSize = new System.Drawing.Size(1096, 653);
+            this.ClientSize = new System.Drawing.Size(982, 678);
             this.Controls.Add(this.ConsultasTlpPrincipal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(1000, 725);
             this.Name = "FrmConsultasSimples";
             this.Text = "4001 - ConsultaSimple";
             this.ConsultasTlpPrincipal.ResumeLayout(false);

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcConsultasReutilizables));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasFlpBotones = new System.Windows.Forms.FlowLayoutPanel();
             this.ConsultasBtnConsultar = new CapaVista_Consultas.ClsBotonConsultas();
@@ -40,8 +40,6 @@
             this.ConsultasBtnEliminar = new CapaVista_Consultas.ClsBotonConsultas();
             this.ConsultasDgvConsultasReutilizables = new CapaVista_Consultas.Components.ClsTablaDatosConsultas();
             this.ConsultasColNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConsultasColFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConsultasColHora = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.ConsultasFlpBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConsultasDgvConsultasReutilizables)).BeginInit();
@@ -71,8 +69,8 @@
             this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnEliminar);
             this.ConsultasFlpBotones.Dock = System.Windows.Forms.DockStyle.Top;
             this.ConsultasFlpBotones.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.ConsultasFlpBotones.Location = new System.Drawing.Point(541, 0);
-            this.ConsultasFlpBotones.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasFlpBotones.Location = new System.Drawing.Point(541, 12);
+            this.ConsultasFlpBotones.Margin = new System.Windows.Forms.Padding(0, 12, 0, 0);
             this.ConsultasFlpBotones.Name = "ConsultasFlpBotones";
             this.ConsultasFlpBotones.Size = new System.Drawing.Size(100, 438);
             this.ConsultasFlpBotones.TabIndex = 2;
@@ -137,36 +135,34 @@
             this.ConsultasDgvConsultasReutilizables.AllowUserToAddRows = false;
             this.ConsultasDgvConsultasReutilizables.AllowUserToDeleteRows = false;
             this.ConsultasDgvConsultasReutilizables.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.ConsultasDgvConsultasReutilizables.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.ConsultasDgvConsultasReutilizables.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.ConsultasDgvConsultasReutilizables.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ConsultasDgvConsultasReutilizables.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.ConsultasDgvConsultasReutilizables.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ConsultasDgvConsultasReutilizables.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.ConsultasDgvConsultasReutilizables.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9.5F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.ConsultasDgvConsultasReutilizables.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 9.5F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.ConsultasDgvConsultasReutilizables.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.ConsultasDgvConsultasReutilizables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ConsultasDgvConsultasReutilizables.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ConsultasColNombre,
-            this.ConsultasColFecha,
-            this.ConsultasColHora});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ConsultasDgvConsultasReutilizables.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ConsultasColNombre});
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ConsultasDgvConsultasReutilizables.DefaultCellStyle = dataGridViewCellStyle7;
             this.ConsultasDgvConsultasReutilizables.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasDgvConsultasReutilizables.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ConsultasDgvConsultasReutilizables.EnableHeadersVisualStyles = false;
@@ -179,11 +175,11 @@
             this.ConsultasDgvConsultasReutilizables.ReadOnly = true;
             this.ConsultasDgvConsultasReutilizables.RowHeadersVisible = false;
             this.ConsultasDgvConsultasReutilizables.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.ConsultasDgvConsultasReutilizables.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.ConsultasDgvConsultasReutilizables.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.ConsultasDgvConsultasReutilizables.RowTemplate.Height = 28;
             this.ConsultasDgvConsultasReutilizables.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ConsultasDgvConsultasReutilizables.Size = new System.Drawing.Size(519, 483);
@@ -195,22 +191,6 @@
             this.ConsultasColNombre.MinimumWidth = 6;
             this.ConsultasColNombre.Name = "ConsultasColNombre";
             this.ConsultasColNombre.ReadOnly = true;
-            // 
-            // ConsultasColFecha
-            // 
-            this.ConsultasColFecha.FillWeight = 20F;
-            this.ConsultasColFecha.HeaderText = "Fecha";
-            this.ConsultasColFecha.MinimumWidth = 6;
-            this.ConsultasColFecha.Name = "ConsultasColFecha";
-            this.ConsultasColFecha.ReadOnly = true;
-            // 
-            // ConsultasColHora
-            // 
-            this.ConsultasColHora.FillWeight = 20F;
-            this.ConsultasColHora.HeaderText = "Hora";
-            this.ConsultasColHora.MinimumWidth = 6;
-            this.ConsultasColHora.Name = "ConsultasColHora";
-            this.ConsultasColHora.ReadOnly = true;
             // 
             // UcConsultasReutilizables
             // 
@@ -236,7 +216,5 @@
         private ClsBotonConsultas ConsultasBtnIngresar;
         private ClsBotonConsultas ConsultasBtnEliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColFecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColHora;
     }
 }

@@ -24,6 +24,37 @@ namespace CapaVista_Consultas.Components
             ConsultasMetAplicarEstandarizacion();
         }
 
+        protected override void OnResize(System.EventArgs e)
+        {
+            base.OnResize(e);
+
+            ConsultasMetAjustarAlturaFilas();
+        }
+
+        protected override void OnRowsAdded(
+            DataGridViewRowsAddedEventArgs e)
+        {
+            base.OnRowsAdded(e);
+
+            ConsultasMetAjustarAlturaFilas();
+        }
+
+        protected override void OnRowsRemoved(
+            DataGridViewRowsRemovedEventArgs e)
+        {
+            base.OnRowsRemoved(e);
+
+            ConsultasMetAjustarAlturaFilas();
+        }
+
+        protected override void OnDataBindingComplete(
+            DataGridViewBindingCompleteEventArgs e)
+        {
+            base.OnDataBindingComplete(e);
+
+            ConsultasMetAjustarAlturaFilas();
+        }
+
         protected override void OnHandleCreated(System.EventArgs e)
         {
             base.OnHandleCreated(e);
@@ -133,6 +164,48 @@ namespace CapaVista_Consultas.Components
             RowTemplate.Height = 28;
 
             Margin = new Padding(3);
+        }
+
+        private void ConsultasMetAjustarAlturaFilas()
+        {
+            if (Rows.Count == 0 || ClientSize.Height <= 0)
+                return;
+
+            int CantidadFilas = Rows.Count;
+
+            int EspacioDisponible =
+                ClientSize.Height
+                - ColumnHeadersHeight
+                - 2; 
+
+            if (EspacioDisponible <= 0)
+                return;
+
+            int AlturaCalculada =
+                EspacioDisponible / CantidadFilas;
+
+            int AlturaMinima = 28;
+
+            if (AlturaCalculada < AlturaMinima)
+            {
+                foreach (DataGridViewRow Fila in Rows)
+                {
+                    Fila.Height = AlturaMinima;
+                }
+
+                return;
+            }
+
+            int Sobrante =
+                EspacioDisponible
+                - (AlturaCalculada * CantidadFilas);
+
+            for (int i = 0; i < CantidadFilas; i++)
+            {
+                Rows[i].Height =
+                    AlturaCalculada +
+                    (i < Sobrante ? 1 : 0);
+            }
         }
 
         protected override void OnPaint(PaintEventArgs e)
