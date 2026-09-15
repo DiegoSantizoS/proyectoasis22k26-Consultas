@@ -1,6 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using CapaControlador_Consultas;
 
 namespace CapaVista_Consultas.Controles
@@ -42,6 +48,7 @@ namespace CapaVista_Consultas.Controles
                 ConsultasProcActualizarTabla(tabla);
             }
         }
+       
 
         public void ConsultasProcActualizarTabla(string tablaSeleccionada)
         {
@@ -62,7 +69,9 @@ namespace CapaVista_Consultas.Controles
 
             ConsultasDgvSimples.DataSource = DtTablas;
 
+
             ConsultasProcCrearBotonesPaginas();
+            ConsultasProcCambiarLbl();
 
         }
         private void ConsultasProcCalcularTotalPaginas()
@@ -136,6 +145,16 @@ namespace CapaVista_Consultas.Controles
 
                 ConsultasProcActualizarTabla(_TablaSeleccionada);
             }
+        }
+        private void ConsultasProcCambiarLbl()
+        {
+            ConsultasLblPaginacion.Text = "Mostrando " +
+                (((_PaginaActual - 1) * _RegistrosPorPagina) + 1) +
+                "-" +
+                (_PaginaActual * _RegistrosPorPagina) +
+                " de " +
+                Tablas.ConsultasFuncContarRegistros(_TablaSeleccionada) +
+                " registros";
         }
     }
 }
