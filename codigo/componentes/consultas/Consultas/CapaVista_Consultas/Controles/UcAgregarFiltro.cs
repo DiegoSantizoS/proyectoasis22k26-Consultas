@@ -14,8 +14,10 @@ namespace CapaVista_Consultas
 {
     public partial class UcAgregarFiltro : ClsControlUsuarioConsultas
     {
-        private readonly ClsControladorConsultas _controlador =
+        private readonly ClsControladorConsultas _Controlador =
             new ClsControladorConsultas();
+
+        private string _TablaActual;
 
         public UcAgregarFiltro()
         {
@@ -23,18 +25,35 @@ namespace CapaVista_Consultas
 
             if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
             {
-                ConsultasMetCargarDatosIniciales();
+                ConsultasMetCargarOperadores();
             }
         }
+      
 
-        private void ConsultasMetCargarDatosIniciales()
+        public void ConsultasProcActualizarTabla(string Tabla)
         {
-            string Tabla = "Empleados";
+            if (string.IsNullOrWhiteSpace(Tabla))
+            {
+                ConsultasCboCampo.Items.Clear();
+                return;
+            }
 
-            _controlador.ConsultasMetPoblarComboCampos(
-                Tabla,
+            _TablaActual = Tabla;
+
+            ConsultasMetCargarCampos();
+        }
+
+        private void ConsultasMetCargarCampos()
+        {
+            ConsultasCboCampo.Items.Clear();
+
+            _Controlador.ConsultasMetPoblarComboCampos(
+                _TablaActual,
                 ConsultasCboCampo);
+        }
 
+        private void ConsultasMetCargarOperadores()
+        {
             ConsultasCboOperador.Items.Clear();
 
             ConsultasCboOperador.Items.AddRange(new object[]

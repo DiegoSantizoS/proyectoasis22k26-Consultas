@@ -13,10 +13,19 @@ namespace CapaVista_Consultas
 {
     public partial class FrmConsultasComplejas : ClsBaseTerminus
     {
+        public string TablaActual { get; set; } 
         public FrmConsultasComplejas()
         {
             InitializeComponent();
             ConsultasUcTabla.ConsultasMetAjustarAlturaFilas(30);
+        }
+        public FrmConsultasComplejas(string Tabla)
+        {
+            InitializeComponent();
+           
+            TablaActual = Tabla;
+
+
         }
 
         private void ConsultasBtnSalir_Click_1(object sender, EventArgs e)
