@@ -8,18 +8,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaControlador_Consultas;
 
 namespace CapaVista_Consultas.UserControls
 {
     public partial class UcAgregarCondicion : ClsControlUsuarioConsultas
     {
+        private readonly ClsControladorConsultas _Controlador =
+            new ClsControladorConsultas();
+
+
+        private string _TablaActual = ClsTablaSeleccionada.ConsultasFuncObtenerTabla();
         public UcAgregarCondicion()
         {
             InitializeComponent();
-            ConsultasMetCargarDatosIniciales();
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            {
+                ConsultasMetCargarOperadores();
+
+                ConsultasMetCargarCampos();
+            }
         }
 
-        private void ConsultasMetCargarDatosIniciales()
+     
+
+        private void ConsultasMetCargarCampos()
+        {
+            ConsultasCboOperadorCampo.Items.Clear();
+
+            _Controlador.ConsultasMetPoblarComboCampos(
+                _TablaActual,
+                ConsultasCboOperadorCampo);
+        }
+
+        private void ConsultasMetCargarOperadores()
         {
             ConsultasCboOperador.Items.Clear();
 
@@ -30,11 +52,9 @@ namespace CapaVista_Consultas.UserControls
                 "<",
                 ">=",
                 "<=",
-                "Contiene",
-                "Comienza con",
-                "Termina con"
+                "LIKE"
             });
-            ConsultasRdoAscendente.Checked = true;
         }
     }
-}
+    }
+

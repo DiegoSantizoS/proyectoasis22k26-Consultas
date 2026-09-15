@@ -1,26 +1,19 @@
-﻿using System.Data.Odbc;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Odbc;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CapaModelo_Consultas
+namespace CapaModelo_Consultas.Repositorios
 {
-    /// Mishel loeiza 9959-23-3457
-    /// Representa los filtros de agrupamiento/ordenamiento elegidos por el usuario.
-
-    public class ClsAgruparOrdenarFiltros
+    public class clsObtenciónCampos
     {
-        private ClsConexion _Conexion = new ClsConexion();
 
         public string Tabla { get; set; }
-        public string Ordenamiento { get; set; }
-        public string CampoTabla { get; set; }
-        public string Operador { get; set; }
-        public string Valor { get; set; }
 
-        public ClsAgruparOrdenarFiltros()
-        {
-            Ordenamiento = "ASC";
-        }
-
+        private ClsConexion _Conexion = new ClsConexion();
         private void ConsultasMetPopularComboBox(string Pub_sTabla, ComboBox cboDestino)
         {
             cboDestino.Items.Clear();
@@ -28,7 +21,8 @@ namespace CapaModelo_Consultas
             string Query = @"SELECT COLUMN_NAME
                              FROM INFORMATION_SCHEMA.COLUMNS
                              WHERE TABLE_SCHEMA = DATABASE()
-                             AND TABLE_NAME = ?";
+                             AND TABLE_NAME = ?
+                             ORDER BY ORDINAL_POSITION ";
 
             OdbcConnection Conn = _Conexion.ConsultasFuncConexion();
 
@@ -57,5 +51,7 @@ namespace CapaModelo_Consultas
         {
             ConsultasMetPopularComboBox(this.Tabla, cboDestino);
         }
+
+
     }
 }

@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMantenimientoConsultas));
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasGbxCondicionesLogicas = new CapaVista_Consultas.Components.ClsGrupoConsultas();
-            this.ConsultasUcCondicionesOrdenamientoAgrupacion = new CapaVista_Consultas.UserControls.UcAgregarCondicion();
+            this.ConsultasUcAgregarCondicion = new CapaVista_Consultas.UserControls.UcAgregarCondicion();
             this.ConsultasUcFiltrosAplicados = new CapaVista_Consultas.UcFiltrosAplicados();
             this.clsGrupoConsultas1 = new CapaVista_Consultas.Components.ClsGrupoConsultas();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasLblNombre = new CapaVista_Consultas.Components.ClsEtiquetaConsultas();
             this.ConsultasBtnGuardar = new CapaVista_Consultas.ClsBotonConsultas();
             this.ConsultasTxtNombre = new CapaVista_Consultas.ClsCajaTextoConsultas();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.ConsultasGbxCondicionesLogicas.SuspendLayout();
             this.clsGrupoConsultas1.SuspendLayout();
@@ -66,7 +66,7 @@
             // ConsultasGbxCondicionesLogicas
             // 
             this.ConsultasGbxCondicionesLogicas.BackColor = System.Drawing.Color.Transparent;
-            this.ConsultasGbxCondicionesLogicas.Controls.Add(this.ConsultasUcCondicionesOrdenamientoAgrupacion);
+            this.ConsultasGbxCondicionesLogicas.Controls.Add(this.ConsultasUcAgregarCondicion);
             this.ConsultasGbxCondicionesLogicas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasGbxCondicionesLogicas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ConsultasGbxCondicionesLogicas.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -78,16 +78,16 @@
             this.ConsultasGbxCondicionesLogicas.TabStop = false;
             this.ConsultasGbxCondicionesLogicas.Text = "Agregar Condición";
             // 
-            // ConsultasUcCondicionesOrdenamientoAgrupacion
+            // ConsultasUcAgregarCondicion
             // 
-            this.ConsultasUcCondicionesOrdenamientoAgrupacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ConsultasUcCondicionesOrdenamientoAgrupacion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ConsultasUcCondicionesOrdenamientoAgrupacion.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ConsultasUcCondicionesOrdenamientoAgrupacion.Location = new System.Drawing.Point(3, 24);
-            this.ConsultasUcCondicionesOrdenamientoAgrupacion.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.ConsultasUcCondicionesOrdenamientoAgrupacion.Name = "ConsultasUcCondicionesOrdenamientoAgrupacion";
-            this.ConsultasUcCondicionesOrdenamientoAgrupacion.Size = new System.Drawing.Size(380, 267);
-            this.ConsultasUcCondicionesOrdenamientoAgrupacion.TabIndex = 1;
+            this.ConsultasUcAgregarCondicion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasUcAgregarCondicion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConsultasUcAgregarCondicion.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ConsultasUcAgregarCondicion.Location = new System.Drawing.Point(3, 24);
+            this.ConsultasUcAgregarCondicion.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ConsultasUcAgregarCondicion.Name = "ConsultasUcAgregarCondicion";
+            this.ConsultasUcAgregarCondicion.Size = new System.Drawing.Size(380, 267);
+            this.ConsultasUcAgregarCondicion.TabIndex = 1;
             // 
             // ConsultasUcFiltrosAplicados
             // 
@@ -115,6 +115,27 @@
             this.clsGrupoConsultas1.TabIndex = 18;
             this.clsGrupoConsultas1.TabStop = false;
             this.clsGrupoConsultas1.Text = "Guardar Consulta";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.ConsultasLblNombre, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ConsultasBtnGuardar, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.ConsultasTxtNombre, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 24);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(380, 147);
+            this.tableLayoutPanel1.TabIndex = 2;
             // 
             // ConsultasLblNombre
             // 
@@ -161,27 +182,6 @@
             this.ConsultasTxtNombre.Size = new System.Drawing.Size(237, 30);
             this.ConsultasTxtNombre.TabIndex = 0;
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.ConsultasLblNombre, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.ConsultasBtnGuardar, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.ConsultasTxtNombre, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 24);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(380, 147);
-            this.tableLayoutPanel1.TabIndex = 2;
-            // 
             // FrmMantenimientoConsultas
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -205,7 +205,7 @@
         #endregion
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPrincipal;
         private Components.ClsGrupoConsultas ConsultasGbxCondicionesLogicas;
-        private UserControls.UcAgregarCondicion ConsultasUcCondicionesOrdenamientoAgrupacion;
+        private UserControls.UcAgregarCondicion ConsultasUcAgregarCondicion;
         private UcFiltrosAplicados ConsultasUcFiltrosAplicados;
         private Components.ClsGrupoConsultas clsGrupoConsultas1;
         private ClsCajaTextoConsultas ConsultasTxtNombre;

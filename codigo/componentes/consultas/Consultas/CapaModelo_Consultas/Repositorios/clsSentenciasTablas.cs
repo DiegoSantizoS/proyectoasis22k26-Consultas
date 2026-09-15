@@ -33,18 +33,39 @@ namespace CapaModelo_Consultas {
             catch (Exception Ex)
             {
                 Console.WriteLine("Error al cargar la tabla: " + Ex.Message);
+                Environment.Exit(0);
                 return null;
             }
         }
 
-        public OdbcDataAdapter ConsultasFuncObtenerTablas() { 
-            string Consulta = "SHOW TABLES;"; 
+        public OdbcDataAdapter ConsultasFuncObtenerTablas() {
+            try
+            {
+                string Consulta = "SHOW TABLES;"; 
             OdbcDataAdapter DaTablas = new OdbcDataAdapter(Consulta, _Conexion.ConsultasFuncConexion()); 
-            return DaTablas; 
+            return DaTablas;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(
+               "No se pudieron obtener las tablas.\n\n" +
+               Ex.Message,
+               "Error",
+               MessageBoxButtons.OK,
+               MessageBoxIcon.Error
+           );
+                Environment.Exit(0);
+
+
+                return null;
+            }
+
         }
         public int ConsultasFuncContarRegistros(string NombreTabla)
         {
-            string Consulta =
+            try
+            {
+                string Consulta =
                 "SELECT COUNT(*) FROM " + NombreTabla;
 
             OdbcCommand Cmd = new OdbcCommand(
@@ -53,6 +74,21 @@ namespace CapaModelo_Consultas {
             );
 
             return Convert.ToInt32(Cmd.ExecuteScalar());
+            }
+            catch (OdbcException)
+            {
+                MessageBox.Show(
+                    "La tabla '" + NombreTabla + "' no existe o no se puede consultar.",
+                    "Tabla no encontrada",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                Environment.Exit(0);
+
+                return 0;
+            }
+
+
         }
     } 
 }

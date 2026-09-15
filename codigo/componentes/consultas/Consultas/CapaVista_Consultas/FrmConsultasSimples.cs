@@ -16,7 +16,8 @@ namespace CapaVista_Consultas
         ClsControladorConsultaSimple _Controlador = new ClsControladorConsultaSimple();
 
         //Variable dinámica de la tabla = empleado es eliminable
-        public string TablaActual { get; set; } = "tblConsulta";
+        public string TablaActual { get; set; }
+        
 
         public FrmConsultasSimples()
         {
@@ -24,10 +25,13 @@ namespace CapaVista_Consultas
 
         }
 
-        public FrmConsultasSimples(string tabla)
+        public FrmConsultasSimples(string Tabla)
         {
             InitializeComponent();
-            ConsultasUcTablaSimple.ConsultasProcActualizarTabla(tabla);
+          
+            ConsultasUcTablaSimple.ConsultasProcActualizarTabla(Tabla);
+            ConsultasUcAgregarFiltro.ConsultasProcActualizarTabla(Tabla);
+            ClsTablaSeleccionada.ConsultasMetGuardarTabla (Tabla);
         }
 
         private void ConsultasBtnComplejas_Click_1(object sender, EventArgs e)
@@ -41,6 +45,7 @@ namespace CapaVista_Consultas
 
             this.Hide();
             FormularioConsultasComplejas.Show();
+
         }
     }
 }
