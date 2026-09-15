@@ -9,10 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+﻿using System;
 
 namespace CapaVista_Consultas
 {
-    public partial class FrmConsultasComplejas : ClsBaseTerminus
+    public partial class FrmConsultasComplejas : Componentes.ClsBaseTerminus
     {
         // intancia el controlador de tablas relacionadas para obtener las tablas relacionadas Pedro Gómez
         ClsControladorTablasRelacionadas _ControladorTablas = new ClsControladorTablasRelacionadas();
@@ -23,6 +24,14 @@ namespace CapaVista_Consultas
         {
             InitializeComponent();
             ConsultasUcTabla.ConsultasMetAjustarAlturaFilas(30);
+        }
+        public FrmConsultasComplejas(string Tabla)
+        {
+            InitializeComponent();
+           
+            TablaActual = Tabla;
+
+
         }
 
         // recibe la tabla del formualrio simple pedro incio
@@ -58,6 +67,13 @@ namespace CapaVista_Consultas
         private void ConsultasBtnSalir_Click_1(object sender, EventArgs e)
         {
             FrmConsultasSimples FormularioConsultasSimples = new FrmConsultasSimples(TablaActual);
+            FrmConsultasSimples FormularioConsultasSimples = new FrmConsultasSimples();
+
+            FormularioConsultasSimples.FormClosed += (s, args) =>
+            {
+                this.Hide();
+            };
+
             this.Hide();
             FormularioConsultasSimples.Show();
         }

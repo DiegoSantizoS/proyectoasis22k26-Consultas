@@ -44,11 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Repositorios\ClsTablasRelacionadas.cs" />
+    <Compile Include="Repositorios\ClsObtenciónCampos.cs" />
     <Compile Include="Temporales\ClsCondicionComparacion.cs" />
     <Compile Include="Temporales\ClsCondicionLogica.cs" />
     <Compile Include="Temporales\ClsConstructorconsultas.cs" />
-    <Compile Include="Temporales\ClsAgruparOrdenarFiltros.cs" />
-    <Compile Include="Temporales\ClsConsultasDatos.cs" />
     <Compile Include="Repositorios\ClsSentenciasTablas.cs" />
     <Compile Include="Repositorios\ClsConexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

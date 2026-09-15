@@ -1,4 +1,4 @@
-﻿namespace CapaVista_Consultas
+﻿namespace CapaVista_Consultas.Controles
 {
     partial class UcFiltrosAplicados
     {
@@ -35,10 +35,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasFlpBotones = new System.Windows.Forms.FlowLayoutPanel();
-            this.ConsultasBtnAND = new CapaVista_Consultas.ClsBotonConsultas();
-            this.ConsultasBtnOR = new CapaVista_Consultas.ClsBotonConsultas();
-            this.ConsultasBtnEliminar = new CapaVista_Consultas.ClsBotonConsultas();
-            this.ConsultasDgvConsultasFiltros = new CapaVista_Consultas.Components.ClsTablaDatosConsultas();
+            this.ConsultasBtnAND = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasBtnOR = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasBtnEliminar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasDgvConsultasFiltros = new CapaVista_Consultas.Componentes.ClsTablaDatosConsultas();
             this.ConsultasColCampo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConsultasColOperador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConsultasColValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -236,10 +236,10 @@
 
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPrincipal;
         private System.Windows.Forms.FlowLayoutPanel ConsultasFlpBotones;
-        private Components.ClsTablaDatosConsultas ConsultasDgvConsultasFiltros;
-        private ClsBotonConsultas ConsultasBtnEliminar;
-        private ClsBotonConsultas ConsultasBtnAND;
-        private ClsBotonConsultas ConsultasBtnOR;
+        private Componentes.ClsTablaDatosConsultas ConsultasDgvConsultasFiltros;
+        private Componentes.ClsBotonConsultas ConsultasBtnEliminar;
+        private Componentes.ClsBotonConsultas ConsultasBtnAND;
+        private Componentes.ClsBotonConsultas ConsultasBtnOR;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColCampo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColOperador;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColValor;
