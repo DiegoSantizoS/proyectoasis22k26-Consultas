@@ -1,18 +1,9 @@
-﻿using CapaVista_Consultas.Components;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.ComponentModel;
 using CapaControlador_Consultas;
 
-namespace CapaVista_Consultas.UserControls
+namespace CapaVista_Consultas.Controles
 {
-    public partial class UcAgregarCondicion : ClsControlUsuarioConsultas
+    public partial class UcAgregarCondicion : Componentes.ClsControlUsuarioConsultas
     {
         private readonly ClsControladorConsultas _Controlador =
             new ClsControladorConsultas();

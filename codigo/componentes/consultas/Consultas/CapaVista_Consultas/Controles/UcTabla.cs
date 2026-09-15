@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using CapaControlador_Consultas;
-using CapaVista_Consultas.Components;
 
-namespace CapaVista_Consultas.UserControls
+namespace CapaVista_Consultas.Controles
 {
-    public partial class UcTabla : ClsControlUsuarioConsultas
+    public partial class UcTabla : Componentes.ClsControlUsuarioConsultas
     {
         private readonly ClsTablas Tablas = new ClsTablas();
         private int _PaginaActual = 1;
@@ -49,28 +42,6 @@ namespace CapaVista_Consultas.UserControls
                 ConsultasProcActualizarTabla(tabla);
             }
         }
-        /*private string _nombreTabla;
-        [Category("Consultas")]
-        [Description("Nombre de la tabla que se mostrará.")]
-        [TypeConverter(typeof(TablaConverter))]
-        public string NombreTabla
-        {
-            get { return _nombreTabla; }
-            set { _nombreTabla = value; }
-        }
-
-
-        [Category("Consultas")]
-        [Description("Indica si la tabla se carga automáticamente al iniciar.")]
-        public bool CargarAutomaticamente { get; set; } = true;
-
-        private void TablaSimple_Load(object sender, EventArgs e)
-        {
-            if (CargarAutomaticamente && !string.IsNullOrWhiteSpace(_nombreTabla))
-            {
-                ActualizarTabla();
-            }
-        }*/
 
         public void ConsultasProcActualizarTabla(string tablaSeleccionada)
         {
@@ -113,8 +84,8 @@ namespace CapaVista_Consultas.UserControls
 
             for (int NumeroPagina = _InicioRangoPagina; NumeroPagina <= FinRango; NumeroPagina++)
             {
-                ClsBotonPaginacionConsultas BotonPagina =
-                    new ClsBotonPaginacionConsultas();
+                Componentes.ClsBotonPaginacionConsultas BotonPagina =
+                    new Componentes.ClsBotonPaginacionConsultas();
 
                 BotonPagina.Name = $"ConsultasBtnPagina{NumeroPagina}";
                 BotonPagina.Text = NumeroPagina.ToString();
@@ -128,8 +99,8 @@ namespace CapaVista_Consultas.UserControls
         }
         private void BtnPagina_Click(object sender, EventArgs e)
         {
-            ClsBotonPaginacionConsultas BotonPagina =
-            (ClsBotonPaginacionConsultas)sender;
+            Componentes.ClsBotonPaginacionConsultas BotonPagina =
+            (Componentes.ClsBotonPaginacionConsultas)sender;
 
             _PaginaActual = Convert.ToInt32(BotonPagina.Tag);
 

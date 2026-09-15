@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMantenimientoConsultas));
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
-            this.ConsultasGbxCondicionesLogicas = new CapaVista_Consultas.Components.ClsGrupoConsultas();
-            this.ConsultasUcAgregarCondicion = new CapaVista_Consultas.UserControls.UcAgregarCondicion();
-            this.ConsultasUcFiltrosAplicados = new CapaVista_Consultas.UcFiltrosAplicados();
-            this.clsGrupoConsultas1 = new CapaVista_Consultas.Components.ClsGrupoConsultas();
+            this.ConsultasGbxCondicionesLogicas = new CapaVista_Consultas.Componentes.ClsGrupoConsultas();
+            this.ConsultasUcAgregarCondicion = new CapaVista_Consultas.Controles.UcAgregarCondicion();
+            this.ConsultasUcFiltrosAplicados = new CapaVista_Consultas.Controles.UcFiltrosAplicados();
+            this.clsGrupoConsultas1 = new CapaVista_Consultas.Componentes.ClsGrupoConsultas();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.ConsultasLblNombre = new CapaVista_Consultas.Components.ClsEtiquetaConsultas();
-            this.ConsultasBtnGuardar = new CapaVista_Consultas.ClsBotonConsultas();
-            this.ConsultasTxtNombre = new CapaVista_Consultas.ClsCajaTextoConsultas();
+            this.ConsultasLblNombre = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
+            this.ConsultasBtnGuardar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasTxtNombre = new CapaVista_Consultas.Componentes.ClsCajaTextoConsultas();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.ConsultasGbxCondicionesLogicas.SuspendLayout();
             this.clsGrupoConsultas1.SuspendLayout();
@@ -191,6 +191,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 7.8F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMantenimientoConsultas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "4003 – MantenimientoConsultas";
             this.TopMost = true;
             this.ConsultasTlpPrincipal.ResumeLayout(false);
@@ -204,13 +205,13 @@
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPrincipal;
-        private Components.ClsGrupoConsultas ConsultasGbxCondicionesLogicas;
-        private UserControls.UcAgregarCondicion ConsultasUcAgregarCondicion;
-        private UcFiltrosAplicados ConsultasUcFiltrosAplicados;
-        private Components.ClsGrupoConsultas clsGrupoConsultas1;
-        private ClsCajaTextoConsultas ConsultasTxtNombre;
-        private ClsBotonConsultas ConsultasBtnGuardar;
-        private Components.ClsEtiquetaConsultas ConsultasLblNombre;
+        private Componentes.ClsGrupoConsultas ConsultasGbxCondicionesLogicas;
+        private Controles.UcAgregarCondicion ConsultasUcAgregarCondicion;
+        private Controles.UcFiltrosAplicados ConsultasUcFiltrosAplicados;
+        private Componentes.ClsGrupoConsultas clsGrupoConsultas1;
+        private Componentes.ClsCajaTextoConsultas ConsultasTxtNombre;
+        private Componentes.ClsBotonConsultas ConsultasBtnGuardar;
+        private Componentes.ClsEtiquetaConsultas ConsultasLblNombre;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

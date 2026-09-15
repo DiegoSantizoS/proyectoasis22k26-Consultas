@@ -1,4 +1,4 @@
-﻿namespace CapaVista_Consultas.UserControls
+﻿namespace CapaVista_Consultas.Controles
 {
     partial class UcTabla
     {
@@ -35,13 +35,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasTlpPaginacion = new System.Windows.Forms.TableLayoutPanel();
-            this.clsBotonConsultas2 = new CapaVista_Consultas.ClsBotonConsultas();
             this.ConsultasFlpPaginas = new System.Windows.Forms.FlowLayoutPanel();
-            this.ConsultasBtnSiguiente = new CapaVista_Consultas.ClsBotonConsultas();
-            this.ConsultasBtnAnterior = new CapaVista_Consultas.ClsBotonConsultas();
-            this.clsBotonConsultas1 = new CapaVista_Consultas.ClsBotonConsultas();
-            this.ConsultasDgvSimples = new CapaVista_Consultas.Components.ClsTablaDatosConsultas();
-            this.ConsultasLblPaginacion = new CapaVista_Consultas.Components.ClsEtiquetaConsultas();
+            this.ConsultasBtnSiguiente = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasBtnAnterior = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasDgvSimples = new CapaVista_Consultas.Componentes.ClsTablaDatosConsultas();
+            this.ConsultasLblPaginacion = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.ConsultasTlpPaginacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConsultasDgvSimples)).BeginInit();
@@ -67,17 +65,14 @@
             // 
             // ConsultasTlpPaginacion
             // 
-            this.ConsultasTlpPaginacion.ColumnCount = 5;
-            this.ConsultasTlpPaginacion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.ConsultasTlpPaginacion.ColumnCount = 3;
             this.ConsultasTlpPaginacion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.ConsultasTlpPaginacion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ConsultasTlpPaginacion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.ConsultasTlpPaginacion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.ConsultasTlpPaginacion.Controls.Add(this.clsBotonConsultas2, 4, 0);
-            this.ConsultasTlpPaginacion.Controls.Add(this.ConsultasFlpPaginas, 2, 0);
-            this.ConsultasTlpPaginacion.Controls.Add(this.ConsultasBtnSiguiente, 3, 0);
-            this.ConsultasTlpPaginacion.Controls.Add(this.ConsultasBtnAnterior, 1, 0);
-            this.ConsultasTlpPaginacion.Controls.Add(this.clsBotonConsultas1, 0, 0);
+            this.ConsultasTlpPaginacion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.ConsultasTlpPaginacion.Controls.Add(this.ConsultasFlpPaginas, 1, 0);
+            this.ConsultasTlpPaginacion.Controls.Add(this.ConsultasBtnSiguiente, 2, 0);
+            this.ConsultasTlpPaginacion.Controls.Add(this.ConsultasBtnAnterior, 0, 0);
             this.ConsultasTlpPaginacion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasTlpPaginacion.Location = new System.Drawing.Point(250, 428);
             this.ConsultasTlpPaginacion.Margin = new System.Windows.Forms.Padding(0);
@@ -87,31 +82,13 @@
             this.ConsultasTlpPaginacion.Size = new System.Drawing.Size(621, 52);
             this.ConsultasTlpPaginacion.TabIndex = 3;
             // 
-            // clsBotonConsultas2
-            // 
-            this.clsBotonConsultas2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.clsBotonConsultas2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.clsBotonConsultas2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("clsBotonConsultas2.BackgroundImage")));
-            this.clsBotonConsultas2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.clsBotonConsultas2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.clsBotonConsultas2.FlatAppearance.BorderSize = 0;
-            this.clsBotonConsultas2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clsBotonConsultas2.Location = new System.Drawing.Point(571, 1);
-            this.clsBotonConsultas2.Margin = new System.Windows.Forms.Padding(0);
-            this.clsBotonConsultas2.MaximumSize = new System.Drawing.Size(50, 50);
-            this.clsBotonConsultas2.MinimumSize = new System.Drawing.Size(50, 50);
-            this.clsBotonConsultas2.Name = "clsBotonConsultas2";
-            this.clsBotonConsultas2.Size = new System.Drawing.Size(50, 50);
-            this.clsBotonConsultas2.TabIndex = 6;
-            this.clsBotonConsultas2.UseVisualStyleBackColor = false;
-            // 
             // ConsultasFlpPaginas
             // 
             this.ConsultasFlpPaginas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ConsultasFlpPaginas.Location = new System.Drawing.Point(103, 4);
+            this.ConsultasFlpPaginas.Location = new System.Drawing.Point(53, 4);
             this.ConsultasFlpPaginas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasFlpPaginas.Name = "ConsultasFlpPaginas";
-            this.ConsultasFlpPaginas.Size = new System.Drawing.Size(415, 44);
+            this.ConsultasFlpPaginas.Size = new System.Drawing.Size(515, 44);
             this.ConsultasFlpPaginas.TabIndex = 2;
             // 
             // ConsultasBtnSiguiente
@@ -123,7 +100,7 @@
             this.ConsultasBtnSiguiente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnSiguiente.FlatAppearance.BorderSize = 0;
             this.ConsultasBtnSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnSiguiente.Location = new System.Drawing.Point(521, 1);
+            this.ConsultasBtnSiguiente.Location = new System.Drawing.Point(571, 1);
             this.ConsultasBtnSiguiente.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasBtnSiguiente.MaximumSize = new System.Drawing.Size(50, 50);
             this.ConsultasBtnSiguiente.MinimumSize = new System.Drawing.Size(50, 50);
@@ -142,7 +119,7 @@
             this.ConsultasBtnAnterior.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnAnterior.FlatAppearance.BorderSize = 0;
             this.ConsultasBtnAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnAnterior.Location = new System.Drawing.Point(50, 1);
+            this.ConsultasBtnAnterior.Location = new System.Drawing.Point(0, 1);
             this.ConsultasBtnAnterior.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasBtnAnterior.MaximumSize = new System.Drawing.Size(50, 50);
             this.ConsultasBtnAnterior.MinimumSize = new System.Drawing.Size(50, 50);
@@ -151,24 +128,6 @@
             this.ConsultasBtnAnterior.TabIndex = 3;
             this.ConsultasBtnAnterior.UseVisualStyleBackColor = false;
             this.ConsultasBtnAnterior.Click += new System.EventHandler(this.ConsultasBtnAnterior1_Click);
-            // 
-            // clsBotonConsultas1
-            // 
-            this.clsBotonConsultas1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.clsBotonConsultas1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.clsBotonConsultas1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("clsBotonConsultas1.BackgroundImage")));
-            this.clsBotonConsultas1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.clsBotonConsultas1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.clsBotonConsultas1.FlatAppearance.BorderSize = 0;
-            this.clsBotonConsultas1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clsBotonConsultas1.Location = new System.Drawing.Point(0, 1);
-            this.clsBotonConsultas1.Margin = new System.Windows.Forms.Padding(0);
-            this.clsBotonConsultas1.MaximumSize = new System.Drawing.Size(50, 50);
-            this.clsBotonConsultas1.MinimumSize = new System.Drawing.Size(50, 50);
-            this.clsBotonConsultas1.Name = "clsBotonConsultas1";
-            this.clsBotonConsultas1.Size = new System.Drawing.Size(50, 50);
-            this.clsBotonConsultas1.TabIndex = 5;
-            this.clsBotonConsultas1.UseVisualStyleBackColor = false;
             // 
             // ConsultasDgvSimples
             // 
@@ -245,7 +204,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.Controls.Add(this.ConsultasTlpPrincipal);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "UcTablaSimple";
+            this.Name = "UcTabla";
             this.Size = new System.Drawing.Size(871, 480);
             this.ConsultasTlpPrincipal.ResumeLayout(false);
             this.ConsultasTlpPrincipal.PerformLayout();
@@ -260,11 +219,9 @@
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPrincipal;
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPaginacion;
         private System.Windows.Forms.FlowLayoutPanel ConsultasFlpPaginas;
-        private ClsBotonConsultas ConsultasBtnAnterior;
-        private ClsBotonConsultas ConsultasBtnSiguiente;
-        private Components.ClsTablaDatosConsultas ConsultasDgvSimples;
-        private ClsBotonConsultas clsBotonConsultas2;
-        private ClsBotonConsultas clsBotonConsultas1;
-        private Components.ClsEtiquetaConsultas ConsultasLblPaginacion;
+        private Componentes.ClsBotonConsultas ConsultasBtnAnterior;
+        private Componentes.ClsBotonConsultas ConsultasBtnSiguiente;
+        private Componentes.ClsTablaDatosConsultas ConsultasDgvSimples;
+        private Componentes.ClsEtiquetaConsultas ConsultasLblPaginacion;
     }
 }
