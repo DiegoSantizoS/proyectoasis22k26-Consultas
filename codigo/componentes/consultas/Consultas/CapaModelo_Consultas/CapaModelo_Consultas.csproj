@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositorios\ClsTablasRelacionadas.cs" />
     <Compile Include="Repositorios\ClsObtenciónCampos.cs" />
     <Compile Include="Temporales\ClsCondicionComparacion.cs" />
     <Compile Include="Temporales\ClsCondicionLogica.cs" />

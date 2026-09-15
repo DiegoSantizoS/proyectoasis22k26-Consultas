@@ -10,6 +10,7 @@ namespace Ejecucion_Consultas
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new CapaVista_Consultas.FrmConsultasSimples("apl3"));
             Application.Run(new CapaVista_Consultas.FrmConsultasSimples("tblConsulta"));
             
         }
