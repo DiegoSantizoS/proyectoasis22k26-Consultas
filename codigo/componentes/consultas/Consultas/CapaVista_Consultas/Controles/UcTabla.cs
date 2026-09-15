@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -49,28 +50,7 @@ namespace CapaVista_Consultas.UserControls
                 ConsultasProcActualizarTabla(tabla);
             }
         }
-        /*private string _nombreTabla;
-        [Category("Consultas")]
-        [Description("Nombre de la tabla que se mostrará.")]
-        [TypeConverter(typeof(TablaConverter))]
-        public string NombreTabla
-        {
-            get { return _nombreTabla; }
-            set { _nombreTabla = value; }
-        }
-
-
-        [Category("Consultas")]
-        [Description("Indica si la tabla se carga automáticamente al iniciar.")]
-        public bool CargarAutomaticamente { get; set; } = true;
-
-        private void TablaSimple_Load(object sender, EventArgs e)
-        {
-            if (CargarAutomaticamente && !string.IsNullOrWhiteSpace(_nombreTabla))
-            {
-                ActualizarTabla();
-            }
-        }*/
+       
 
         public void ConsultasProcActualizarTabla(string tablaSeleccionada)
         {
@@ -91,7 +71,9 @@ namespace CapaVista_Consultas.UserControls
 
             ConsultasDgvSimples.DataSource = DtTablas;
 
+
             ConsultasProcCrearBotonesPaginas();
+            ConsultasProcCambiarLbl();
 
         }
         private void ConsultasProcCalcularTotalPaginas()
@@ -165,6 +147,16 @@ namespace CapaVista_Consultas.UserControls
 
                 ConsultasProcActualizarTabla(_TablaSeleccionada);
             }
+        }
+        private void ConsultasProcCambiarLbl()
+        {
+            ConsultasLblPaginacion.Text = "Mostrando " +
+                (((_PaginaActual - 1) * _RegistrosPorPagina) + 1) +
+                "-" +
+                (_PaginaActual * _RegistrosPorPagina) +
+                " de " +
+                Tablas.ConsultasFuncContarRegistros(_TablaSeleccionada) +
+                " registros";
         }
     }
 }
