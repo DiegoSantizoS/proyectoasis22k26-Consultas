@@ -1,4 +1,4 @@
-﻿namespace CapaVista_Consultas
+﻿namespace CapaVista_Consultas.Controles
 {
     partial class UcAgregarFiltro
     {
@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcAgregarFiltro));
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
-            this.ConsultasLblCampo = new CapaVista_Consultas.Components.ClsEtiquetaConsultas();
-            this.ConsultasCboCampo = new CapaVista_Consultas.Components.ClsListaComboBoxConsultas();
-            this.ConsultasLblOperador = new CapaVista_Consultas.Components.ClsEtiquetaConsultas();
-            this.ConsultasCboOperador = new CapaVista_Consultas.Components.ClsListaComboBoxConsultas();
-            this.ConsultasLblValor = new CapaVista_Consultas.Components.ClsEtiquetaConsultas();
-            this.ConsultasTxtValor = new CapaVista_Consultas.ClsCajaTextoConsultas();
-            this.ConsultasBtnIngresar = new CapaVista_Consultas.ClsBotonConsultas();
-            this.ConsultasBtnRefrescar = new CapaVista_Consultas.ClsBotonConsultas();
+            this.ConsultasLblCampo = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
+            this.ConsultasCboCampo = new CapaVista_Consultas.Componentes.ClsListaComboBoxConsultas();
+            this.ConsultasLblOperador = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
+            this.ConsultasCboOperador = new CapaVista_Consultas.Componentes.ClsListaComboBoxConsultas();
+            this.ConsultasLblValor = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
+            this.ConsultasTxtValor = new CapaVista_Consultas.Componentes.ClsCajaTextoConsultas();
+            this.ConsultasBtnBuscar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasBtnRefrescar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +56,7 @@
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasCboOperador, 1, 1);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasLblValor, 2, 0);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasTxtValor, 2, 1);
-            this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasBtnIngresar, 3, 0);
+            this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasBtnBuscar, 3, 0);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasBtnRefrescar, 4, 0);
             this.ConsultasTlpPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasTlpPrincipal.Location = new System.Drawing.Point(0, 0);
@@ -160,24 +160,24 @@
             this.ConsultasTxtValor.Size = new System.Drawing.Size(192, 30);
             this.ConsultasTxtValor.TabIndex = 22;
             // 
-            // ConsultasBtnIngresar
+            // ConsultasBtnBuscar
             // 
-            this.ConsultasBtnIngresar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ConsultasBtnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ConsultasBtnIngresar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnIngresar.BackgroundImage")));
-            this.ConsultasBtnIngresar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ConsultasBtnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ConsultasBtnIngresar.FlatAppearance.BorderSize = 0;
-            this.ConsultasBtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnIngresar.Location = new System.Drawing.Point(599, 10);
-            this.ConsultasBtnIngresar.Margin = new System.Windows.Forms.Padding(0);
-            this.ConsultasBtnIngresar.MaximumSize = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnIngresar.MinimumSize = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnIngresar.Name = "ConsultasBtnIngresar";
-            this.ConsultasTlpPrincipal.SetRowSpan(this.ConsultasBtnIngresar, 2);
-            this.ConsultasBtnIngresar.Size = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnIngresar.TabIndex = 14;
-            this.ConsultasBtnIngresar.UseVisualStyleBackColor = false;
+            this.ConsultasBtnBuscar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ConsultasBtnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasBtnBuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnBuscar.BackgroundImage")));
+            this.ConsultasBtnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ConsultasBtnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConsultasBtnBuscar.FlatAppearance.BorderSize = 0;
+            this.ConsultasBtnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConsultasBtnBuscar.Location = new System.Drawing.Point(599, 10);
+            this.ConsultasBtnBuscar.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasBtnBuscar.MaximumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnBuscar.MinimumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnBuscar.Name = "ConsultasBtnBuscar";
+            this.ConsultasTlpPrincipal.SetRowSpan(this.ConsultasBtnBuscar, 2);
+            this.ConsultasBtnBuscar.Size = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnBuscar.TabIndex = 14;
+            this.ConsultasBtnBuscar.UseVisualStyleBackColor = false;
             // 
             // ConsultasBtnRefrescar
             // 
@@ -204,7 +204,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.Controls.Add(this.ConsultasTlpPrincipal);
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "UcAgruparOrdenar";
+            this.Name = "UcAgregarFiltro";
             this.Size = new System.Drawing.Size(775, 100);
             this.ConsultasTlpPrincipal.ResumeLayout(false);
             this.ConsultasTlpPrincipal.PerformLayout();
@@ -214,13 +214,13 @@
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPrincipal;
-        private ClsBotonConsultas ConsultasBtnIngresar;
-        private Components.ClsEtiquetaConsultas ConsultasLblCampo;
-        private Components.ClsEtiquetaConsultas ConsultasLblOperador;
-        private Components.ClsEtiquetaConsultas ConsultasLblValor;
-        private Components.ClsListaComboBoxConsultas ConsultasCboCampo;
-        private Components.ClsListaComboBoxConsultas ConsultasCboOperador;
-        private ClsCajaTextoConsultas ConsultasTxtValor;
-        private ClsBotonConsultas ConsultasBtnRefrescar;
+        private Componentes.ClsBotonConsultas ConsultasBtnBuscar;
+        private Componentes.ClsEtiquetaConsultas ConsultasLblCampo;
+        private Componentes.ClsEtiquetaConsultas ConsultasLblOperador;
+        private Componentes.ClsEtiquetaConsultas ConsultasLblValor;
+        private Componentes.ClsListaComboBoxConsultas ConsultasCboCampo;
+        private Componentes.ClsListaComboBoxConsultas ConsultasCboOperador;
+        private Componentes.ClsCajaTextoConsultas ConsultasTxtValor;
+        private Componentes.ClsBotonConsultas ConsultasBtnRefrescar;
     }
 }

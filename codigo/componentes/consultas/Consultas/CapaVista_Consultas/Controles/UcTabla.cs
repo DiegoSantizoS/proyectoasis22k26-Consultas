@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -9,11 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaControlador_Consultas;
-using CapaVista_Consultas.Components;
 
-namespace CapaVista_Consultas.UserControls
+namespace CapaVista_Consultas.Controles
 {
-    public partial class UcTabla : ClsControlUsuarioConsultas
+    public partial class UcTabla : Componentes.ClsControlUsuarioConsultas
     {
         private readonly ClsTablas Tablas = new ClsTablas();
         private int _PaginaActual = 1;
@@ -95,8 +93,8 @@ namespace CapaVista_Consultas.UserControls
 
             for (int NumeroPagina = _InicioRangoPagina; NumeroPagina <= FinRango; NumeroPagina++)
             {
-                ClsBotonPaginacionConsultas BotonPagina =
-                    new ClsBotonPaginacionConsultas();
+                Componentes.ClsBotonPaginacionConsultas BotonPagina =
+                    new Componentes.ClsBotonPaginacionConsultas();
 
                 BotonPagina.Name = $"ConsultasBtnPagina{NumeroPagina}";
                 BotonPagina.Text = NumeroPagina.ToString();
@@ -110,8 +108,8 @@ namespace CapaVista_Consultas.UserControls
         }
         private void BtnPagina_Click(object sender, EventArgs e)
         {
-            ClsBotonPaginacionConsultas BotonPagina =
-            (ClsBotonPaginacionConsultas)sender;
+            Componentes.ClsBotonPaginacionConsultas BotonPagina =
+            (Componentes.ClsBotonPaginacionConsultas)sender;
 
             _PaginaActual = Convert.ToInt32(BotonPagina.Tag);
 

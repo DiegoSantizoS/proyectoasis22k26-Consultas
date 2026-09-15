@@ -1,21 +1,14 @@
 ﻿using CapaControlador_Consultas;
-using CapaVista_Consultas.Components;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace CapaVista_Consultas
+namespace CapaVista_Consultas.Controles
 {
-    public partial class UcAgregarFiltro : ClsControlUsuarioConsultas
+    public partial class UcAgregarFiltro : Componentes.ClsControlUsuarioConsultas
     {
-        private readonly ClsControladorConsultas _controlador =
+        private readonly ClsControladorConsultas _Controlador =
             new ClsControladorConsultas();
+
+        private string _TablaActual;
 
         public UcAgregarFiltro()
         {
@@ -23,18 +16,35 @@ namespace CapaVista_Consultas
 
             if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
             {
-                ConsultasMetCargarDatosIniciales();
+                ConsultasMetCargarOperadores();
             }
         }
+      
 
-        private void ConsultasMetCargarDatosIniciales()
+        public void ConsultasProcActualizarTabla(string Tabla)
         {
-            string Tabla = "Empleados";
+            if (string.IsNullOrWhiteSpace(Tabla))
+            {
+                ConsultasCboCampo.Items.Clear();
+                return;
+            }
 
-            _controlador.ConsultasMetPoblarComboCampos(
-                Tabla,
+            _TablaActual = Tabla;
+
+            ConsultasMetCargarCampos();
+        }
+
+        private void ConsultasMetCargarCampos()
+        {
+            ConsultasCboCampo.Items.Clear();
+
+            _Controlador.ConsultasMetPoblarComboCampos(
+                _TablaActual,
                 ConsultasCboCampo);
+        }
 
+        private void ConsultasMetCargarOperadores()
+        {
             ConsultasCboOperador.Items.Clear();
 
             ConsultasCboOperador.Items.AddRange(new object[]
