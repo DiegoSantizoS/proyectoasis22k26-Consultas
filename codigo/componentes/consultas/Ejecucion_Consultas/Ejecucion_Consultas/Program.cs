@@ -17,7 +17,7 @@ namespace Ejecucion_Consultas
             //cambio
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CapaVista_Consultas.FrmConsultasSimples("tblConsulta"));
+            Application.Run(new CapaVista_Consultas.FrmConsultasSimples("apl3"));
         }
     }
 }

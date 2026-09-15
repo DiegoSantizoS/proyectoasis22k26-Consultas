@@ -50,6 +50,7 @@
     <Compile Include="Temporales\ClsControladorConsultaSimple.cs" />
     <Compile Include="ClsTablas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Temporales\ClsControladorTablasRelacionadas.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
