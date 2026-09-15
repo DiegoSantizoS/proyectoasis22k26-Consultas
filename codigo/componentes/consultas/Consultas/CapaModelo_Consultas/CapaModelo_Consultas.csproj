@@ -43,11 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositorios\clsObtenciónCampos.cs" />
     <Compile Include="Temporales\ClsCondicionComparacion.cs" />
     <Compile Include="Temporales\ClsCondicionLogica.cs" />
     <Compile Include="Temporales\ClsConstructorconsultas.cs" />
-    <Compile Include="Temporales\ClsAgruparOrdenarFiltros.cs" />
-    <Compile Include="Temporales\ClsConsultasDatos.cs" />
     <Compile Include="Repositorios\ClsSentenciasTablas.cs" />
     <Compile Include="Repositorios\ClsConexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
