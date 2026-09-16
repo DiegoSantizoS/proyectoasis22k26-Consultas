@@ -64,11 +64,11 @@
             // 
             // ConsultasFlpBotones
             // 
-            this.ConsultasFlpBotones.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnConsultar);
             this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnNuevaConsulta);
             this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnEliminar);
-            this.ConsultasFlpBotones.Location = new System.Drawing.Point(551, 139);
+            this.ConsultasFlpBotones.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ConsultasFlpBotones.Location = new System.Drawing.Point(551, 12);
             this.ConsultasFlpBotones.Margin = new System.Windows.Forms.Padding(0, 12, 0, 0);
             this.ConsultasFlpBotones.Name = "ConsultasFlpBotones";
             this.ConsultasFlpBotones.Size = new System.Drawing.Size(90, 240);
