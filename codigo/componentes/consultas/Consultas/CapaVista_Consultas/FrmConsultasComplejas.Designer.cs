@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultasComplejas));
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
-            this.ConsultasBtnRefrescar = new CapaVista_Consultas.ClsBotonConsultas();
-            this.ConsultasBtnSalir = new CapaVista_Consultas.ClsBotonConsultas();
-            this.ConsultasGbxSeleccionTabla = new CapaVista_Consultas.Components.ClsGrupoConsultas();
-            this.ConsultasCboSeleccionTabla = new CapaVista_Consultas.Components.ClsListaComboBoxConsultas();
-            this.ConsultasGbxSeleccionConsulta = new CapaVista_Consultas.Components.ClsGrupoConsultas();
-            this.ConsultasUcConsultasReutilizables = new CapaVista_Consultas.UcSeleccioneUnaConsulta();
-            this.ConsultasUcTabla = new CapaVista_Consultas.UserControls.UcTabla();
+            this.ConsultasGbxSeleccionTabla = new CapaVista_Consultas.Componentes.ClsGrupoConsultas();
+            this.ConsultasCboSeleccionTabla = new CapaVista_Consultas.Componentes.ClsListaComboBoxConsultas();
+            this.ConsultasGbxSeleccionConsulta = new CapaVista_Consultas.Componentes.ClsGrupoConsultas();
+            this.ConsultasUcConsultasReutilizables = new CapaVista_Consultas.Controles.UcSeleccioneUnaConsulta();
+            this.ConsultasUcTabla = new CapaVista_Consultas.Controles.UcTabla();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.ConsultasBtnRefrescar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasBtnSalir = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.ConsultasGbxSeleccionTabla.SuspendLayout();
             this.ConsultasGbxSeleccionConsulta.SuspendLayout();
@@ -69,43 +69,6 @@
             this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ConsultasTlpPrincipal.Size = new System.Drawing.Size(1332, 703);
             this.ConsultasTlpPrincipal.TabIndex = 15;
-            // 
-            // ConsultasBtnRefrescar
-            // 
-            this.ConsultasBtnRefrescar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ConsultasBtnRefrescar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ConsultasBtnRefrescar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnRefrescar.BackgroundImage")));
-            this.ConsultasBtnRefrescar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ConsultasBtnRefrescar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ConsultasBtnRefrescar.FlatAppearance.BorderSize = 0;
-            this.ConsultasBtnRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnRefrescar.Location = new System.Drawing.Point(0, 0);
-            this.ConsultasBtnRefrescar.Margin = new System.Windows.Forms.Padding(0);
-            this.ConsultasBtnRefrescar.MaximumSize = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnRefrescar.MinimumSize = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnRefrescar.Name = "ConsultasBtnRefrescar";
-            this.ConsultasBtnRefrescar.Size = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnRefrescar.TabIndex = 19;
-            this.ConsultasBtnRefrescar.UseVisualStyleBackColor = false;
-            // 
-            // ConsultasBtnSalir
-            // 
-            this.ConsultasBtnSalir.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ConsultasBtnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ConsultasBtnSalir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnSalir.BackgroundImage")));
-            this.ConsultasBtnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ConsultasBtnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ConsultasBtnSalir.FlatAppearance.BorderSize = 0;
-            this.ConsultasBtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnSalir.Location = new System.Drawing.Point(0, 80);
-            this.ConsultasBtnSalir.Margin = new System.Windows.Forms.Padding(0);
-            this.ConsultasBtnSalir.MaximumSize = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnSalir.MinimumSize = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnSalir.Name = "ConsultasBtnSalir";
-            this.ConsultasBtnSalir.Size = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnSalir.TabIndex = 17;
-            this.ConsultasBtnSalir.UseVisualStyleBackColor = false;
-            this.ConsultasBtnSalir.Click += new System.EventHandler(this.ConsultasBtnSalir_Click_1);
             // 
             // ConsultasGbxSeleccionTabla
             // 
@@ -164,6 +127,7 @@
             this.ConsultasUcConsultasReutilizables.Name = "ConsultasUcConsultasReutilizables";
             this.ConsultasUcConsultasReutilizables.Size = new System.Drawing.Size(384, 453);
             this.ConsultasUcConsultasReutilizables.TabIndex = 0;
+            this.ConsultasUcConsultasReutilizables.TablaActual = null;
             // 
             // ConsultasUcTabla
             // 
@@ -189,6 +153,43 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(80, 170);
             this.flowLayoutPanel1.TabIndex = 23;
             // 
+            // ConsultasBtnRefrescar
+            // 
+            this.ConsultasBtnRefrescar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ConsultasBtnRefrescar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasBtnRefrescar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnRefrescar.BackgroundImage")));
+            this.ConsultasBtnRefrescar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ConsultasBtnRefrescar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConsultasBtnRefrescar.FlatAppearance.BorderSize = 0;
+            this.ConsultasBtnRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConsultasBtnRefrescar.Location = new System.Drawing.Point(0, 0);
+            this.ConsultasBtnRefrescar.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasBtnRefrescar.MaximumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnRefrescar.MinimumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnRefrescar.Name = "ConsultasBtnRefrescar";
+            this.ConsultasBtnRefrescar.Size = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnRefrescar.TabIndex = 19;
+            this.ConsultasBtnRefrescar.UseVisualStyleBackColor = false;
+            // 
+            // ConsultasBtnSalir
+            // 
+            this.ConsultasBtnSalir.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ConsultasBtnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasBtnSalir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnSalir.BackgroundImage")));
+            this.ConsultasBtnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ConsultasBtnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConsultasBtnSalir.FlatAppearance.BorderSize = 0;
+            this.ConsultasBtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConsultasBtnSalir.Location = new System.Drawing.Point(0, 80);
+            this.ConsultasBtnSalir.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasBtnSalir.MaximumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnSalir.MinimumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnSalir.Name = "ConsultasBtnSalir";
+            this.ConsultasBtnSalir.Size = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnSalir.TabIndex = 17;
+            this.ConsultasBtnSalir.UseVisualStyleBackColor = false;
+            this.ConsultasBtnSalir.Click += new System.EventHandler(this.ConsultasBtnSalir_Click_1);
+            // 
             // FrmConsultasComplejas
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -200,6 +201,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MinimumSize = new System.Drawing.Size(1350, 750);
             this.Name = "FrmConsultasComplejas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "4002 – ConsultasComplejas";
             this.ConsultasTlpPrincipal.ResumeLayout(false);
             this.ConsultasGbxSeleccionTabla.ResumeLayout(false);
@@ -211,13 +213,13 @@
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPrincipal;
-        private ClsBotonConsultas ConsultasBtnSalir;
-        private ClsBotonConsultas ConsultasBtnRefrescar;
-        private Components.ClsGrupoConsultas ConsultasGbxSeleccionTabla;
-        private Components.ClsGrupoConsultas ConsultasGbxSeleccionConsulta;
-        private UcSeleccioneUnaConsulta ConsultasUcConsultasReutilizables;
-        private UserControls.UcTabla ConsultasUcTabla;
-        private Components.ClsListaComboBoxConsultas ConsultasCboSeleccionTabla;
+        private Componentes.ClsBotonConsultas ConsultasBtnSalir;
+        private Componentes.ClsBotonConsultas ConsultasBtnRefrescar;
+        private Componentes.ClsGrupoConsultas ConsultasGbxSeleccionTabla;
+        private Componentes.ClsGrupoConsultas ConsultasGbxSeleccionConsulta;
+        private Controles.UcSeleccioneUnaConsulta ConsultasUcConsultasReutilizables;
+        private Controles.UcTabla ConsultasUcTabla;
+        private Componentes.ClsListaComboBoxConsultas ConsultasCboSeleccionTabla;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

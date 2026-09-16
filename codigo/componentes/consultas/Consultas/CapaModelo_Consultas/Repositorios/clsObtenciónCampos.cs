@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Odbc;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Odbc;
 using System.Windows.Forms;
 
 namespace CapaModelo_Consultas.Repositorios
 {
-    public class clsObtenciónCampos
+    public class ClsObtenciónCampos
     {
 
         public string Tabla { get; set; }
 
         private ClsConexion _Conexion = new ClsConexion();
-        private void ConsultasMetPopularComboBox(string Pub_sTabla, ComboBox cboDestino)
+        private void ConsultasMetPopularComboBox(string Tabla, ComboBox CboDestino)
         {
-            cboDestino.Items.Clear();
+            CboDestino.Items.Clear();
 
             string Query = @"SELECT COLUMN_NAME
                              FROM INFORMATION_SCHEMA.COLUMNS
@@ -30,13 +25,13 @@ namespace CapaModelo_Consultas.Repositorios
             {
                 using (OdbcCommand Cmd = new OdbcCommand(Query, Conn))
                 {
-                    Cmd.Parameters.AddWithValue("@tabla", Pub_sTabla);
+                    Cmd.Parameters.AddWithValue("@tabla", Tabla);
 
                     using (OdbcDataReader Reader = Cmd.ExecuteReader())
                     {
                         while (Reader.Read())
                         {
-                            cboDestino.Items.Add(Reader["COLUMN_NAME"].ToString());
+                            CboDestino.Items.Add(Reader["COLUMN_NAME"].ToString());
                         }
                     }
                 }
@@ -47,9 +42,9 @@ namespace CapaModelo_Consultas.Repositorios
             }
         }
 
-        public void ConsultasMetPopularComboBox(ComboBox cboDestino)
+        public void ConsultasMetPopularComboBox(ComboBox CboDestino)
         {
-            ConsultasMetPopularComboBox(this.Tabla, cboDestino);
+            ConsultasMetPopularComboBox(this.Tabla, CboDestino);
         }
 
      

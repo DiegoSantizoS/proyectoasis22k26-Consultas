@@ -1,4 +1,4 @@
-﻿namespace CapaVista_Consultas.UserControls
+﻿namespace CapaVista_Consultas.Controles
 {
     partial class UcAgregarCondicion
     {
@@ -30,17 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcAgregarCondicion));
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
-            this.ConsultasBtnIngresar = new CapaVista_Consultas.ClsBotonConsultas();
-            this.ConsultasLblOrdenamiento = new CapaVista_Consultas.Components.ClsEtiquetaConsultas();
+            this.ConsultasBtnIngresar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasLblOrdenamiento = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
             this.ConsultasTlpOrdenamiento = new System.Windows.Forms.TableLayoutPanel();
-            this.ConsultasRdoDescendente = new CapaVista_Consultas.Components.ClsBotonRadioConsultas();
-            this.ConsultasRdoAscendente = new CapaVista_Consultas.Components.ClsBotonRadioConsultas();
-            this.ConsultasLblCampo = new CapaVista_Consultas.Components.ClsEtiquetaConsultas();
-            this.ConsultasCboOperadorCampo = new CapaVista_Consultas.Components.ClsListaComboBoxConsultas();
-            this.ConsultasLblOperador = new CapaVista_Consultas.Components.ClsEtiquetaConsultas();
-            this.ConsultasCboOperador = new CapaVista_Consultas.Components.ClsListaComboBoxConsultas();
-            this.ConsultasLblValor = new CapaVista_Consultas.Components.ClsEtiquetaConsultas();
-            this.ConsultasTxtValor = new CapaVista_Consultas.ClsCajaTextoConsultas();
+            this.ConsultasRdoDescendente = new CapaVista_Consultas.Componentes.ClsBotonRadioConsultas();
+            this.ConsultasRdoAscendente = new CapaVista_Consultas.Componentes.ClsBotonRadioConsultas();
+            this.ConsultasLblCampo = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
+            this.ConsultasCboOperadorCampo = new CapaVista_Consultas.Componentes.ClsListaComboBoxConsultas();
+            this.ConsultasLblOperador = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
+            this.ConsultasCboOperador = new CapaVista_Consultas.Componentes.ClsListaComboBoxConsultas();
+            this.ConsultasLblValor = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
+            this.ConsultasTxtValor = new CapaVista_Consultas.Componentes.ClsCajaTextoConsultas();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.ConsultasTlpOrdenamiento.SuspendLayout();
             this.SuspendLayout();
@@ -265,15 +265,15 @@
 
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPrincipal;
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpOrdenamiento;
-        private Components.ClsBotonRadioConsultas ConsultasRdoDescendente;
-        private Components.ClsBotonRadioConsultas ConsultasRdoAscendente;
-        private ClsBotonConsultas ConsultasBtnIngresar;
-        private Components.ClsEtiquetaConsultas ConsultasLblOrdenamiento;
-        private Components.ClsEtiquetaConsultas ConsultasLblCampo;
-        private Components.ClsEtiquetaConsultas ConsultasLblOperador;
-        private Components.ClsEtiquetaConsultas ConsultasLblValor;
-        private ClsCajaTextoConsultas ConsultasTxtValor;
-        private Components.ClsListaComboBoxConsultas ConsultasCboOperadorCampo;
-        private Components.ClsListaComboBoxConsultas ConsultasCboOperador;
+        private Componentes.ClsBotonRadioConsultas ConsultasRdoDescendente;
+        private Componentes.ClsBotonRadioConsultas ConsultasRdoAscendente;
+        private Componentes.ClsBotonConsultas ConsultasBtnIngresar;
+        private Componentes.ClsEtiquetaConsultas ConsultasLblOrdenamiento;
+        private Componentes.ClsEtiquetaConsultas ConsultasLblCampo;
+        private Componentes.ClsEtiquetaConsultas ConsultasLblOperador;
+        private Componentes.ClsEtiquetaConsultas ConsultasLblValor;
+        private Componentes.ClsCajaTextoConsultas ConsultasTxtValor;
+        private Componentes.ClsListaComboBoxConsultas ConsultasCboOperadorCampo;
+        private Componentes.ClsListaComboBoxConsultas ConsultasCboOperador;
     }
 }
