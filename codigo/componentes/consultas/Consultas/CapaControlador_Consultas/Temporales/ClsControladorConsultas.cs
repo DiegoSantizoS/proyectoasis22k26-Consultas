@@ -16,6 +16,18 @@ namespace CapaControlador_Consultas
             _Filtros.Tabla = tabla;
             _Filtros.ConsultasMetPopularComboBox(cboDestino);
         }
-       
+
+
+        public string ConsultasMetObtenerTipoCampo(
+            string Tabla,
+                   string Campo)
+        {
+            _Filtros.Tabla = Tabla;
+
+            return _Filtros.ConsultasMetObtenerTipoCampo(
+                Campo
+            );
+        }
+
     }
 }

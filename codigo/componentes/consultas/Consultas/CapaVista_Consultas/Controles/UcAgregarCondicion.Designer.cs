@@ -89,6 +89,7 @@
             this.ConsultasBtnIngresar.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnIngresar.TabIndex = 9;
             this.ConsultasBtnIngresar.UseVisualStyleBackColor = false;
+            this.ConsultasBtnIngresar.Click += new System.EventHandler(this.ConsultasBtnIngresar_Click);
             // 
             // ConsultasLblOrdenamiento
             // 
@@ -184,6 +185,7 @@
             this.ConsultasCboOperadorCampo.Name = "ConsultasCboOperadorCampo";
             this.ConsultasCboOperadorCampo.Size = new System.Drawing.Size(237, 31);
             this.ConsultasCboOperadorCampo.TabIndex = 17;
+            this.ConsultasCboOperadorCampo.SelectedIndexChanged += new System.EventHandler(this.ConsultasCboOperadorCampo_SelectedIndexChanged);
             // 
             // ConsultasLblOperador
             // 
