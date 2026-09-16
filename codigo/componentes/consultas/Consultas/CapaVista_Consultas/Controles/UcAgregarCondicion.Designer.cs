@@ -185,6 +185,7 @@
             this.ConsultasCboOperadorCampo.Name = "ConsultasCboOperadorCampo";
             this.ConsultasCboOperadorCampo.Size = new System.Drawing.Size(237, 31);
             this.ConsultasCboOperadorCampo.TabIndex = 17;
+            this.ConsultasCboOperadorCampo.SelectedIndexChanged += new System.EventHandler(this.ConsultasCboOperadorCampo_SelectedIndexChanged);
             // 
             // ConsultasLblOperador
             // 

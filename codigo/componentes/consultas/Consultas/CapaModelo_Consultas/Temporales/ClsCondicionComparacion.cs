@@ -11,23 +11,41 @@ namespace CapaControlador_Consultas
         public string Campo { get; set; }
         public string OperadorComparacion { get; set; }
         public string Valor { get; set; }
-        public string OperadorLogico { get; set; }
 
-        public ClsCondicionComparacion(
-            string campo,
-            string operadorComparacion,
-            string valor
-            )
+        private List<ClsCondicionComparacion> ListaCondiciones =
+       new List<ClsCondicionComparacion>();
+
+
+
+        public ClsCondicionComparacion()
         {
-            Campo = campo;
-            OperadorComparacion = operadorComparacion;
-            Valor = valor;
-          
+
+
         }
 
-        public string ConsultasMetGenerarCondicion()
+      
+            public void ConsultasMetAgregarCondicion(
+              string campo,
+               string operadorComparacion,
+              string valor)
         {
-            return $"{Campo} {OperadorComparacion} '{Valor}'";
+            ClsCondicionComparacion Condicion =
+                new ClsCondicionComparacion();
+
+            Condicion.Campo = campo;
+            Condicion.OperadorComparacion = operadorComparacion;
+            Condicion.Valor = valor;
+
+             ListaCondiciones.Add(Condicion);
+        }
+
+
+
+        
+        public List<ClsCondicionComparacion>
+            ConsultasMetObtenerCondiciones()
+        {
+            return ListaCondiciones;
         }
     }
 }

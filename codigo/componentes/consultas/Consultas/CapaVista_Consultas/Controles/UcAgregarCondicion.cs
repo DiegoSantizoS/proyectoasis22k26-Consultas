@@ -17,6 +17,7 @@ namespace CapaVista_Consultas.UserControls
     {
         private readonly ClsControladorConsultas _Controlador =
             new ClsControladorConsultas();
+        private readonly clsArregloValores _ArregloValores = new clsArregloValores();
 
 
         private string _TablaActual = ClsTablaSeleccionada.ConsultasFuncObtenerTabla();
@@ -106,6 +107,31 @@ namespace CapaVista_Consultas.UserControls
             if (!ConsultasMetValidarCampo())
                 return;
 
+            _ArregloValores.ConsultasMetAgregarCondicion(
+                ConsultasCboOperadorCampo.Text,
+               ConsultasCboOperador.Text,
+               ConsultasTxtValor.Text
+               );
+
+            var Lista = _ArregloValores.ConsultasMetObtenerCondiciones();
+
+            foreach (string[] Condicion in Lista)
+            {
+                Console.WriteLine(
+                    "Campo: " + Condicion[0] +
+                    " | Operador: " + Condicion[1] +
+                    " | Valor: " + Condicion[2]
+                );
+            }
+
+            ConsultasCboOperadorCampo.SelectedIndex = -1;
+            ConsultasCboOperador.SelectedIndex = -1;
+            ConsultasTxtValor.Clear();
+        }
+
+        private void ConsultasCboOperadorCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
         }
     }
 }
