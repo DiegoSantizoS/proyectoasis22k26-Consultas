@@ -34,6 +34,7 @@
             this.ConsultasGbxAgregarFiltro = new CapaVista_Consultas.Componentes.ClsGrupoConsultas();
             this.ConsultasUcAgregarFiltro = new CapaVista_Consultas.Controles.UcAgregarFiltro();
             this.ConsultasBtnComplejas = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasBtnSalir = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.ConsultasGbxAgregarFiltro.SuspendLayout();
             this.SuspendLayout();
@@ -46,6 +47,7 @@
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasUcTablaSimple, 0, 1);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasGbxAgregarFiltro, 0, 0);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasBtnComplejas, 1, 0);
+            this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasBtnSalir, 1, 1);
             this.ConsultasTlpPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasTlpPrincipal.Location = new System.Drawing.Point(0, 0);
             this.ConsultasTlpPrincipal.Margin = new System.Windows.Forms.Padding(0);
@@ -59,13 +61,12 @@
             // ConsultasUcTablaSimple
             // 
             this.ConsultasUcTablaSimple.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ConsultasTlpPrincipal.SetColumnSpan(this.ConsultasUcTablaSimple, 2);
             this.ConsultasUcTablaSimple.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasUcTablaSimple.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ConsultasUcTablaSimple.Location = new System.Drawing.Point(5, 155);
             this.ConsultasUcTablaSimple.Margin = new System.Windows.Forms.Padding(5);
             this.ConsultasUcTablaSimple.Name = "ConsultasUcTablaSimple";
-            this.ConsultasUcTablaSimple.Size = new System.Drawing.Size(972, 518);
+            this.ConsultasUcTablaSimple.Size = new System.Drawing.Size(881, 518);
             this.ConsultasUcTablaSimple.TabIndex = 18;
             // 
             // ConsultasGbxAgregarFiltro
@@ -115,6 +116,25 @@
             this.ConsultasBtnComplejas.UseVisualStyleBackColor = false;
             this.ConsultasBtnComplejas.Click += new System.EventHandler(this.ConsultasBtnComplejas_Click_1);
             // 
+            // ConsultasBtnSalir
+            // 
+            this.ConsultasBtnSalir.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ConsultasBtnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasBtnSalir.BackgroundImage = global::CapaVista_Consultas.Properties.Resources.btn_salir;
+            this.ConsultasBtnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ConsultasBtnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConsultasBtnSalir.FlatAppearance.BorderSize = 0;
+            this.ConsultasBtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConsultasBtnSalir.Location = new System.Drawing.Point(896, 155);
+            this.ConsultasBtnSalir.Margin = new System.Windows.Forms.Padding(5);
+            this.ConsultasBtnSalir.MaximumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnSalir.MinimumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnSalir.Name = "ConsultasBtnSalir";
+            this.ConsultasBtnSalir.Size = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnSalir.TabIndex = 22;
+            this.ConsultasBtnSalir.UseVisualStyleBackColor = false;
+            this.ConsultasBtnSalir.Click += new System.EventHandler(this.ConsultasBtnSalir_Click);
+            // 
             // FrmConsultasSimples
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -139,5 +159,6 @@
         private Controles.UcAgregarFiltro ConsultasUcAgregarFiltro;
         private Componentes.ClsBotonConsultas ConsultasBtnComplejas;
         private Controles.UcTabla ConsultasUcTablaSimple;
+        private Componentes.ClsBotonConsultas ConsultasBtnSalir;
     }
 }
