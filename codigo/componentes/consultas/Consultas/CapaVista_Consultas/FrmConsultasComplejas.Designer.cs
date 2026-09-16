@@ -196,7 +196,7 @@
             // 
             this.ConsultasBtnInicio.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.ConsultasBtnInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ConsultasBtnInicio.BackgroundImage = global::CapaVista_Consultas.Properties.Resources.btn_inicio;
+            this.ConsultasBtnInicio.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnInicio.BackgroundImage")));
             this.ConsultasBtnInicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ConsultasBtnInicio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnInicio.FlatAppearance.BorderSize = 0;
