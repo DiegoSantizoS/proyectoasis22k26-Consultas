@@ -120,6 +120,7 @@
             // 
             this.ConsultasBtnSalir.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.ConsultasBtnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasBtnSalir.BackgroundImage = global::CapaVista_Consultas.Properties.Resources.btn_salir;
             this.ConsultasBtnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ConsultasBtnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnSalir.FlatAppearance.BorderSize = 0;
@@ -131,7 +132,6 @@
             this.ConsultasBtnSalir.Name = "ConsultasBtnSalir";
             this.ConsultasBtnSalir.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnSalir.TabIndex = 22;
-            this.ConsultasBtnSalir.Text = "Salir";
             this.ConsultasBtnSalir.UseVisualStyleBackColor = false;
             this.ConsultasBtnSalir.Click += new System.EventHandler(this.ConsultasBtnSalir_Click);
             // 
