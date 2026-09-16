@@ -74,6 +74,55 @@ namespace CapaVista_Consultas.Controles
             ConsultasProcCambiarLbl();
 
         }
+        /*
+        Inicio de código de "José Pablo Cano Cóbar" - carné: "0901-23-1727" - Fecha: "15/09/26"
+        */
+        public void ConsultasProcMostrarResultado(
+            System.Data.DataTable Datos,
+            int TotalRegistros)
+        {
+            _PaginaActual = 1;
+            _InicioRangoPagina = 1;
+            _TotalRegistros = TotalRegistros;
+
+            _TotalPaginas = (int)System.Math.Ceiling(
+                (double)_TotalRegistros / _RegistrosPorPagina);
+
+            ConsultasDgvSimples.DataSource = Datos;
+
+            ConsultasProcCrearBotonesPaginas();
+
+            ConsultasProcCambiarLblResultado();
+        }
+
+        public void ConsultasProcMostrarResultado(System.Data.DataTable Datos)
+        {
+            ConsultasProcMostrarResultado(
+                Datos,
+                Datos == null ? 0 : Datos.Rows.Count);
+        }
+
+        private void ConsultasProcCambiarLblResultado()
+        {
+            if (_TotalRegistros == 0)
+            {
+                ConsultasLblPaginacion.Text = "Sin registros que coincidan";
+                return;
+            }
+
+            int Desde = ((_PaginaActual - 1) * _RegistrosPorPagina) + 1;
+            int Hasta = _PaginaActual * _RegistrosPorPagina;
+
+            if (Hasta > _TotalRegistros)
+            {
+                Hasta = _TotalRegistros;
+            }
+
+            ConsultasLblPaginacion.Text =
+                "Mostrando " + Desde + "-" + Hasta +
+                " de " + _TotalRegistros + " registros";
+        }
+
         private void ConsultasProcCalcularTotalPaginas()
         {
             _TotalRegistros = Tablas.ConsultasFuncContarRegistros(_TablaSeleccionada);
