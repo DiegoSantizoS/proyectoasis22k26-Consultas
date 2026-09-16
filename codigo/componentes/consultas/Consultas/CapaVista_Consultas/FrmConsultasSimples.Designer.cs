@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultasSimples));
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
-            this.ConsultasUcTablaSimple = new CapaVista_Consultas.UserControls.UcTabla();
-            this.ConsultasGbxAgregarFiltro = new CapaVista_Consultas.Components.ClsGrupoConsultas();
-            this.ConsultasUcAgregarFiltro = new CapaVista_Consultas.UcAgregarFiltro();
-            this.ConsultasBtnComplejas = new CapaVista_Consultas.ClsBotonConsultas();
+            this.ConsultasUcTablaSimple = new CapaVista_Consultas.Controles.UcTabla();
+            this.ConsultasGbxAgregarFiltro = new CapaVista_Consultas.Componentes.ClsGrupoConsultas();
+            this.ConsultasUcAgregarFiltro = new CapaVista_Consultas.Controles.UcAgregarFiltro();
+            this.ConsultasBtnComplejas = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.ConsultasGbxAgregarFiltro.SuspendLayout();
             this.SuspendLayout();
@@ -125,6 +125,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(1000, 725);
             this.Name = "FrmConsultasSimples";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "4001 - ConsultasSimples";
             this.ConsultasTlpPrincipal.ResumeLayout(false);
             this.ConsultasGbxAgregarFiltro.ResumeLayout(false);
@@ -134,9 +135,9 @@
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPrincipal;
-        private Components.ClsGrupoConsultas ConsultasGbxAgregarFiltro;
-        private UcAgregarFiltro ConsultasUcAgregarFiltro;
-        private ClsBotonConsultas ConsultasBtnComplejas;
-        private UserControls.UcTabla ConsultasUcTablaSimple;
+        private Componentes.ClsGrupoConsultas ConsultasGbxAgregarFiltro;
+        private Controles.UcAgregarFiltro ConsultasUcAgregarFiltro;
+        private Componentes.ClsBotonConsultas ConsultasBtnComplejas;
+        private Controles.UcTabla ConsultasUcTablaSimple;
     }
 }

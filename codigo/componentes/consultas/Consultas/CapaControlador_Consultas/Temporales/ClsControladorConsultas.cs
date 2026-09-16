@@ -8,7 +8,7 @@ namespace CapaControlador_Consultas
   
     public class ClsControladorConsultas
     {
-        private clsObtenciónCampos _Filtros = new clsObtenciónCampos();
+        private ClsObtenciónCampos _Filtros = new ClsObtenciónCampos();
         
 
         public void ConsultasMetPoblarComboCampos(string tabla, ComboBox cboDestino)

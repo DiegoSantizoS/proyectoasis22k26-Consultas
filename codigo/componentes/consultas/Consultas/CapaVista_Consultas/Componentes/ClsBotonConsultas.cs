@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CapaVista_Consultas
+namespace CapaVista_Consultas.Componentes
 {
     public class ClsBotonConsultas : Button
     {
