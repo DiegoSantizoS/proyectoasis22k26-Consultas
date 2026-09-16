@@ -205,5 +205,10 @@ namespace CapaVista_Consultas.Controles
                 Tablas.ConsultasFuncContarRegistros(_TablaSeleccionada) +
                 " registros";
         }
+
+        private void ConsultasDgvSimples_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

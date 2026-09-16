@@ -184,6 +184,7 @@
             this.ConsultasDgvConsultasReutilizables.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ConsultasDgvConsultasReutilizables.Size = new System.Drawing.Size(529, 483);
             this.ConsultasDgvConsultasReutilizables.TabIndex = 3;
+            this.ConsultasDgvConsultasReutilizables.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConsultasDgvConsultasReutilizables_CellContentClick);
             // 
             // ConsultasColNombre
             // 

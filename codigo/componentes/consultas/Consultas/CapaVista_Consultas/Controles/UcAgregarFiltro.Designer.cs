@@ -68,6 +68,7 @@
             this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ConsultasTlpPrincipal.Size = new System.Drawing.Size(775, 100);
             this.ConsultasTlpPrincipal.TabIndex = 0;
+            this.ConsultasTlpPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.ConsultasTlpPrincipal_Paint);
             // 
             // ConsultasLblCampo
             // 
