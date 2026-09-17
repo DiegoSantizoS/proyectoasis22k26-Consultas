@@ -14,17 +14,13 @@ namespace CapaVista_Consultas.Controles
             this.Hide();
         }
 
-        private void ConsultasDgvConsultasFiltros_CellContentClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
-        {
 
-        }
-
-        private void ConsultasBtnAND_Click(object sender, EventArgs e)
+        private void ConsultasMetBtnANDClick(object sender, EventArgs e)
         {
             ConsultasDgvConsultasFiltros.Rows.Add("AND", "", "", "");
         }
 
-        private void ConsultasBtnOR_Click(object sender, EventArgs e)
+        private void ConsultasMetBtnORClick(object sender, EventArgs e)
         {
             ConsultasDgvConsultasFiltros.Rows.Add("OR", "", "", "");
         }
