@@ -46,6 +46,11 @@ namespace CapaVista_Consultas.Controles
                 "LIKE"
             });
         }
+
+        private void ConsultasTlpPrincipal_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+        {
+
+        }
     }
     }
 

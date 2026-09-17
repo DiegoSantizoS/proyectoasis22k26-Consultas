@@ -95,6 +95,7 @@
             this.ConsultasBtnAND.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnAND.TabIndex = 3;
             this.ConsultasBtnAND.UseVisualStyleBackColor = false;
+            this.ConsultasBtnAND.Click += new System.EventHandler(this.ConsultasBtnAND_Click);
             // 
             // ConsultasBtnOR
             // 
@@ -113,6 +114,7 @@
             this.ConsultasBtnOR.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnOR.TabIndex = 4;
             this.ConsultasBtnOR.UseVisualStyleBackColor = false;
+            this.ConsultasBtnOR.Click += new System.EventHandler(this.ConsultasBtnOR_Click);
             // 
             // ConsultasBtnEliminar
             // 
@@ -189,6 +191,7 @@
             this.ConsultasDgvConsultasFiltros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ConsultasDgvConsultasFiltros.Size = new System.Drawing.Size(596, 361);
             this.ConsultasDgvConsultasFiltros.TabIndex = 3;
+            this.ConsultasDgvConsultasFiltros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConsultasDgvConsultasFiltros_CellContentClick);
             // 
             // ConsultasColCampo
             // 

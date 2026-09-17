@@ -91,6 +91,7 @@
             this.ConsultasBtnConsultar.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnConsultar.TabIndex = 0;
             this.ConsultasBtnConsultar.UseVisualStyleBackColor = false;
+            this.ConsultasBtnConsultar.Click += new System.EventHandler(this.ConsultasBtnConsultar_Click);
             // 
             // ConsultasBtnNuevaConsulta
             // 
@@ -184,6 +185,7 @@
             this.ConsultasDgvConsultasReutilizables.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ConsultasDgvConsultasReutilizables.Size = new System.Drawing.Size(529, 483);
             this.ConsultasDgvConsultasReutilizables.TabIndex = 3;
+            this.ConsultasDgvConsultasReutilizables.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConsultasDgvConsultasReutilizables_CellContentClick);
             // 
             // ConsultasColNombre
             // 

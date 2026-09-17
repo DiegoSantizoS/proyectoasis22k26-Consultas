@@ -145,6 +145,11 @@ namespace CapaVista_Consultas.Controles
                 ConsultasBtnBuscar_Click(sender, EventArgs.Empty);
             }
         }
+
+        private void ConsultasTlpPrincipal_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
     public class ClsArgumentosFiltro : EventArgs

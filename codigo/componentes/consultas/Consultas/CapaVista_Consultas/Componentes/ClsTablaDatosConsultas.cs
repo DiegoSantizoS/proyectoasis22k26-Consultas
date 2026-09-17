@@ -208,6 +208,13 @@ namespace CapaVista_Consultas.Componentes
             }
         }
 
+        protected override void OnScroll(ScrollEventArgs e)
+        {
+            base.OnScroll(e);
+
+            Invalidate();
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -218,14 +225,38 @@ namespace CapaVista_Consultas.Componentes
                 return;
             }
 
-            using (Pen Borde = new Pen(_Primario, 1F))
+            using (Pen Borde = new Pen(_Primario, 1))
             {
-                e.Graphics.DrawRectangle(
+                int Ancho = ClientSize.Width - 1;
+                int Alto = ClientSize.Height - 1;
+
+                e.Graphics.DrawLine(
                     Borde,
                     0,
                     0,
-                    ClientSize.Width - 1,
-                    ClientSize.Height - 1);
+                    Ancho,
+                    0);
+
+                e.Graphics.DrawLine(
+                    Borde,
+                    0,
+                    0,
+                    0,
+                    Alto);
+
+                e.Graphics.DrawLine(
+                    Borde,
+                    Ancho,
+                    0,
+                    Ancho,
+                    Alto);
+
+                e.Graphics.DrawLine(
+                    Borde,
+                    0,
+                    Alto,
+                    Ancho,
+                    Alto);
             }
         }
     }
