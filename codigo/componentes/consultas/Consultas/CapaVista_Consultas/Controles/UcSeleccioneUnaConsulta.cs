@@ -28,5 +28,10 @@ namespace CapaVista_Consultas.Controles
         {
 
         }
+
+        private void ConsultasDgvConsultasReutilizables_CellContentClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
