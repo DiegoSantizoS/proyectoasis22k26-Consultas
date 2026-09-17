@@ -17,6 +17,9 @@ namespace CapaVista_Consultas
         private string _OperadorFiltro;
         private string _ValorFiltro;
         private const int _RegistrosPorPagina = 15;
+        // Inicio de código de "Pedro José Gómez Villalobos" - carné: "0901-23-4868" - Fecha: "16/09/26"
+        private string[] _ArregloTablas;
+        // Fin de código de "Pedro José Gómez Villalobos" - carné: "0901-23-4868" - Fecha: "16/09/26"
 
         public FrmConsultasSimples()
         {
@@ -42,8 +45,10 @@ namespace CapaVista_Consultas
         public FrmConsultasSimples(string[] Tablas)
         {
             InitializeComponent();
-
             ConsultasMetSuscribirEventos();
+            // Inicio de código de "Pedro José Gómez Villalobos" - carné: "0901-23-4868" - Fecha: "16/09/26"
+            _ArregloTablas = Tablas;
+            // Fin de código de "Pedro José Gómez Villalobos" - carné: "0901-23-4868" - Fecha: "16/09/26"
 
             _TablaActual = Tablas[0];
             ;
@@ -53,7 +58,7 @@ namespace CapaVista_Consultas
             ConsultasUcTablaSimple.ConsultasProcActualizarTabla(Tablas[0]);
             ConsultasUcAgregarFiltro.ConsultasProcActualizarTabla(Tablas[0]);
         }
-
+        
         private void ConsultasMetSuscribirEventos()
         {
             ConsultasUcAgregarFiltro.ConsultasEvtBuscarSolicitado +=
@@ -62,7 +67,7 @@ namespace CapaVista_Consultas
             ConsultasUcAgregarFiltro.ConsultasEvtRefrescarSolicitado +=
                 ConsultasUcAgregarFiltro_RefrescarSolicitado;
         }
-
+        
         private void ConsultasUcAgregarFiltro_BuscarSolicitado(
             object sender,
             ClsArgumentosFiltro e)
@@ -135,7 +140,7 @@ namespace CapaVista_Consultas
         private void ConsultasBtnComplejas_Click_1(object sender, EventArgs e)
         {
             FrmConsultasComplejas FormularioConsultasComplejas =
-                new FrmConsultasComplejas();
+                new FrmConsultasComplejas(_ArregloTablas);
 
             FormularioConsultasComplejas.FormClosed += (Remitente, Argumentos) =>
             {
