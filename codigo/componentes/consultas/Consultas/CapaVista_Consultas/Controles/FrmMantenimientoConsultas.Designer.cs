@@ -88,7 +88,6 @@
             this.ConsultasUcAgregarCondicion.Name = "ConsultasUcAgregarCondicion";
             this.ConsultasUcAgregarCondicion.Size = new System.Drawing.Size(380, 267);
             this.ConsultasUcAgregarCondicion.TabIndex = 1;
-            this.ConsultasUcAgregarCondicion.Load += new System.EventHandler(this.ConsultasUcAgregarCondicion_Load);
             // 
             // ConsultasUcFiltrosAplicados
             // 
@@ -101,7 +100,6 @@
             this.ConsultasTlpPrincipal.SetRowSpan(this.ConsultasUcFiltrosAplicados, 2);
             this.ConsultasUcFiltrosAplicados.Size = new System.Drawing.Size(589, 480);
             this.ConsultasUcFiltrosAplicados.TabIndex = 17;
-            this.ConsultasUcFiltrosAplicados.Load += new System.EventHandler(this.ConsultasUcFiltrosAplicados_Load);
             // 
             // ConsultasGbxGuardarConsultas
             // 
@@ -138,7 +136,6 @@
             this.ConsultasTlpGuardarConsulta.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ConsultasTlpGuardarConsulta.Size = new System.Drawing.Size(380, 147);
             this.ConsultasTlpGuardarConsulta.TabIndex = 2;
-            this.ConsultasTlpGuardarConsulta.Paint += new System.Windows.Forms.PaintEventHandler(this.ConsultasTlpGuardarConsulta_Paint);
             // 
             // ConsultasLblNombre
             // 
@@ -197,7 +194,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "4003 – MantenimientoConsultas";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.FrmMantenimientoConsultas_Load);
             this.ConsultasTlpPrincipal.ResumeLayout(false);
             this.ConsultasGbxCondicionesLogicas.ResumeLayout(false);
             this.ConsultasGbxGuardarConsultas.ResumeLayout(false);

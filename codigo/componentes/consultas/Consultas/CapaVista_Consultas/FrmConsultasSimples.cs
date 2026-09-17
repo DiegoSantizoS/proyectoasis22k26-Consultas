@@ -39,6 +39,21 @@ namespace CapaVista_Consultas
             ConsultasUcAgregarFiltro.ConsultasProcActualizarTabla(Tabla);
         }
 
+        public FrmConsultasSimples(string[] Tablas)
+        {
+            InitializeComponent();
+
+            ConsultasMetSuscribirEventos();
+
+            _TablaActual = Tablas[0];
+            ;
+
+            ClsTablaSeleccionada.ConsultasMetGuardarTabla(Tablas[0]);
+
+            ConsultasUcTablaSimple.ConsultasProcActualizarTabla(Tablas[0]);
+            ConsultasUcAgregarFiltro.ConsultasProcActualizarTabla(Tablas[0]);
+        }
+
         private void ConsultasMetSuscribirEventos()
         {
             ConsultasUcAgregarFiltro.ConsultasEvtBuscarSolicitado +=
