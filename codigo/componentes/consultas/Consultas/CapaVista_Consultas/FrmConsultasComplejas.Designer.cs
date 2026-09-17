@@ -38,6 +38,7 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.ConsultasBtnRefrescar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasBtnSalir = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasBtnInicio = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.ConsultasGbxSeleccionTabla.SuspendLayout();
             this.ConsultasGbxSeleccionConsulta.SuspendLayout();
@@ -145,12 +146,13 @@
             // 
             this.flowLayoutPanel1.Controls.Add(this.ConsultasBtnRefrescar);
             this.flowLayoutPanel1.Controls.Add(this.ConsultasBtnSalir);
+            this.flowLayoutPanel1.Controls.Add(this.ConsultasBtnInicio);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(1247, 5);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.ConsultasTlpPrincipal.SetRowSpan(this.flowLayoutPanel1, 2);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(80, 170);
+            this.ConsultasTlpPrincipal.SetRowSpan(this.flowLayoutPanel1, 3);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(80, 570);
             this.flowLayoutPanel1.TabIndex = 23;
             // 
             // ConsultasBtnRefrescar
@@ -190,6 +192,25 @@
             this.ConsultasBtnSalir.UseVisualStyleBackColor = false;
             this.ConsultasBtnSalir.Click += new System.EventHandler(this.ConsultasBtnSalir_Click_1);
             // 
+            // ConsultasBtnInicio
+            // 
+            this.ConsultasBtnInicio.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ConsultasBtnInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasBtnInicio.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnInicio.BackgroundImage")));
+            this.ConsultasBtnInicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ConsultasBtnInicio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConsultasBtnInicio.FlatAppearance.BorderSize = 0;
+            this.ConsultasBtnInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConsultasBtnInicio.Location = new System.Drawing.Point(0, 160);
+            this.ConsultasBtnInicio.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasBtnInicio.MaximumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnInicio.MinimumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnInicio.Name = "ConsultasBtnInicio";
+            this.ConsultasBtnInicio.Size = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnInicio.TabIndex = 20;
+            this.ConsultasBtnInicio.UseVisualStyleBackColor = false;
+            this.ConsultasBtnInicio.Click += new System.EventHandler(this.ConsultasBtnInicio_Click);
+            // 
             // FrmConsultasComplejas
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -221,5 +242,6 @@
         private Controles.UcTabla ConsultasUcTabla;
         private Componentes.ClsListaComboBoxConsultas ConsultasCboSeleccionTabla;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private Componentes.ClsBotonConsultas ConsultasBtnInicio;
     }
 }

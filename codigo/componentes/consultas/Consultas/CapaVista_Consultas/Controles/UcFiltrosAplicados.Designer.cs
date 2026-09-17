@@ -82,6 +82,7 @@
             // 
             this.ConsultasBtnAND.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ConsultasBtnAND.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasBtnAND.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnAND.BackgroundImage")));
             this.ConsultasBtnAND.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ConsultasBtnAND.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnAND.FlatAppearance.BorderSize = 0;
@@ -93,13 +94,14 @@
             this.ConsultasBtnAND.Name = "ConsultasBtnAND";
             this.ConsultasBtnAND.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnAND.TabIndex = 3;
-            this.ConsultasBtnAND.Text = "AND";
             this.ConsultasBtnAND.UseVisualStyleBackColor = false;
+            this.ConsultasBtnAND.Click += new System.EventHandler(this.ConsultasBtnAND_Click);
             // 
             // ConsultasBtnOR
             // 
             this.ConsultasBtnOR.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ConsultasBtnOR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasBtnOR.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnOR.BackgroundImage")));
             this.ConsultasBtnOR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ConsultasBtnOR.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnOR.FlatAppearance.BorderSize = 0;
@@ -111,8 +113,8 @@
             this.ConsultasBtnOR.Name = "ConsultasBtnOR";
             this.ConsultasBtnOR.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnOR.TabIndex = 4;
-            this.ConsultasBtnOR.Text = "OR";
             this.ConsultasBtnOR.UseVisualStyleBackColor = false;
+            this.ConsultasBtnOR.Click += new System.EventHandler(this.ConsultasBtnOR_Click);
             // 
             // ConsultasBtnEliminar
             // 
@@ -189,6 +191,7 @@
             this.ConsultasDgvConsultasFiltros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ConsultasDgvConsultasFiltros.Size = new System.Drawing.Size(596, 361);
             this.ConsultasDgvConsultasFiltros.TabIndex = 3;
+            this.ConsultasDgvConsultasFiltros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConsultasDgvConsultasFiltros_CellContentClick);
             // 
             // ConsultasColCampo
             // 

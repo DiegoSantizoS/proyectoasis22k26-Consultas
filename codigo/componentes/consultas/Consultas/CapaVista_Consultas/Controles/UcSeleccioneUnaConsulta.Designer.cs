@@ -36,7 +36,7 @@
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasFlpBotones = new System.Windows.Forms.FlowLayoutPanel();
             this.ConsultasBtnConsultar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
-            this.ConsultasBtnIngresar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasBtnNuevaConsulta = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasBtnEliminar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasDgvConsultasReutilizables = new CapaVista_Consultas.Componentes.ClsTablaDatosConsultas();
             this.ConsultasColNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,11 +64,11 @@
             // 
             // ConsultasFlpBotones
             // 
-            this.ConsultasFlpBotones.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnConsultar);
-            this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnIngresar);
+            this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnNuevaConsulta);
             this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnEliminar);
-            this.ConsultasFlpBotones.Location = new System.Drawing.Point(551, 139);
+            this.ConsultasFlpBotones.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ConsultasFlpBotones.Location = new System.Drawing.Point(551, 12);
             this.ConsultasFlpBotones.Margin = new System.Windows.Forms.Padding(0, 12, 0, 0);
             this.ConsultasFlpBotones.Name = "ConsultasFlpBotones";
             this.ConsultasFlpBotones.Size = new System.Drawing.Size(90, 240);
@@ -91,25 +91,26 @@
             this.ConsultasBtnConsultar.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnConsultar.TabIndex = 0;
             this.ConsultasBtnConsultar.UseVisualStyleBackColor = false;
+            this.ConsultasBtnConsultar.Click += new System.EventHandler(this.ConsultasBtnConsultar_Click);
             // 
-            // ConsultasBtnIngresar
+            // ConsultasBtnNuevaConsulta
             // 
-            this.ConsultasBtnIngresar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ConsultasBtnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ConsultasBtnIngresar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnIngresar.BackgroundImage")));
-            this.ConsultasBtnIngresar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ConsultasBtnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ConsultasBtnIngresar.FlatAppearance.BorderSize = 0;
-            this.ConsultasBtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnIngresar.Location = new System.Drawing.Point(0, 80);
-            this.ConsultasBtnIngresar.Margin = new System.Windows.Forms.Padding(0);
-            this.ConsultasBtnIngresar.MaximumSize = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnIngresar.MinimumSize = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnIngresar.Name = "ConsultasBtnIngresar";
-            this.ConsultasBtnIngresar.Size = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnIngresar.TabIndex = 1;
-            this.ConsultasBtnIngresar.UseVisualStyleBackColor = false;
-            this.ConsultasBtnIngresar.Click += new System.EventHandler(this.ConsultasBtnIngresar_Click);
+            this.ConsultasBtnNuevaConsulta.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ConsultasBtnNuevaConsulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasBtnNuevaConsulta.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnNuevaConsulta.BackgroundImage")));
+            this.ConsultasBtnNuevaConsulta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ConsultasBtnNuevaConsulta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConsultasBtnNuevaConsulta.FlatAppearance.BorderSize = 0;
+            this.ConsultasBtnNuevaConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConsultasBtnNuevaConsulta.Location = new System.Drawing.Point(0, 80);
+            this.ConsultasBtnNuevaConsulta.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasBtnNuevaConsulta.MaximumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnNuevaConsulta.MinimumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnNuevaConsulta.Name = "ConsultasBtnNuevaConsulta";
+            this.ConsultasBtnNuevaConsulta.Size = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnNuevaConsulta.TabIndex = 1;
+            this.ConsultasBtnNuevaConsulta.UseVisualStyleBackColor = false;
+            this.ConsultasBtnNuevaConsulta.Click += new System.EventHandler(this.ConsultasBtnIngresar_Click);
             // 
             // ConsultasBtnEliminar
             // 
@@ -184,6 +185,7 @@
             this.ConsultasDgvConsultasReutilizables.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ConsultasDgvConsultasReutilizables.Size = new System.Drawing.Size(529, 483);
             this.ConsultasDgvConsultasReutilizables.TabIndex = 3;
+            this.ConsultasDgvConsultasReutilizables.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConsultasDgvConsultasReutilizables_CellContentClick);
             // 
             // ConsultasColNombre
             // 
@@ -213,7 +215,7 @@
         private System.Windows.Forms.FlowLayoutPanel ConsultasFlpBotones;
         private Componentes.ClsTablaDatosConsultas ConsultasDgvConsultasReutilizables;
         private Componentes.ClsBotonConsultas ConsultasBtnConsultar;
-        private Componentes.ClsBotonConsultas ConsultasBtnIngresar;
+        private Componentes.ClsBotonConsultas ConsultasBtnNuevaConsulta;
         private Componentes.ClsBotonConsultas ConsultasBtnEliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColNombre;
     }

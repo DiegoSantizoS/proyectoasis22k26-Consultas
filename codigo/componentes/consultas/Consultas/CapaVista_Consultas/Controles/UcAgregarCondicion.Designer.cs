@@ -71,6 +71,7 @@
             this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
             this.ConsultasTlpPrincipal.Size = new System.Drawing.Size(380, 267);
             this.ConsultasTlpPrincipal.TabIndex = 1;
+            this.ConsultasTlpPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.ConsultasTlpPrincipal_Paint);
             // 
             // ConsultasBtnIngresar
             // 

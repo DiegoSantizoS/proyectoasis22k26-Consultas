@@ -182,6 +182,7 @@
             this.ConsultasDgvSimples.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ConsultasDgvSimples.Size = new System.Drawing.Size(865, 420);
             this.ConsultasDgvSimples.TabIndex = 4;
+            this.ConsultasDgvSimples.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConsultasDgvSimples_CellContentClick);
             // 
             // ConsultasLblPaginacion
             // 
