@@ -91,6 +91,7 @@
             this.ConsultasBtnConsultar.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnConsultar.TabIndex = 0;
             this.ConsultasBtnConsultar.UseVisualStyleBackColor = false;
+            this.ConsultasBtnConsultar.Click += new System.EventHandler(this.ConsultasBtnConsultar_Click);
             // 
             // ConsultasBtnNuevaConsulta
             // 

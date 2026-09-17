@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.Odbc;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -64,6 +65,36 @@ namespace CapaModelo_Consultas
 
                 Environment.Exit(1);
 
+                return null;
+            }
+        }
+        public DataTable ConsultasFuncCargarConsulta(string Consulta, int Pagina, int RegistrosPorPagina)
+        {
+            int Inicio = (Pagina - 1) * RegistrosPorPagina;
+            Consulta += " LIMIT ? OFFSET ?;";
+            DataTable DtConsultaSeleccionada = new DataTable();
+            try
+            {
+                ConsultasMetValidarNombreTabla("tblConsulta");
+
+                using (OdbcConnection Conexion = _Conexion.ConsultasFuncConexion())
+                {
+                    using (OdbcCommand Cmd = new OdbcCommand(Consulta, Conexion))
+                    {
+                        Cmd.Parameters.AddWithValue("?", RegistrosPorPagina);
+                        Cmd.Parameters.AddWithValue("?", Inicio);
+                        using (OdbcDataAdapter DaConsultas = new OdbcDataAdapter(Cmd))
+                        {
+                            DaConsultas.Fill(DtConsultaSeleccionada);
+                        }
+                    }
+                }
+                return DtConsultaSeleccionada;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la consulta seleccionada");
                 return null;
             }
         }
@@ -169,5 +200,76 @@ namespace CapaModelo_Consultas
                     "El nombre de la tabla contiene caracteres no válidos.");
             }
         }
+        public DataTable ConsltasFuncObtenerConsultas()
+        {
+            DataTable dtConsultas = new DataTable();
+            try
+            {
+                ConsultasMetValidarNombreTabla("tblConsulta");
+                string Consulta = "SELECT nombreConsulta AS Consulta, queryConsulta AS Query, tablaConsulta AS Tabla from tblConsulta;";
+                using (OdbcConnection Conexion = _Conexion.ConsultasFuncConexion())
+                {
+                    using (OdbcCommand Cmd = new OdbcCommand(Consulta, Conexion))
+                    {
+                        using (OdbcDataAdapter DaConsultas = new OdbcDataAdapter(Cmd))
+                        {
+                            DaConsultas.Fill(dtConsultas);
+                        }
+                    }
+                }
+                return dtConsultas;
+            }
+
+            catch(Exception ex){
+                MessageBox.Show("Error al cargar el historial de consultas");
+                return null;
+            }
+        }
+        public int ConsultasFuncContarResultadosQuery(string Consulta)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(Consulta))
+                {
+                    throw new ArgumentException(
+                        "La consulta no puede estar vacía.");
+                }
+
+                string QueryConteo =
+                    "SELECT COUNT(*) FROM (" +
+                    Consulta.Trim().TrimEnd(';') +
+                    ") AS ConsultaResultado;";
+
+                using (OdbcConnection Conexion =
+                    _Conexion.ConsultasFuncConexion())
+                {
+                    if (Conexion.State != ConnectionState.Open)
+                    {
+                        Conexion.Open();
+                    }
+
+                    using (OdbcCommand Cmd =
+                        new OdbcCommand(QueryConteo, Conexion))
+                    {
+                        return Convert.ToInt32(
+                            Cmd.ExecuteScalar());
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(
+                    "Error al contar los resultados de la consulta.\n\n" +
+                    "Detalle del error:\n" +
+                    Ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                return 0;
+            }
+        }
+
     }
+    
 }

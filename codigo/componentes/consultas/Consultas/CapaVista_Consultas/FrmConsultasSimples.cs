@@ -135,7 +135,7 @@ namespace CapaVista_Consultas
         private void ConsultasBtnComplejas_Click_1(object sender, EventArgs e)
         {
             FrmConsultasComplejas FormularioConsultasComplejas =
-                new FrmConsultasComplejas();
+                new FrmConsultasComplejas(_TablaActual);
 
             FormularioConsultasComplejas.FormClosed += (Remitente, Argumentos) =>
             {

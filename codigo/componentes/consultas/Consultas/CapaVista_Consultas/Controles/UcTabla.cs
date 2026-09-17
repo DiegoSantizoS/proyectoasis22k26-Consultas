@@ -13,9 +13,14 @@ namespace CapaVista_Consultas.Controles
 {
     public partial class UcTabla : Componentes.ClsControlUsuarioConsultas
     {
+
+
         private readonly ClsTablas Tablas = new ClsTablas();
+        private readonly ClsConsultaSeleccionada seleccionada = new ClsConsultaSeleccionada();
         private int _PaginaActual = 1;
-        private int _RegistrosPorPagina = 15;
+        private string _QuerySeleccionada = "";
+        private bool _EsConsultaPersonalizada = false;
+        public int RegistrosPorPagina = 15;
         private int _TotalRegistros = 0;
         private int _TotalPaginas = 0;
         private string _TablaSeleccionada = "";
@@ -35,7 +40,7 @@ namespace CapaVista_Consultas.Controles
 
         public void ConsultasMetAjustarAlturaFilas(int RegistrosPorPagina)
         {
-            _RegistrosPorPagina = RegistrosPorPagina;
+            this.RegistrosPorPagina = RegistrosPorPagina;
         }
 
         public UcTabla(string tabla)
@@ -65,7 +70,7 @@ namespace CapaVista_Consultas.Controles
             DataTable DtTablas = Tablas.ConsultasFuncLlenarTabla(
                 _TablaSeleccionada,
                 _PaginaActual,
-                _RegistrosPorPagina);
+                RegistrosPorPagina);
 
             ConsultasDgvSimples.DataSource = DtTablas;
 
@@ -73,6 +78,24 @@ namespace CapaVista_Consultas.Controles
             ConsultasProcCrearBotonesPaginas();
             ConsultasProcCambiarLbl();
 
+        }
+        public void ConsultasProcCargarConsultaDesdeQuery(String Consulta, String tabla)
+        {
+            if (_TablaSeleccionada != tabla)
+            {
+                _PaginaActual = 1;
+                _InicioRangoPagina = 1;
+            }
+
+            _TablaSeleccionada = tabla;
+            ConsultasProcCalcularTotalPaginas();
+
+            DataTable dtTablas = seleccionada.ConsultasFuncCargarConsulta(
+                Consulta,
+                _PaginaActual,
+                RegistrosPorPagina);
+
+            ConsultasDgvSimples.DataSource = dtTablas;
         }
         /*
         Inicio de código de "José Pablo Cano Cóbar" - carné: "0901-23-1727" - Fecha: "15/09/26"
@@ -86,7 +109,7 @@ namespace CapaVista_Consultas.Controles
             _TotalRegistros = TotalRegistros;
 
             _TotalPaginas = (int)System.Math.Ceiling(
-                (double)_TotalRegistros / _RegistrosPorPagina);
+                (double)_TotalRegistros / RegistrosPorPagina);
 
             ConsultasDgvSimples.DataSource = Datos;
 
@@ -110,8 +133,8 @@ namespace CapaVista_Consultas.Controles
                 return;
             }
 
-            int Desde = ((_PaginaActual - 1) * _RegistrosPorPagina) + 1;
-            int Hasta = _PaginaActual * _RegistrosPorPagina;
+            int Desde = ((_PaginaActual - 1) * RegistrosPorPagina) + 1;
+            int Hasta = _PaginaActual * RegistrosPorPagina;
 
             if (Hasta > _TotalRegistros)
             {
@@ -128,7 +151,7 @@ namespace CapaVista_Consultas.Controles
             _TotalRegistros = Tablas.ConsultasFuncContarRegistros(_TablaSeleccionada);
 
             _TotalPaginas = (int)Math.Ceiling(
-                (double)_TotalRegistros / _RegistrosPorPagina
+                (double)_TotalRegistros / RegistrosPorPagina
             );
         }
         private void ConsultasProcCrearBotonesPaginas()
@@ -158,11 +181,21 @@ namespace CapaVista_Consultas.Controles
         private void BtnPagina_Click(object sender, EventArgs e)
         {
             Componentes.ClsBotonPaginacionConsultas BotonPagina =
-            (Componentes.ClsBotonPaginacionConsultas)sender;
+                (Componentes.ClsBotonPaginacionConsultas)sender;
 
             _PaginaActual = Convert.ToInt32(BotonPagina.Tag);
 
-            ConsultasProcActualizarTabla(_TablaSeleccionada);
+            if (_EsConsultaPersonalizada)
+            {
+                ConsultasProcCargarConsultaDesdeQuery(
+                    _QuerySeleccionada,
+                    _TablaSeleccionada);
+            }
+            else
+            {
+                ConsultasProcActualizarTabla(
+                    _TablaSeleccionada);
+            }
         }
 
         private void ConsultasBtnAnterior1_Click(object sender, EventArgs e)
@@ -176,7 +209,17 @@ namespace CapaVista_Consultas.Controles
                     _InicioRangoPagina--;
                 }
 
-                ConsultasProcActualizarTabla(_TablaSeleccionada);
+                if (_EsConsultaPersonalizada)
+                {
+                    ConsultasProcCargarConsultaDesdeQuery(
+                        _QuerySeleccionada,
+                        _TablaSeleccionada);
+                }
+                else
+                {
+                    ConsultasProcActualizarTabla(
+                        _TablaSeleccionada);
+                }
             }
         }
 
@@ -192,23 +235,50 @@ namespace CapaVista_Consultas.Controles
                     _InicioRangoPagina++;
                 }
 
-                ConsultasProcActualizarTabla(_TablaSeleccionada);
+                if (_EsConsultaPersonalizada)
+                {
+                    ConsultasProcCargarConsultaDesdeQuery(
+                        _QuerySeleccionada,
+                        _TablaSeleccionada);
+                }
+                else
+                {
+                    ConsultasProcActualizarTabla(
+                        _TablaSeleccionada);
+                }
             }
         }
         private void ConsultasProcCambiarLbl()
         {
             ConsultasLblPaginacion.Text = "Mostrando " +
-                (((_PaginaActual - 1) * _RegistrosPorPagina) + 1) +
+                (((_PaginaActual - 1) * RegistrosPorPagina) + 1) +
                 "-" +
-                (_PaginaActual * _RegistrosPorPagina) +
+                (_PaginaActual * RegistrosPorPagina) +
                 " de " +
                 Tablas.ConsultasFuncContarRegistros(_TablaSeleccionada) +
                 " registros";
         }
-
-        private void ConsultasDgvSimples_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public void ConsultasProcCambiarRegistrosPorPagina(int cantidad)
         {
+            RegistrosPorPagina = cantidad;
 
+            // Reiniciar paginación
+            _PaginaActual = 1;
+            _InicioRangoPagina = 1;
+
+            // Actualizar tabla con la nueva cantidad
+            ConsultasProcActualizarTabla(_TablaSeleccionada);
+        }
+
+        public void ConsultasProcCambiarRegistrosPorPagina(int cantidad, string tabla)
+        {
+            RegistrosPorPagina = cantidad;
+
+            _PaginaActual = 1;
+            _InicioRangoPagina = 1;
+
+            ConsultasProcActualizarTabla(tabla);
         }
     }
+
 }
