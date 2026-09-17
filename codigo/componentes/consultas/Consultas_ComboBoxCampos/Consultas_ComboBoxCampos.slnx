@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="CapaControlador_CbCampos/CapaControlador_CbCampos.csproj" />
+  <Project Path="CapaModelo_CbCampos/CapaModelo_CbCampos.csproj" />
+  <Project Path="CapaVista_CbCampos/CapaVista_CbCampos.csproj" />
+</Solution>
