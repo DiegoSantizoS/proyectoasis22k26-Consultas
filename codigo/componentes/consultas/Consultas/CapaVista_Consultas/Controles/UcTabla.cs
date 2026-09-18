@@ -1,190 +1,367 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaControlador_Consultas;
 
 namespace CapaVista_Consultas.Controles
 {
-    public partial class UcTabla : Componentes.ClsControlUsuarioConsultas
+    public partial class UcTabla :
+        Componentes.ClsControlUsuarioConsultas
     {
+        private readonly ClsTablas _Tablas =
+            new ClsTablas();
 
+        private readonly ClsConsultaSeleccionada _ConsultaSeleccionada =
+            new ClsConsultaSeleccionada();
 
-        private readonly ClsTablas Tablas = new ClsTablas();
-        private readonly ClsConsultaSeleccionada seleccionada = new ClsConsultaSeleccionada();
         private int _PaginaActual = 1;
         private string _QuerySeleccionada = "";
         private bool _EsConsultaPersonalizada = false;
-        public int RegistrosPorPagina = 15;
         private int _TotalRegistros = 0;
         private int _TotalPaginas = 0;
         private string _TablaSeleccionada = "";
         private int _InicioRangoPagina = 1;
-        private int _CantidadBotonesPagina = 5;
+        private readonly int _CantidadBotonesPagina = 5;
+
+        public int RegistrosPorPagina { get; private set; } = 15;
 
         public UcTabla()
         {
             InitializeComponent();
 
-            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            if (LicenseManager.UsageMode !=
+                LicenseUsageMode.Designtime)
             {
                 ConsultasDgvSimples.AutoGenerateColumns = true;
-                ConsultasProcActualizarTabla("tblConsulta");
+
+                ConsultasProcActualizarTabla(
+                    "tblConsulta");
             }
         }
 
-        public void ConsultasMetAjustarAlturaFilas(int RegistrosPorPagina)
-        {
-            this.RegistrosPorPagina = RegistrosPorPagina;
-        }
-
-        public UcTabla(string tabla)
+        public UcTabla(string Tabla)
         {
             InitializeComponent();
 
-            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            if (LicenseManager.UsageMode !=
+                LicenseUsageMode.Designtime)
             {
                 ConsultasDgvSimples.AutoGenerateColumns = true;
-                ConsultasProcActualizarTabla(tabla);
+
+                ConsultasProcActualizarTabla(
+                    Tabla);
             }
         }
-       
 
-        public void ConsultasProcActualizarTabla(string tablaSeleccionada)
+        public void ConsultasMetAjustarAlturaFilas(
+            int RegistrosPorPagina)
         {
-            if (_TablaSeleccionada != tablaSeleccionada)
+            if (RegistrosPorPagina <= 0)
             {
-                _PaginaActual = 1;
-                _InicioRangoPagina = 1;
+                return;
             }
 
-            _TablaSeleccionada = tablaSeleccionada;
-
-            ConsultasProcCalcularTotalPaginas();
-
-            DataTable DtTablas = Tablas.ConsultasFuncLlenarTabla(
-                _TablaSeleccionada,
-                _PaginaActual,
-                RegistrosPorPagina);
-
-            ConsultasDgvSimples.DataSource = DtTablas;
-
-
-            ConsultasProcCrearBotonesPaginas();
-            ConsultasProcCambiarLbl();
-
+            this.RegistrosPorPagina =
+                RegistrosPorPagina;
         }
-        public void ConsultasProcCargarConsultaDesdeQuery(String Consulta, String tabla)
+
+        public void ConsultasProcActualizarTabla(
+            string TablaSeleccionada)
         {
-            if (_TablaSeleccionada != tabla)
+            try
             {
-                _PaginaActual = 1;
-                _InicioRangoPagina = 1;
+                if (_TablaSeleccionada !=
+                    TablaSeleccionada ||
+                    _EsConsultaPersonalizada)
+                {
+                    _PaginaActual = 1;
+                    _InicioRangoPagina = 1;
+                }
+
+                _TablaSeleccionada =
+                    TablaSeleccionada;
+
+                _QuerySeleccionada = "";
+
+                _EsConsultaPersonalizada =
+                    false;
+
+                ConsultasProcCalcularTotalPaginas();
+
+                DataTable DtTablas =
+                    _Tablas.ConsultasFuncLlenarTabla(
+                        _TablaSeleccionada,
+                        _PaginaActual,
+                        RegistrosPorPagina);
+
+                ConsultasDgvSimples.DataSource =
+                    DtTablas;
+
+                ConsultasProcCrearBotonesPaginas();
+
+                ConsultasProcCambiarLbl();
             }
-
-            _TablaSeleccionada = tabla;
-            ConsultasProcCalcularTotalPaginas();
-
-            DataTable dtTablas = seleccionada.ConsultasFuncCargarConsulta(
-                Consulta,
-                _PaginaActual,
-                RegistrosPorPagina);
-
-            ConsultasDgvSimples.DataSource = dtTablas;
+            catch (ArgumentException Ex)
+            {
+                ConsultasMetMostrarAdvertencia(
+                    Ex.Message);
+            }
+            catch (InvalidOperationException Ex)
+            {
+                ConsultasMetMostrarError(
+                    Ex.Message);
+            }
+            catch (Exception Ex)
+            {
+                ConsultasMetMostrarError(
+                    "Ocurrió un error inesperado al cargar " +
+                    "los registros.\n\n" +
+                    Ex.Message);
+            }
         }
-        /*
-        Inicio de código de "José Pablo Cano Cóbar" - carné: "0901-23-1727" - Fecha: "15/09/26"
-        */
+
+        public void ConsultasProcCargarConsultaDesdeQuery(
+            string Consulta,
+            string Tabla)
+        {
+            try
+            {
+                bool CambioConsulta =
+                    !_EsConsultaPersonalizada ||
+                    _QuerySeleccionada != Consulta;
+
+                if (CambioConsulta)
+                {
+                    _PaginaActual = 1;
+                    _InicioRangoPagina = 1;
+                }
+
+                _TablaSeleccionada =
+                    Tabla;
+
+                _QuerySeleccionada =
+                    Consulta;
+
+                _EsConsultaPersonalizada =
+                    true;
+
+                _TotalRegistros =
+                    _ConsultaSeleccionada
+                        .ConsultasFuncContarResultadosQuery(
+                            _QuerySeleccionada);
+
+                _TotalPaginas =
+                    (int)Math.Ceiling(
+                        (double)_TotalRegistros /
+                        RegistrosPorPagina);
+
+                DataTable DtTablas =
+                    _ConsultaSeleccionada
+                        .ConsultasFuncCargarConsulta(
+                            _QuerySeleccionada,
+                            _PaginaActual,
+                            RegistrosPorPagina);
+
+                ConsultasDgvSimples.DataSource =
+                    DtTablas;
+
+                ConsultasProcCrearBotonesPaginas();
+
+                ConsultasProcCambiarLblResultado();
+            }
+            catch (ArgumentException Ex)
+            {
+                ConsultasDgvSimples.DataSource =
+                    null;
+
+                _TotalRegistros = 0;
+                _TotalPaginas = 0;
+
+                ConsultasMetMostrarAdvertencia(
+                    Ex.Message);
+            }
+            catch (InvalidOperationException Ex)
+            {
+                ConsultasDgvSimples.DataSource =
+                    null;
+
+                _TotalRegistros = 0;
+                _TotalPaginas = 0;
+
+                ConsultasMetMostrarError(
+                    Ex.Message);
+            }
+            catch (Exception Ex)
+            {
+                ConsultasDgvSimples.DataSource =
+                    null;
+
+                _TotalRegistros = 0;
+                _TotalPaginas = 0;
+
+                ConsultasMetMostrarError(
+                    "Ocurrió un error inesperado al ejecutar " +
+                    "la consulta.\n\n" +
+                    Ex.Message);
+            }
+        }
+
         public void ConsultasProcMostrarResultado(
-            System.Data.DataTable Datos,
+            DataTable Datos,
             int TotalRegistros)
         {
             _PaginaActual = 1;
             _InicioRangoPagina = 1;
-            _TotalRegistros = TotalRegistros;
 
-            _TotalPaginas = (int)System.Math.Ceiling(
-                (double)_TotalRegistros / RegistrosPorPagina);
+            _TotalRegistros =
+                TotalRegistros;
 
-            ConsultasDgvSimples.DataSource = Datos;
+            _TotalPaginas =
+                (int)Math.Ceiling(
+                    (double)_TotalRegistros /
+                    RegistrosPorPagina);
+
+            ConsultasDgvSimples.DataSource =
+                Datos;
 
             ConsultasProcCrearBotonesPaginas();
 
             ConsultasProcCambiarLblResultado();
         }
 
-        public void ConsultasProcMostrarResultado(System.Data.DataTable Datos)
+        public void ConsultasProcMostrarResultado(
+            DataTable Datos)
         {
             ConsultasProcMostrarResultado(
                 Datos,
-                Datos == null ? 0 : Datos.Rows.Count);
-        }
-
-        private void ConsultasProcCambiarLblResultado()
-        {
-            if (_TotalRegistros == 0)
-            {
-                ConsultasLblPaginacion.Text = "Sin registros que coincidan";
-                return;
-            }
-
-            int Desde = ((_PaginaActual - 1) * RegistrosPorPagina) + 1;
-            int Hasta = _PaginaActual * RegistrosPorPagina;
-
-            if (Hasta > _TotalRegistros)
-            {
-                Hasta = _TotalRegistros;
-            }
-
-            ConsultasLblPaginacion.Text =
-                "Mostrando " + Desde + "-" + Hasta +
-                " de " + _TotalRegistros + " registros";
+                Datos == null
+                    ? 0
+                    : Datos.Rows.Count);
         }
 
         private void ConsultasProcCalcularTotalPaginas()
         {
-            _TotalRegistros = Tablas.ConsultasFuncContarRegistros(_TablaSeleccionada);
+            _TotalRegistros =
+                _Tablas.ConsultasFuncContarRegistros(
+                    _TablaSeleccionada);
 
-            _TotalPaginas = (int)Math.Ceiling(
-                (double)_TotalRegistros / RegistrosPorPagina
-            );
+            _TotalPaginas =
+                (int)Math.Ceiling(
+                    (double)_TotalRegistros /
+                    RegistrosPorPagina);
         }
+
         private void ConsultasProcCrearBotonesPaginas()
         {
             ConsultasFlpPaginas.Controls.Clear();
 
-            int FinRango = _InicioRangoPagina + _CantidadBotonesPagina - 1;
+            if (_TotalPaginas <= 0)
+            {
+                return;
+            }
+
+            int FinRango =
+                _InicioRangoPagina +
+                _CantidadBotonesPagina -
+                1;
 
             if (FinRango > _TotalPaginas)
-                FinRango = _TotalPaginas;
-
-            for (int NumeroPagina = _InicioRangoPagina; NumeroPagina <= FinRango; NumeroPagina++)
             {
-                Componentes.ClsBotonPaginacionConsultas BotonPagina =
-                    new Componentes.ClsBotonPaginacionConsultas();
+                FinRango =
+                    _TotalPaginas;
+            }
 
-                BotonPagina.Name = $"ConsultasBtnPagina{NumeroPagina}";
-                BotonPagina.Text = NumeroPagina.ToString();
-                BotonPagina.Tag = NumeroPagina;
-                BotonPagina.EsActivo = NumeroPagina == _PaginaActual;
+            for (
+                int NumeroPagina = _InicioRangoPagina;
+                NumeroPagina <= FinRango;
+                NumeroPagina++)
+            {
+                Componentes.ClsBotonPaginacionConsultas
+                    BotonPagina =
+                        new Componentes
+                            .ClsBotonPaginacionConsultas();
 
-                BotonPagina.Click += BtnPagina_Click;
+                BotonPagina.Name =
+                    $"ConsultasBtnPagina{NumeroPagina}";
 
-                ConsultasFlpPaginas.Controls.Add(BotonPagina);
+                BotonPagina.Text =
+                    NumeroPagina.ToString();
+
+                BotonPagina.Tag =
+                    NumeroPagina;
+
+                BotonPagina.EsActivo =
+                    NumeroPagina == _PaginaActual;
+
+                BotonPagina.Click +=
+                    BtnPagina_Click;
+
+                ConsultasFlpPaginas.Controls.Add(
+                    BotonPagina);
             }
         }
-        private void BtnPagina_Click(object sender, EventArgs e)
+
+        private void BtnPagina_Click(
+            object sender,
+            EventArgs e)
         {
-            Componentes.ClsBotonPaginacionConsultas BotonPagina =
-                (Componentes.ClsBotonPaginacionConsultas)sender;
+            Componentes.ClsBotonPaginacionConsultas
+                BotonPagina =
+                    (Componentes
+                        .ClsBotonPaginacionConsultas)sender;
 
-            _PaginaActual = Convert.ToInt32(BotonPagina.Tag);
+            _PaginaActual =
+                Convert.ToInt32(
+                    BotonPagina.Tag);
 
+            ConsultasProcRecargarPaginaActual();
+        }
+
+        private void ConsultasBtnAnterior1_Click(
+            object sender,
+            EventArgs e)
+        {
+            if (_PaginaActual <= 1)
+            {
+                return;
+            }
+
+            _PaginaActual--;
+
+            if (_PaginaActual <
+                _InicioRangoPagina)
+            {
+                _InicioRangoPagina--;
+            }
+
+            ConsultasProcRecargarPaginaActual();
+        }
+
+        private void ConsultasBtnSiguiente_Click_1(
+            object sender,
+            EventArgs e)
+        {
+            if (_PaginaActual >=
+                _TotalPaginas)
+            {
+                return;
+            }
+
+            _PaginaActual++;
+
+            if (_PaginaActual >=
+                _InicioRangoPagina +
+                _CantidadBotonesPagina)
+            {
+                _InicioRangoPagina++;
+            }
+
+            ConsultasProcRecargarPaginaActual();
+        }
+
+        private void ConsultasProcRecargarPaginaActual()
+        {
             if (_EsConsultaPersonalizada)
             {
                 ConsultasProcCargarConsultaDesdeQuery(
@@ -198,87 +375,136 @@ namespace CapaVista_Consultas.Controles
             }
         }
 
-        private void ConsultasBtnAnterior1_Click(object sender, EventArgs e)
-        {
-            if (_PaginaActual > 1)
-            {
-                _PaginaActual--;
-
-                if (_PaginaActual < _InicioRangoPagina)
-                {
-                    _InicioRangoPagina--;
-                }
-
-                if (_EsConsultaPersonalizada)
-                {
-                    ConsultasProcCargarConsultaDesdeQuery(
-                        _QuerySeleccionada,
-                        _TablaSeleccionada);
-                }
-                else
-                {
-                    ConsultasProcActualizarTabla(
-                        _TablaSeleccionada);
-                }
-            }
-        }
-
-        private void ConsultasBtnSiguiente_Click_1(object sender, EventArgs e)
-        {
-            if (_PaginaActual < _TotalPaginas)
-            {
-                _PaginaActual++;
-
-                if (_PaginaActual >=
-                    _InicioRangoPagina + _CantidadBotonesPagina)
-                {
-                    _InicioRangoPagina++;
-                }
-
-                if (_EsConsultaPersonalizada)
-                {
-                    ConsultasProcCargarConsultaDesdeQuery(
-                        _QuerySeleccionada,
-                        _TablaSeleccionada);
-                }
-                else
-                {
-                    ConsultasProcActualizarTabla(
-                        _TablaSeleccionada);
-                }
-            }
-        }
         private void ConsultasProcCambiarLbl()
         {
-            ConsultasLblPaginacion.Text = "Mostrando " +
-                (((_PaginaActual - 1) * RegistrosPorPagina) + 1) +
+            if (_TotalRegistros == 0)
+            {
+                ConsultasLblPaginacion.Text =
+                    "Sin registros";
+
+                return;
+            }
+
+            int Desde =
+                ((_PaginaActual - 1) *
+                RegistrosPorPagina) + 1;
+
+            int Hasta =
+                _PaginaActual *
+                RegistrosPorPagina;
+
+            if (Hasta > _TotalRegistros)
+            {
+                Hasta =
+                    _TotalRegistros;
+            }
+
+            ConsultasLblPaginacion.Text =
+                "Mostrando " +
+                Desde +
                 "-" +
-                (_PaginaActual * RegistrosPorPagina) +
+                Hasta +
                 " de " +
-                Tablas.ConsultasFuncContarRegistros(_TablaSeleccionada) +
+                _TotalRegistros +
                 " registros";
         }
-        public void ConsultasProcCambiarRegistrosPorPagina(int cantidad)
+
+        private void ConsultasProcCambiarLblResultado()
         {
-            RegistrosPorPagina = cantidad;
+            if (_TotalRegistros == 0)
+            {
+                ConsultasLblPaginacion.Text =
+                    "Sin registros que coincidan";
 
-            // Reiniciar paginación
-            _PaginaActual = 1;
-            _InicioRangoPagina = 1;
+                return;
+            }
 
-            // Actualizar tabla con la nueva cantidad
-            ConsultasProcActualizarTabla(_TablaSeleccionada);
+            int Desde =
+                ((_PaginaActual - 1) *
+                RegistrosPorPagina) + 1;
+
+            int Hasta =
+                _PaginaActual *
+                RegistrosPorPagina;
+
+            if (Hasta > _TotalRegistros)
+            {
+                Hasta =
+                    _TotalRegistros;
+            }
+
+            ConsultasLblPaginacion.Text =
+                "Mostrando " +
+                Desde +
+                "-" +
+                Hasta +
+                " de " +
+                _TotalRegistros +
+                " registros";
         }
 
-        public void ConsultasProcCambiarRegistrosPorPagina(int cantidad, string tabla)
+        public void ConsultasProcCambiarRegistrosPorPagina(
+            int Cantidad)
         {
-            RegistrosPorPagina = cantidad;
+            if (Cantidad <= 0)
+            {
+                ConsultasMetMostrarAdvertencia(
+                    "La cantidad de registros por página " +
+                    "debe ser mayor a cero.");
+
+                return;
+            }
+
+            RegistrosPorPagina =
+                Cantidad;
 
             _PaginaActual = 1;
             _InicioRangoPagina = 1;
 
-            ConsultasProcActualizarTabla(tabla);
+            ConsultasProcRecargarPaginaActual();
+        }
+
+        public void ConsultasProcCambiarRegistrosPorPagina(
+            int Cantidad,
+            string Tabla)
+        {
+            if (Cantidad <= 0)
+            {
+                ConsultasMetMostrarAdvertencia(
+                    "La cantidad de registros por página " +
+                    "debe ser mayor a cero.");
+
+                return;
+            }
+
+            RegistrosPorPagina =
+                Cantidad;
+
+            _PaginaActual = 1;
+            _InicioRangoPagina = 1;
+
+            ConsultasProcActualizarTabla(
+                Tabla);
+        }
+
+        private void ConsultasMetMostrarError(
+            string Mensaje)
+        {
+            MessageBox.Show(
+                Mensaje,
+                "Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+        }
+
+        private void ConsultasMetMostrarAdvertencia(
+            string Mensaje)
+        {
+            MessageBox.Show(
+                Mensaje,
+                "Advertencia",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
         }
     }
-
 }
