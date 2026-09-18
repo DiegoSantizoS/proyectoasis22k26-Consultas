@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Data;
 using CapaModelo_Consultas;
@@ -14,8 +13,7 @@ namespace CapaControlador_Consultas
     */
     public class ClsControladorFiltroSimple
     {
-        private readonly ClsSentenciasFiltroSimple _Sentencias =
-            new ClsSentenciasFiltroSimple();
+        private readonly ClsSentenciasFiltroSimple _Sentencias = new ClsSentenciasFiltroSimple();
 
         /// <summary>
         /// Lista de campos de la tabla, para poblar el combo de la Vista.

@@ -1,5 +1,4 @@
 ﻿using CapaModelo_Consultas;
-using System;
 using System.Data;
 
 namespace CapaControlador_Consultas
@@ -20,19 +19,15 @@ namespace CapaControlador_Consultas
             int Pagina,
             int RegistrosPorPagina)
         {
-            return _SentenciasTablas
-                .ConsultasFuncCargarConsulta(
-                    Consulta,
-                    Pagina,
-                    RegistrosPorPagina);
+            return _SentenciasTablas.ConsultasFuncCargarConsulta(
+                Consulta,
+                Pagina,
+                RegistrosPorPagina);
         }
 
-        public int ConsultasFuncContarResultadosQuery(
-            string Consulta)
+        public int ConsultasFuncContarResultadosQuery(string Consulta)
         {
-            return _SentenciasTablas
-                .ConsultasFuncContarResultadosQuery(
-                    Consulta);
+            return _SentenciasTablas.ConsultasFuncContarResultadosQuery(Consulta);
         }
 
         //Fin del código de Carlos Andres Arriaza Lara 0901-23-13862 el 16/09/2026
