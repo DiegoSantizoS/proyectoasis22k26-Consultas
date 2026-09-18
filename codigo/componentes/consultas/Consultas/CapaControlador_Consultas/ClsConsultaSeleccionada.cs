@@ -8,24 +8,11 @@ namespace CapaControlador_Consultas
     {
         //Inicio del código de Carlos Andres Arriaza Lara 0901-23-13862 el 16/09/2026
 
-        private readonly ClsSentenciasTablas _SentenciasTablas =
-            new ClsSentenciasTablas();
+        private readonly ClsSentenciasTablas _SentenciasTablas = new ClsSentenciasTablas();
 
         public DataTable ConsultasFuncCargarConsultas()
         {
-            string NombreTabla =
-                ClsTablaSeleccionada
-                    .ConsultasFuncObtenerTabla();
-
-            if (string.IsNullOrWhiteSpace(NombreTabla))
-            {
-                throw new InvalidOperationException(
-                    "No se ha seleccionado una tabla.");
-            }
-
-            return _SentenciasTablas
-                .ConsultasFuncObtenerConsultas(
-                    NombreTabla);
+            return _SentenciasTablas.ConsultasFuncObtenerConsultas();
         }
 
         public DataTable ConsultasFuncCargarConsulta(
