@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CapaVista_Componentes">
+      <HintPath>..\..\Consultas_Componentes\CapaVista_Componentes\bin\Debug\CapaVista_Componentes.dll</HintPath>
+    </Reference>
     <Reference Include="CapaVista_Consultas">
       <HintPath>..\..\Consultas\CapaVista_Consultas\bin\Debug\CapaVista_Consultas.dll</HintPath>
     </Reference>

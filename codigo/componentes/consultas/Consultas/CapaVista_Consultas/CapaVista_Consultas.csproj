@@ -53,18 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controles\UcAgregarCondicion.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controles\UcAgregarCondicion.Designer.cs">
-      <DependentUpon>UcAgregarCondicion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controles\UcFiltrosAplicados.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controles\UcFiltrosAplicados.Designer.cs">
-      <DependentUpon>UcFiltrosAplicados.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -103,12 +91,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controles\UcAgregarCondicion.resx">
-      <DependentUpon>UcAgregarCondicion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controles\UcFiltrosAplicados.resx">
-      <DependentUpon>UcFiltrosAplicados.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

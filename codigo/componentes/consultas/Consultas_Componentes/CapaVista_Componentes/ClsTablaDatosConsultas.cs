@@ -17,6 +17,9 @@ namespace CapaVista_Consultas.Componentes
         private static readonly Color _FondoAlterno =
             Color.FromArgb(245, 242, 235);
 
+        private const int _AlturaMinimaFila = 28;
+        private const int _AlturaMaximaFila = 40;
+
         public ClsTablaDatosConsultas()
         {
             DoubleBuffered = true;
@@ -176,7 +179,7 @@ namespace CapaVista_Consultas.Componentes
             int EspacioDisponible =
                 ClientSize.Height
                 - ColumnHeadersHeight
-                - 2; 
+                - 2;
 
             if (EspacioDisponible <= 0)
                 return;
@@ -184,13 +187,21 @@ namespace CapaVista_Consultas.Componentes
             int AlturaCalculada =
                 EspacioDisponible / CantidadFilas;
 
-            int AlturaMinima = 28;
-
-            if (AlturaCalculada < AlturaMinima)
+            if (AlturaCalculada <= _AlturaMinimaFila)
             {
                 foreach (DataGridViewRow Fila in Rows)
                 {
-                    Fila.Height = AlturaMinima;
+                    Fila.Height = _AlturaMinimaFila;
+                }
+
+                return;
+            }
+
+            if (AlturaCalculada >= _AlturaMaximaFila)
+            {
+                foreach (DataGridViewRow Fila in Rows)
+                {
+                    Fila.Height = _AlturaMaximaFila;
                 }
 
                 return;
@@ -202,9 +213,14 @@ namespace CapaVista_Consultas.Componentes
 
             for (int i = 0; i < CantidadFilas; i++)
             {
-                Rows[i].Height =
+                int AlturaFila =
                     AlturaCalculada +
                     (i < Sobrante ? 1 : 0);
+
+                if (AlturaFila > _AlturaMaximaFila)
+                    AlturaFila = _AlturaMaximaFila;
+
+                Rows[i].Height = AlturaFila;
             }
         }
 

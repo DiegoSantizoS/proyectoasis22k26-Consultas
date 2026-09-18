@@ -126,8 +126,10 @@
             this.ConsultasUcConsultasReutilizables.Location = new System.Drawing.Point(3, 24);
             this.ConsultasUcConsultasReutilizables.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasUcConsultasReutilizables.Name = "ConsultasUcConsultasReutilizables";
+            this.ConsultasUcConsultasReutilizables.Query = null;
             this.ConsultasUcConsultasReutilizables.Size = new System.Drawing.Size(384, 453);
             this.ConsultasUcConsultasReutilizables.TabIndex = 0;
+            this.ConsultasUcConsultasReutilizables.Tabla = null;
             // 
             // ConsultasUcTabla
             // 
@@ -147,11 +149,11 @@
             this.flowLayoutPanel1.Controls.Add(this.ConsultasBtnSalir);
             this.flowLayoutPanel1.Controls.Add(this.ConsultasBtnInicio);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(1247, 5);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1242, 5);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0, 5, 5, 5);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.ConsultasTlpPrincipal.SetRowSpan(this.flowLayoutPanel1, 3);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(80, 570);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(85, 570);
             this.flowLayoutPanel1.TabIndex = 23;
             // 
             // ConsultasBtnRefrescar
