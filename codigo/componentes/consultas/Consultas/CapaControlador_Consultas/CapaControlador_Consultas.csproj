@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="ClsConsultaSeleccionada.cs" />
     <Compile Include="ClsControladorFiltroSimple.cs" />
+    <Compile Include="ClsResultadoConsulta.cs" />
     <Compile Include="ClsTablaSeleccionada.cs" />
     <Compile Include="Temporales\ClsControladorConsultas.cs" />
     <Compile Include="Temporales\ClsControladorConsultaSimple.cs" />

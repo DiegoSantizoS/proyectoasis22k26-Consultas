@@ -127,7 +127,7 @@
             this.ConsultasBtnComplejas.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnComplejas.TabIndex = 21;
             this.ConsultasBtnComplejas.UseVisualStyleBackColor = false;
-            this.ConsultasBtnComplejas.Click += new System.EventHandler(this.ConsultasBtnComplejas_Click_1);
+            this.ConsultasBtnComplejas.Click += new System.EventHandler(this.ConsultasMetBtnComplejasClick);
             // 
             // ConsultasBtnSalir
             // 

@@ -6,9 +6,19 @@ using CapaControlador_Consultas;
 
 namespace CapaVista_Consultas.Controles
 {
+
     public partial class UcTabla :
         Componentes.ClsControlUsuarioConsultas
     {
+
+        private string _CampoId;
+
+        public string IdSeleccionado { get; private set; }
+
+        public string TablaSeleccionada { get; private set; }
+
+        public bool SeleccionRealizada { get; private set; }
+
         private readonly ClsTablas _Tablas =
             new ClsTablas();
 
@@ -22,10 +32,13 @@ namespace CapaVista_Consultas.Controles
         private int _TotalPaginas = 0;
         private string _TablaSeleccionada = "";
         private int _InicioRangoPagina = 1;
+
         private readonly int _CantidadBotonesPagina = 5;
 
         public int RegistrosPorPagina { get; private set; } = 15;
 
+        public event EventHandler
+             ConsultasEvtFilaSeleccionada;
         public UcTabla()
         {
             InitializeComponent();
@@ -34,24 +47,89 @@ namespace CapaVista_Consultas.Controles
                 LicenseUsageMode.Designtime)
             {
                 ConsultasDgvSimples.AutoGenerateColumns = true;
-
-                ConsultasProcActualizarTabla(
-                    "tblConsulta");
             }
         }
 
+        
         public UcTabla(string Tabla)
+            : this()
         {
-            InitializeComponent();
-
             if (LicenseManager.UsageMode !=
                 LicenseUsageMode.Designtime)
             {
-                ConsultasDgvSimples.AutoGenerateColumns = true;
-
                 ConsultasProcActualizarTabla(
                     Tabla);
             }
+        }
+
+        public bool ConsultasFuncSeleccionarRegistro()
+        {
+            if (string.IsNullOrWhiteSpace(_CampoId))
+            {
+                return false;
+            }
+
+            string ValorSeleccionado =
+                ConsultasFuncObtenerValorSeleccionado(
+                    _CampoId);
+
+            if (string.IsNullOrWhiteSpace(
+                ValorSeleccionado))
+            {
+                return false;
+            }
+
+            IdSeleccionado =
+                ValorSeleccionado;
+
+            TablaSeleccionada =
+                _TablaSeleccionada;
+
+            SeleccionRealizada =
+                true;
+
+            return true;
+        }
+        public void ConsultasMetConfigurarSeleccion(
+            string CampoId)
+        {
+            _CampoId = CampoId;
+
+            IdSeleccionado = null;
+            TablaSeleccionada = null;
+            SeleccionRealizada = false;
+        }
+
+        public string ConsultasFuncObtenerValorSeleccionado(
+            string Campo)
+        {
+            if (string.IsNullOrWhiteSpace(Campo))
+            {
+                return null;
+            }
+
+            if (ConsultasDgvSimples.CurrentRow == null)
+            {
+                return null;
+            }
+
+            if (!ConsultasDgvSimples.Columns.Contains(Campo))
+            {
+                return null;
+            }
+
+            object Valor =
+                ConsultasDgvSimples.CurrentRow
+                    .Cells[Campo]
+                    .Value;
+
+            if (Valor == null ||
+                Valor == DBNull.Value)
+            {
+                return null;
+            }
+
+            return Valor.ToString();
         }
 
         public void ConsultasMetAjustarAlturaFilas(
@@ -505,6 +583,49 @@ namespace CapaVista_Consultas.Controles
                 "Advertencia",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
+        }
+
+        private void ConsultasDgvSimples_CellDoubleClick(
+    object sender,
+    DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
+
+            string ValorSeleccionado =
+                ConsultasFuncObtenerValorSeleccionado(
+                    _CampoId);
+
+            if (string.IsNullOrWhiteSpace(
+                ValorSeleccionado))
+            {
+                return;
+            }
+
+            DialogResult Respuesta =
+                MessageBox.Show(
+                    "¿Desea seleccionar el registro con ID " +
+                    ValorSeleccionado +
+                    "?",
+                    "Seleccionar registro",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Question);
+
+            if (Respuesta != DialogResult.OK)
+            {
+                return;
+            }
+
+            if (!ConsultasFuncSeleccionarRegistro())
+            {
+                return;
+            }
+
+            ConsultasEvtFilaSeleccionada?.Invoke(
+                this,
+                EventArgs.Empty);
         }
     }
 }

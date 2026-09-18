@@ -191,7 +191,7 @@
             this.ConsultasBtnSalir.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnSalir.TabIndex = 17;
             this.ConsultasBtnSalir.UseVisualStyleBackColor = false;
-            this.ConsultasBtnSalir.Click += new System.EventHandler(this.ConsultasBtnSalir_Click_1);
+            this.ConsultasBtnSalir.Click += new System.EventHandler(this.ConsultasMetBtnSalirClick);
             // 
             // ConsultasBtnInicio
             // 
@@ -210,7 +210,7 @@
             this.ConsultasBtnInicio.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnInicio.TabIndex = 20;
             this.ConsultasBtnInicio.UseVisualStyleBackColor = false;
-            this.ConsultasBtnInicio.Click += new System.EventHandler(this.ConsultasBtnInicio_Click);
+            this.ConsultasBtnInicio.Click += new System.EventHandler(this.ConsultasMetBtnInicioClick);
             // 
             // FrmConsultasComplejas
             // 

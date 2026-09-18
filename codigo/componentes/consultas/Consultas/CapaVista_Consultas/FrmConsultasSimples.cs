@@ -7,16 +7,24 @@ using CapaVista_Consultas.Controles;
 namespace CapaVista_Consultas
 {
     // Inicio de código de "José Pablo Cano Cóbar" - carné: "0901-23-1727" - Fecha: "15/09/26"
-    public partial class FrmConsultasSimples : Componentes.ClsBaseTerminus
+    public partial class FrmConsultasSimples :
+        Componentes.ClsBaseTerminus
     {
         private readonly ClsControladorFiltroSimple _Controlador =
             new ClsControladorFiltroSimple();
 
         private string _TablaActual;
+        private string _CampoId;
+
         private string _CampoFiltro;
         private string _OperadorFiltro;
         private string _ValorFiltro;
+
         private const int _RegistrosPorPagina = 15;
+
+        public string IdSeleccionado { get; private set; }
+
+        public bool SeleccionRealizada { get; private set; }
 
         public FrmConsultasSimples()
         {
@@ -25,42 +33,98 @@ namespace CapaVista_Consultas
             ConsultasMetSuscribirEventos();
         }
 
-        public FrmConsultasSimples(string Tabla)
+        public FrmConsultasSimples(
+            string Tabla,
+            string CampoId)
+            : this()
         {
-            InitializeComponent();
-
-            ConsultasMetSuscribirEventos();
-
             _TablaActual = Tabla;
+            _CampoId = CampoId;
 
-            ClsTablaSeleccionada.ConsultasMetGuardarTabla(Tabla);
+            ConsultasUcTablaSimple
+                .ConsultasMetConfigurarSeleccion(
+                    CampoId);
 
-            ConsultasUcTablaSimple.ConsultasProcActualizarTabla(Tabla);
-            ConsultasUcAgregarFiltro.ConsultasProcActualizarTabla(Tabla);
+            ClsTablaSeleccionada
+                .ConsultasMetGuardarTabla(
+                    Tabla);
+
+            ConsultasUcTablaSimple
+                .ConsultasProcActualizarTabla(
+                    Tabla);
+
+            ConsultasUcAgregarFiltro
+                .ConsultasProcActualizarTabla(
+                    Tabla);
         }
 
-        public FrmConsultasSimples(string[] Tablas)
+        public FrmConsultasSimples(
+            string[] Tablas,
+            string CampoId)
+            : this()
         {
-            InitializeComponent();
-
-            ConsultasMetSuscribirEventos();
+            if (Tablas == null ||
+                Tablas.Length == 0)
+            {
+                throw new ArgumentException(
+                    "Debe proporcionar al menos una tabla.",
+                    nameof(Tablas));
+            }
 
             _TablaActual = Tablas[0];
-            ;
+            _CampoId = CampoId;
 
-            ClsTablaSeleccionada.ConsultasMetGuardarTabla(Tablas[0]);
+            ConsultasUcTablaSimple
+                .ConsultasMetConfigurarSeleccion(
+                    CampoId);
 
-            ConsultasUcTablaSimple.ConsultasProcActualizarTabla(Tablas[0]);
-            ConsultasUcAgregarFiltro.ConsultasProcActualizarTabla(Tablas[0]);
+            ClsTablaSeleccionada
+                .ConsultasMetGuardarTabla(
+                    _TablaActual);
+
+            ConsultasUcTablaSimple
+                .ConsultasProcActualizarTabla(
+                    _TablaActual);
+
+            ConsultasUcAgregarFiltro
+                .ConsultasProcActualizarTabla(
+                    _TablaActual);
         }
 
         private void ConsultasMetSuscribirEventos()
         {
-            ConsultasUcAgregarFiltro.ConsultasEvtBuscarSolicitado +=
-                ConsultasUcAgregarFiltro_BuscarSolicitado;
+            ConsultasUcAgregarFiltro
+                .ConsultasEvtBuscarSolicitado +=
+                    ConsultasUcAgregarFiltro_BuscarSolicitado;
 
-            ConsultasUcAgregarFiltro.ConsultasEvtRefrescarSolicitado +=
-                ConsultasUcAgregarFiltro_RefrescarSolicitado;
+            ConsultasUcAgregarFiltro
+                .ConsultasEvtRefrescarSolicitado +=
+                    ConsultasUcAgregarFiltro_RefrescarSolicitado;
+
+            ConsultasUcTablaSimple
+                .ConsultasEvtFilaSeleccionada +=
+                    ConsultasUcTablaSimple_FilaSeleccionada;
+        }
+
+        private void ConsultasUcTablaSimple_FilaSeleccionada(
+            object sender,
+            EventArgs e)
+        {
+            IdSeleccionado =
+                ConsultasUcTablaSimple.IdSeleccionado;
+
+            SeleccionRealizada =
+                ConsultasUcTablaSimple.SeleccionRealizada;
+
+            if (!SeleccionRealizada)
+            {
+                return;
+            }
+
+            DialogResult =
+                DialogResult.OK;
+
+            Close();
         }
 
         private void ConsultasUcAgregarFiltro_BuscarSolicitado(
@@ -82,7 +146,9 @@ namespace CapaVista_Consultas
             _OperadorFiltro = null;
             _ValorFiltro = null;
 
-            ConsultasUcTablaSimple.ConsultasProcActualizarTabla(_TablaActual);
+            ConsultasUcTablaSimple
+                .ConsultasProcActualizarTabla(
+                    _TablaActual);
         }
 
         private void ConsultasMetAplicarFiltro()
@@ -91,23 +157,26 @@ namespace CapaVista_Consultas
             {
                 Cursor = Cursors.WaitCursor;
 
-                DataTable DtResultado = _Controlador.ConsultasFuncBuscar(
-                    _TablaActual,
-                    _CampoFiltro,
-                    _OperadorFiltro,
-                    _ValorFiltro,
-                    1,
-                    _RegistrosPorPagina);
+                DataTable DtResultado =
+                    _Controlador.ConsultasFuncBuscar(
+                        _TablaActual,
+                        _CampoFiltro,
+                        _OperadorFiltro,
+                        _ValorFiltro,
+                        1,
+                        _RegistrosPorPagina);
 
-                int TotalRegistros = _Controlador.ConsultasFuncContar(
-                    _TablaActual,
-                    _CampoFiltro,
-                    _OperadorFiltro,
-                    _ValorFiltro);
+                int TotalRegistros =
+                    _Controlador.ConsultasFuncContar(
+                        _TablaActual,
+                        _CampoFiltro,
+                        _OperadorFiltro,
+                        _ValorFiltro);
 
-                ConsultasUcTablaSimple.ConsultasProcMostrarResultado(
-                    DtResultado,
-                    TotalRegistros);
+                ConsultasUcTablaSimple
+                    .ConsultasProcMostrarResultado(
+                        DtResultado,
+                        TotalRegistros);
 
                 if (TotalRegistros == 0)
                 {
@@ -121,7 +190,9 @@ namespace CapaVista_Consultas
             catch (Exception Ex)
             {
                 MessageBox.Show(
-                    "No se pudo ejecutar la consulta.\n\nDetalle: " + Ex.Message,
+                    "No se pudo ejecutar la consulta.\n\n" +
+                    "Detalle: " +
+                    Ex.Message,
                     "Consultas",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -132,28 +203,51 @@ namespace CapaVista_Consultas
             }
         }
 
-        private void ConsultasBtnComplejas_Click_1(object sender, EventArgs e)
+        private void ConsultasMetBtnComplejasClick(
+            object sender,
+            EventArgs e)
         {
-            FrmConsultasComplejas FormularioConsultasComplejas =
-                new FrmConsultasComplejas(_TablaActual);
-
-            FormularioConsultasComplejas.FormClosed += (Remitente, Argumentos) =>
+            using (
+                FrmConsultasComplejas FormularioConsultasComplejas =
+                    new FrmConsultasComplejas(
+                        _TablaActual,
+                        _CampoId))
             {
-                this.Show();
-                this.BringToFront();
-            };
+                Hide();
 
-            this.Hide();
-            FormularioConsultasComplejas.Show();
+                FormularioConsultasComplejas.ShowDialog();
+
+                if (FormularioConsultasComplejas.SeleccionRealizada)
+                {
+                    IdSeleccionado =
+                        FormularioConsultasComplejas.IdSeleccionado;
+
+                    SeleccionRealizada =
+                        true;
+
+                    DialogResult =
+                        DialogResult.OK;
+
+                    Close();
+
+                    return;
+                }
+
+                Show();
+                BringToFront();
+            }
         }
 
-        private void ConsultasBtnSalir_Click(object sender, EventArgs e)
+        private void ConsultasBtnSalir_Click(
+            object sender,
+            EventArgs e)
         {
-            DialogResult Respuesta = MessageBox.Show(
-                "¿Desea salir del componente de Consultas?",
-                "Consultas",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+            DialogResult Respuesta =
+                MessageBox.Show(
+                    "¿Desea salir del componente de Consultas?",
+                    "Consultas",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
 
             if (Respuesta == DialogResult.Yes)
             {
@@ -161,5 +255,6 @@ namespace CapaVista_Consultas
             }
         }
     }
+
     // Fin del código de "José Pablo Cano Cóbar" - Carné: "0901-23-1727" - Fecha: "15/09/26"
 }
