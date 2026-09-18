@@ -35,6 +35,12 @@
     <Reference Include="CapaControlador_Consultas">
       <HintPath>..\CapaControlador_Consultas\bin\Debug\CapaControlador_Consultas.dll</HintPath>
     </Reference>
+    <Reference Include="CapaVista_Componentes">
+      <HintPath>..\..\Consultas_Componentes\CapaVista_Componentes\bin\Debug\CapaVista_Componentes.dll</HintPath>
+    </Reference>
+    <Reference Include="CapaVista_Mantenimiento">
+      <HintPath>..\..\Consultas_Mantenimiento\CapaVista_Mantenimiento\bin\Debug\CapaVista_Mantenimiento.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -47,42 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Componentes\ClsBotonConsultas.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Componentes\ClsBotonPaginacionConsultas.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Componentes\ClsBotonRadioConsultas.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Componentes\ClsCajaTextoConsultas.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Componentes\ClsControlUsuarioConsultas.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Componentes\ClsEtiquetaConsultas.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Componentes\ClsGrupoConsultas.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Componentes\ClsListaComboBoxConsultas.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Componentes\ClsTablaDatosConsultas.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Componentes\ClsBaseTerminus.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmMantenimientoConsultas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmMantenimientoConsultas.Designer.cs">
-      <DependentUpon>FrmMantenimientoConsultas.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controles\UcAgregarCondicion.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -133,9 +103,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FrmMantenimientoConsultas.resx">
-      <DependentUpon>FrmMantenimientoConsultas.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controles\UcAgregarCondicion.resx">
       <DependentUpon>UcAgregarCondicion.cs</DependentUpon>
     </EmbeddedResource>

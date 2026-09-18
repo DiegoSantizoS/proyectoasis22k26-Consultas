@@ -35,8 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasFlpBotones = new System.Windows.Forms.FlowLayoutPanel();
-            this.ConsultasBtnAND = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
-            this.ConsultasBtnOR = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasBtnEliminar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasDgvConsultasFiltros = new CapaVista_Consultas.Componentes.ClsTablaDatosConsultas();
             this.ConsultasColCampo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,8 +65,6 @@
             // 
             // ConsultasFlpBotones
             // 
-            this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnAND);
-            this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnOR);
             this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnEliminar);
             this.ConsultasFlpBotones.Dock = System.Windows.Forms.DockStyle.Top;
             this.ConsultasFlpBotones.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -77,44 +73,6 @@
             this.ConsultasFlpBotones.Name = "ConsultasFlpBotones";
             this.ConsultasFlpBotones.Size = new System.Drawing.Size(80, 362);
             this.ConsultasFlpBotones.TabIndex = 2;
-            // 
-            // ConsultasBtnAND
-            // 
-            this.ConsultasBtnAND.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ConsultasBtnAND.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ConsultasBtnAND.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnAND.BackgroundImage")));
-            this.ConsultasBtnAND.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ConsultasBtnAND.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ConsultasBtnAND.FlatAppearance.BorderSize = 0;
-            this.ConsultasBtnAND.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnAND.Location = new System.Drawing.Point(0, 0);
-            this.ConsultasBtnAND.Margin = new System.Windows.Forms.Padding(0);
-            this.ConsultasBtnAND.MaximumSize = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnAND.MinimumSize = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnAND.Name = "ConsultasBtnAND";
-            this.ConsultasBtnAND.Size = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnAND.TabIndex = 3;
-            this.ConsultasBtnAND.UseVisualStyleBackColor = false;
-            this.ConsultasBtnAND.Click += new System.EventHandler(this.ConsultasMetBtnANDClick);
-            // 
-            // ConsultasBtnOR
-            // 
-            this.ConsultasBtnOR.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ConsultasBtnOR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ConsultasBtnOR.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnOR.BackgroundImage")));
-            this.ConsultasBtnOR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ConsultasBtnOR.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ConsultasBtnOR.FlatAppearance.BorderSize = 0;
-            this.ConsultasBtnOR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnOR.Location = new System.Drawing.Point(0, 80);
-            this.ConsultasBtnOR.Margin = new System.Windows.Forms.Padding(0);
-            this.ConsultasBtnOR.MaximumSize = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnOR.MinimumSize = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnOR.Name = "ConsultasBtnOR";
-            this.ConsultasBtnOR.Size = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnOR.TabIndex = 4;
-            this.ConsultasBtnOR.UseVisualStyleBackColor = false;
-            this.ConsultasBtnOR.Click += new System.EventHandler(this.ConsultasMetBtnORClick);
             // 
             // ConsultasBtnEliminar
             // 
@@ -125,7 +83,7 @@
             this.ConsultasBtnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnEliminar.FlatAppearance.BorderSize = 0;
             this.ConsultasBtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnEliminar.Location = new System.Drawing.Point(0, 160);
+            this.ConsultasBtnEliminar.Location = new System.Drawing.Point(0, 0);
             this.ConsultasBtnEliminar.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasBtnEliminar.MaximumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnEliminar.MinimumSize = new System.Drawing.Size(80, 80);
@@ -240,8 +198,6 @@
         private System.Windows.Forms.FlowLayoutPanel ConsultasFlpBotones;
         private Componentes.ClsTablaDatosConsultas ConsultasDgvConsultasFiltros;
         private Componentes.ClsBotonConsultas ConsultasBtnEliminar;
-        private Componentes.ClsBotonConsultas ConsultasBtnAND;
-        private Componentes.ClsBotonConsultas ConsultasBtnOR;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColCampo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColOperador;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColValor;
