@@ -5,6 +5,46 @@ namespace CapaVista_Consultas
 {
     public partial class FrmConsultasComplejas : Componentes.ClsBaseTerminus
     {
+        public string TablaActual { get; set; }
+        // Inicio de código de "Pedro José Gómez Villalobos" - carné: "0901-23-4868" - Fecha: "16/09/26"
+
+        private string[] _ArregloTablas;
+
+        public FrmConsultasComplejas(string[] Tablas)
+        {
+            InitializeComponent();
+            ConsultasUcTabla.ConsultasMetAjustarAlturaFilas(30);
+
+            _ArregloTablas = Tablas;
+            TablaActual = Tablas[0]; 
+
+            ConsultasMetLlenarComboTablas();
+        }
+
+        private void ConsultasMetLlenarComboTablas()
+        {
+            ConsultasCboSeleccionTabla.Items.Clear();
+
+            if (_ArregloTablas != null)
+            {
+                foreach (string Tabla in _ArregloTablas)
+                {
+                    ConsultasCboSeleccionTabla.Items.Add(Tabla);
+                }
+
+                if (ConsultasCboSeleccionTabla.Items.Count > 0)
+                {
+                    ConsultasCboSeleccionTabla.SelectedIndex = 0;
+                }
+            }
+        }
+        // Fin de código de "Pedro José Gómez Villalobos" - carné: "0901-23-4868" - Fecha: "16/09/26"
+
+        public FrmConsultasComplejas()
+        {
+            InitializeComponent();
+            ConsultasUcTabla.ConsultasMetAjustarAlturaFilas(30);
+        }
         public string TablaActual { get; set; } 
         public FrmConsultasComplejas(string Tabla)
         {
