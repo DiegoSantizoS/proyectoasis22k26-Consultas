@@ -9,7 +9,6 @@ namespace CapaVista_Consultas.Controles
         Componentes.ClsControlUsuarioConsultas
     {
         public event Action<string, string> ConsultaSeleccionada;
-
         public string Tabla { get; set; }
         public string Query { get; set; }
 

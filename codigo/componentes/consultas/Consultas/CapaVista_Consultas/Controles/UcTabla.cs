@@ -6,7 +6,6 @@ using CapaControlador_Consultas;
 
 namespace CapaVista_Consultas.Controles
 {
-
     public partial class UcTabla :
         Componentes.ClsControlUsuarioConsultas
     {
@@ -187,7 +186,6 @@ namespace CapaVista_Consultas.Controles
                     Ex.Message);
             }
         }
-
         public void ConsultasProcCargarConsultaDesdeQuery(
             string Consulta,
             string Tabla)
@@ -273,7 +271,6 @@ namespace CapaVista_Consultas.Controles
                     Ex.Message);
             }
         }
-
         public void ConsultasProcMostrarResultado(
             DataTable Datos,
             int TotalRegistros)

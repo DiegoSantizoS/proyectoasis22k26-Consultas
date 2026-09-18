@@ -5,7 +5,6 @@ namespace CapaModelo_Consultas.Repositorios
 {
     public class ClsObtenciónCampos
     {
-
         public string Tabla { get; set; }
 
         private ClsConexion _Conexion = new ClsConexion();
@@ -41,7 +40,6 @@ namespace CapaModelo_Consultas.Repositorios
                 _Conexion.ConsultasProcDesconexion(Conn);
             }
         }
-
         public void ConsultasMetPopularComboBox(ComboBox CboDestino)
         {
             ConsultasMetPopularComboBox(this.Tabla, CboDestino);
