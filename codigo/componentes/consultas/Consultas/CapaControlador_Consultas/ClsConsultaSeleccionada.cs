@@ -1,27 +1,53 @@
-﻿using System;
+﻿using CapaModelo_Consultas;
+using System;
 using System.Data;
-using CapaModelo_Consultas;
 
 namespace CapaControlador_Consultas
 {
     public class ClsConsultaSeleccionada
     {
         //Inicio del código de Carlos Andres Arriaza Lara 0901-23-13862 el 16/09/2026
-        private readonly ClsSentenciasTablas _Sentencias = new ClsSentenciasTablas();
+
+        private readonly ClsSentenciasTablas _SentenciasTablas =
+            new ClsSentenciasTablas();
 
         public DataTable ConsultasFuncCargarConsultas()
         {
-            return _Sentencias.ConsltasFuncObtenerConsultas();
+            string NombreTabla =
+                ClsTablaSeleccionada
+                    .ConsultasFuncObtenerTabla();
+
+            if (string.IsNullOrWhiteSpace(NombreTabla))
+            {
+                throw new InvalidOperationException(
+                    "No se ha seleccionado una tabla.");
+            }
+
+            return _SentenciasTablas
+                .ConsultasFuncObtenerConsultas(
+                    NombreTabla);
         }
-        public DataTable ConsultasFuncCargarConsulta(string Consulta, int Pagina, int RegistrosPorPagina)
+
+        public DataTable ConsultasFuncCargarConsulta(
+            string Consulta,
+            int Pagina,
+            int RegistrosPorPagina)
         {
-            return _Sentencias.ConsultasFuncCargarConsulta(Consulta, Pagina, RegistrosPorPagina);
+            return _SentenciasTablas
+                .ConsultasFuncCargarConsulta(
+                    Consulta,
+                    Pagina,
+                    RegistrosPorPagina);
         }
-        public int ConsultasFuncContarResultadosQuery(string Consulta)
+
+        public int ConsultasFuncContarResultadosQuery(
+            string Consulta)
         {
-            return _Sentencias.ConsultasFuncContarResultadosQuery(Consulta);
+            return _SentenciasTablas
+                .ConsultasFuncContarResultadosQuery(
+                    Consulta);
         }
+
         //Fin del código de Carlos Andres Arriaza Lara 0901-23-13862 el 16/09/2026
     }
-        
 }

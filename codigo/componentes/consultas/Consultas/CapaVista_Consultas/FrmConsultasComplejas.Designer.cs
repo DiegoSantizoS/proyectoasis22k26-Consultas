@@ -128,7 +128,6 @@
             this.ConsultasUcConsultasReutilizables.Name = "ConsultasUcConsultasReutilizables";
             this.ConsultasUcConsultasReutilizables.Size = new System.Drawing.Size(384, 453);
             this.ConsultasUcConsultasReutilizables.TabIndex = 0;
-            this.ConsultasUcConsultasReutilizables.TablaActual = null;
             // 
             // ConsultasUcTabla
             // 

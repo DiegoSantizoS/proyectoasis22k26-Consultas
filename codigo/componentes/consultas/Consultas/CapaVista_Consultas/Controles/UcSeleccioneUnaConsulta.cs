@@ -5,63 +5,148 @@ using CapaControlador_Consultas;
 
 namespace CapaVista_Consultas.Controles
 {
-    public partial class UcSeleccioneUnaConsulta : Componentes.ClsControlUsuarioConsultas
+    public partial class UcSeleccioneUnaConsulta :
+        Componentes.ClsControlUsuarioConsultas
     {
         public event Action<string, string> ConsultaSeleccionada;
-        public string TablaActual { get; set; }
+
         public string Tabla { get; set; }
         public string Query { get; set; }
-        private readonly ClsConsultaSeleccionada Consultas = new ClsConsultaSeleccionada();
-        public DataTable DtConsulta { get; set; }
-        public DataTable DtConsultaSeleccionada = new DataTable();
-        public UcSeleccioneUnaConsulta()    
-        {
-            InitializeComponent();
-            ConsultasProcActualizarConsultas();
-        }
 
-        public UcSeleccioneUnaConsulta(string Tabla)
+        private readonly ClsConsultaSeleccionada _Consultas =
+            new ClsConsultaSeleccionada();
+
+        public UcSeleccioneUnaConsulta()
         {
             InitializeComponent();
 
-            TablaActual = Tabla;
             ConsultasProcActualizarConsultas();
         }
+
         private void ConsultasProcActualizarConsultas()
         {
-            ConsultasDgvConsultasReutilizables.Columns.Clear();
-            DataTable DtConsultas = Consultas.ConsultasFuncCargarConsultas();
-            ConsultasDgvConsultasReutilizables.DataSource = DtConsultas;
-            ConsultasDgvConsultasReutilizables.Columns["Query"].Visible = false;
-            ConsultasDgvConsultasReutilizables.Columns["Tabla"].Visible = false;
+            try
+            {
+                ConsultasDgvConsultasReutilizables
+                    .Columns.Clear();
+
+                DataTable DtConsultas =
+                    _Consultas
+                        .ConsultasFuncCargarConsultas();
+
+                ConsultasDgvConsultasReutilizables
+                    .DataSource = DtConsultas;
+
+                if (ConsultasDgvConsultasReutilizables
+                    .Columns["Query"] != null)
+                {
+                    ConsultasDgvConsultasReutilizables
+                        .Columns["Query"]
+                        .Visible = false;
+                }
+
+                if (ConsultasDgvConsultasReutilizables
+                    .Columns["Tabla"] != null)
+                {
+                    ConsultasDgvConsultasReutilizables
+                        .Columns["Tabla"]
+                        .Visible = false;
+                }
+            }
+            catch (InvalidOperationException Ex)
+            {
+                ConsultasDgvConsultasReutilizables
+                    .DataSource = null;
+
+                MessageBox.Show(
+                    Ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            catch (Exception Ex)
+            {
+                ConsultasDgvConsultasReutilizables
+                    .DataSource = null;
+
+                MessageBox.Show(
+                    "Ocurrió un error inesperado al cargar " +
+                    "las consultas.\n\n" +
+                    Ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
-        private void ConsultasBtnIngresar_Click(object sender, EventArgs e)
+
+        public void ConsultasProcRefrescarConsultas()
         {
-            FrmMantenimientoConsultas FormularioMantenimientoConsultas = new FrmMantenimientoConsultas();
+            ConsultasProcActualizarConsultas();
+        }
+
+        private void ConsultasBtnIngresar_Click(
+            object sender,
+            EventArgs e)
+        {
+            FrmMantenimientoConsultas
+                FormularioMantenimientoConsultas =
+                    new FrmMantenimientoConsultas();
+
             FormularioMantenimientoConsultas.Show();
         }
 
-       
-
-        private void ConsultasBtnEliminar_Click(object sender, EventArgs e)
+        private void ConsultasBtnEliminar_Click(
+            object sender,
+            EventArgs e)
         {
 
         }
 
-        private void ConsultasBtnConsultar_Click(object sender, EventArgs e)
+        private void ConsultasBtnConsultar_Click(
+            object sender,
+            EventArgs e)
         {
-            if (ConsultasDgvConsultasReutilizables.CurrentRow != null)
+            if (ConsultasDgvConsultasReutilizables
+                .CurrentRow == null)
             {
-                Query = ConsultasDgvConsultasReutilizables.CurrentRow.Cells["Query"].Value?.ToString();
-                Tabla = ConsultasDgvConsultasReutilizables.CurrentRow.Cells["Tabla"].Value?.ToString();
+                MessageBox.Show(
+                    "Seleccione una fila para ejecutar la consulta.",
+                    "Consulta",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
 
-                // Enviar Query y Tabla al formulario que contiene este UserControl
-                ConsultaSeleccionada?.Invoke(Query, Tabla);
+                return;
             }
-            else
+
+            Query =
+                ConsultasDgvConsultasReutilizables
+                    .CurrentRow
+                    .Cells["Query"]
+                    .Value?
+                    .ToString();
+
+            Tabla =
+                ConsultasDgvConsultasReutilizables
+                    .CurrentRow
+                    .Cells["Tabla"]
+                    .Value?
+                    .ToString();
+
+            if (string.IsNullOrWhiteSpace(Query))
             {
-                MessageBox.Show("Seleccione una fila para ejecutar la consulta");
+                MessageBox.Show(
+                    "La consulta seleccionada no contiene " +
+                    "una sentencia válida.",
+                    "Consulta",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
             }
+
+            ConsultaSeleccionada?.Invoke(
+                Query,
+                Tabla);
         }
     }
 }
