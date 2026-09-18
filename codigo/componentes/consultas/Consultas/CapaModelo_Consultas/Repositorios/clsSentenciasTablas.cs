@@ -213,17 +213,10 @@ namespace CapaModelo_Consultas
             }
         }
 
-        public DataTable ConsultasFuncObtenerConsultas(
-            string NombreTabla)
+        public DataTable ConsultasFuncObtenerConsultas()
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(NombreTabla))
-                {
-                    throw new ArgumentException(
-                        "No se ha seleccionado una tabla.");
-                }
-
                 DataTable DtConsultas =
                     new DataTable();
 
@@ -232,22 +225,15 @@ namespace CapaModelo_Consultas
                     "nombreConsulta AS Consulta, " +
                     "queryConsulta AS Query, " +
                     "tablaConsulta AS Tabla " +
-                    "FROM tblConsulta " +
-                    "WHERE tablaConsulta = ?;";
+                    "FROM tblConsulta ";
 
-                using (OdbcConnection Conexion =
-                    _Conexion.ConsultasFuncConexion())
+                using (OdbcConnection Conexion = _Conexion.ConsultasFuncConexion())
                 {
                     using (OdbcCommand Cmd =
                         new OdbcCommand(
                             Consulta,
                             Conexion))
                     {
-                        Cmd.Parameters.Add(
-                            "?",
-                            OdbcType.VarChar).Value =
-                            NombreTabla;
-
                         using (OdbcDataAdapter DaConsultas =
                             new OdbcDataAdapter(Cmd))
                         {
@@ -261,10 +247,7 @@ namespace CapaModelo_Consultas
             }
             catch (OdbcException Ex)
             {
-                throw new InvalidOperationException(
-                    "Error al cargar las consultas de la tabla '" +
-                    NombreTabla + "'.",
-                    Ex);
+                throw new InvalidOperationException("Error al cargar las consultas de la tabla '" + Ex);
             }
         }
 

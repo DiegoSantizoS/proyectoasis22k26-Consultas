@@ -49,19 +49,14 @@ namespace CapaVista_Consultas.Controles
                 ConsultasDgvSimples.AutoGenerateColumns = true;
             }
         }
-
-        
-        public UcTabla(string Tabla)
-            : this()
+        public UcTabla(string Tabla) : this()
         {
-            if (LicenseManager.UsageMode !=
-                LicenseUsageMode.Designtime)
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
             {
                 ConsultasProcActualizarTabla(
                     Tabla);
             }
         }
-
         public bool ConsultasFuncSeleccionarRegistro()
         {
             if (string.IsNullOrWhiteSpace(_CampoId))
@@ -69,24 +64,18 @@ namespace CapaVista_Consultas.Controles
                 return false;
             }
 
-            string ValorSeleccionado =
-                ConsultasFuncObtenerValorSeleccionado(
-                    _CampoId);
+            string ValorSeleccionado = ConsultasFuncObtenerValorSeleccionado(_CampoId);
 
-            if (string.IsNullOrWhiteSpace(
-                ValorSeleccionado))
+            if (string.IsNullOrWhiteSpace(ValorSeleccionado))
             {
                 return false;
             }
 
-            IdSeleccionado =
-                ValorSeleccionado;
+            IdSeleccionado = ValorSeleccionado;
 
-            TablaSeleccionada =
-                _TablaSeleccionada;
+            TablaSeleccionada = _TablaSeleccionada;
 
-            SeleccionRealizada =
-                true;
+            SeleccionRealizada = true;
 
             return true;
         }
