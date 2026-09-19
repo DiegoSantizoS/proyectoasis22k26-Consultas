@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEjecucion));
-            this.ConsultasTxtID = new CapaVista_Consultas.Componentes.ClsCajaTextoConsultas();
+            this.ConsultasTxtId = new CapaVista_Consultas.Componentes.ClsCajaTextoConsultas();
             this.ConsultasBtnConsultar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
-            this.ConsultasLbID = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
+            this.ConsultasLblId = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
             this.SuspendLayout();
             // 
-            // ConsultasTxtID
+            // ConsultasTxtId
             // 
-            this.ConsultasTxtID.BackColor = System.Drawing.Color.White;
-            this.ConsultasTxtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ConsultasTxtID.Enabled = false;
-            this.ConsultasTxtID.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.ConsultasTxtID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.ConsultasTxtID.Location = new System.Drawing.Point(226, 212);
-            this.ConsultasTxtID.Name = "ConsultasTxtID";
-            this.ConsultasTxtID.Size = new System.Drawing.Size(200, 30);
-            this.ConsultasTxtID.TabIndex = 0;
+            this.ConsultasTxtId.BackColor = System.Drawing.Color.White;
+            this.ConsultasTxtId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ConsultasTxtId.Enabled = false;
+            this.ConsultasTxtId.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ConsultasTxtId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            this.ConsultasTxtId.Location = new System.Drawing.Point(226, 212);
+            this.ConsultasTxtId.Name = "ConsultasTxtId";
+            this.ConsultasTxtId.Size = new System.Drawing.Size(200, 30);
+            this.ConsultasTxtId.TabIndex = 0;
             // 
             // ConsultasBtnConsultar
             // 
@@ -63,30 +63,30 @@
             this.ConsultasBtnConsultar.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnConsultar.TabIndex = 1;
             this.ConsultasBtnConsultar.UseVisualStyleBackColor = false;
-            this.ConsultasBtnConsultar.Click += new System.EventHandler(this.ConsultasBtnConsultar_Click);
+            this.ConsultasBtnConsultar.Click += new System.EventHandler(this.ConsultasMetBtnConsultarClick);
             // 
-            // ConsultasLbID
+            // ConsultasLblId
             // 
-            this.ConsultasLbID.AutoSize = true;
-            this.ConsultasLbID.BackColor = System.Drawing.Color.Transparent;
-            this.ConsultasLbID.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.ConsultasLbID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.ConsultasLbID.Location = new System.Drawing.Point(98, 216);
-            this.ConsultasLbID.Margin = new System.Windows.Forms.Padding(3);
-            this.ConsultasLbID.Name = "ConsultasLbID";
-            this.ConsultasLbID.Size = new System.Drawing.Size(122, 19);
-            this.ConsultasLbID.TabIndex = 2;
-            this.ConsultasLbID.Text = "ID Seleccionado";
-            this.ConsultasLbID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ConsultasLblId.AutoSize = true;
+            this.ConsultasLblId.BackColor = System.Drawing.Color.Transparent;
+            this.ConsultasLblId.Font = new System.Drawing.Font("Tahoma", 9.5F);
+            this.ConsultasLblId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            this.ConsultasLblId.Location = new System.Drawing.Point(98, 216);
+            this.ConsultasLblId.Margin = new System.Windows.Forms.Padding(3);
+            this.ConsultasLblId.Name = "ConsultasLblId";
+            this.ConsultasLblId.Size = new System.Drawing.Size(122, 19);
+            this.ConsultasLblId.TabIndex = 2;
+            this.ConsultasLblId.Text = "ID Seleccionado";
+            this.ConsultasLblId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FrmEjecucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.ConsultasLbID);
+            this.Controls.Add(this.ConsultasLblId);
             this.Controls.Add(this.ConsultasBtnConsultar);
-            this.Controls.Add(this.ConsultasTxtID);
+            this.Controls.Add(this.ConsultasTxtId);
             this.Name = "FrmEjecucion";
             this.Text = "4004 - EjecucionComplejas";
             this.ResumeLayout(false);
@@ -96,8 +96,8 @@
 
         #endregion
 
-        private CapaVista_Consultas.Componentes.ClsCajaTextoConsultas ConsultasTxtID;
+        private CapaVista_Consultas.Componentes.ClsCajaTextoConsultas ConsultasTxtId;
         private CapaVista_Consultas.Componentes.ClsBotonConsultas ConsultasBtnConsultar;
-        private CapaVista_Consultas.Componentes.ClsEtiquetaConsultas ConsultasLbID;
+        private CapaVista_Consultas.Componentes.ClsEtiquetaConsultas ConsultasLblId;
     }
 }

@@ -1,7 +1,6 @@
 ﻿using CapaVista_Consultas;
 using CapaVista_Consultas.Componentes;
 using System;
-using System.Windows.Forms;
 
 namespace Ejecucion_Consultas
 {
@@ -13,21 +12,21 @@ namespace Ejecucion_Consultas
             InitializeComponent();
         }
 
-        private void ConsultasBtnConsultar_Click(
+        private void ConsultasMetBtnConsultarClick(
             object sender,
             EventArgs e)
         {
-            using (FrmConsultasSimples FormularioConsultas =
+            using (FrmConsultasSimples FormularioConsultasSimples =
                 new FrmConsultasSimples(
                     "tblConsulta",
                     "Pk_Consulta"))
             {
-                FormularioConsultas.ShowDialog();
+                FormularioConsultasSimples.ShowDialog();
 
-                if (FormularioConsultas.SeleccionRealizada)
+                if (FormularioConsultasSimples.SeleccionRealizada)
                 {
-                    ConsultasTxtID.Text =
-                        FormularioConsultas.IdSeleccionado;
+                    ConsultasTxtId.Text =
+                        FormularioConsultasSimples.IdSeleccionado;
                 }
             }
         }
