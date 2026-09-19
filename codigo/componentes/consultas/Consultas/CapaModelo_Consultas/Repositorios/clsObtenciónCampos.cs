@@ -1,7 +1,7 @@
 ﻿using System.Data.Odbc;
 using System.Windows.Forms;
 
-namespace CapaModelo_Consultas.Repositorios
+namespace CapaModelo_Consultas
 {
     public class ClsObtenciónCampos
     {
