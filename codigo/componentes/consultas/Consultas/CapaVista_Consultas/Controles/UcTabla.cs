@@ -106,13 +106,9 @@ namespace CapaVista_Consultas.Controles
                 return null;
             }
 
-            object Valor =
-                ConsultasDgvSimples.CurrentRow
-                    .Cells[Campo]
-                    .Value;
+            object Valor = ConsultasDgvSimples.CurrentRow.Cells[Campo].Value;
 
-            if (Valor == null ||
-                Valor == DBNull.Value)
+            if (Valor == null || Valor == DBNull.Value)
             {
                 return null;
             }
@@ -128,8 +124,7 @@ namespace CapaVista_Consultas.Controles
                 return;
             }
 
-            this.RegistrosPorPagina =
-                RegistrosPorPagina;
+            this.RegistrosPorPagina = RegistrosPorPagina;
         }
 
         public void ConsultasProcActualizarTabla(
@@ -137,32 +132,23 @@ namespace CapaVista_Consultas.Controles
         {
             try
             {
-                if (_TablaSeleccionada !=
-                    TablaSeleccionada ||
-                    _EsConsultaPersonalizada)
+                if (_TablaSeleccionada != TablaSeleccionada || _EsConsultaPersonalizada)
                 {
                     _PaginaActual = 1;
                     _InicioRangoPagina = 1;
                 }
 
-                _TablaSeleccionada =
-                    TablaSeleccionada;
+                _TablaSeleccionada = TablaSeleccionada;
 
                 _QuerySeleccionada = "";
 
-                _EsConsultaPersonalizada =
-                    false;
+                _EsConsultaPersonalizada = false;
 
                 ConsultasProcCalcularTotalPaginas();
 
-                DataTable ResultadoTablas =
-                    _Tablas.ConsultasFuncLlenarTabla(
-                        _TablaSeleccionada,
-                        _PaginaActual,
-                        RegistrosPorPagina);
+                DataTable ResultadoTablas = _Tablas.ConsultasFuncLlenarTabla(_TablaSeleccionada, _PaginaActual, RegistrosPorPagina);
 
-                ConsultasDgvSimples.DataSource =
-                    ResultadoTablas;
+                ConsultasDgvSimples.DataSource = ResultadoTablas;
 
                 ConsultasProcCrearBotonesPaginas();
 
@@ -181,9 +167,7 @@ namespace CapaVista_Consultas.Controles
             catch (Exception Excepcion)
             {
                 ConsultasMetMostrarError(
-                    "Ocurrió un error inesperado al cargar " +
-                    "los registros.\n\n" +
-                    Excepcion.Message);
+                    "Ocurrió un error inesperado al cargar " + "los registros.\n\n" + Excepcion.Message);
             }
         }
         public void ConsultasProcCargarConsultaDesdeQuery(
@@ -192,9 +176,7 @@ namespace CapaVista_Consultas.Controles
         {
             try
             {
-                bool CambioConsulta =
-                    !_EsConsultaPersonalizada ||
-                    _QuerySeleccionada != Consulta;
+                bool CambioConsulta = !_EsConsultaPersonalizada || _QuerySeleccionada != Consulta;
 
                 if (CambioConsulta)
                 {
@@ -202,34 +184,19 @@ namespace CapaVista_Consultas.Controles
                     _InicioRangoPagina = 1;
                 }
 
-                _TablaSeleccionada =
-                    Tabla;
+                _TablaSeleccionada = Tabla;
 
-                _QuerySeleccionada =
-                    Consulta;
+                _QuerySeleccionada = Consulta;
 
-                _EsConsultaPersonalizada =
-                    true;
+                _EsConsultaPersonalizada = true;
 
-                _TotalRegistros =
-                    _ConsultaSeleccionada
-                        .ConsultasFuncContarResultadosQuery(
-                            _QuerySeleccionada);
+                _TotalRegistros = _ConsultaSeleccionada.ConsultasFuncContarResultadosQuery(_QuerySeleccionada);
 
-                _TotalPaginas =
-                    (int)Math.Ceiling(
-                        (double)_TotalRegistros /
-                        RegistrosPorPagina);
+                _TotalPaginas = (int)Math.Ceiling((double)_TotalRegistros / RegistrosPorPagina);
 
-                DataTable DtTablas =
-                    _ConsultaSeleccionada
-                        .ConsultasFuncCargarConsulta(
-                            _QuerySeleccionada,
-                            _PaginaActual,
-                            RegistrosPorPagina);
+                DataTable DtTablas = _ConsultaSeleccionada.ConsultasFuncCargarConsulta(_QuerySeleccionada, _PaginaActual, RegistrosPorPagina);
 
-                ConsultasDgvSimples.DataSource =
-                    DtTablas;
+                ConsultasDgvSimples.DataSource = DtTablas;
 
                 ConsultasProcCrearBotonesPaginas();
 
@@ -271,6 +238,18 @@ namespace CapaVista_Consultas.Controles
                     Excepcion.Message);
             }
         }
+        private void ConsultasProcActualizarBotonesPaginacion()
+        {
+            // Si pagina actual es mayor a 1, habilitar botón anterior
+            ConsultasBtnAnterior.Enabled = _PaginaActual > 1;
+
+
+            // Si pagina actual es menor al total de paginas, habilitar botón siguiente
+            ConsultasBtnSiguiente.Enabled = _PaginaActual < _TotalPaginas;
+
+
+        }
+
         public void ConsultasProcMostrarResultado(
             DataTable Datos,
             int TotalRegistros)
@@ -322,6 +301,7 @@ namespace CapaVista_Consultas.Controles
 
             if (_TotalPaginas <= 0)
             {
+                ConsultasProcActualizarBotonesPaginacion();
                 return;
             }
 
@@ -332,8 +312,7 @@ namespace CapaVista_Consultas.Controles
 
             if (FinRango > _TotalPaginas)
             {
-                FinRango =
-                    _TotalPaginas;
+                FinRango = _TotalPaginas;
             }
 
             for (
@@ -343,8 +322,7 @@ namespace CapaVista_Consultas.Controles
             {
                 Componentes.ClsBotonPaginacionConsultas
                     BotonPagina =
-                        new Componentes
-                            .ClsBotonPaginacionConsultas();
+                        new Componentes.ClsBotonPaginacionConsultas();
 
                 BotonPagina.Name =
                     $"ConsultasBtnPagina{NumeroPagina}";
@@ -364,7 +342,11 @@ namespace CapaVista_Consultas.Controles
                 ConsultasFlpPaginas.Controls.Add(
                     BotonPagina);
             }
+
+            // Actualizar Anterior / Siguiente
+            ConsultasProcActualizarBotonesPaginacion();
         }
+
 
         private void ConsultasMetBtnPaginaClick(
             object Sender,
@@ -528,9 +510,7 @@ namespace CapaVista_Consultas.Controles
             ConsultasProcRecargarPaginaActual();
         }
 
-        public void ConsultasProcCambiarRegistrosPorPagina(
-            int Cantidad,
-            string Tabla)
+        public void ConsultasProcCambiarRegistrosPorPagina(int Cantidad, string Tabla)
         {
             if (Cantidad <= 0)
             {
@@ -547,8 +527,7 @@ namespace CapaVista_Consultas.Controles
             _PaginaActual = 1;
             _InicioRangoPagina = 1;
 
-            ConsultasProcActualizarTabla(
-                Tabla);
+            ConsultasProcActualizarTabla(Tabla);
         }
 
         private void ConsultasMetMostrarError(
@@ -609,9 +588,7 @@ namespace CapaVista_Consultas.Controles
                 return;
             }
 
-            ConsultasEvtFilaSeleccionada?.Invoke(
-                this,
-                EventArgs.Empty);
+            ConsultasEvtFilaSeleccionada?.Invoke(this, EventArgs.Empty);
         }
     }
 }
