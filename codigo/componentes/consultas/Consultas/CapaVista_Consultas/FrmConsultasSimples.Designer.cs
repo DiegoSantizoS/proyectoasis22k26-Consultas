@@ -33,12 +33,12 @@
             this.ConsultasUcTablaSimple = new CapaVista_Consultas.Controles.UcTabla();
             this.ConsultasGbxAgregarFiltro = new CapaVista_Consultas.Componentes.ClsGrupoConsultas();
             this.ConsultasUcAgregarFiltro = new CapaVista_Consultas.Controles.UcAgregarFiltro();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.ConsultasFlpBotones = new System.Windows.Forms.FlowLayoutPanel();
             this.ConsultasBtnComplejas = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasBtnSalir = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.ConsultasGbxAgregarFiltro.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.ConsultasFlpBotones.SuspendLayout();
             this.SuspendLayout();
             // 
             // ConsultasTlpPrincipal
@@ -48,7 +48,7 @@
             this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasUcTablaSimple, 0, 1);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasGbxAgregarFiltro, 0, 0);
-            this.ConsultasTlpPrincipal.Controls.Add(this.flowLayoutPanel1, 1, 0);
+            this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasFlpBotones, 1, 0);
             this.ConsultasTlpPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasTlpPrincipal.Location = new System.Drawing.Point(0, 0);
             this.ConsultasTlpPrincipal.Margin = new System.Windows.Forms.Padding(0);
@@ -99,16 +99,16 @@
             this.ConsultasUcAgregarFiltro.Size = new System.Drawing.Size(876, 100);
             this.ConsultasUcAgregarFiltro.TabIndex = 0;
             // 
-            // flowLayoutPanel1
+            // ConsultasFlpBotones
             // 
-            this.flowLayoutPanel1.Controls.Add(this.ConsultasBtnComplejas);
-            this.flowLayoutPanel1.Controls.Add(this.ConsultasBtnSalir);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(896, 5);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(81, 160);
-            this.flowLayoutPanel1.TabIndex = 23;
+            this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnComplejas);
+            this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnSalir);
+            this.ConsultasFlpBotones.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConsultasFlpBotones.Location = new System.Drawing.Point(896, 5);
+            this.ConsultasFlpBotones.Margin = new System.Windows.Forms.Padding(5);
+            this.ConsultasFlpBotones.Name = "ConsultasFlpBotones";
+            this.ConsultasFlpBotones.Size = new System.Drawing.Size(81, 160);
+            this.ConsultasFlpBotones.TabIndex = 23;
             // 
             // ConsultasBtnComplejas
             // 
@@ -146,7 +146,7 @@
             this.ConsultasBtnSalir.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnSalir.TabIndex = 22;
             this.ConsultasBtnSalir.UseVisualStyleBackColor = false;
-            this.ConsultasBtnSalir.Click += new System.EventHandler(this.ConsultasBtnSalir_Click);
+            this.ConsultasBtnSalir.Click += new System.EventHandler(this.ConsultasMetBtnSalirClick);
             // 
             // FrmConsultasSimples
             // 
@@ -162,7 +162,7 @@
             this.Text = "4001 - ConsultasSimples";
             this.ConsultasTlpPrincipal.ResumeLayout(false);
             this.ConsultasGbxAgregarFiltro.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.ConsultasFlpBotones.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -174,6 +174,6 @@
         private Componentes.ClsBotonConsultas ConsultasBtnComplejas;
         private Controles.UcTabla ConsultasUcTablaSimple;
         private Componentes.ClsBotonConsultas ConsultasBtnSalir;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel ConsultasFlpBotones;
     }
 }

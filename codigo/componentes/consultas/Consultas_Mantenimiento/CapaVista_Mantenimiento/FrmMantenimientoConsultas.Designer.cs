@@ -34,8 +34,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
+            this.ConsultasTlpFiltros = new System.Windows.Forms.TableLayoutPanel();
+            this.ConsultasFlpBotones = new System.Windows.Forms.FlowLayoutPanel();
+            this.ConsultasBtnEliminar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasDgvConsultasFiltros = new CapaVista_Consultas.Componentes.ClsTablaDatosConsultas();
+            this.ConsultasColCampo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ConsultasColOperador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ConsultasColValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ConsultasColOrdenamiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConsultasGbxCondicionesLogicas = new CapaVista_Consultas.Componentes.ClsGrupoConsultas();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ConsultasTlpCondicionesLogicas = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasBtnIngresar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasLblOrdenamiento = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
             this.ConsultasTlpOrdenamiento = new System.Windows.Forms.TableLayoutPanel();
@@ -52,23 +60,15 @@
             this.ConsultasLblNombre = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
             this.ConsultasBtnGuardar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasTxtNombre = new CapaVista_Consultas.Componentes.ClsCajaTextoConsultas();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.ConsultasFlpBotones = new System.Windows.Forms.FlowLayoutPanel();
-            this.ConsultasBtnEliminar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
-            this.ConsultasDgvConsultasFiltros = new CapaVista_Consultas.Componentes.ClsTablaDatosConsultas();
-            this.ConsultasColCampo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConsultasColOperador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConsultasColValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConsultasColOrdenamiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConsultasTlpPrincipal.SuspendLayout();
+            this.ConsultasTlpFiltros.SuspendLayout();
+            this.ConsultasFlpBotones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ConsultasDgvConsultasFiltros)).BeginInit();
             this.ConsultasGbxCondicionesLogicas.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.ConsultasTlpCondicionesLogicas.SuspendLayout();
             this.ConsultasTlpOrdenamiento.SuspendLayout();
             this.ConsultasGbxGuardarConsultas.SuspendLayout();
             this.ConsultasTlpGuardarConsulta.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.ConsultasFlpBotones.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ConsultasDgvConsultasFiltros)).BeginInit();
             this.SuspendLayout();
             // 
             // ConsultasTlpPrincipal
@@ -76,7 +76,7 @@
             this.ConsultasTlpPrincipal.ColumnCount = 2;
             this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.ConsultasTlpPrincipal.Controls.Add(this.tableLayoutPanel2, 1, 0);
+            this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasTlpFiltros, 1, 0);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasGbxCondicionesLogicas, 0, 0);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasGbxGuardarConsultas, 0, 1);
             this.ConsultasTlpPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -90,10 +90,143 @@
             this.ConsultasTlpPrincipal.Size = new System.Drawing.Size(981, 482);
             this.ConsultasTlpPrincipal.TabIndex = 16;
             // 
+            // ConsultasTlpFiltros
+            // 
+            this.ConsultasTlpFiltros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasTlpFiltros.ColumnCount = 2;
+            this.ConsultasTlpFiltros.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ConsultasTlpFiltros.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.ConsultasTlpFiltros.Controls.Add(this.ConsultasFlpBotones, 1, 0);
+            this.ConsultasTlpFiltros.Controls.Add(this.ConsultasDgvConsultasFiltros, 0, 0);
+            this.ConsultasTlpFiltros.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConsultasTlpFiltros.Location = new System.Drawing.Point(395, 4);
+            this.ConsultasTlpFiltros.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ConsultasTlpFiltros.Name = "ConsultasTlpFiltros";
+            this.ConsultasTlpFiltros.RowCount = 1;
+            this.ConsultasTlpPrincipal.SetRowSpan(this.ConsultasTlpFiltros, 2);
+            this.ConsultasTlpFiltros.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ConsultasTlpFiltros.Size = new System.Drawing.Size(583, 472);
+            this.ConsultasTlpFiltros.TabIndex = 19;
+            // 
+            // ConsultasFlpBotones
+            // 
+            this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnEliminar);
+            this.ConsultasFlpBotones.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ConsultasFlpBotones.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.ConsultasFlpBotones.Location = new System.Drawing.Point(503, 0);
+            this.ConsultasFlpBotones.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasFlpBotones.Name = "ConsultasFlpBotones";
+            this.ConsultasFlpBotones.Size = new System.Drawing.Size(80, 362);
+            this.ConsultasFlpBotones.TabIndex = 2;
+            // 
+            // ConsultasBtnEliminar
+            // 
+            this.ConsultasBtnEliminar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ConsultasBtnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasBtnEliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnEliminar.BackgroundImage")));
+            this.ConsultasBtnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ConsultasBtnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConsultasBtnEliminar.FlatAppearance.BorderSize = 0;
+            this.ConsultasBtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConsultasBtnEliminar.Location = new System.Drawing.Point(0, 0);
+            this.ConsultasBtnEliminar.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasBtnEliminar.MaximumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnEliminar.MinimumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnEliminar.Name = "ConsultasBtnEliminar";
+            this.ConsultasBtnEliminar.Size = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnEliminar.TabIndex = 2;
+            this.ConsultasBtnEliminar.UseVisualStyleBackColor = false;
+            // 
+            // ConsultasDgvConsultasFiltros
+            // 
+            this.ConsultasDgvConsultasFiltros.AllowUserToAddRows = false;
+            this.ConsultasDgvConsultasFiltros.AllowUserToDeleteRows = false;
+            this.ConsultasDgvConsultasFiltros.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.ConsultasDgvConsultasFiltros.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.ConsultasDgvConsultasFiltros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ConsultasDgvConsultasFiltros.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasDgvConsultasFiltros.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ConsultasDgvConsultasFiltros.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.ConsultasDgvConsultasFiltros.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9.5F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.ConsultasDgvConsultasFiltros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.ConsultasDgvConsultasFiltros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ConsultasDgvConsultasFiltros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ConsultasColCampo,
+            this.ConsultasColOperador,
+            this.ConsultasColValor,
+            this.ConsultasColOrdenamiento});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ConsultasDgvConsultasFiltros.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ConsultasDgvConsultasFiltros.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConsultasDgvConsultasFiltros.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.ConsultasDgvConsultasFiltros.EnableHeadersVisualStyles = false;
+            this.ConsultasDgvConsultasFiltros.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ConsultasDgvConsultasFiltros.GridColor = System.Drawing.Color.LightGray;
+            this.ConsultasDgvConsultasFiltros.Location = new System.Drawing.Point(3, 4);
+            this.ConsultasDgvConsultasFiltros.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ConsultasDgvConsultasFiltros.MultiSelect = false;
+            this.ConsultasDgvConsultasFiltros.Name = "ConsultasDgvConsultasFiltros";
+            this.ConsultasDgvConsultasFiltros.ReadOnly = true;
+            this.ConsultasDgvConsultasFiltros.RowHeadersVisible = false;
+            this.ConsultasDgvConsultasFiltros.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.ConsultasDgvConsultasFiltros.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.ConsultasDgvConsultasFiltros.RowTemplate.Height = 28;
+            this.ConsultasDgvConsultasFiltros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ConsultasDgvConsultasFiltros.Size = new System.Drawing.Size(497, 464);
+            this.ConsultasDgvConsultasFiltros.TabIndex = 3;
+            // 
+            // ConsultasColCampo
+            // 
+            this.ConsultasColCampo.HeaderText = "Campo";
+            this.ConsultasColCampo.MinimumWidth = 6;
+            this.ConsultasColCampo.Name = "ConsultasColCampo";
+            this.ConsultasColCampo.ReadOnly = true;
+            // 
+            // ConsultasColOperador
+            // 
+            this.ConsultasColOperador.HeaderText = "Operador";
+            this.ConsultasColOperador.MinimumWidth = 6;
+            this.ConsultasColOperador.Name = "ConsultasColOperador";
+            this.ConsultasColOperador.ReadOnly = true;
+            // 
+            // ConsultasColValor
+            // 
+            this.ConsultasColValor.HeaderText = "Valor";
+            this.ConsultasColValor.MinimumWidth = 6;
+            this.ConsultasColValor.Name = "ConsultasColValor";
+            this.ConsultasColValor.ReadOnly = true;
+            // 
+            // ConsultasColOrdenamiento
+            // 
+            this.ConsultasColOrdenamiento.HeaderText = "Ordenamiento";
+            this.ConsultasColOrdenamiento.MinimumWidth = 6;
+            this.ConsultasColOrdenamiento.Name = "ConsultasColOrdenamiento";
+            this.ConsultasColOrdenamiento.ReadOnly = true;
+            // 
             // ConsultasGbxCondicionesLogicas
             // 
             this.ConsultasGbxCondicionesLogicas.BackColor = System.Drawing.Color.Transparent;
-            this.ConsultasGbxCondicionesLogicas.Controls.Add(this.tableLayoutPanel1);
+            this.ConsultasGbxCondicionesLogicas.Controls.Add(this.ConsultasTlpCondicionesLogicas);
             this.ConsultasGbxCondicionesLogicas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasGbxCondicionesLogicas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ConsultasGbxCondicionesLogicas.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -105,32 +238,32 @@
             this.ConsultasGbxCondicionesLogicas.TabStop = false;
             this.ConsultasGbxCondicionesLogicas.Text = "Agregar Condición";
             // 
-            // tableLayoutPanel1
+            // ConsultasTlpCondicionesLogicas
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.ConsultasBtnIngresar, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.ConsultasLblOrdenamiento, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.ConsultasTlpOrdenamiento, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.ConsultasLblCampo, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.ConsultasCboOperadorCampo, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.ConsultasLblOperador, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.ConsultasCboOperador, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.ConsultasLblValor, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.ConsultasTxtValor, 1, 2);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 24);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(380, 267);
-            this.tableLayoutPanel1.TabIndex = 2;
+            this.ConsultasTlpCondicionesLogicas.ColumnCount = 2;
+            this.ConsultasTlpCondicionesLogicas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
+            this.ConsultasTlpCondicionesLogicas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasBtnIngresar, 1, 4);
+            this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasLblOrdenamiento, 0, 3);
+            this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasTlpOrdenamiento, 1, 3);
+            this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasLblCampo, 0, 0);
+            this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasCboOperadorCampo, 1, 0);
+            this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasLblOperador, 0, 1);
+            this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasCboOperador, 1, 1);
+            this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasLblValor, 0, 2);
+            this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasTxtValor, 1, 2);
+            this.ConsultasTlpCondicionesLogicas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConsultasTlpCondicionesLogicas.Location = new System.Drawing.Point(3, 24);
+            this.ConsultasTlpCondicionesLogicas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ConsultasTlpCondicionesLogicas.Name = "ConsultasTlpCondicionesLogicas";
+            this.ConsultasTlpCondicionesLogicas.RowCount = 5;
+            this.ConsultasTlpCondicionesLogicas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ConsultasTlpCondicionesLogicas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ConsultasTlpCondicionesLogicas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ConsultasTlpCondicionesLogicas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ConsultasTlpCondicionesLogicas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
+            this.ConsultasTlpCondicionesLogicas.Size = new System.Drawing.Size(380, 267);
+            this.ConsultasTlpCondicionesLogicas.TabIndex = 2;
             // 
             // ConsultasBtnIngresar
             // 
@@ -338,7 +471,6 @@
             this.ConsultasTlpGuardarConsulta.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ConsultasTlpGuardarConsulta.Size = new System.Drawing.Size(380, 147);
             this.ConsultasTlpGuardarConsulta.TabIndex = 2;
-            this.ConsultasTlpGuardarConsulta.Paint += new System.Windows.Forms.PaintEventHandler(this.ConsultasTlpGuardarConsulta_Paint);
             // 
             // ConsultasLblNombre
             // 
@@ -385,139 +517,6 @@
             this.ConsultasTxtNombre.Size = new System.Drawing.Size(237, 30);
             this.ConsultasTxtNombre.TabIndex = 0;
             // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel2.Controls.Add(this.ConsultasFlpBotones, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.ConsultasDgvConsultasFiltros, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(395, 4);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.ConsultasTlpPrincipal.SetRowSpan(this.tableLayoutPanel2, 2);
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(583, 472);
-            this.tableLayoutPanel2.TabIndex = 19;
-            // 
-            // ConsultasFlpBotones
-            // 
-            this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnEliminar);
-            this.ConsultasFlpBotones.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ConsultasFlpBotones.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.ConsultasFlpBotones.Location = new System.Drawing.Point(503, 0);
-            this.ConsultasFlpBotones.Margin = new System.Windows.Forms.Padding(0);
-            this.ConsultasFlpBotones.Name = "ConsultasFlpBotones";
-            this.ConsultasFlpBotones.Size = new System.Drawing.Size(80, 362);
-            this.ConsultasFlpBotones.TabIndex = 2;
-            // 
-            // ConsultasBtnEliminar
-            // 
-            this.ConsultasBtnEliminar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ConsultasBtnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ConsultasBtnEliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnEliminar.BackgroundImage")));
-            this.ConsultasBtnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ConsultasBtnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ConsultasBtnEliminar.FlatAppearance.BorderSize = 0;
-            this.ConsultasBtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnEliminar.Location = new System.Drawing.Point(0, 0);
-            this.ConsultasBtnEliminar.Margin = new System.Windows.Forms.Padding(0);
-            this.ConsultasBtnEliminar.MaximumSize = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnEliminar.MinimumSize = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnEliminar.Name = "ConsultasBtnEliminar";
-            this.ConsultasBtnEliminar.Size = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnEliminar.TabIndex = 2;
-            this.ConsultasBtnEliminar.UseVisualStyleBackColor = false;
-            // 
-            // ConsultasDgvConsultasFiltros
-            // 
-            this.ConsultasDgvConsultasFiltros.AllowUserToAddRows = false;
-            this.ConsultasDgvConsultasFiltros.AllowUserToDeleteRows = false;
-            this.ConsultasDgvConsultasFiltros.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.ConsultasDgvConsultasFiltros.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.ConsultasDgvConsultasFiltros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ConsultasDgvConsultasFiltros.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ConsultasDgvConsultasFiltros.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ConsultasDgvConsultasFiltros.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.ConsultasDgvConsultasFiltros.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9.5F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.ConsultasDgvConsultasFiltros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.ConsultasDgvConsultasFiltros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ConsultasDgvConsultasFiltros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ConsultasColCampo,
-            this.ConsultasColOperador,
-            this.ConsultasColValor,
-            this.ConsultasColOrdenamiento});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ConsultasDgvConsultasFiltros.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ConsultasDgvConsultasFiltros.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ConsultasDgvConsultasFiltros.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.ConsultasDgvConsultasFiltros.EnableHeadersVisualStyles = false;
-            this.ConsultasDgvConsultasFiltros.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ConsultasDgvConsultasFiltros.GridColor = System.Drawing.Color.LightGray;
-            this.ConsultasDgvConsultasFiltros.Location = new System.Drawing.Point(3, 4);
-            this.ConsultasDgvConsultasFiltros.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ConsultasDgvConsultasFiltros.MultiSelect = false;
-            this.ConsultasDgvConsultasFiltros.Name = "ConsultasDgvConsultasFiltros";
-            this.ConsultasDgvConsultasFiltros.ReadOnly = true;
-            this.ConsultasDgvConsultasFiltros.RowHeadersVisible = false;
-            this.ConsultasDgvConsultasFiltros.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.ConsultasDgvConsultasFiltros.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.ConsultasDgvConsultasFiltros.RowTemplate.Height = 28;
-            this.ConsultasDgvConsultasFiltros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ConsultasDgvConsultasFiltros.Size = new System.Drawing.Size(497, 464);
-            this.ConsultasDgvConsultasFiltros.TabIndex = 3;
-            // 
-            // ConsultasColCampo
-            // 
-            this.ConsultasColCampo.HeaderText = "Campo";
-            this.ConsultasColCampo.MinimumWidth = 6;
-            this.ConsultasColCampo.Name = "ConsultasColCampo";
-            this.ConsultasColCampo.ReadOnly = true;
-            // 
-            // ConsultasColOperador
-            // 
-            this.ConsultasColOperador.HeaderText = "Operador";
-            this.ConsultasColOperador.MinimumWidth = 6;
-            this.ConsultasColOperador.Name = "ConsultasColOperador";
-            this.ConsultasColOperador.ReadOnly = true;
-            // 
-            // ConsultasColValor
-            // 
-            this.ConsultasColValor.HeaderText = "Valor";
-            this.ConsultasColValor.MinimumWidth = 6;
-            this.ConsultasColValor.Name = "ConsultasColValor";
-            this.ConsultasColValor.ReadOnly = true;
-            // 
-            // ConsultasColOrdenamiento
-            // 
-            this.ConsultasColOrdenamiento.HeaderText = "Ordenamiento";
-            this.ConsultasColOrdenamiento.MinimumWidth = 6;
-            this.ConsultasColOrdenamiento.Name = "ConsultasColOrdenamiento";
-            this.ConsultasColOrdenamiento.ReadOnly = true;
-            // 
             // FrmMantenimientoConsultas
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -530,19 +529,18 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "4003 – MantenimientoConsultas";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.FrmMantenimientoConsultas_Load);
             this.ConsultasTlpPrincipal.ResumeLayout(false);
+            this.ConsultasTlpFiltros.ResumeLayout(false);
+            this.ConsultasFlpBotones.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ConsultasDgvConsultasFiltros)).EndInit();
             this.ConsultasGbxCondicionesLogicas.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.ConsultasTlpCondicionesLogicas.ResumeLayout(false);
+            this.ConsultasTlpCondicionesLogicas.PerformLayout();
             this.ConsultasTlpOrdenamiento.ResumeLayout(false);
             this.ConsultasTlpOrdenamiento.PerformLayout();
             this.ConsultasGbxGuardarConsultas.ResumeLayout(false);
             this.ConsultasTlpGuardarConsulta.ResumeLayout(false);
             this.ConsultasTlpGuardarConsulta.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.ConsultasFlpBotones.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ConsultasDgvConsultasFiltros)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -555,7 +553,7 @@
         private Componentes.ClsBotonConsultas ConsultasBtnGuardar;
         private Componentes.ClsEtiquetaConsultas ConsultasLblNombre;
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpGuardarConsulta;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel ConsultasTlpCondicionesLogicas;
         private Componentes.ClsBotonConsultas ConsultasBtnIngresar;
         private Componentes.ClsEtiquetaConsultas ConsultasLblOrdenamiento;
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpOrdenamiento;
@@ -567,7 +565,7 @@
         private Componentes.ClsListaComboBoxConsultas ConsultasCboOperador;
         private Componentes.ClsEtiquetaConsultas ConsultasLblValor;
         private Componentes.ClsCajaTextoConsultas ConsultasTxtValor;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel ConsultasTlpFiltros;
         private System.Windows.Forms.FlowLayoutPanel ConsultasFlpBotones;
         private Componentes.ClsBotonConsultas ConsultasBtnEliminar;
         private Componentes.ClsTablaDatosConsultas ConsultasDgvConsultasFiltros;

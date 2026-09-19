@@ -91,7 +91,7 @@
             this.ConsultasBtnConsultar.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnConsultar.TabIndex = 0;
             this.ConsultasBtnConsultar.UseVisualStyleBackColor = false;
-            this.ConsultasBtnConsultar.Click += new System.EventHandler(this.ConsultasBtnConsultar_Click);
+            this.ConsultasBtnConsultar.Click += new System.EventHandler(this.ConsultasMetBtnConsultarClick);
             // 
             // ConsultasBtnNuevaConsulta
             // 
@@ -110,7 +110,7 @@
             this.ConsultasBtnNuevaConsulta.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnNuevaConsulta.TabIndex = 1;
             this.ConsultasBtnNuevaConsulta.UseVisualStyleBackColor = false;
-            this.ConsultasBtnNuevaConsulta.Click += new System.EventHandler(this.ConsultasBtnIngresar_Click);
+            this.ConsultasBtnNuevaConsulta.Click += new System.EventHandler(this.ConsultasMetBtnIngresarClick);
             // 
             // ConsultasBtnEliminar
             // 
@@ -129,7 +129,7 @@
             this.ConsultasBtnEliminar.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnEliminar.TabIndex = 2;
             this.ConsultasBtnEliminar.UseVisualStyleBackColor = false;
-            this.ConsultasBtnEliminar.Click += new System.EventHandler(this.ConsultasBtnEliminar_Click);
+            this.ConsultasBtnEliminar.Click += new System.EventHandler(this.ConsultasMetBtnEliminarClick);
             // 
             // ConsultasDgvConsultasReutilizables
             // 

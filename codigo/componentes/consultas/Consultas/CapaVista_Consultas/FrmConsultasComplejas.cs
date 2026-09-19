@@ -43,16 +43,16 @@ namespace CapaVista_Consultas
 
             ConsultasUcConsultasReutilizables
                 .ConsultaSeleccionada +=
-                    EjecutarConsultaSeleccionada;
+                    ConsultasMetEjecutarConsultaSeleccionada;
 
             ConsultasUcTabla
                 .ConsultasEvtFilaSeleccionada +=
-                    ConsultasUcTabla_FilaSeleccionada;
+                    ConsultasMetUcTablaFilaSeleccionada;
         }
 
-        private void ConsultasUcTabla_FilaSeleccionada(
-            object sender,
-            EventArgs e)
+        private void ConsultasMetUcTablaFilaSeleccionada(
+            object Sender,
+            EventArgs Evento)
         {
             IdSeleccionado =
                 ConsultasUcTabla.IdSeleccionado;
@@ -73,7 +73,7 @@ namespace CapaVista_Consultas
 
         // Inicio de código de "José Pablo Cano Cóbar" - carné: "0901-23-1727" - Fecha: "16/09/26"
 
-        private void EjecutarConsultaSeleccionada(
+        private void ConsultasMetEjecutarConsultaSeleccionada(
             string Query,
             string Tabla)
         {
@@ -86,8 +86,8 @@ namespace CapaVista_Consultas
         }
 
         private void ConsultasMetBtnSeleccionarClick(
-            object sender,
-            EventArgs e)
+            object Sender,
+            EventArgs Evento)
         {
             bool ResultadoSeleccion =
                 ConsultasUcTabla
@@ -117,8 +117,8 @@ namespace CapaVista_Consultas
         }
 
         private void ConsultasMetBtnSalirClick(
-            object sender,
-            EventArgs e)
+            object Sender,
+            EventArgs Evento)
         {
             DialogResult Respuesta =
                 MessageBox.Show(
@@ -134,8 +134,8 @@ namespace CapaVista_Consultas
         }
 
         private void ConsultasMetBtnInicioClick(
-            object sender,
-            EventArgs e)
+            object Sender,
+            EventArgs Evento)
         {
             Close();
         }

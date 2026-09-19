@@ -29,12 +29,12 @@ namespace CapaVista_Consultas.Controles
                 ConsultasDgvConsultasReutilizables
                     .Columns.Clear();
 
-                DataTable DtConsultas =
+                DataTable Consultas =
                     _Consultas
                         .ConsultasFuncCargarConsultas();
 
                 ConsultasDgvConsultasReutilizables
-                    .DataSource = DtConsultas;
+                    .DataSource = Consultas;
 
                 if (ConsultasDgvConsultasReutilizables
                     .Columns["Query"] != null)
@@ -52,18 +52,18 @@ namespace CapaVista_Consultas.Controles
                         .Visible = false;
                 }
             }
-            catch (InvalidOperationException Ex)
+            catch (InvalidOperationException Excepcion)
             {
                 ConsultasDgvConsultasReutilizables
                     .DataSource = null;
 
                 MessageBox.Show(
-                    Ex.Message,
+                    Excepcion.Message,
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
-            catch (Exception Ex)
+            catch (Exception Excepcion)
             {
                 ConsultasDgvConsultasReutilizables
                     .DataSource = null;
@@ -71,7 +71,7 @@ namespace CapaVista_Consultas.Controles
                 MessageBox.Show(
                     "Ocurrió un error inesperado al cargar " +
                     "las consultas.\n\n" +
-                    Ex.Message,
+                    Excepcion.Message,
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -83,9 +83,9 @@ namespace CapaVista_Consultas.Controles
             ConsultasProcActualizarConsultas();
         }
 
-        private void ConsultasBtnIngresar_Click(
-            object sender,
-            EventArgs e)
+        private void ConsultasMetBtnIngresarClick(
+            object Sender,
+            EventArgs Evento)
         {
             FrmMantenimientoConsultas
                 FormularioMantenimientoConsultas =
@@ -94,16 +94,16 @@ namespace CapaVista_Consultas.Controles
             FormularioMantenimientoConsultas.Show();
         }
 
-        private void ConsultasBtnEliminar_Click(
-            object sender,
-            EventArgs e)
+        private void ConsultasMetBtnEliminarClick(
+            object Sender,
+            EventArgs Evento)
         {
 
         }
 
-        private void ConsultasBtnConsultar_Click(
-            object sender,
-            EventArgs e)
+        private void ConsultasMetBtnConsultarClick(
+            object Sender,
+            EventArgs Evento)
         {
             if (ConsultasDgvConsultasReutilizables
                 .CurrentRow == null)

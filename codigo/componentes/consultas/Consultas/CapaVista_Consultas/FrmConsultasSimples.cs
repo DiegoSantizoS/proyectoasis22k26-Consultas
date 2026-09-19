@@ -95,20 +95,20 @@ namespace CapaVista_Consultas
         {
             ConsultasUcAgregarFiltro
                 .ConsultasEvtBuscarSolicitado +=
-                    ConsultasUcAgregarFiltro_BuscarSolicitado;
+                    ConsultasMetAgregarFiltroBuscarSolicitado;
 
             ConsultasUcAgregarFiltro
                 .ConsultasEvtRefrescarSolicitado +=
-                    ConsultasUcAgregarFiltro_RefrescarSolicitado;
+                    ConsultasMetAgregarFiltroRefrescarSolicitado;
 
             ConsultasUcTablaSimple
                 .ConsultasEvtFilaSeleccionada +=
-                    ConsultasUcTablaSimple_FilaSeleccionada;
+                    ConsultasMetTablaSimpleFilaSeleccionada;
         }
 
-        private void ConsultasUcTablaSimple_FilaSeleccionada(
-            object sender,
-            EventArgs e)
+        private void ConsultasMetTablaSimpleFilaSeleccionada(
+            object Sender,
+            EventArgs Evento)
         {
             IdSeleccionado =
                 ConsultasUcTablaSimple.IdSeleccionado;
@@ -127,19 +127,19 @@ namespace CapaVista_Consultas
             Close();
         }
 
-        private void ConsultasUcAgregarFiltro_BuscarSolicitado(
-            object sender,
-            ClsArgumentosFiltro e)
+        private void ConsultasMetAgregarFiltroBuscarSolicitado(
+            object Sender,
+            ClsArgumentosFiltro ArgumentosFiltro)
         {
-            _CampoFiltro = e.Campo;
-            _OperadorFiltro = e.Operador;
-            _ValorFiltro = e.Valor;
+            _CampoFiltro = ArgumentosFiltro.Campo;
+            _OperadorFiltro = ArgumentosFiltro.Operador;
+            _ValorFiltro = ArgumentosFiltro.Valor;
 
             ConsultasMetAplicarFiltro();
         }
 
-        private void ConsultasUcAgregarFiltro_RefrescarSolicitado(
-            object sender,
+        private void ConsultasMetAgregarFiltroRefrescarSolicitado(
+            object Sender,
             EventArgs e)
         {
             _CampoFiltro = null;
@@ -157,7 +157,7 @@ namespace CapaVista_Consultas
             {
                 Cursor = Cursors.WaitCursor;
 
-                DataTable DtResultado =
+                DataTable Resultado =
                     _Controlador.ConsultasFuncBuscar(
                         _TablaActual,
                         _CampoFiltro,
@@ -175,7 +175,7 @@ namespace CapaVista_Consultas
 
                 ConsultasUcTablaSimple
                     .ConsultasProcMostrarResultado(
-                        DtResultado,
+                        Resultado,
                         TotalRegistros);
 
                 if (TotalRegistros == 0)
@@ -187,12 +187,12 @@ namespace CapaVista_Consultas
                         MessageBoxIcon.Information);
                 }
             }
-            catch (Exception Ex)
+            catch (Exception Excepcion)
             {
                 MessageBox.Show(
                     "No se pudo ejecutar la consulta.\n\n" +
                     "Detalle: " +
-                    Ex.Message,
+                    Excepcion.Message,
                     "Consultas",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -204,7 +204,7 @@ namespace CapaVista_Consultas
         }
 
         private void ConsultasMetBtnComplejasClick(
-            object sender,
+            object Sender,
             EventArgs e)
         {
             using (
@@ -238,8 +238,8 @@ namespace CapaVista_Consultas
             }
         }
 
-        private void ConsultasBtnSalir_Click(
-            object sender,
+        private void ConsultasMetBtnSalirClick(
+            object Sender,
             EventArgs e)
         {
             DialogResult Respuesta =

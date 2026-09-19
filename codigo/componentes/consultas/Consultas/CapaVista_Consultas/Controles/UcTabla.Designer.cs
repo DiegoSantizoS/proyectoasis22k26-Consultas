@@ -108,7 +108,7 @@
             this.ConsultasBtnSiguiente.Size = new System.Drawing.Size(50, 50);
             this.ConsultasBtnSiguiente.TabIndex = 4;
             this.ConsultasBtnSiguiente.UseVisualStyleBackColor = false;
-            this.ConsultasBtnSiguiente.Click += new System.EventHandler(this.ConsultasBtnSiguiente_Click_1);
+            this.ConsultasBtnSiguiente.Click += new System.EventHandler(this.ConsultasMetBtnSiguienteClick);
             // 
             // ConsultasBtnAnterior
             // 
@@ -127,7 +127,7 @@
             this.ConsultasBtnAnterior.Size = new System.Drawing.Size(50, 50);
             this.ConsultasBtnAnterior.TabIndex = 3;
             this.ConsultasBtnAnterior.UseVisualStyleBackColor = false;
-            this.ConsultasBtnAnterior.Click += new System.EventHandler(this.ConsultasBtnAnterior1_Click);
+            this.ConsultasBtnAnterior.Click += new System.EventHandler(this.ConsultasMetBtnAnteriorClick);
             // 
             // ConsultasDgvSimples
             // 
@@ -182,7 +182,7 @@
             this.ConsultasDgvSimples.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ConsultasDgvSimples.Size = new System.Drawing.Size(865, 420);
             this.ConsultasDgvSimples.TabIndex = 4;
-            this.ConsultasDgvSimples.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConsultasDgvSimples_CellDoubleClick);
+            this.ConsultasDgvSimples.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConsultasMetDgvSimplesCellDoubleClick);
             // 
             // ConsultasLblPaginacion
             // 

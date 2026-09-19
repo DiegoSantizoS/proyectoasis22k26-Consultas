@@ -21,7 +21,7 @@ namespace CapaModelo_Consultas
                     Pagina,
                     RegistrosPorPagina);
 
-                DataTable DtTabla = new DataTable();
+                DataTable ResultadoTabla = new DataTable();
 
                 int Inicio =
                     (Pagina - 1) * RegistrosPorPagina;
@@ -34,37 +34,37 @@ namespace CapaModelo_Consultas
                 using (OdbcConnection Conexion =
                     _Conexion.ConsultasFuncConexion())
                 {
-                    using (OdbcCommand Cmd =
+                    using (OdbcCommand Comando =
                         new OdbcCommand(
                             Consulta,
                             Conexion))
                     {
-                        Cmd.Parameters.Add(
+                        Comando.Parameters.Add(
                             "?",
                             OdbcType.Int).Value =
                             RegistrosPorPagina;
 
-                        Cmd.Parameters.Add(
+                        Comando.Parameters.Add(
                             "?",
                             OdbcType.Int).Value =
                             Inicio;
 
-                        using (OdbcDataAdapter DaTabla =
-                            new OdbcDataAdapter(Cmd))
+                        using (OdbcDataAdapter AdaptadorTabla =
+                            new OdbcDataAdapter(Comando))
                         {
-                            DaTabla.Fill(DtTabla);
+                            AdaptadorTabla.Fill(ResultadoTabla);
                         }
                     }
                 }
 
-                return DtTabla;
+                return ResultadoTabla;
             }
-            catch (OdbcException Ex)
+            catch (OdbcException Excepcion)
             {
                 throw new InvalidOperationException(
                     "Error al cargar la tabla '" +
                     NombreTabla + "'.",
-                    Ex);
+                    Excepcion);
             }
         }
 
@@ -95,27 +95,27 @@ namespace CapaModelo_Consultas
                     Inicio +
                     ";";
 
-                DataTable DtConsultaSeleccionada =
+                DataTable ResultadoConsultaSeleccionada =
                     new DataTable();
 
                 using (OdbcConnection Conexion =
                     _Conexion.ConsultasFuncConexion())
                 {
-                    using (OdbcCommand Cmd =
+                    using (OdbcCommand Comando =
                         new OdbcCommand(
                             ConsultaPaginada,
                             Conexion))
                     {
                         using (OdbcDataAdapter DaConsultas =
-                            new OdbcDataAdapter(Cmd))
+                            new OdbcDataAdapter(Comando))
                         {
                             DaConsultas.Fill(
-                                DtConsultaSeleccionada);
+                                ResultadoConsultaSeleccionada);
                         }
                     }
                 }
 
-                return DtConsultaSeleccionada;
+                return ResultadoConsultaSeleccionada;
             }
             catch (OdbcException Ex)
             {
@@ -141,7 +141,7 @@ namespace CapaModelo_Consultas
         {
             try
             {
-                DataTable DtTablas =
+                DataTable ResultadoTablas =
                     new DataTable();
 
                 string Consulta =
@@ -150,20 +150,20 @@ namespace CapaModelo_Consultas
                 using (OdbcConnection Conexion =
                     _Conexion.ConsultasFuncConexion())
                 {
-                    using (OdbcCommand Cmd =
+                    using (OdbcCommand Comando =
                         new OdbcCommand(
                             Consulta,
                             Conexion))
                     {
-                        using (OdbcDataAdapter DaTablas =
-                            new OdbcDataAdapter(Cmd))
+                        using (OdbcDataAdapter AdaptadorTablas =
+                            new OdbcDataAdapter(Comando))
                         {
-                            DaTablas.Fill(DtTablas);
+                            AdaptadorTablas.Fill(ResultadoTablas);
                         }
                     }
                 }
 
-                return DtTablas;
+                return ResultadoTablas;
             }
             catch (OdbcException Ex)
             {
@@ -194,13 +194,13 @@ namespace CapaModelo_Consultas
                         Conexion.Open();
                     }
 
-                    using (OdbcCommand Cmd =
+                    using (OdbcCommand Comando =
                         new OdbcCommand(
                             Consulta,
                             Conexion))
                     {
                         return Convert.ToInt32(
-                            Cmd.ExecuteScalar());
+                            Comando.ExecuteScalar());
                     }
                 }
             }
@@ -217,7 +217,7 @@ namespace CapaModelo_Consultas
         {
             try
             {
-                DataTable DtConsultas =
+                DataTable ResultadoConsultas =
                     new DataTable();
 
                 string Consulta =
@@ -229,21 +229,21 @@ namespace CapaModelo_Consultas
 
                 using (OdbcConnection Conexion = _Conexion.ConsultasFuncConexion())
                 {
-                    using (OdbcCommand Cmd =
+                    using (OdbcCommand Comando =
                         new OdbcCommand(
                             Consulta,
                             Conexion))
                     {
-                        using (OdbcDataAdapter DaConsultas =
-                            new OdbcDataAdapter(Cmd))
+                        using (OdbcDataAdapter AdaptadorConsultas =
+                            new OdbcDataAdapter(Comando))
                         {
-                            DaConsultas.Fill(
-                                DtConsultas);
+                            AdaptadorConsultas.Fill(
+                                ResultadoConsultas);
                         }
                     }
                 }
 
-                return DtConsultas;
+                return ResultadoConsultas;
             }
             catch (OdbcException Ex)
             {
@@ -275,13 +275,13 @@ namespace CapaModelo_Consultas
                         Conexion.Open();
                     }
 
-                    using (OdbcCommand Cmd =
+                    using (OdbcCommand Comando =
                         new OdbcCommand(
                             QueryConteo,
                             Conexion))
                     {
                         return Convert.ToInt32(
-                            Cmd.ExecuteScalar());
+                            Comando.ExecuteScalar());
                     }
                 }
             }

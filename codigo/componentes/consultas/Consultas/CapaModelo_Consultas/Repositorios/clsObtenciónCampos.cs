@@ -8,9 +8,9 @@ namespace CapaModelo_Consultas.Repositorios
         public string Tabla { get; set; }
 
         private ClsConexion _Conexion = new ClsConexion();
-        private void ConsultasMetPopularComboBox(string Tabla, ComboBox CboDestino)
+        private void ConsultasMetPopularComboBox(string Tabla, ComboBox ComboDestino)
         {
-            CboDestino.Items.Clear();
+            ComboDestino.Items.Clear();
 
             string Query = @"SELECT COLUMN_NAME
                              FROM INFORMATION_SCHEMA.COLUMNS
@@ -18,31 +18,31 @@ namespace CapaModelo_Consultas.Repositorios
                              AND TABLE_NAME = ?
                              ORDER BY ORDINAL_POSITION ";
 
-            OdbcConnection Conn = _Conexion.ConsultasFuncConexion();
+            OdbcConnection Conexion = _Conexion.ConsultasFuncConexion();
 
             try
             {
-                using (OdbcCommand Cmd = new OdbcCommand(Query, Conn))
+                using (OdbcCommand Comando = new OdbcCommand(Query, Conexion))
                 {
-                    Cmd.Parameters.AddWithValue("@tabla", Tabla);
+                    Comando.Parameters.AddWithValue("@tabla", Tabla);
 
-                    using (OdbcDataReader Reader = Cmd.ExecuteReader())
+                    using (OdbcDataReader Reader = Comando.ExecuteReader())
                     {
                         while (Reader.Read())
                         {
-                            CboDestino.Items.Add(Reader["COLUMN_NAME"].ToString());
+                            ComboDestino.Items.Add(Reader["COLUMN_NAME"].ToString());
                         }
                     }
                 }
             }
             finally
             {
-                _Conexion.ConsultasProcDesconexion(Conn);
+                _Conexion.ConsultasProcDesconexion(Conexion);
             }
         }
-        public void ConsultasMetPopularComboBox(ComboBox CboDestino)
+        public void ConsultasMetPopularComboBox(ComboBox ComboDestino)
         {
-            ConsultasMetPopularComboBox(this.Tabla, CboDestino);
+            ConsultasMetPopularComboBox(this.Tabla, ComboDestino);
         }
 
 

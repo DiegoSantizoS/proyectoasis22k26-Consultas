@@ -44,11 +44,11 @@ namespace CapaModelo_Consultas
 
             using (OdbcConnection Conexion = _Conexion.ConsultasFuncConexion())
             {
-                using (OdbcCommand Cmd = new OdbcCommand(Consulta, Conexion))
+                using (OdbcCommand Comando = new OdbcCommand(Consulta, Conexion))
                 {
-                    Cmd.Parameters.AddWithValue("?", NombreTabla);
+                    Comando.Parameters.AddWithValue("?", NombreTabla);
 
-                    using (OdbcDataReader Lector = Cmd.ExecuteReader())
+                    using (OdbcDataReader Lector = Comando.ExecuteReader())
                     {
                         while (Lector.Read())
                         {
@@ -83,7 +83,7 @@ namespace CapaModelo_Consultas
                 ConsultasMetValidarOperador(Operador);
             }
 
-            DataTable DtResultado = new DataTable();
+            DataTable Resultado = new DataTable();
 
             int Inicio = (Pagina - 1) * RegistrosPorPagina;
 
@@ -98,26 +98,26 @@ namespace CapaModelo_Consultas
 
             using (OdbcConnection Conexion = _Conexion.ConsultasFuncConexion())
             {
-                using (OdbcCommand Cmd = new OdbcCommand(Consulta, Conexion))
+                using (OdbcCommand Comando = new OdbcCommand(Consulta, Conexion))
                 {
                     // ODBC usa parámetros posicionales: el orden en que se agregan
                     // debe ser el mismo orden en que aparecen los "?" en la sentencia.
                     if (HayFiltro)
                     {
-                        Cmd.Parameters.AddWithValue("?", Valor ?? string.Empty);
+                        Comando.Parameters.AddWithValue("?", Valor ?? string.Empty);
                     }
 
-                    Cmd.Parameters.AddWithValue("?", RegistrosPorPagina);
-                    Cmd.Parameters.AddWithValue("?", Inicio);
+                    Comando.Parameters.AddWithValue("?", RegistrosPorPagina);
+                    Comando.Parameters.AddWithValue("?", Inicio);
 
-                    using (OdbcDataAdapter DaResultado = new OdbcDataAdapter(Cmd))
+                    using (OdbcDataAdapter AdaptadorResultado = new OdbcDataAdapter(Comando))
                     {
-                        DaResultado.Fill(DtResultado);
+                        AdaptadorResultado.Fill(Resultado);
                     }
                 }
             }
 
-            return DtResultado;
+            return Resultado;
         }
 
         /// <summary>
@@ -151,14 +151,14 @@ namespace CapaModelo_Consultas
 
             using (OdbcConnection Conexion = _Conexion.ConsultasFuncConexion())
             {
-                using (OdbcCommand Cmd = new OdbcCommand(Consulta, Conexion))
+                using (OdbcCommand Comando = new OdbcCommand(Consulta, Conexion))
                 {
                     if (HayFiltro)
                     {
-                        Cmd.Parameters.AddWithValue("?", Valor ?? string.Empty);
+                        Comando.Parameters.AddWithValue("?", Valor ?? string.Empty);
                     }
 
-                    object Total = Cmd.ExecuteScalar();
+                    object Total = Comando.ExecuteScalar();
 
                     return Total == null || Total == DBNull.Value
                         ? 0
@@ -225,6 +225,54 @@ namespace CapaModelo_Consultas
             {
                 throw new ArgumentException(
                     "El operador '" + Operador + "' no está permitido.");
+            }
+        }
+
+        public string ConsultasFuncTraducirOperador(string OperadorVisible)
+        {
+            if (string.IsNullOrWhiteSpace(OperadorVisible))
+            {
+                return string.Empty;
+            }
+
+            switch (OperadorVisible)
+            {
+                case "Contiene":
+                case "Comienza con":
+                case "Termina con":
+                    return "LIKE";
+
+                default:
+                    return OperadorVisible;
+            }
+        }
+
+        public string ConsultasFuncPrepararValor(
+           string OperadorVisible,
+           string Valor)
+        {
+            string ValorLimpio = (Valor ?? string.Empty).Trim();
+
+            // Se escapan los comodines que el usuario haya escrito, para que
+            // un "%" tecleado se busque como texto y no como comodín.
+            string ValorEscapado = ValorLimpio
+                .Replace("\\", "\\\\")
+                .Replace("%", "\\%")
+                .Replace("_", "\\_");
+
+            switch (OperadorVisible)
+            {
+                case "Contiene":
+                    return "%" + ValorEscapado + "%";
+
+                case "Comienza con":
+                    return ValorEscapado + "%";
+
+                case "Termina con":
+                    return "%" + ValorEscapado;
+
+                default:
+                    return ValorLimpio;
             }
         }
     }

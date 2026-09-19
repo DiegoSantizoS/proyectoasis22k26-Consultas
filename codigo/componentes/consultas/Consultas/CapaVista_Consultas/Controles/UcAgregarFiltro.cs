@@ -22,10 +22,10 @@ namespace CapaVista_Consultas.Controles
         {
             InitializeComponent();
 
-            ConsultasBtnBuscar.Click += ConsultasBtnBuscar_Click;
-            ConsultasBtnRefrescar.Click += ConsultasBtnRefrescar_Click;
+            ConsultasBtnBuscar.Click += ConsultasMetBtnBuscarClick;
+            ConsultasBtnRefrescar.Click += ConsultasMetBtnRefrescarClick;
 
-            ConsultasTxtValor.KeyDown += ConsultasTxtValor_KeyDown;
+            ConsultasTxtValor.KeyDown += ConsultasMetTxtValorKeyDown;
 
             if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
             {
@@ -67,11 +67,11 @@ namespace CapaVista_Consultas.Controles
                     ConsultasCboCampo.Items.Add(Campo);
                 }
             }
-            catch (Exception Ex)
+            catch (Exception Excepcion)
             {
                 MessageBox.Show(
                     "No se pudieron cargar los campos de la tabla '" +
-                    _TablaActual + "'.\n\nDetalle: " + Ex.Message,
+                    _TablaActual + "'.\n\nDetalle: " + Excepcion.Message,
                     "Consultas",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
@@ -91,7 +91,7 @@ namespace CapaVista_Consultas.Controles
             }
         }
 
-        private void ConsultasBtnBuscar_Click(object sender, EventArgs e)
+        private void ConsultasMetBtnBuscarClick(object Sender, EventArgs e)
         {
             string Campo = ConsultasCboCampo.SelectedItem == null
                 ? string.Empty
@@ -127,7 +127,7 @@ namespace CapaVista_Consultas.Controles
             }
         }
 
-        private void ConsultasBtnRefrescar_Click(object sender, EventArgs e)
+        private void ConsultasMetBtnRefrescarClick(object Sender, EventArgs e)
         {
             ConsultasProcLimpiar();
 
@@ -137,18 +137,13 @@ namespace CapaVista_Consultas.Controles
             }
         }
 
-        private void ConsultasTxtValor_KeyDown(object sender, KeyEventArgs e)
+        private void ConsultasMetTxtValorKeyDown(object Sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true;
-                ConsultasBtnBuscar_Click(sender, EventArgs.Empty);
+                ConsultasMetBtnBuscarClick(Sender, EventArgs.Empty);
             }
-        }
-
-        private void ConsultasTlpPrincipal_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 
