@@ -173,6 +173,7 @@
             this.ConsultasBtnRefrescar.Size = new System.Drawing.Size(80, 80);
             this.ConsultasBtnRefrescar.TabIndex = 19;
             this.ConsultasBtnRefrescar.UseVisualStyleBackColor = false;
+            this.ConsultasBtnRefrescar.Click += new System.EventHandler(this.ConsultasMetBtnRefrescarClick);
             // 
             // ConsultasBtnSalir
             // 

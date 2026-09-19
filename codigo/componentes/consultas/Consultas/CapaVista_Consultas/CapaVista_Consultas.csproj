@@ -111,6 +111,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controles\UcTabla.resx">
       <DependentUpon>UcTabla.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -140,6 +140,11 @@ namespace CapaVista_Consultas
             Close();
         }
 
+        private void ConsultasMetBtnRefrescarClick(object Sender, EventArgs Evento)
+        {
+            ConsultasUcTabla.ConsultasProcActualizarTabla(TablaActual);
+        }
+
         // Fin de código de "José Pablo Cano Cóbar" - carné: "0901-23-1727" - Fecha: "16/09/26"
     }
 }
