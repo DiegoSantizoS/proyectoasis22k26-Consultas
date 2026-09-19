@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Repositorios\ClsObtenciónCampos.cs" />
     <Compile Include="Repositorios\ClsSentenciasFiltroSimple.cs" />
     <Compile Include="Repositorios\ClsSentenciasTablas.cs" />
     <Compile Include="Repositorios\ClsConexion.cs" />
