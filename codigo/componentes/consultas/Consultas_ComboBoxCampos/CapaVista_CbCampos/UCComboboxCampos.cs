@@ -15,7 +15,10 @@ namespace CapaVista_CbCampos
     {
         ClsObtenerDatos _Controlador = new ClsObtenerDatos();
         private string _campoSeleccionado;
-       
+        private DataTable _dtTabla;
+
+
+
         public UCComboboxCampos()
         {
             InitializeComponent();
@@ -51,8 +54,17 @@ namespace CapaVista_CbCampos
                 ConsultasCboCampo.SelectedItem.ToString();
         }
 
-      
-        
+        public Type ObtenerTipoCampo()
+        {
+            string campo = ObtenerCampoSeleccionado();
+
+            if (campo == null || _dtTabla == null)
+                return null;
+
+            return _dtTabla.Columns[campo].DataType;
+        }
+
+
         public string ObtenerCampoSeleccionado()
         {
             return _campoSeleccionado;
