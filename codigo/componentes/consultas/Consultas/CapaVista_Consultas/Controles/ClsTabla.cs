@@ -6,8 +6,7 @@ using CapaControlador_Consultas;
 
 namespace CapaVista_Consultas.Controles
 {
-    public partial class UcTabla :
-        Componentes.ClsControlUsuarioConsultas
+    public partial class ClsTabla : Componentes.ClsControlUsuarioConsultas
     {
 
         private string _CampoId;
@@ -38,7 +37,7 @@ namespace CapaVista_Consultas.Controles
 
         public event EventHandler
              ConsultasEvtFilaSeleccionada;
-        public UcTabla()
+        public ClsTabla()
         {
             InitializeComponent();
 
@@ -48,7 +47,7 @@ namespace CapaVista_Consultas.Controles
                 ConsultasDgvSimples.AutoGenerateColumns = true;
             }
         }
-        public UcTabla(string Tabla) : this()
+        public ClsTabla(string Tabla) : this()
         {
             if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
             {

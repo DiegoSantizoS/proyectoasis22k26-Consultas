@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultasSimples));
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
-            this.ConsultasUcTablaSimple = new CapaVista_Consultas.Controles.UcTabla();
+            this.ConsultasUcTablaSimple = new CapaVista_Consultas.Controles.ClsTabla();
             this.ConsultasGbxAgregarFiltro = new CapaVista_Consultas.Componentes.ClsGrupoConsultas();
-            this.ConsultasUcAgregarFiltro = new CapaVista_Consultas.Controles.UcAgregarFiltro();
+            this.ConsultasUcAgregarFiltro = new CapaVista_Consultas.Controles.ClsAgregarFiltro();
             this.ConsultasFlpBotones = new System.Windows.Forms.FlowLayoutPanel();
             this.ConsultasBtnComplejas = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasBtnSalir = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
@@ -170,9 +170,9 @@
         #endregion
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPrincipal;
         private Componentes.ClsGrupoConsultas ConsultasGbxAgregarFiltro;
-        private Controles.UcAgregarFiltro ConsultasUcAgregarFiltro;
+        private Controles.ClsAgregarFiltro ConsultasUcAgregarFiltro;
         private Componentes.ClsBotonConsultas ConsultasBtnComplejas;
-        private Controles.UcTabla ConsultasUcTablaSimple;
+        private Controles.ClsTabla ConsultasUcTablaSimple;
         private Componentes.ClsBotonConsultas ConsultasBtnSalir;
         private System.Windows.Forms.FlowLayoutPanel ConsultasFlpBotones;
     }

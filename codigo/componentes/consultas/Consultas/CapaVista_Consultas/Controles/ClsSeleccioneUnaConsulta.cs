@@ -5,8 +5,7 @@ using CapaControlador_Consultas;
 
 namespace CapaVista_Consultas.Controles
 {
-    public partial class UcSeleccioneUnaConsulta :
-        Componentes.ClsControlUsuarioConsultas
+    public partial class ClsSeleccioneUnaConsulta : Componentes.ClsControlUsuarioConsultas
     {
         public event Action<string, string> ConsultaSeleccionada;
         public string Tabla { get; set; }
@@ -15,7 +14,7 @@ namespace CapaVista_Consultas.Controles
         private readonly ClsConsultaSeleccionada _Consultas =
             new ClsConsultaSeleccionada();
 
-        public UcSeleccioneUnaConsulta()
+        public ClsSeleccioneUnaConsulta()
         {
             InitializeComponent();
 
