@@ -75,9 +75,6 @@ namespace CapaVista_Consultas
 
             ClsTablaSeleccionada.ConsultasMetGuardarTablas(Tablas);
 
-            // ---> ESTA ES LA LÍNEA CRÍTICA QUE FALTA <---
-            ClsTablaSeleccionada.ConsultasMetGuardarTabla(_TablaActual);
-
             ConsultasUcTablaSimple.ConsultasProcActualizarTabla(_TablaActual);
             ConsultasUcAgregarFiltro.ConsultasProcActualizarTabla(_TablaActual);
         }

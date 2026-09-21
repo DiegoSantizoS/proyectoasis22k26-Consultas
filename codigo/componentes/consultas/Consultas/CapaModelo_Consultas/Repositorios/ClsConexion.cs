@@ -7,7 +7,7 @@ namespace CapaModelo_Consultas
     {
         public OdbcConnection ConsultasFuncConexion()
         {
-            OdbcConnection Conn = new OdbcConnection("Dsn=EmbutidosS.A");
+            OdbcConnection Conn = new OdbcConnection("Dsn=umg_didactica");
             try
             {
                 Conn.Open();
