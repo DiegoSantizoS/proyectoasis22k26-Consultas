@@ -73,7 +73,7 @@ namespace CapaVista_Consultas
             _tipos = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             ConsultasCboOperadorCampo.Items.Clear();
 
-            foreach (KeyValuePair<string, string> col in _ctrl.ConsultasFuncObtenerColumnas(_tabla))
+            foreach (KeyValuePair<string, string> col in _ctrl.ConsultasMetObtenerColumnas(_tabla))
             {
                 _tipos[col.Key] = col.Value;
                 ConsultasCboOperadorCampo.Items.Add(col.Key);
@@ -301,7 +301,7 @@ namespace CapaVista_Consultas
             ConsultasRdoDescendente.Checked = false;
         }
 
-        private static string ConsutlasFuncTexto(DataGridViewCell celda)
+        private static string ConsultasFuncTexto(DataGridViewCell celda)
         {
             return celda.Value == null ? "" : celda.Value.ToString();
         }
