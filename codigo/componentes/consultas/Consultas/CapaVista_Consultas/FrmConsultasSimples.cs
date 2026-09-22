@@ -25,7 +25,7 @@ namespace CapaVista_Consultas
         public string IdSeleccionado { get; private set; }
 
         public bool SeleccionRealizada { get; private set; }
-
+        
         public FrmConsultasSimples()
         {
             InitializeComponent();
@@ -58,13 +58,10 @@ namespace CapaVista_Consultas
                     Tabla);
         }
 
-        public FrmConsultasSimples(
-            string[] Tablas,
-            string CampoId)
-            : this()
+        // Inicio de código de "Pedro José Gómez Villalobos" - carné: "0901-23-4868" - Fecha: "20/09/26"
+        public FrmConsultasSimples(string[] Tablas, string CampoId) : this()
         {
-            if (Tablas == null ||
-                Tablas.Length == 0)
+            if (Tablas == null || Tablas.Length == 0)
             {
                 throw new ArgumentException(
                     "Debe proporcionar al menos una tabla.",
@@ -74,23 +71,14 @@ namespace CapaVista_Consultas
             _TablaActual = Tablas[0];
             _CampoId = CampoId;
 
-            ConsultasUcTablaSimple
-                .ConsultasMetConfigurarSeleccion(
-                    CampoId);
+            ConsultasUcTablaSimple.ConsultasMetConfigurarSeleccion(CampoId);
 
-            ClsTablaSeleccionada
-                .ConsultasMetGuardarTabla(
-                    _TablaActual);
+            ClsTablaSeleccionada.ConsultasMetGuardarTablas(Tablas);
 
-            ConsultasUcTablaSimple
-                .ConsultasProcActualizarTabla(
-                    _TablaActual);
-
-            ConsultasUcAgregarFiltro
-                .ConsultasProcActualizarTabla(
-                    _TablaActual);
+            ConsultasUcTablaSimple.ConsultasProcActualizarTabla(_TablaActual);
+            ConsultasUcAgregarFiltro.ConsultasProcActualizarTabla(_TablaActual);
         }
-
+        // Fin de código de "Pedro José Gómez Villalobos" - carné: "0901-23-4868" - Fecha: "20/09/26"
         private void ConsultasMetSuscribirEventos()
         {
             ConsultasUcAgregarFiltro
