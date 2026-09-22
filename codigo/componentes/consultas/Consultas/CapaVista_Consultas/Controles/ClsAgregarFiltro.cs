@@ -26,11 +26,12 @@ namespace CapaVista_Consultas.Controles
             ConsultasBtnRefrescar.Click += ConsultasMetBtnRefrescarClick;
 
             ConsultasTxtValor.KeyDown += ConsultasMetTxtValorKeyDown;
+            ConsultasCboCampo.SelectedIndexChanged += ConsultasMetCboCampoSelectedIndexChanged;
 
-            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+           /* if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
             {
                 ConsultasMetCargarOperadores();
-            }
+            }*/
         }
         public void ConsultasProcActualizarTabla(string Tabla)
         {
@@ -45,7 +46,10 @@ namespace CapaVista_Consultas.Controles
 
             ConsultasMetCargarCampos();
         }
-
+        private void ConsultasMetCboCampoSelectedIndexChanged( object Sender,   EventArgs e)
+        {
+            ConsultasMetCargarOperadoresPorTipo();
+        }
         public void ConsultasProcLimpiar()
         {
             ConsultasCboCampo.SelectedIndex = -1;
@@ -124,6 +128,73 @@ namespace CapaVista_Consultas.Controles
                 ConsultasEvtBuscarSolicitado(
                     this,
                     new ClsArgumentosFiltro(Campo, Operador, Valor));
+            }
+        }
+        private void ConsultasMetCargarOperadoresPorTipo()
+        {
+            // Guardar el operador seleccionado actualmente
+            string OperadorSeleccionado =
+                ConsultasCboOperador.SelectedItem == null
+                ? string.Empty
+                : ConsultasCboOperador.SelectedItem.ToString();
+
+            ConsultasCboOperador.Items.Clear();
+
+            if (ConsultasCboCampo.SelectedItem == null)
+                return;
+
+            if (string.IsNullOrWhiteSpace(_TablaActual))
+                return;
+
+            string Campo = ConsultasCboCampo.SelectedItem.ToString();
+
+            Type TipoCampo = _Controlador.ConsultasFuncObtenerTipoCampo(
+                _TablaActual,
+                Campo);
+
+            if (TipoCampo == null)
+                return;
+
+            // Campos numéricos y fechas
+            if (TipoCampo == typeof(decimal) ||
+                TipoCampo == typeof(int) ||
+                TipoCampo == typeof(long) ||
+                TipoCampo == typeof(double) ||
+                TipoCampo == typeof(float) ||
+                TipoCampo == typeof(DateTime))
+            {
+                ConsultasCboOperador.Items.Add("=");
+                ConsultasCboOperador.Items.Add("<>");
+                ConsultasCboOperador.Items.Add(">");
+                ConsultasCboOperador.Items.Add("<");
+                ConsultasCboOperador.Items.Add(">=");
+                ConsultasCboOperador.Items.Add("<=");
+            }
+            // Booleanos
+            else if (TipoCampo == typeof(bool))
+            {
+                ConsultasCboOperador.Items.Add("=");
+                ConsultasCboOperador.Items.Add("<>");
+            }
+            // Texto
+            else
+            {
+                ConsultasCboOperador.Items.Add("=");
+                ConsultasCboOperador.Items.Add("<>");
+                ConsultasCboOperador.Items.Add("Contiene");
+                ConsultasCboOperador.Items.Add("Comienza con");
+                ConsultasCboOperador.Items.Add("Termina con");
+            }
+
+            // Volver a seleccionar el operador anterior si todavía existe
+            if (!string.IsNullOrWhiteSpace(OperadorSeleccionado) &&
+                ConsultasCboOperador.Items.Contains(OperadorSeleccionado))
+            {
+                ConsultasCboOperador.SelectedItem = OperadorSeleccionado;
+            }
+            else
+            {
+                ConsultasCboOperador.SelectedIndex = -1;
             }
         }
 

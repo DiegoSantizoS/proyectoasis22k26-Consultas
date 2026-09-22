@@ -1,6 +1,7 @@
+using CapaModelo_Consultas;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using CapaModelo_Consultas;
 
 namespace CapaControlador_Consultas
 {
@@ -135,6 +136,14 @@ namespace CapaControlador_Consultas
                 default:
                     return OperadorVisible;
             }
+        }
+        public Type ConsultasFuncObtenerTipoCampo(
+        string NombreTabla,
+        string NombreCampo)
+        {
+            return _Sentencias.ConsultasFuncObtenerTipoCampo(
+                NombreTabla,
+                NombreCampo);
         }
 
         private string ConsultasFuncPrepararValor(
