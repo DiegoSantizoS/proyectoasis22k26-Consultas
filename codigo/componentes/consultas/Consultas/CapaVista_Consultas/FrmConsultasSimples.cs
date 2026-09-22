@@ -10,29 +10,23 @@ namespace CapaVista_Consultas
     public partial class FrmConsultasSimples :
         Componentes.ClsBaseTerminus
     {
-        private readonly ClsControladorFiltroSimple _Controlador =
-            new ClsControladorFiltroSimple();
+        private readonly ClsControladorFiltroSimple _Controlador = new ClsControladorFiltroSimple();
 
         private string _TablaActual;
         private string _CampoId;
-
         private string _CampoFiltro;
         private string _OperadorFiltro;
         private string _ValorFiltro;
 
         private const int _RegistrosPorPagina = 15;
-
         public string IdSeleccionado { get; private set; }
-
         public bool SeleccionRealizada { get; private set; }
-        
         public FrmConsultasSimples()
         {
             InitializeComponent();
 
             ConsultasMetSuscribirEventos();
         }
-
         public FrmConsultasSimples(
             string Tabla,
             string CampoId)
@@ -41,21 +35,13 @@ namespace CapaVista_Consultas
             _TablaActual = Tabla;
             _CampoId = CampoId;
 
-            ConsultasUcTablaSimple
-                .ConsultasMetConfigurarSeleccion(
-                    CampoId);
+            ConsultasUcTablaSimple.ConsultasMetConfigurarSeleccion(CampoId);
 
-            ClsTablaSeleccionada
-                .ConsultasMetGuardarTabla(
-                    Tabla);
+            ClsTablaSeleccionada.ConsultasMetGuardarTabla(Tabla);
 
-            ConsultasUcTablaSimple
-                .ConsultasProcActualizarTabla(
-                    Tabla);
+            ConsultasUcTablaSimple.ConsultasProcActualizarTabla(Tabla);
 
-            ConsultasUcAgregarFiltro
-                .ConsultasProcActualizarTabla(
-                    Tabla);
+            ConsultasUcAgregarFiltro.ConsultasProcActualizarTabla(Tabla);
         }
 
         // Inicio de código de "Pedro José Gómez Villalobos" - carné: "0901-23-4868" - Fecha: "20/09/26"
@@ -81,62 +67,42 @@ namespace CapaVista_Consultas
         // Fin de código de "Pedro José Gómez Villalobos" - carné: "0901-23-4868" - Fecha: "20/09/26"
         private void ConsultasMetSuscribirEventos()
         {
-            ConsultasUcAgregarFiltro
-                .ConsultasEvtBuscarSolicitado +=
-                    ConsultasMetAgregarFiltroBuscarSolicitado;
+            ConsultasUcAgregarFiltro.ConsultasEvtBuscarSolicitado += ConsultasMetAgregarFiltroBuscarSolicitado;
 
-            ConsultasUcAgregarFiltro
-                .ConsultasEvtRefrescarSolicitado +=
-                    ConsultasMetAgregarFiltroRefrescarSolicitado;
+            ConsultasUcAgregarFiltro.ConsultasEvtRefrescarSolicitado += ConsultasMetAgregarFiltroRefrescarSolicitado;
 
-            ConsultasUcTablaSimple
-                .ConsultasEvtFilaSeleccionada +=
-                    ConsultasMetTablaSimpleFilaSeleccionada;
+            ConsultasUcTablaSimple.ConsultasEvtFilaSeleccionada += ConsultasMetTablaSimpleFilaSeleccionada;
         }
 
-        private void ConsultasMetTablaSimpleFilaSeleccionada(
-            object Sender,
-            EventArgs Evento)
+        private void ConsultasMetTablaSimpleFilaSeleccionada(object Sender, EventArgs Evento)
         {
-            IdSeleccionado =
-                ConsultasUcTablaSimple.IdSeleccionado;
+            IdSeleccionado = ConsultasUcTablaSimple.IdSeleccionado;
 
-            SeleccionRealizada =
-                ConsultasUcTablaSimple.SeleccionRealizada;
+            SeleccionRealizada = ConsultasUcTablaSimple.SeleccionRealizada;
 
             if (!SeleccionRealizada)
             {
                 return;
             }
-
-            DialogResult =
-                DialogResult.OK;
-
+            DialogResult = DialogResult.OK;
             Close();
         }
 
-        private void ConsultasMetAgregarFiltroBuscarSolicitado(
-            object Sender,
-            ClsArgumentosFiltro ArgumentosFiltro)
+        private void ConsultasMetAgregarFiltroBuscarSolicitado(object Sender, ClsArgumentosFiltro ArgumentosFiltro)
         {
             _CampoFiltro = ArgumentosFiltro.Campo;
             _OperadorFiltro = ArgumentosFiltro.Operador;
             _ValorFiltro = ArgumentosFiltro.Valor;
-
             ConsultasMetAplicarFiltro();
         }
 
-        private void ConsultasMetAgregarFiltroRefrescarSolicitado(
-            object Sender,
-            EventArgs e)
+        private void ConsultasMetAgregarFiltroRefrescarSolicitado(object Sender,EventArgs Evento)
         {
             _CampoFiltro = null;
             _OperadorFiltro = null;
             _ValorFiltro = null;
 
-            ConsultasUcTablaSimple
-                .ConsultasProcActualizarTabla(
-                    _TablaActual);
+            ConsultasUcTablaSimple.ConsultasProcActualizarTabla(_TablaActual);
         }
 
         private void ConsultasMetAplicarFiltro()
@@ -144,46 +110,21 @@ namespace CapaVista_Consultas
             try
             {
                 Cursor = Cursors.WaitCursor;
-
-                DataTable Resultado =
-                    _Controlador.ConsultasFuncBuscar(
-                        _TablaActual,
-                        _CampoFiltro,
-                        _OperadorFiltro,
-                        _ValorFiltro,
-                        1,
-                        _RegistrosPorPagina);
-
+                DataTable Resultado = _Controlador.ConsultasFuncBuscar(_TablaActual, _CampoFiltro, _OperadorFiltro, _ValorFiltro, 1, _RegistrosPorPagina);
                 int TotalRegistros =
-                    _Controlador.ConsultasFuncContar(
-                        _TablaActual,
-                        _CampoFiltro,
-                        _OperadorFiltro,
-                        _ValorFiltro);
+                    _Controlador.ConsultasFuncContar(_TablaActual,_CampoFiltro,_OperadorFiltro,_ValorFiltro);
 
-                ConsultasUcTablaSimple
-                    .ConsultasProcMostrarResultado(
-                        Resultado,
-                        TotalRegistros);
+                ConsultasUcTablaSimple.ConsultasProcMostrarResultado(Resultado,TotalRegistros);
 
                 if (TotalRegistros == 0)
                 {
-                    MessageBox.Show(
-                        "Ningún registro cumple con el filtro indicado.",
-                        "Consultas",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                    MessageBox.Show("Ningún registro cumple con el filtro indicado.",
+                        "Consultas",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
             }
             catch (Exception Excepcion)
             {
-                MessageBox.Show(
-                    "No se pudo ejecutar la consulta.\n\n" +
-                    "Detalle: " +
-                    Excepcion.Message,
-                    "Consultas",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("No se pudo ejecutar la consulta.\n\n" + "Detalle: " + Excepcion.Message,"Consultas",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             finally
             {
