@@ -13,46 +13,46 @@ namespace CapaControlador_Consultas
     {
         private readonly ClsModeloMantenimiento _modelo = new ClsModeloMantenimiento();
 
-        private static readonly string[] OperadoresValidos =
+        private static readonly string[] _OperadoresValidos =
             { "=", "<>", ">", "<", ">=", "<=", "LIKE", "NOT LIKE", "IS NULL", "IS NOT NULL" };
 
-        private static readonly HashSet<string> TiposNumericos = new HashSet<string>(
+        private static readonly HashSet<string> _TiposNumericos = new HashSet<string>(
             new string[] { "int", "integer", "bigint", "smallint", "mediumint", "tinyint",
                            "decimal", "numeric", "float", "double" });
 
-        
 
-        public List<string> ObtenerTablas()
-        {
-            return _modelo.ObtenerTablas();
-        }
+        //Comentado por temas de debug, ya que no se esta usando en el proyecto
+        /* public List<string> ObtenerTablas()
+         {
+             return _modelo.ObtenerTablas();
+         }*/
 
-        public List<KeyValuePair<string, string>> ObtenerColumnas(string tabla)
+        public List<KeyValuePair<string, string>> ConsutlasMetObtenerColumnas(string tabla)
         {
-            ValidarIdentificador(tabla, "tabla");
+            ConsultasProcValidarIdentificador(tabla, "tabla");
             return _modelo.ObtenerColumnas(tabla);
         }
 
 
-        public void ValidarCondicion(ClsCondicion c, Dictionary<string, string> tipos)
+        public void ConsultasProcValidarCondicion(ClsCondicion c, Dictionary<string, string> tipos)
         {
-            ValidarIdentificador(c.Campo, "campo");
+            ConsultasProcValidarIdentificador(c.Campo, "campo");
             if (!string.IsNullOrEmpty(c.Operador))
             {
-                FormatearCondicion(c, tipos);
+                ConsultasFuncFormatearCondicion(c, tipos);
             }
         }
 
-        public string ConstruirQuery(string tabla, List<ClsCondicion> filas, Dictionary<string, string> tipos)
+        public string ConsultasFuncConstruirQuery(string tabla, List<ClsCondicion> filas, Dictionary<string, string> tipos)
         {
-            ValidarIdentificador(tabla, "tabla");
+            ConsultasProcValidarIdentificador(tabla, "tabla");
 
             StringBuilder where = new StringBuilder();
             List<string> orden = new List<string>();
 
             foreach (ClsCondicion f in filas)
             {
-                ValidarIdentificador(f.Campo, "campo");
+                ConsultasProcValidarIdentificador(f.Campo, "campo");
                 if (tipos != null && tipos.Count > 0 && !tipos.ContainsKey(f.Campo))
                 {
                     throw new ArgumentException("El campo " + f.Campo + " no existe en " + tabla + ".");
@@ -64,7 +64,7 @@ namespace CapaControlador_Consultas
                     {
                         where.Append(f.Conector == "OR" ? " OR " : " AND ");
                     }
-                    where.Append(FormatearCondicion(f, tipos));
+                    where.Append(ConsultasFuncFormatearCondicion(f, tipos));
                 }
 
                 if (f.Orden == "ASC" || f.Orden == "DESC")
@@ -86,9 +86,9 @@ namespace CapaControlador_Consultas
             return sql.ToString();
         }
 
-        private static string FormatearCondicion(ClsCondicion c, Dictionary<string, string> tipos)
+        private static string ConsultasFuncFormatearCondicion(ClsCondicion c, Dictionary<string, string> tipos)
         {
-            if (Array.IndexOf(OperadoresValidos, c.Operador) < 0)
+            if (Array.IndexOf(_OperadoresValidos, c.Operador) < 0)
             {
                 throw new ArgumentException("Operador no valido: " + c.Operador);
             }
@@ -112,7 +112,7 @@ namespace CapaControlador_Consultas
             }
 
             string literal;
-            if (!esLike && tipo != null && TiposNumericos.Contains(tipo.ToLowerInvariant()))
+            if (!esLike && tipo != null && _TiposNumericos.Contains(tipo.ToLowerInvariant()))
             {
                 decimal numero;
                 if (!decimal.TryParse(valor,
@@ -131,7 +131,7 @@ namespace CapaControlador_Consultas
             return c.Campo + " " + c.Operador + " " + literal;
         }
 
-        private static void ValidarIdentificador(string nombre, string que)
+        private static void ConsultasProcValidarIdentificador(string nombre, string que)
         {
             if (string.IsNullOrWhiteSpace(nombre))
             {
@@ -145,7 +145,7 @@ namespace CapaControlador_Consultas
 
     
 
-        public void Guardar(string nombre, string tabla, string query)
+        public void ConsultasProcGuardar(string nombre, string tabla, string query)
         {
             nombre = (nombre ?? "").Trim();
 
@@ -161,7 +161,7 @@ namespace CapaControlador_Consultas
             {
                 throw new ArgumentException("Selecciona una tabla o vista.");
             }
-            ValidarEsSelect(query);
+            ConsultasProcValidarEsSelect(query);
 
             if (_modelo.ExisteNombre(nombre))
             {
@@ -173,11 +173,11 @@ namespace CapaControlador_Consultas
 
         public DataTable Probar(string query)
         {
-            ValidarEsSelect(query);
+            ConsultasProcValidarEsSelect(query);
             return _modelo.Ejecutar(query, 500);
         }
 
-        private static void ValidarEsSelect(string query)
+        private static void ConsultasProcValidarEsSelect(string query)
         {
             if (string.IsNullOrWhiteSpace(query) ||
                 !query.TrimStart().StartsWith("SELECT ", StringComparison.OrdinalIgnoreCase))
