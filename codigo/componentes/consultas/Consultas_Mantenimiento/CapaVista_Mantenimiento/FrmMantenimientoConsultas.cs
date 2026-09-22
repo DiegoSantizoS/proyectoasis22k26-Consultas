@@ -72,7 +72,7 @@ namespace CapaVista_Consultas
             _tipos = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             ConsultasCboOperadorCampo.Items.Clear();
 
-            foreach (KeyValuePair<string, string> col in _ctrl.ConsutlasMetObtenerColumnas(_tabla))
+            foreach (KeyValuePair<string, string> col in _ctrl.ConsultasMetObtenerColumnas(_tabla))
             {
                 _tipos[col.Key] = col.Value;
                 ConsultasCboOperadorCampo.Items.Add(col.Key);
@@ -273,10 +273,10 @@ namespace CapaVista_Consultas
             foreach (DataGridViewRow fila in ConsultasDgvConsultasFiltros.Rows)
             {
                 ClsCondicion c = new ClsCondicion();
-                c.Campo = ConsutlasFuncTexto(fila.Cells[_ColCampo]);
-                c.Operador = ConsutlasFuncTexto(fila.Cells[_ColOperador]);
-                c.Valor = ConsutlasFuncTexto(fila.Cells[_ColValor]);
-                c.Orden = ConsutlasFuncTexto(fila.Cells[_ColOrden]);
+                c.Campo = ConsultasFuncTexto(fila.Cells[_ColCampo]);
+                c.Operador = ConsultasFuncTexto(fila.Cells[_ColOperador]);
+                c.Valor = ConsultasFuncTexto(fila.Cells[_ColValor]);
+                c.Orden = ConsultasFuncTexto(fila.Cells[_ColOrden]);
 
                 if (c.Operador != "")
                 {
@@ -300,7 +300,7 @@ namespace CapaVista_Consultas
             ConsultasRdoDescendente.Checked = false;
         }
 
-        private static string ConsutlasFuncTexto(DataGridViewCell celda)
+        private static string ConsultasFuncTexto(DataGridViewCell celda)
         {
             return celda.Value == null ? "" : celda.Value.ToString();
         }

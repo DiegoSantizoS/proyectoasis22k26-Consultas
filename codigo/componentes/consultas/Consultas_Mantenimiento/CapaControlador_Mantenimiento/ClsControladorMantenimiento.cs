@@ -27,7 +27,7 @@ namespace CapaControlador_Consultas
              return _modelo.ObtenerTablas();
          }*/
 
-        public List<KeyValuePair<string, string>> ConsutlasMetObtenerColumnas(string tabla)
+        public List<KeyValuePair<string, string>> ConsultasMetObtenerColumnas(string tabla)
         {
             ConsultasProcValidarIdentificador(tabla, "tabla");
             return _modelo.ObtenerColumnas(tabla);
