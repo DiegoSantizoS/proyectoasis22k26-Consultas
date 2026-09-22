@@ -8,10 +8,10 @@ using CapaModelo_Consultas;
 
 namespace CapaControlador_Consultas
 {
-   
+    //Inicio del código realizado por Diana Mishel Loeiza Ramírez 9959-23-3457
     public class ClsControladorMantenimiento
     {
-        private readonly ClsModeloMantenimiento _modelo = new ClsModeloMantenimiento();
+        private readonly ClsModeloMantenimiento _Modelo = new ClsModeloMantenimiento();
 
         private static readonly string[] _OperadoresValidos =
             { "=", "<>", ">", "<", ">=", "<=", "LIKE", "NOT LIKE", "IS NULL", "IS NOT NULL" };
@@ -20,106 +20,99 @@ namespace CapaControlador_Consultas
             new string[] { "int", "integer", "bigint", "smallint", "mediumint", "tinyint",
                            "decimal", "numeric", "float", "double" });
 
-
-        //Comentado por temas de debug, ya que no se esta usando en el proyecto
-        /* public List<string> ObtenerTablas()
-         {
-             return _modelo.ObtenerTablas();
-         }*/
-
-        public List<KeyValuePair<string, string>> ConsultasMetObtenerColumnas(string tabla)
+        public List<KeyValuePair<string, string>> ConsultasMetObtenerColumnas(string Tabla)
         {
-            ConsultasProcValidarIdentificador(tabla, "tabla");
-            return _modelo.ObtenerColumnas(tabla);
+            ConsultasProcValidarIdentificador(Tabla, "tabla");
+            return _Modelo.ObtenerColumnas(Tabla);
         }
 
 
-        public void ConsultasProcValidarCondicion(ClsCondicion c, Dictionary<string, string> tipos)
+        public void ConsultasProcValidarCondicion(ClsCondicion Condicion, Dictionary<string, string> Tipos)
         {
-            ConsultasProcValidarIdentificador(c.Campo, "campo");
-            if (!string.IsNullOrEmpty(c.Operador))
+            ConsultasProcValidarIdentificador(Condicion.Campo, "campo");
+            if (!string.IsNullOrEmpty(Condicion.Operador))
             {
-                ConsultasFuncFormatearCondicion(c, tipos);
+                ConsultasFuncFormatearCondicion(Condicion, Tipos);
             }
         }
 
-        public string ConsultasFuncConstruirQuery(string tabla, List<ClsCondicion> filas, Dictionary<string, string> tipos)
+        public string ConsultasFuncConstruirQuery(string Tabla, List<ClsCondicion> Filas, Dictionary<string, string> Tipos)
         {
-            ConsultasProcValidarIdentificador(tabla, "tabla");
+            ConsultasProcValidarIdentificador(Tabla, "tabla");
 
-            StringBuilder where = new StringBuilder();
-            List<string> orden = new List<string>();
+            StringBuilder Where = new StringBuilder();
+            List<string> Orden = new List<string>();
 
-            foreach (ClsCondicion f in filas)
+            foreach (ClsCondicion Condicion in Filas)
             {
-                ConsultasProcValidarIdentificador(f.Campo, "campo");
-                if (tipos != null && tipos.Count > 0 && !tipos.ContainsKey(f.Campo))
+                ConsultasProcValidarIdentificador(Condicion.Campo, "campo");
+                if (Tipos != null && Tipos.Count > 0 && !Tipos.ContainsKey(Condicion.Campo))
                 {
-                    throw new ArgumentException("El campo " + f.Campo + " no existe en " + tabla + ".");
+                    throw new ArgumentException("El campo " + Condicion.Campo + " no existe en " + Tabla + ".");
                 }
 
-                if (!string.IsNullOrEmpty(f.Operador))
+                if (!string.IsNullOrEmpty(Condicion.Operador))
                 {
-                    if (where.Length > 0)
+                    if (Where.Length > 0)
                     {
-                        where.Append(f.Conector == "OR" ? " OR " : " AND ");
+                        Where.Append(Condicion.Conector == "OR" ? " OR " : " AND ");
                     }
-                    where.Append(ConsultasFuncFormatearCondicion(f, tipos));
+                    Where.Append(ConsultasFuncFormatearCondicion(Condicion, Tipos));
                 }
 
-                if (f.Orden == "ASC" || f.Orden == "DESC")
+                if (Condicion.Orden == "ASC" || Condicion.Orden == "DESC")
                 {
-                    orden.Add(f.Campo + " " + f.Orden);
+                    Orden.Add(Condicion.Campo + " " + Condicion.Orden);
                 }
             }
 
-            StringBuilder sql = new StringBuilder("SELECT * FROM " + tabla);
-            if (where.Length > 0)
+            StringBuilder Sql = new StringBuilder("SELECT * FROM " + Tabla);
+            if (Where.Length > 0)
             {
-                sql.Append(" WHERE ").Append(where.ToString());
+                Sql.Append(" WHERE ").Append(Where.ToString());
             }
-            if (orden.Count > 0)
+            if (Orden.Count > 0)
             {
-                sql.Append(" ORDER BY ").Append(string.Join(", ", orden));
+                Sql.Append(" ORDER BY ").Append(string.Join(", ", Orden));
             }
-            sql.Append(";");
-            return sql.ToString();
+            Sql.Append(";");
+            return Sql.ToString();
         }
 
-        private static string ConsultasFuncFormatearCondicion(ClsCondicion c, Dictionary<string, string> tipos)
+        private static string ConsultasFuncFormatearCondicion(ClsCondicion Condicion, Dictionary<string, string> Tipos)
         {
-            if (Array.IndexOf(_OperadoresValidos, c.Operador) < 0)
+            if (Array.IndexOf(_OperadoresValidos, Condicion.Operador) < 0)
             {
-                throw new ArgumentException("Operador no valido: " + c.Operador);
+                throw new ArgumentException("Operador no valido: " + Condicion.Operador);
             }
 
-            if (c.Operador == "IS NULL" || c.Operador == "IS NOT NULL")
+            if (Condicion.Operador == "IS NULL" || Condicion.Operador == "IS NOT NULL")
             {
-                return c.Campo + " " + c.Operador;
+                return Condicion.Campo + " " + Condicion.Operador;
             }
 
-            string valor = (c.Valor ?? "").Trim();
+            string valor = (Condicion.Valor ?? "").Trim();
             if (valor.Length == 0)
             {
-                throw new ArgumentException("Escribe un valor para el campo " + c.Campo + ".");
+                throw new ArgumentException("Escribe un valor para el campo " + Condicion.Campo + ".");
             }
 
-            bool esLike = c.Operador.EndsWith("LIKE");
-            string tipo = null;
-            if (tipos != null)
+            bool ConfirmarLike = Condicion.Operador.EndsWith("LIKE");
+            string Tipo = null;
+            if (Tipos != null)
             {
-                tipos.TryGetValue(c.Campo, out tipo);
+                Tipos.TryGetValue(Condicion.Campo, out Tipo);
             }
 
             string literal;
-            if (!esLike && tipo != null && _TiposNumericos.Contains(tipo.ToLowerInvariant()))
+            if (!ConfirmarLike && Tipo != null && _TiposNumericos.Contains(Tipo.ToLowerInvariant()))
             {
                 decimal numero;
                 if (!decimal.TryParse(valor,
                         NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint,
                         CultureInfo.InvariantCulture, out numero))
                 {
-                    throw new ArgumentException("El campo " + c.Campo + " es numerico. Escribe un numero, por ejemplo 5000 o 12.50.");
+                    throw new ArgumentException("El campo " + Condicion.Campo + " es numerico. Escribe un numero, por ejemplo 5000 o 12.50.");
                 }
                 literal = numero.ToString(CultureInfo.InvariantCulture);
             }
@@ -128,62 +121,64 @@ namespace CapaControlador_Consultas
                 literal = "'" + valor.Replace("\\", "\\\\").Replace("'", "''") + "'";
             }
 
-            return c.Campo + " " + c.Operador + " " + literal;
+            return Condicion.Campo + " " + Condicion.Operador + " " + literal;
         }
 
-        private static void ConsultasProcValidarIdentificador(string nombre, string que)
+        private static void ConsultasProcValidarIdentificador(string Nombre, string Auxiliar)
         {
-            if (string.IsNullOrWhiteSpace(nombre))
+            if (string.IsNullOrWhiteSpace(Nombre))
             {
-                throw new ArgumentException("Selecciona " + (que == "tabla" ? "una tabla o vista." : "un campo."));
+                throw new ArgumentException("Selecciona " + (Auxiliar == "tabla" ? "una tabla o vista." : "un campo."));
             }
-            if (!Regex.IsMatch(nombre, "^[A-Za-z0-9_]+$"))
+            if (!Regex.IsMatch(Nombre, "^[A-Za-z0-9_]+$"))
             {
-                throw new ArgumentException("El nombre de " + que + " no es valido: " + nombre);
+                throw new ArgumentException("El nombre de " + Auxiliar + " no es valido: " + Nombre);
             }
         }
 
     
 
-        public void ConsultasProcGuardar(string nombre, string tabla, string query)
+        public void ConsultasProcGuardar(string Nombre, string Tabla, string Query)
         {
-            nombre = (nombre ?? "").Trim();
+            Nombre = (Nombre ?? "").Trim();
 
-            if (nombre.Length == 0)
+            if (Nombre.Length == 0)
             {
                 throw new ArgumentException("Escribe un nombre para la consulta.");
             }
-            if (nombre.Length > 100)
+            if (Nombre.Length > 100)
             {
                 throw new ArgumentException("El nombre no puede pasar de 100 caracteres.");
             }
-            if (string.IsNullOrWhiteSpace(tabla))
+            if (string.IsNullOrWhiteSpace(Tabla))
             {
                 throw new ArgumentException("Selecciona una tabla o vista.");
             }
-            ConsultasProcValidarEsSelect(query);
+            ConsultasProcValidarEsSelect(Query);
 
-            if (_modelo.ExisteNombre(nombre))
+            if (_Modelo.ExisteNombre(Nombre))
             {
                 throw new ArgumentException("Ya existe una consulta con ese nombre. Usa otro.");
             }
 
-            _modelo.Insertar(nombre, tabla, query);
+            _Modelo.Insertar(Nombre, Tabla, Query);
         }
 
-        public DataTable Probar(string query)
+        public DataTable ConsultasFuncPrueba(string Query)
         {
-            ConsultasProcValidarEsSelect(query);
-            return _modelo.Ejecutar(query, 500);
+            ConsultasProcValidarEsSelect(Query);
+            return _Modelo.Ejecutar(Query, 500);
         }
 
-        private static void ConsultasProcValidarEsSelect(string query)
+        private static void ConsultasProcValidarEsSelect(string Query)
         {
-            if (string.IsNullOrWhiteSpace(query) ||
-                !query.TrimStart().StartsWith("SELECT ", StringComparison.OrdinalIgnoreCase))
+            if (string.IsNullOrWhiteSpace(Query) ||
+                !Query.TrimStart().StartsWith("SELECT ", StringComparison.OrdinalIgnoreCase))
             {
                 throw new ArgumentException("Primero arma la consulta: elige una tabla o vista.");
             }
         }
     }
+
+    //Fin del código realizado por Diana Mishel Loeiza Ramírez 9959-23-3457
 }

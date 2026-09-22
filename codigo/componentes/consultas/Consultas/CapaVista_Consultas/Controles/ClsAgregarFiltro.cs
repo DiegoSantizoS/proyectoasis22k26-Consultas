@@ -1,8 +1,9 @@
-﻿using System;
+﻿using CapaControlador_Consultas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Windows.Forms;
-using CapaControlador_Consultas;
 
 namespace CapaVista_Consultas.Controles
 {
@@ -27,11 +28,6 @@ namespace CapaVista_Consultas.Controles
 
             ConsultasTxtValor.KeyDown += ConsultasMetTxtValorKeyDown;
             ConsultasCboCampo.SelectedIndexChanged += ConsultasMetCboCampoSelectedIndexChanged;
-
-           /* if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
-            {
-                ConsultasMetCargarOperadores();
-            }*/
         }
         public void ConsultasProcActualizarTabla(string Tabla)
         {
@@ -46,10 +42,14 @@ namespace CapaVista_Consultas.Controles
 
             ConsultasMetCargarCampos();
         }
-        private void ConsultasMetCboCampoSelectedIndexChanged( object Sender,   EventArgs e)
+
+        //Inicio del código de Miguel David Contreras Jacinto 0901-21-3878 el 21/09/2026
+        private void ConsultasMetCboCampoSelectedIndexChanged(object Sender, EventArgs Evento)
         {
             ConsultasMetCargarOperadoresPorTipo();
         }
+
+        //Fin del código de Miguel David Contreras Jacinto 0901-21-3878 el 21/09/2026
         public void ConsultasProcLimpiar()
         {
             ConsultasCboCampo.SelectedIndex = -1;
@@ -81,20 +81,6 @@ namespace CapaVista_Consultas.Controles
                     MessageBoxIcon.Warning);
             }
         }
-
-        private void ConsultasMetCargarOperadores()
-        {
-            ConsultasCboOperador.Items.Clear();
-
-            List<string> Operadores =
-                _Controlador.ConsultasFuncObtenerOperadores();
-
-            foreach (string Operador in Operadores)
-            {
-                ConsultasCboOperador.Items.Add(Operador);
-            }
-        }
-
         private void ConsultasMetBtnBuscarClick(object Sender, EventArgs e)
         {
             string Campo = ConsultasCboCampo.SelectedItem == null
@@ -130,6 +116,8 @@ namespace CapaVista_Consultas.Controles
                     new ClsArgumentosFiltro(Campo, Operador, Valor));
             }
         }
+
+        //Inicio del código de Miguel David Contreras Jacinto 0901-21-3878 el 21/09/2026
         private void ConsultasMetCargarOperadoresPorTipo()
         {
             // Guardar el operador seleccionado actualmente
@@ -198,6 +186,8 @@ namespace CapaVista_Consultas.Controles
             }
         }
 
+        //Fin del código de Miguel David Contreras Jacinto 0901-21-3878 el 21/09/2026
+
         private void ConsultasMetBtnRefrescarClick(object Sender, EventArgs e)
         {
             ConsultasProcLimpiar();
@@ -216,20 +206,41 @@ namespace CapaVista_Consultas.Controles
                 ConsultasMetBtnBuscarClick(Sender, EventArgs.Empty);
             }
         }
-    }
 
-    public class ClsArgumentosFiltro : EventArgs
-    {
-        public string Campo { get; private set; }
-        public string Operador { get; private set; }
-        public string Valor { get; private set; }
-
-        public ClsArgumentosFiltro(string Campo, string Operador, string Valor)
+        //Inicio de código de Diego Fernando Santizo Samayoa 0901-22-15950 22/09/2026
+        private void ConsultasMetBtnAyudaClick(object sender, EventArgs e)
         {
-            this.Campo = Campo;
-            this.Operador = Operador;
-            this.Valor = Valor;
+            DirectoryInfo Directorio = new DirectoryInfo(Application.StartupPath);
+
+            while (Directorio != null)
+            {
+                string Ruta = Path.Combine(Directorio.FullName,"ayuda","componentes","consultas","Ayuda_Consultas.chm");
+
+                if (File.Exists(Ruta))
+                {
+                    Help.ShowHelp(this,Ruta,"ConsultaSimple.html");
+                    return;
+                }
+                Directorio = Directorio.Parent;
+            }
+
+            MessageBox.Show("No se encontró el archivo de ayuda.");
         }
+        //Fin de código de Diego Fernando Santizo Samayoa 0901-22-15950 22/09/2026
+
+        public class ClsArgumentosFiltro : EventArgs
+        {
+            public string Campo { get; private set; }
+            public string Operador { get; private set; }
+            public string Valor { get; private set; }
+
+            public ClsArgumentosFiltro(string Campo, string Operador, string Valor)
+            {
+                this.Campo = Campo;
+                this.Operador = Operador;
+                this.Valor = Valor;
+            }
+        }
+        // Fin del código de "José Pablo Cano Cóbar" - Carné: "0901-23-1727" - Fecha: "15/09/26"
     }
-    // Fin del código de "José Pablo Cano Cóbar" - Carné: "0901-23-1727" - Fecha: "15/09/26"
 }

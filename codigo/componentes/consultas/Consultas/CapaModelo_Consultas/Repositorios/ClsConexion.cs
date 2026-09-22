@@ -3,6 +3,7 @@ using System.Data.Odbc;
 
 namespace CapaModelo_Consultas
 {
+    // Inicio de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "20/09/26"
     internal class ClsConexion
     {
         public OdbcConnection ConsultasFuncConexion()
@@ -31,4 +32,5 @@ namespace CapaModelo_Consultas
             }
         }
     }
+    // Fin de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "20/09/26"
 }

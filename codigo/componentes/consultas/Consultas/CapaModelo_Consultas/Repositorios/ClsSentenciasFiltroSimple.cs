@@ -60,9 +60,9 @@ namespace CapaModelo_Consultas
 
             return Campos;
         }
-        public Type ConsultasFuncObtenerTipoCampo(
-    string NombreTabla,
-    string NombreCampo)
+
+        //Inicio del código de Miguel David Contreras Jacinto 0901-21-3878 el 21/09/2026
+        public Type ConsultasFuncObtenerTipoCampo(string NombreTabla, string NombreCampo)
         {
             ConsultasMetValidarIdentificador(NombreTabla, "tabla");
             ConsultasMetValidarIdentificador(NombreCampo, "columna");
@@ -128,6 +128,8 @@ namespace CapaModelo_Consultas
                 }
             }
         }
+
+        //Fin del código de Miguel David Contreras Jacinto 0901-21-3878 el 21/09/2026
 
         /// <summary>
         /// Trae una página de registros de la tabla aplicando un filtro opcional.

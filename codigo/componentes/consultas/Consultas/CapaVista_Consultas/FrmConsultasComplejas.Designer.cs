@@ -35,8 +35,9 @@
             this.ConsultasUcTabla = new CapaVista_Consultas.Controles.ClsTabla();
             this.ConsultasFlpBotones = new System.Windows.Forms.FlowLayoutPanel();
             this.ConsultasBtnRefrescar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
-            this.ConsultasBtnSalir = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasBtnAyuda = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasBtnInicio = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasBtnSalir = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.ConsultasGbxSeleccionConsulta.SuspendLayout();
             this.ConsultasFlpBotones.SuspendLayout();
@@ -112,8 +113,9 @@
             // ConsultasFlpBotones
             // 
             this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnRefrescar);
-            this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnSalir);
+            this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnAyuda);
             this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnInicio);
+            this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnSalir);
             this.ConsultasFlpBotones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasFlpBotones.Location = new System.Drawing.Point(1242, 5);
             this.ConsultasFlpBotones.Margin = new System.Windows.Forms.Padding(0, 5, 5, 5);
@@ -141,24 +143,24 @@
             this.ConsultasBtnRefrescar.UseVisualStyleBackColor = false;
             this.ConsultasBtnRefrescar.Click += new System.EventHandler(this.ConsultasMetBtnRefrescarClick);
             // 
-            // ConsultasBtnSalir
+            // ConsultasBtnAyuda
             // 
-            this.ConsultasBtnSalir.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ConsultasBtnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ConsultasBtnSalir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnSalir.BackgroundImage")));
-            this.ConsultasBtnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ConsultasBtnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ConsultasBtnSalir.FlatAppearance.BorderSize = 0;
-            this.ConsultasBtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnSalir.Location = new System.Drawing.Point(0, 80);
-            this.ConsultasBtnSalir.Margin = new System.Windows.Forms.Padding(0);
-            this.ConsultasBtnSalir.MaximumSize = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnSalir.MinimumSize = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnSalir.Name = "ConsultasBtnSalir";
-            this.ConsultasBtnSalir.Size = new System.Drawing.Size(80, 80);
-            this.ConsultasBtnSalir.TabIndex = 17;
-            this.ConsultasBtnSalir.UseVisualStyleBackColor = false;
-            this.ConsultasBtnSalir.Click += new System.EventHandler(this.ConsultasMetBtnSalirClick);
+            this.ConsultasBtnAyuda.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ConsultasBtnAyuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasBtnAyuda.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnAyuda.BackgroundImage")));
+            this.ConsultasBtnAyuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ConsultasBtnAyuda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConsultasBtnAyuda.FlatAppearance.BorderSize = 0;
+            this.ConsultasBtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConsultasBtnAyuda.Location = new System.Drawing.Point(0, 80);
+            this.ConsultasBtnAyuda.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasBtnAyuda.MaximumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnAyuda.MinimumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnAyuda.Name = "ConsultasBtnAyuda";
+            this.ConsultasBtnAyuda.Size = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnAyuda.TabIndex = 21;
+            this.ConsultasBtnAyuda.UseVisualStyleBackColor = false;
+            this.ConsultasBtnAyuda.Click += new System.EventHandler(this.ConsultasMetBtnAyudaClick);
             // 
             // ConsultasBtnInicio
             // 
@@ -178,6 +180,25 @@
             this.ConsultasBtnInicio.TabIndex = 20;
             this.ConsultasBtnInicio.UseVisualStyleBackColor = false;
             this.ConsultasBtnInicio.Click += new System.EventHandler(this.ConsultasMetBtnInicioClick);
+            // 
+            // ConsultasBtnSalir
+            // 
+            this.ConsultasBtnSalir.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ConsultasBtnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasBtnSalir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnSalir.BackgroundImage")));
+            this.ConsultasBtnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ConsultasBtnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConsultasBtnSalir.FlatAppearance.BorderSize = 0;
+            this.ConsultasBtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConsultasBtnSalir.Location = new System.Drawing.Point(0, 240);
+            this.ConsultasBtnSalir.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasBtnSalir.MaximumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnSalir.MinimumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnSalir.Name = "ConsultasBtnSalir";
+            this.ConsultasBtnSalir.Size = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnSalir.TabIndex = 17;
+            this.ConsultasBtnSalir.UseVisualStyleBackColor = false;
+            this.ConsultasBtnSalir.Click += new System.EventHandler(this.ConsultasMetBtnSalirClick);
             // 
             // FrmConsultasComplejas
             // 
@@ -208,5 +229,6 @@
         private Controles.ClsTabla ConsultasUcTabla;
         private System.Windows.Forms.FlowLayoutPanel ConsultasFlpBotones;
         private Componentes.ClsBotonConsultas ConsultasBtnInicio;
+        private Componentes.ClsBotonConsultas ConsultasBtnAyuda;
     }
 }

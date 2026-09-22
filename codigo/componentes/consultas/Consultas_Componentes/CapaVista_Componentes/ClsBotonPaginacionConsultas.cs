@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 namespace CapaVista_Consultas.Componentes
 {
+    // Inicio de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "15/09/26"
     public class ClsBotonPaginacionConsultas : Button
     {
         private static readonly Color _Primario =
@@ -97,5 +98,6 @@ namespace CapaVista_Consultas.Componentes
                     : FontStyle.Regular,
                 GraphicsUnit.Point);
         }
+        // Fin de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "15/09/26"
     }
 }

@@ -5,19 +5,18 @@ using CapaControlador_Consultas;
 
 namespace CapaVista_Consultas.Controles
 {
+    // Inicio del código de Carlos Andres Arriaza Lara 0901-23-13862 el 16/09/2026
     public partial class ClsSeleccioneUnaConsulta : Componentes.ClsControlUsuarioConsultas
     {
         public event Action<string, string> ConsultaSeleccionada;
         public string Tabla { get; set; }
         public string Query { get; set; }
 
-        private readonly ClsConsultaSeleccionada _Consultas =
-            new ClsConsultaSeleccionada();
+        private readonly ClsConsultaSeleccionada _Consultas = new ClsConsultaSeleccionada();
 
         public ClsSeleccioneUnaConsulta()
         {
             InitializeComponent();
-
             ConsultasProcActualizarConsultas();
         }
 
@@ -25,36 +24,25 @@ namespace CapaVista_Consultas.Controles
         {
             try
             {
-                ConsultasDgvConsultasReutilizables
-                    .Columns.Clear();
+                ConsultasDgvConsultasReutilizables.Columns.Clear();
 
-                DataTable Consultas =
-                    _Consultas
-                        .ConsultasFuncCargarConsultas();
+                DataTable Consultas = _Consultas.ConsultasFuncCargarConsultas();
 
-                ConsultasDgvConsultasReutilizables
-                    .DataSource = Consultas;
+                ConsultasDgvConsultasReutilizables.DataSource = Consultas;
 
-                if (ConsultasDgvConsultasReutilizables
-                    .Columns["Query"] != null)
+                if (ConsultasDgvConsultasReutilizables.Columns["Query"] != null)
                 {
-                    ConsultasDgvConsultasReutilizables
-                        .Columns["Query"]
-                        .Visible = false;
+                    ConsultasDgvConsultasReutilizables.Columns["Query"].Visible = false;
                 }
 
-                if (ConsultasDgvConsultasReutilizables
-                    .Columns["Tabla"] != null)
+                if (ConsultasDgvConsultasReutilizables.Columns["Tabla"] != null)
                 {
-                    ConsultasDgvConsultasReutilizables
-                        .Columns["Tabla"]
-                        .Visible = false;
+                    ConsultasDgvConsultasReutilizables.Columns["Tabla"].Visible = false;
                 }
             }
             catch (InvalidOperationException Excepcion)
             {
-                ConsultasDgvConsultasReutilizables
-                    .DataSource = null;
+                ConsultasDgvConsultasReutilizables.DataSource = null;
 
                 MessageBox.Show(
                     Excepcion.Message,
@@ -64,8 +52,7 @@ namespace CapaVista_Consultas.Controles
             }
             catch (Exception Excepcion)
             {
-                ConsultasDgvConsultasReutilizables
-                    .DataSource = null;
+                ConsultasDgvConsultasReutilizables.DataSource = null;
 
                 MessageBox.Show(
                     "Ocurrió un error inesperado al cargar " +
@@ -79,33 +66,25 @@ namespace CapaVista_Consultas.Controles
 
         public void ConsultasProcRefrescarConsultas()
         {
-            ConsultasProcActualizarConsultas();
+            if (string.IsNullOrWhiteSpace(Tabla))
+            {
+                ConsultasProcActualizarConsultas();
+                return;
+            }
+
+            ConsultasProcActualizarConsultasPorTabla(Tabla);
         }
 
-        private void ConsultasMetBtnIngresarClick(
-            object Sender,
-            EventArgs Evento)
+        private void ConsultasMetBtnIngresarClick(object Sender, EventArgs Evento)
         {
-            FrmMantenimientoConsultas
-                FormularioMantenimientoConsultas =
-                    new FrmMantenimientoConsultas(Tabla);
-
-            FormularioMantenimientoConsultas.Show();
+            FrmMantenimientoConsultas FormularioMantenimientoConsultas = new FrmMantenimientoConsultas(Tabla);
+            FormularioMantenimientoConsultas.ShowDialog();
+            ConsultasProcRefrescarConsultas();
         }
 
-        private void ConsultasMetBtnEliminarClick(
-            object Sender,
-            EventArgs Evento)
+        private void ConsultasMetBtnConsultarClick(object Sender, EventArgs Evento)
         {
-
-        }
-
-        private void ConsultasMetBtnConsultarClick(
-            object Sender,
-            EventArgs Evento)
-        {
-            if (ConsultasDgvConsultasReutilizables
-                .CurrentRow == null)
+            if (ConsultasDgvConsultasReutilizables.CurrentRow == null)
             {
                 MessageBox.Show(
                     "Seleccione una fila para ejecutar la consulta.",
@@ -142,9 +121,78 @@ namespace CapaVista_Consultas.Controles
                 return;
             }
 
-            ConsultaSeleccionada?.Invoke(
-                Query,
-                Tabla);
+            ConsultaSeleccionada?.Invoke(Query, Tabla);
         }
+
+        public void ConsultasProcActualizarConsultasPorTabla(string NombreTabla)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(NombreTabla))
+                {
+                    throw new ArgumentException("El nombre de la tabla no puede estar vacío.");
+                }
+
+                Tabla = NombreTabla;
+
+                ConsultasDgvConsultasReutilizables.Columns.Clear();
+
+                DataTable Consultas = _Consultas.ConsultasFuncCargarConsultasPorTabla(NombreTabla);
+
+                ConsultasDgvConsultasReutilizables.DataSource = Consultas;
+
+                if (ConsultasDgvConsultasReutilizables.Columns["Id"] != null)
+                {
+                    ConsultasDgvConsultasReutilizables.Columns["Id"].Visible = false;
+                }
+
+                if (ConsultasDgvConsultasReutilizables.Columns["Query"] != null)
+                {
+                    ConsultasDgvConsultasReutilizables.Columns["Query"].Visible = false;
+                }
+
+                if (ConsultasDgvConsultasReutilizables.Columns["Tabla"] != null)
+                {
+                    ConsultasDgvConsultasReutilizables.Columns["Tabla"].Visible = false;
+                }
+
+            }
+            catch (ArgumentException Excepcion)
+            {
+                ConsultasDgvConsultasReutilizables.DataSource = null;
+
+                MessageBox.Show(
+                    Excepcion.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            catch (InvalidOperationException Excepcion)
+            {
+                ConsultasDgvConsultasReutilizables
+                    .DataSource = null;
+
+                MessageBox.Show(
+                    Excepcion.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            catch (Exception Excepcion)
+            {
+                ConsultasDgvConsultasReutilizables
+                    .DataSource = null;
+
+                MessageBox.Show(
+                    "Ocurrió un error inesperado al cargar " +
+                    "las consultas.\n\n" +
+                    Excepcion.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        // Fin del código de Carlos Andres Arriaza Lara 0901-23-13862 el 16/09/2026
     }
 }

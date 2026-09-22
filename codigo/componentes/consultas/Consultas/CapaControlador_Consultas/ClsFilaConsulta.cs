@@ -9,8 +9,7 @@ namespace CapaControlador_Consultas
 {
     public class ClsFilaConsulta
     {
-        public Dictionary<string, object> Fila { get; set; }
-
+        public Dictionary<string, object> Fila { get; set; } 
         public ClsFilaConsulta()
         {
             Fila = new Dictionary<string, object>();

@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace CapaModelo_Consultas
 {
+    //Inicio del código realizado por Carlos Andres Arriaza Lara 0901-23-13862 15/09/2026
     public class ClsSentenciasTablas
     {
         private readonly ClsConexion _Conexion = new ClsConexion();
@@ -355,5 +356,49 @@ namespace CapaModelo_Consultas
                     "Solo se permiten consultas de lectura.");
             }
         }
+
+        //Fin del código realizado por Carlos Andres Arriaza Lara 0901-23-13862 15/09/2026
+
+        // Inicio de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "20/09/26"
+        public DataTable ConsultasFuncCargarConsultasPorTabla(string NombreTabla)
+        {
+            try
+            {
+                DataTable Consultas = new DataTable();
+
+                string Consulta =
+                    "SELECT " +
+                    "Pk_Consulta AS Id, " +
+                    "nombreConsulta AS Nombre, " +
+                    "tablaConsulta AS Tabla, " +
+                    "queryConsulta AS Query " +
+                    "FROM tblConsulta " +
+                    "WHERE tablaConsulta = ? " +
+                    "ORDER BY nombreConsulta;";
+
+                using (OdbcConnection Conexion = _Conexion.ConsultasFuncConexion())
+                {
+                    using (OdbcCommand Comando = new OdbcCommand(Consulta, Conexion))
+                    {
+                        Comando.Parameters.AddWithValue("?", NombreTabla);
+
+                        using (OdbcDataAdapter Adaptador = new OdbcDataAdapter(Comando))
+                        {
+                            Adaptador.Fill(Consultas);
+                        }
+                    }
+                }
+
+                return Consultas;
+            }
+            catch (OdbcException Excepcion)
+            {
+                throw new InvalidOperationException(
+                    "No fue posible cargar las consultas " +
+                    "de la tabla seleccionada.",
+                    Excepcion);
+            }
+        }
+        // Fin de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "20/09/26"
     }
 }

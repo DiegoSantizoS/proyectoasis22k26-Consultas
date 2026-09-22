@@ -5,34 +5,36 @@ using System.Data.Odbc;
 
 namespace CapaModelo_Consultas
 {
+
+    //Inicio del código realizado por Diana Mishel Loeiza Ramírez 9959-23-3457 20/09/2026
     public class ClsModeloMantenimiento
     {
         private static OdbcConnection Abrir()
         {
-            OdbcConnection con = new ClsConexion().ConsultasFuncConexion();
-            if (con.State != ConnectionState.Open)
+            OdbcConnection Conexion = new ClsConexion().ConsultasFuncConexion();
+            if (Conexion.State != ConnectionState.Open)
             {
                 throw new InvalidOperationException(
                     "No se pudo conectar a la base de datos. Revisa que el DSN \"EmbutidosS.A\" exista y apunte a dbConsulta.");
             }
-            return con;
+            return Conexion;
         }
         
         public List<string> ObtenerTablas()
         {
             List<string> lista = new List<string>();
-            const string sql =
+            const string Sql =
                 "SELECT TABLE_NAME FROM information_schema.TABLES " +
                 "WHERE TABLE_SCHEMA = DATABASE() ORDER BY TABLE_NAME";
 
-            using (OdbcConnection con = Abrir())
-            using (OdbcCommand cmd = new OdbcCommand(sql, con))
+            using (OdbcConnection Conexion = Abrir())
+            using (OdbcCommand Comando = new OdbcCommand(Sql, Conexion))
             {
-                using (OdbcDataReader rd = cmd.ExecuteReader())
+                using (OdbcDataReader DataReader = Comando.ExecuteReader())
                 {
-                    while (rd.Read())
+                    while (DataReader.Read())
                     {
-                        lista.Add(Convert.ToString(rd[0]));
+                        lista.Add(Convert.ToString(DataReader[0]));
                     }
                 }
             }
@@ -40,66 +42,68 @@ namespace CapaModelo_Consultas
         }
 
         
-        public List<KeyValuePair<string, string>> ObtenerColumnas(string tabla)
+        public List<KeyValuePair<string, string>> ObtenerColumnas(string Tabla)
         {
-            List<KeyValuePair<string, string>> lista = new List<KeyValuePair<string, string>>();
-            const string sql =
+            List<KeyValuePair<string, string>> Lista = new List<KeyValuePair<string, string>>();
+            const string Sql =
                 "SELECT COLUMN_NAME, DATA_TYPE FROM information_schema.COLUMNS " +
                 "WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ? ORDER BY ORDINAL_POSITION";
 
-            using (OdbcConnection con = Abrir())
-            using (OdbcCommand cmd = new OdbcCommand(sql, con))
+            using (OdbcConnection Conexion = Abrir())
+            using (OdbcCommand Comando = new OdbcCommand(Sql, Conexion))
             {
-                cmd.Parameters.AddWithValue("@tabla", tabla);
-                using (OdbcDataReader rd = cmd.ExecuteReader())
+                Comando.Parameters.AddWithValue("@tabla", Tabla);
+                using (OdbcDataReader DataReader = Comando.ExecuteReader())
                 {
-                    while (rd.Read())
+                    while (DataReader.Read())
                     {
-                        lista.Add(new KeyValuePair<string, string>(
-                            Convert.ToString(rd[0]), Convert.ToString(rd[1])));
+                        Lista.Add(new KeyValuePair<string, string>(
+                            Convert.ToString(DataReader[0]), Convert.ToString(DataReader[1])));
                     }
                 }
             }
-            return lista;
+            return Lista;
         }
 
-        public bool ExisteNombre(string nombre)
+        public bool ExisteNombre(string Nombre)
         {
-            const string sql = "SELECT COUNT(*) FROM tblConsulta WHERE nombreConsulta = ?";
+            const string Sql = "SELECT COUNT(*) FROM tblConsulta WHERE nombreConsulta = ?";
 
-            using (OdbcConnection con = Abrir())
-            using (OdbcCommand cmd = new OdbcCommand(sql, con))
+            using (OdbcConnection Conexion = Abrir())
+            using (OdbcCommand Comando = new OdbcCommand(Sql, Conexion))
             {
-                cmd.Parameters.AddWithValue("@nombre", nombre);
-                return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+                Comando.Parameters.AddWithValue("@nombre", Nombre);
+                return Convert.ToInt32(Comando.ExecuteScalar()) > 0;
             }
         }
 
-        public void Insertar(string nombre, string tabla, string query)
+        public void Insertar(string Nombre, string Tabla, string Query)
         {
-            const string sql =
+            const string Sql =
                 "INSERT INTO tblConsulta (nombreConsulta, tablaConsulta, queryConsulta) VALUES (?, ?, ?)";
 
-            using (OdbcConnection con = Abrir())
-            using (OdbcCommand cmd = new OdbcCommand(sql, con))
+            using (OdbcConnection Conexion = Abrir())
+            using (OdbcCommand Comando = new OdbcCommand(Sql, Conexion))
             {
-                cmd.Parameters.AddWithValue("@nombre", nombre);
-                cmd.Parameters.AddWithValue("@tabla", tabla);
-                cmd.Parameters.AddWithValue("@query", query);
-                cmd.ExecuteNonQuery();
+                Comando.Parameters.AddWithValue("@nombre", Nombre);
+                Comando.Parameters.AddWithValue("@tabla", Tabla);
+                Comando.Parameters.AddWithValue("@query", Query);
+                Comando.ExecuteNonQuery();
             }
         }
 
       
-        public DataTable Ejecutar(string query, int maxFilas)
+        public DataTable Ejecutar(string Query, int FilasMaximas)
         {
-            using (OdbcConnection con = Abrir())
-            using (OdbcDataAdapter da = new OdbcDataAdapter(query, con))
+            using (OdbcConnection Conexion = Abrir())
+            using (OdbcDataAdapter DataAdapter = new OdbcDataAdapter(Query, Conexion))
             {
                 DataSet ds = new DataSet();
-                da.Fill(ds, 0, maxFilas, "resultado");
+                DataAdapter.Fill(ds, 0, FilasMaximas, "resultado");
                 return ds.Tables["resultado"];
             }
         }
     }
+
+    //Fin del código realizado por Diana Mishel Loeiza Ramírez 9959-23-3457 20/09/2026
 }
