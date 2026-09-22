@@ -199,13 +199,13 @@
             this.ConsultasLblPaginacion.Text = "Mostrando x-y de z registros";
             this.ConsultasLblPaginacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // UcTabla
+            // ClsTabla
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.Controls.Add(this.ConsultasTlpPrincipal);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "UcTabla";
+            this.Name = "ClsTabla";
             this.Size = new System.Drawing.Size(871, 480);
             this.ConsultasTlpPrincipal.ResumeLayout(false);
             this.ConsultasTlpPrincipal.PerformLayout();
