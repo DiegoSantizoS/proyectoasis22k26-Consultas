@@ -25,7 +25,7 @@ namespace CapaVista_Consultas
             : this()
         {
             TablaActual = Tabla;
-
+            ConsultasUcConsultasReutilizables.Tabla = TablaActual;
             ConsultasUcTabla
                 .ConsultasMetConfigurarSeleccion(
                     CampoId);

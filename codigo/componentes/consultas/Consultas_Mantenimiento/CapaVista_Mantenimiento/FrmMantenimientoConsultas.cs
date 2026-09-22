@@ -6,17 +6,17 @@ using CapaControlador_Consultas;
 
 namespace CapaVista_Consultas
 {
-   
+
     public partial class FrmMantenimientoConsultas : Componentes.ClsBaseTerminus
     {
         private readonly ClsControladorMantenimiento _ctrl = new ClsControladorMantenimiento();
         private Dictionary<string, string> _tipos = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         private string _tabla;
 
-        private const int ColCampo = 0;
-        private const int ColOperador = 1;
-        private const int ColValor = 2;
-        private const int ColOrden = 3;
+        private const int _ColCampo = 0;
+        private const int _ColOperador = 1;
+        private const int _ColValor = 2;
+        private const int _ColOrden = 3;
 
         public FrmMantenimientoConsultas(string tabla)
         {
@@ -29,30 +29,27 @@ namespace CapaVista_Consultas
         {
             try
             {
-                ConectarEventos();
-                CargarOperadores();
+                ConsultasProcConectarEventos();
+                ConsultasProcCargarOperadores();
+
 
                 if (_tabla == "")
                 {
-                    _tabla = PedirTabla();
-                    if (_tabla == "")
-                    {
-                        BeginInvoke(new MethodInvoker(Close));
-                        return;
-                    }
+                    BeginInvoke(new MethodInvoker(Close));
+                    return;
                 }
 
-                CargarColumnas();
+                ConsultasProcCargarColumnas();
                 Text = "4003 – MantenimientoConsultas – " + _tabla;
             }
             catch (Exception ex)
             {
-                MostrarError("No se pudo cargar el formulario.", ex);
+                ConsultasProcMostrarError("No se pudo cargar el formulario.", ex);
                 BeginInvoke(new MethodInvoker(Close));
             }
         }
 
-        private void ConectarEventos()
+        private void ConsultasProcConectarEventos()
         {
             ConsultasCboOperador.SelectedIndexChanged += ConsultasCboOperador_SelectedIndexChanged;
             ConsultasBtnIngresar.Click += ConsultasBtnIngresar_Click;
@@ -60,7 +57,7 @@ namespace CapaVista_Consultas
             ConsultasBtnGuardar.Click += ConsultasBtnGuardar_Click;
         }
 
-        private void CargarOperadores()
+        private void ConsultasProcCargarOperadores()
         {
             ConsultasCboOperador.Items.Clear();
             ConsultasCboOperador.Items.AddRange(new object[]
@@ -70,12 +67,12 @@ namespace CapaVista_Consultas
             ConsultasCboOperador.SelectedIndex = -1;
         }
 
-        private void CargarColumnas()
+        private void ConsultasProcCargarColumnas()
         {
             _tipos = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             ConsultasCboOperadorCampo.Items.Clear();
 
-            foreach (KeyValuePair<string, string> col in _ctrl.ObtenerColumnas(_tabla))
+            foreach (KeyValuePair<string, string> col in _ctrl.ConsultasMetObtenerColumnas(_tabla))
             {
                 _tipos[col.Key] = col.Value;
                 ConsultasCboOperadorCampo.Items.Add(col.Key);
@@ -90,8 +87,8 @@ namespace CapaVista_Consultas
             ConsultasCboOperadorCampo.SelectedIndex = -1;
         }
 
-     
-        private string PedirTabla()
+
+        /*private string PedirTabla()
         {
             using (Form dlg = new Form())
             using (Label lbl = new Label())
@@ -148,9 +145,9 @@ namespace CapaVista_Consultas
                 }
                 return "";
             }
-        }
+        }*/
 
-        
+
         private void ConsultasCboOperador_SelectedIndexChanged(object sender, EventArgs e)
         {
             string op = ConsultasCboOperador.SelectedItem == null ? "" : ConsultasCboOperador.SelectedItem.ToString();
@@ -169,7 +166,7 @@ namespace CapaVista_Consultas
             {
                 if (ConsultasCboOperadorCampo.SelectedItem == null)
                 {
-                    Aviso("Selecciona un campo.");
+                    ConsultasProcAviso("Selecciona un campo.");
                     return;
                 }
 
@@ -180,12 +177,12 @@ namespace CapaVista_Consultas
 
                 if (op == "" && valor != "")
                 {
-                    Aviso("Selecciona un operador para usar el valor.");
+                    ConsultasProcAviso("Selecciona un operador para usar el valor.");
                     return;
                 }
                 if (op == "" && orden == "")
                 {
-                    Aviso("Selecciona un operador con su valor, o un ordenamiento (ASC / DESC).");
+                    ConsultasProcAviso("Selecciona un operador con su valor, o un ordenamiento (ASC / DESC).");
                     return;
                 }
 
@@ -195,7 +192,7 @@ namespace CapaVista_Consultas
                 fila.Valor = valor;
                 fila.Orden = orden;
 
-                _ctrl.ValidarCondicion(fila, _tipos);
+                _ctrl.ConsultasProcValidarCondicion(fila, _tipos);
 
                 ConsultasDgvConsultasFiltros.Rows.Add(fila.Campo, fila.Operador, fila.Valor, fila.Orden);
 
@@ -207,11 +204,11 @@ namespace CapaVista_Consultas
             }
             catch (ArgumentException ex)
             {
-                Aviso(ex.Message);
+                ConsultasProcAviso(ex.Message);
             }
             catch (Exception ex)
             {
-                MostrarError("No se pudo agregar la condicion.", ex);
+                ConsultasProcMostrarError("No se pudo agregar la condicion.", ex);
             }
         }
 
@@ -219,7 +216,7 @@ namespace CapaVista_Consultas
         {
             if (ConsultasDgvConsultasFiltros.SelectedRows.Count == 0)
             {
-                Aviso("Selecciona en la tabla la condicion que quieres quitar.");
+                ConsultasProcAviso("Selecciona en la tabla la condicion que quieres quitar.");
                 return;
             }
 
@@ -233,12 +230,12 @@ namespace CapaVista_Consultas
                 string nombre = ConsultasTxtNombre.Text.Trim();
                 if (nombre == "")
                 {
-                    Aviso("Escribe un nombre para la consulta.");
+                    ConsultasProcAviso("Escribe un nombre para la consulta.");
                     ConsultasTxtNombre.Focus();
                     return;
                 }
 
-                string query = _ctrl.ConstruirQuery(_tabla, LeerCondiciones(), _tipos);
+                string query = _ctrl.ConsultasFuncConstruirQuery(_tabla, ConsultasMetLeerCondiciones(), _tipos);
 
                 DialogResult r = MessageBox.Show(this,
                     "Se guardara la consulta \"" + nombre + "\":" + Environment.NewLine + Environment.NewLine +
@@ -250,25 +247,25 @@ namespace CapaVista_Consultas
                     return;
                 }
 
-                _ctrl.Guardar(nombre, _tabla, query);
+                _ctrl.ConsultasProcGuardar(nombre, _tabla, query);
 
                 MessageBox.Show(this, "Consulta guardada.", "Mantenimiento de consultas",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarFormulario();
+                ConsultasProcLimpiarFormulario();
             }
             catch (ArgumentException ex)
             {
-                Aviso(ex.Message);
+                ConsultasProcAviso(ex.Message);
             }
             catch (Exception ex)
             {
-                MostrarError("No se pudo guardar la consulta.", ex);
+                ConsultasProcMostrarError("No se pudo guardar la consulta.", ex);
             }
         }
 
-        
 
-        private List<ClsCondicion> LeerCondiciones()
+
+        private List<ClsCondicion> ConsultasMetLeerCondiciones()
         {
             List<ClsCondicion> lista = new List<ClsCondicion>();
             bool hayCondicionPrevia = false;
@@ -276,10 +273,10 @@ namespace CapaVista_Consultas
             foreach (DataGridViewRow fila in ConsultasDgvConsultasFiltros.Rows)
             {
                 ClsCondicion c = new ClsCondicion();
-                c.Campo = Texto(fila.Cells[ColCampo]);
-                c.Operador = Texto(fila.Cells[ColOperador]);
-                c.Valor = Texto(fila.Cells[ColValor]);
-                c.Orden = Texto(fila.Cells[ColOrden]);
+                c.Campo = ConsultasFuncTexto(fila.Cells[_ColCampo]);
+                c.Operador = ConsultasFuncTexto(fila.Cells[_ColOperador]);
+                c.Valor = ConsultasFuncTexto(fila.Cells[_ColValor]);
+                c.Orden = ConsultasFuncTexto(fila.Cells[_ColOrden]);
 
                 if (c.Operador != "")
                 {
@@ -291,7 +288,7 @@ namespace CapaVista_Consultas
             return lista;
         }
 
-        private void LimpiarFormulario()
+        private void ConsultasProcLimpiarFormulario()
         {
             ConsultasDgvConsultasFiltros.Rows.Clear();
             ConsultasTxtNombre.Clear();
@@ -303,18 +300,18 @@ namespace CapaVista_Consultas
             ConsultasRdoDescendente.Checked = false;
         }
 
-        private static string Texto(DataGridViewCell celda)
+        private static string ConsultasFuncTexto(DataGridViewCell celda)
         {
             return celda.Value == null ? "" : celda.Value.ToString();
         }
 
-        private void Aviso(string mensaje)
+        private void ConsultasProcAviso(string mensaje)
         {
             MessageBox.Show(this, mensaje, "Mantenimiento de consultas",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        private void MostrarError(string mensaje, Exception ex)
+        private void ConsultasProcMostrarError(string mensaje, Exception ex)
         {
             MessageBox.Show(this, mensaje + Environment.NewLine + Environment.NewLine + ex.Message,
                 "Mantenimiento de consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -88,7 +88,7 @@ namespace CapaVista_Consultas.Controles
         {
             FrmMantenimientoConsultas
                 FormularioMantenimientoConsultas =
-                    new FrmMantenimientoConsultas();
+                    new FrmMantenimientoConsultas(Tabla);
 
             FormularioMantenimientoConsultas.Show();
         }
