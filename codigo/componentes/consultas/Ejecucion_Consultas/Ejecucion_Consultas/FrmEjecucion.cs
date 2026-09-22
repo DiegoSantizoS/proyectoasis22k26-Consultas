@@ -12,25 +12,18 @@ namespace Ejecucion_Consultas
             InitializeComponent();
         }
 
-        private void ConsultasMetBtnConsultarClick(
-            object sender,
-            EventArgs e)
+        private void ConsultasMetBtnConsultarClick(object Sender, EventArgs Evento)
         {
-            string[] TablasDePrueba = new string[] { "tblConsulta", "vwtblConsulta" };
-            using (FrmConsultasSimples FormularioConsultasSimples =
-                new FrmConsultasSimples(
-                    "tblConsulta",
-                    "Pk_Consulta"))
-
+            using (FrmConsultasSimples Formulario = new FrmConsultasSimples("tblConsulta","Pk_Consulta"))
             {
-                FormularioConsultasSimples.ShowDialog();
+                Formulario.ShowDialog();
 
-                if (FormularioConsultasSimples.SeleccionRealizada)
+                if (Formulario.SeleccionRealizada)
                 {
-                    ConsultasTxtId.Text =
-                        FormularioConsultasSimples.IdSeleccionado;
+                    ConsultasTxtId.Text = Formulario.IdSeleccionado;
                 }
             }
         }
+
     }
 }
