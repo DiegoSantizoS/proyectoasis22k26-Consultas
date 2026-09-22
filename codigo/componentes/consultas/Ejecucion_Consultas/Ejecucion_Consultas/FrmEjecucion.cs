@@ -22,10 +22,6 @@ namespace Ejecucion_Consultas
                     "tblConsulta",
                     "Pk_Consulta"))
 
-            using (FrmConsultasSimples FormularioConsultasSimples =
-                new FrmConsultasSimples(
-                    TablasDePrueba,
-                    "Pk_Consulta"))
             {
                 FormularioConsultasSimples.ShowDialog();
 

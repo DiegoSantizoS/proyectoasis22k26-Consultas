@@ -1,10 +1,6 @@
 ﻿namespace CapaVista_Consultas.Controles
 {
-<<<<<<<< HEAD:codigo/componentes/consultas/Consultas/CapaVista_Consultas/Controles/UcSeleccioneUnaConsulta.Designer.cs
     partial class UcSeleccioneUnaConsulta
-========
-    partial class ClsSeleccioneUnaConsulta
->>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977:codigo/componentes/consultas/Consultas/CapaVista_Consultas/Controles/ClsSeleccioneUnaConsulta.Designer.cs
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -32,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-<<<<<<<< HEAD:codigo/componentes/consultas/Consultas/CapaVista_Consultas/Controles/UcSeleccioneUnaConsulta.Designer.cs
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcSeleccioneUnaConsulta));
-========
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClsSeleccioneUnaConsulta));
->>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977:codigo/componentes/consultas/Consultas/CapaVista_Consultas/Controles/ClsSeleccioneUnaConsulta.Designer.cs
+
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();

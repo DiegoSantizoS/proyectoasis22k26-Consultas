@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaVista_Consultas.Controles;
+using System;
 using System.Windows.Forms;
 
 namespace CapaVista_Consultas
@@ -15,7 +16,6 @@ namespace CapaVista_Consultas
         public FrmConsultasComplejas()
         {
             InitializeComponent();
-
             ConsultasMetConfigurarFormulario();
         }
 
@@ -25,7 +25,7 @@ namespace CapaVista_Consultas
             : this()
         {
             TablaActual = Tabla;
-
+            ConsultasUcConsultasReutilizables.Tabla = TablaActual;
             ConsultasUcTabla
                 .ConsultasMetConfigurarSeleccion(
                     CampoId);

@@ -1,13 +1,5 @@
-<<<<<<< HEAD
-﻿namespace CapaVista_Consultas
-{
-    public partial class FrmMantenimientoConsultas : Componentes.ClsBaseTerminus
-    {
-        public FrmMantenimientoConsultas()
-        {
-            InitializeComponent();
-=======
-﻿using System;
+
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -15,7 +7,7 @@ using CapaControlador_Consultas;
 
 namespace CapaVista_Consultas
 {
-   
+
     public partial class FrmMantenimientoConsultas : Componentes.ClsBaseTerminus
     {
         private readonly ClsControladorMantenimiento _ctrl = new ClsControladorMantenimiento();
@@ -30,7 +22,7 @@ namespace CapaVista_Consultas
         public FrmMantenimientoConsultas(string tabla)
         {
             InitializeComponent();
-            _tabla = (tabla ?? "").Trim();
+            this._tabla = (tabla ?? "").Trim();
             Load += FrmMantenimientoConsultas_Load;
         }
 
@@ -40,15 +32,10 @@ namespace CapaVista_Consultas
             {
                 ConsultasProcConectarEventos();
                 ConsultasProcCargarOperadores();
-
                 if (_tabla == "")
                 {
-                    _tabla = ConsultasFuncPedirTabla();
-                    if (_tabla == "")
-                    {
-                        BeginInvoke(new MethodInvoker(Close));
-                        return;
-                    }
+                    BeginInvoke(new MethodInvoker(Close));
+                    return;
                 }
 
                 ConsultasProcCargarColumnas();
@@ -99,8 +86,8 @@ namespace CapaVista_Consultas
             ConsultasCboOperadorCampo.SelectedIndex = -1;
         }
 
-     
-        private string ConsultasFuncPedirTabla()
+
+        /*private string ConsultasFuncPedirTabla()
         {
             using (Form dlg = new Form())
             using (Label lbl = new Label())
@@ -157,9 +144,9 @@ namespace CapaVista_Consultas
                 }
                 return "";
             }
-        }
+        }*/
 
-        
+
         private void ConsultasCboOperador_SelectedIndexChanged(object sender, EventArgs e)
         {
             string op = ConsultasCboOperador.SelectedItem == null ? "" : ConsultasCboOperador.SelectedItem.ToString();
@@ -275,7 +262,7 @@ namespace CapaVista_Consultas
             }
         }
 
-        
+
 
         private List<ClsCondicion> ConsultasFuncLeerCondiciones()
         {
@@ -327,7 +314,7 @@ namespace CapaVista_Consultas
         {
             MessageBox.Show(this, mensaje + Environment.NewLine + Environment.NewLine + ex.Message,
                 "Mantenimiento de consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
->>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977
+
         }
     }
 }

@@ -1,10 +1,6 @@
 ﻿namespace CapaVista_Consultas.Controles
 {
-<<<<<<<< HEAD:codigo/componentes/consultas/Consultas/CapaVista_Consultas/Controles/UcAgregarFiltro.Designer.cs
     partial class UcAgregarFiltro
-========
-    partial class ClsAgregarFiltro
->>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977:codigo/componentes/consultas/Consultas/CapaVista_Consultas/Controles/ClsAgregarFiltro.Designer.cs
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -32,11 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-<<<<<<<< HEAD:codigo/componentes/consultas/Consultas/CapaVista_Consultas/Controles/UcAgregarFiltro.Designer.cs
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcAgregarFiltro));
-========
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClsAgregarFiltro));
->>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977:codigo/componentes/consultas/Consultas/CapaVista_Consultas/Controles/ClsAgregarFiltro.Designer.cs
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasLblCampo = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
             this.ConsultasCboCampo = new CapaVista_Consultas.Componentes.ClsListaComboBoxConsultas();

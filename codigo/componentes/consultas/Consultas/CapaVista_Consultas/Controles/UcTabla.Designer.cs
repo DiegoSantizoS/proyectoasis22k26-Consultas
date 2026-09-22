@@ -1,11 +1,7 @@
 ﻿namespace CapaVista_Consultas.Controles
 {
-<<<<<<<< HEAD:codigo/componentes/consultas/Consultas/CapaVista_Consultas/Controles/UcTabla.Designer.cs
-    partial class UcTabla
-========
-    partial class ClsTabla
->>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977:codigo/componentes/consultas/Consultas/CapaVista_Consultas/Controles/ClsTabla.Designer.cs
-    {
+    partial class UcTabla{
+   
         /// <summary> 
         /// Variable del diseñador necesaria.
         /// </summary>
@@ -32,11 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-<<<<<<<< HEAD:codigo/componentes/consultas/Consultas/CapaVista_Consultas/Controles/UcTabla.Designer.cs
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcTabla));
-========
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClsTabla));
->>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977:codigo/componentes/consultas/Consultas/CapaVista_Consultas/Controles/ClsTabla.Designer.cs
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
