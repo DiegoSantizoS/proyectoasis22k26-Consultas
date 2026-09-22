@@ -16,10 +16,12 @@ namespace Ejecucion_Consultas
             object sender,
             EventArgs e)
         {
+            string[] TablasDePrueba = new string[] { "tblProveedor", "vwComprasPorProveedor" };
+
             using (FrmConsultasSimples FormularioConsultasSimples =
                 new FrmConsultasSimples(
-                    "tblConsulta",
-                    "Pk_Consulta"))
+                    TablasDePrueba,
+                    "Pk_Proveedor"))
             {
                 FormularioConsultasSimples.ShowDialog();
 
