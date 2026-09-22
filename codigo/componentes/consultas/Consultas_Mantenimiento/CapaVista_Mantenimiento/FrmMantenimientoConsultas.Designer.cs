@@ -109,6 +109,7 @@
             this.ConsultasTlpFiltros.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ConsultasTlpFiltros.Size = new System.Drawing.Size(681, 472);
             this.ConsultasTlpFiltros.TabIndex = 19;
+            this.ConsultasTlpFiltros.Paint += new System.Windows.Forms.PaintEventHandler(this.ConsultasTlpFiltros_Paint);
             // 
             // ConsultasFlpBotones
             // 

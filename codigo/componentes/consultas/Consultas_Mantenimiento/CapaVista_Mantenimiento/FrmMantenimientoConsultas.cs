@@ -176,9 +176,8 @@ namespace CapaVista_Consultas
                 string Query = _Control.ConsultasFuncConstruirQuery(_Tabla, ConsultasMetLeerCondiciones(), _Tipos);
 
                 DialogResult r = MessageBox.Show(this,
-                    "Se guardara la consulta \"" + Nombre + "\":" + Environment.NewLine + Environment.NewLine +
-                    Query + Environment.NewLine + Environment.NewLine + "¿Guardar?",
-                    "Guardar consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                 "¿Guardar la consulta \"" + Nombre + "\"?",
+                   "Guardar consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (r != DialogResult.Yes)
                 {
@@ -275,6 +274,11 @@ namespace CapaVista_Consultas
             }
 
             MessageBox.Show("No se encontró el archivo de ayuda.");
+        }
+
+        private void ConsultasTlpFiltros_Paint(object sender, PaintEventArgs e)
+        {
+
         }
         //Fin del código realizado por Diego Fernando Santizo Samayoa 0901-22-15950 22/09/2026
     }
