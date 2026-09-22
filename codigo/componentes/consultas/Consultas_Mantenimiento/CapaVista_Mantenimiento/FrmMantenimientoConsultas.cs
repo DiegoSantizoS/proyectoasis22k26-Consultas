@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+﻿namespace CapaVista_Consultas
+{
+    public partial class FrmMantenimientoConsultas : Componentes.ClsBaseTerminus
+    {
+        public FrmMantenimientoConsultas()
+        {
+            InitializeComponent();
+=======
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -318,6 +327,7 @@ namespace CapaVista_Consultas
         {
             MessageBox.Show(this, mensaje + Environment.NewLine + Environment.NewLine + ex.Message,
                 "Mantenimiento de consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977
         }
     }
 }

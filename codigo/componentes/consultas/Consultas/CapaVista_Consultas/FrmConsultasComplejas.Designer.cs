@@ -33,8 +33,13 @@
             this.ConsultasGbxSeleccionTabla = new CapaVista_Consultas.Componentes.ClsGrupoConsultas();
             this.ConsultasCboSeleccionTabla = new CapaVista_Consultas.Componentes.ClsListaComboBoxConsultas();
             this.ConsultasGbxSeleccionConsulta = new CapaVista_Consultas.Componentes.ClsGrupoConsultas();
+<<<<<<< HEAD
+            this.ConsultasUcConsultasReutilizables = new CapaVista_Consultas.Controles.UcSeleccioneUnaConsulta();
+            this.ConsultasUcTabla = new CapaVista_Consultas.Controles.UcTabla();
+=======
             this.ConsultasUcConsultasReutilizables = new CapaVista_Consultas.Controles.ClsSeleccioneUnaConsulta();
             this.ConsultasUcTabla = new CapaVista_Consultas.Controles.ClsTabla();
+>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977
             this.ConsultasFlpBotones = new System.Windows.Forms.FlowLayoutPanel();
             this.ConsultasBtnRefrescar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasBtnSalir = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
@@ -240,8 +245,13 @@
         private Componentes.ClsBotonConsultas ConsultasBtnRefrescar;
         private Componentes.ClsGrupoConsultas ConsultasGbxSeleccionTabla;
         private Componentes.ClsGrupoConsultas ConsultasGbxSeleccionConsulta;
+<<<<<<< HEAD
+        private Controles.UcSeleccioneUnaConsulta ConsultasUcConsultasReutilizables;
+        private Controles.UcTabla ConsultasUcTabla;
+=======
         private Controles.ClsSeleccioneUnaConsulta ConsultasUcConsultasReutilizables;
         private Controles.ClsTabla ConsultasUcTabla;
+>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977
         private Componentes.ClsListaComboBoxConsultas ConsultasCboSeleccionTabla;
         private System.Windows.Forms.FlowLayoutPanel ConsultasFlpBotones;
         private Componentes.ClsBotonConsultas ConsultasBtnInicio;

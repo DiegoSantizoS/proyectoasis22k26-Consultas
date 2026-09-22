@@ -11,7 +11,17 @@ namespace Ejecucion_Consultas
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
+            string[] Tablas =
+            {
+                "vwDetalleCompras",
+                "vwComprasPorProveedor",
+                "vwComprasPorProducto",
+                "tblConsulta"
+            };
+=======
             
+>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977
             Application.Run(new FrmEjecucion());
             
         }

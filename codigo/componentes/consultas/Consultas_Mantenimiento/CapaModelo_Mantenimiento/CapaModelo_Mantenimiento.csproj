@@ -41,9 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="Properties\AssemblyInfo.cs" />
+=======
     <Compile Include="ClsModeloMantenimiento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="repositorios\ClsConexion.cs" />
+>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

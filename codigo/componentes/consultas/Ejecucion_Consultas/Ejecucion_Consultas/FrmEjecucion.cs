@@ -17,6 +17,10 @@ namespace Ejecucion_Consultas
             EventArgs e)
         {
             string[] TablasDePrueba = new string[] { "tblConsulta", "vwtblConsulta" };
+            using (FrmConsultasSimples FormularioConsultasSimples =
+                new FrmConsultasSimples(
+                    "tblConsulta",
+                    "Pk_Consulta"))
 
             using (FrmConsultasSimples FormularioConsultasSimples =
                 new FrmConsultasSimples(
