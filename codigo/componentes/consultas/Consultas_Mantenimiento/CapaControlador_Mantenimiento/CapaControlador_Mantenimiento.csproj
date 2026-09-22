@@ -44,6 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+=======
+    <Compile Include="ClsCondicion.cs" />
+    <Compile Include="ClsControladorMantenimiento.cs" />
+>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -15,6 +15,7 @@ namespace CapaVista_Consultas
 
         private string _TablaActual;
         private string _CampoId;
+<<<<<<< HEAD
 
         private string _CampoFiltro;
         private string _OperadorFiltro;
@@ -25,7 +26,19 @@ namespace CapaVista_Consultas
         public string IdSeleccionado { get; private set; }
 
         public bool SeleccionRealizada { get; private set; }
+=======
+>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977
 
+        private string _CampoFiltro;
+        private string _OperadorFiltro;
+        private string _ValorFiltro;
+
+        private const int _RegistrosPorPagina = 15;
+
+        public string IdSeleccionado { get; private set; }
+
+        public bool SeleccionRealizada { get; private set; }
+        
         public FrmConsultasSimples()
         {
             InitializeComponent();
@@ -58,6 +71,7 @@ namespace CapaVista_Consultas
                     Tabla);
         }
 
+<<<<<<< HEAD
         public FrmConsultasSimples(
             string[] Tablas,
             string CampoId)
@@ -65,6 +79,12 @@ namespace CapaVista_Consultas
         {
             if (Tablas == null ||
                 Tablas.Length == 0)
+=======
+        // Inicio de código de "Pedro José Gómez Villalobos" - carné: "0901-23-4868" - Fecha: "20/09/26"
+        public FrmConsultasSimples(string[] Tablas, string CampoId) : this()
+        {
+            if (Tablas == null || Tablas.Length == 0)
+>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977
             {
                 throw new ArgumentException(
                     "Debe proporcionar al menos una tabla.",
@@ -74,6 +94,7 @@ namespace CapaVista_Consultas
             _TablaActual = Tablas[0];
             _CampoId = CampoId;
 
+<<<<<<< HEAD
             ConsultasUcTablaSimple
                 .ConsultasMetConfigurarSeleccion(
                     CampoId);
@@ -91,6 +112,16 @@ namespace CapaVista_Consultas
                     _TablaActual);
         }
 
+=======
+            ConsultasUcTablaSimple.ConsultasMetConfigurarSeleccion(CampoId);
+
+            ClsTablaSeleccionada.ConsultasMetGuardarTablas(Tablas);
+
+            ConsultasUcTablaSimple.ConsultasProcActualizarTabla(_TablaActual);
+            ConsultasUcAgregarFiltro.ConsultasProcActualizarTabla(_TablaActual);
+        }
+        // Fin de código de "Pedro José Gómez Villalobos" - carné: "0901-23-4868" - Fecha: "20/09/26"
+>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977
         private void ConsultasMetSuscribirEventos()
         {
             ConsultasUcAgregarFiltro

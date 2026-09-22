@@ -59,11 +59,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Controles\UcAgregarFiltro.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controles\UcAgregarFiltro.Designer.cs">
       <DependentUpon>UcAgregarFiltro.cs</DependentUpon>
+=======
+    <Compile Include="Controles\ClsAgregarFiltro.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\ClsAgregarFiltro.Designer.cs">
+      <DependentUpon>ClsAgregarFiltro.cs</DependentUpon>
+>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977
     </Compile>
     <Compile Include="FrmConsultasComplejas.cs">
       <SubType>Form</SubType>
@@ -77,6 +85,7 @@
     <Compile Include="FrmConsultasSimples.Designer.cs">
       <DependentUpon>FrmConsultasSimples.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Controles\UcSeleccioneUnaConsulta.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -89,6 +98,20 @@
     </Compile>
     <Compile Include="Controles\UcTabla.Designer.cs">
       <DependentUpon>UcTabla.cs</DependentUpon>
+=======
+    <Compile Include="Controles\ClsSeleccioneUnaConsulta.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\ClsSeleccioneUnaConsulta.Designer.cs">
+      <DependentUpon>ClsSeleccioneUnaConsulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controles\ClsTabla.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\ClsTabla.Designer.cs">
+      <DependentUpon>ClsTabla.cs</DependentUpon>
+>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -97,8 +120,13 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="Controles\UcAgregarFiltro.resx">
       <DependentUpon>UcAgregarFiltro.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Controles\ClsAgregarFiltro.resx">
+      <DependentUpon>ClsAgregarFiltro.cs</DependentUpon>
+>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConsultasComplejas.resx">
       <DependentUpon>FrmConsultasComplejas.cs</DependentUpon>
@@ -106,11 +134,19 @@
     <EmbeddedResource Include="FrmConsultasSimples.resx">
       <DependentUpon>FrmConsultasSimples.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="Controles\UcSeleccioneUnaConsulta.resx">
       <DependentUpon>UcSeleccioneUnaConsulta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controles\UcTabla.resx">
       <DependentUpon>UcTabla.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Controles\ClsSeleccioneUnaConsulta.resx">
+      <DependentUpon>ClsSeleccioneUnaConsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\UcTabla.resx">
+      <DependentUpon>ClsTabla.cs</DependentUpon>
+>>>>>>> 858b8ecdd61146fd72666170e3685eb1487ce977
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
