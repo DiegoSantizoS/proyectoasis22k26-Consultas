@@ -18,31 +18,12 @@ namespace CapaVista_Consultas
         private const int ColValor = 2;
         private const int ColOrden = 3;
 
-        public FrmMantenimientoConsultas() : this("")
-        {
-        }
-
         public FrmMantenimientoConsultas(string tabla)
         {
             InitializeComponent();
             _tabla = (tabla ?? "").Trim();
             Load += FrmMantenimientoConsultas_Load;
         }
-
-        
-        private void ConsultasDgvConsultasFiltros_CellContentClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
-        {
-        }
-
-        private void ConsultasTlpFiltros_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
-        {
-        }
-
-        private void ConsultasFlpBotones_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
-        {
-        }
-
-        
 
         private void FrmMantenimientoConsultas_Load(object sender, EventArgs e)
         {
@@ -337,11 +318,6 @@ namespace CapaVista_Consultas
         {
             MessageBox.Show(this, mensaje + Environment.NewLine + Environment.NewLine + ex.Message,
                 "Mantenimiento de consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void ConsultasTlpPrincipal_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
