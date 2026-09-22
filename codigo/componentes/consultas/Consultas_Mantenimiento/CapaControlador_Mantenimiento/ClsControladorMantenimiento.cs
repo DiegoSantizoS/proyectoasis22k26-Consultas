@@ -16,18 +16,21 @@ namespace CapaControlador_Consultas
         private static readonly string[] _OperadoresValidos =
             { "=", "<>", ">", "<", ">=", "<=", "LIKE", "NOT LIKE", "IS NULL", "IS NOT NULL" };
 
-        private static readonly HashSet<string> _TiposNumericos = new HashSet<string>(new string[] { "int", "integer", "bigint", "smallint", "mediumint", "tinyint", "decimal", "numeric", "float", "double" });
-        
+        private static readonly HashSet<string> _TiposNumericos = new HashSet<string>(
+            new string[] { "int", "integer", "bigint", "smallint", "mediumint", "tinyint",
+                           "decimal", "numeric", "float", "double" });
 
-        public List<string> ConsultasFuncObtenerTablas()
-        {
-            return _modelo.ConsultasFuncObtenerTablas();
-        }
 
-        public List<KeyValuePair<string, string>> ConsultasFuncObtenerColumnas(string tabla)
+        //Comentado por temas de debug, ya que no se esta usando en el proyecto
+        /* public List<string> ObtenerTablas()
+         {
+             return _modelo.ObtenerTablas();
+         }*/
+
+        public List<KeyValuePair<string, string>> ConsutlasMetObtenerColumnas(string tabla)
         {
             ConsultasProcValidarIdentificador(tabla, "tabla");
-            return _modelo.ConsultasFuncObtenerColumnas(tabla);
+            return _modelo.ObtenerColumnas(tabla);
         }
 
 
@@ -40,7 +43,7 @@ namespace CapaControlador_Consultas
             }
         }
 
-        public string ConsultasMetConstruirQuery(string tabla, List<ClsCondicion> filas, Dictionary<string, string> tipos)
+        public string ConsultasFuncConstruirQuery(string tabla, List<ClsCondicion> filas, Dictionary<string, string> tipos)
         {
             ConsultasProcValidarIdentificador(tabla, "tabla");
 

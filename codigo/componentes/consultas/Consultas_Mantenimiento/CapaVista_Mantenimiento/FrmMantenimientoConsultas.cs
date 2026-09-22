@@ -32,6 +32,8 @@ namespace CapaVista_Consultas
             {
                 ConsultasProcConectarEventos();
                 ConsultasProcCargarOperadores();
+
+
                 if (_tabla == "")
                 {
                     BeginInvoke(new MethodInvoker(Close));
@@ -87,7 +89,7 @@ namespace CapaVista_Consultas
         }
 
 
-        /*private string ConsultasFuncPedirTabla()
+        /*private string PedirTabla()
         {
             using (Form dlg = new Form())
             using (Label lbl = new Label())
@@ -234,7 +236,7 @@ namespace CapaVista_Consultas
                     return;
                 }
 
-                string query = _ctrl.ConsultasMetConstruirQuery(_tabla, ConsultasFuncLeerCondiciones(), _tipos);
+                string query = _ctrl.ConsultasFuncConstruirQuery(_tabla, ConsultasMetLeerCondiciones(), _tipos);
 
                 DialogResult r = MessageBox.Show(this,
                     "Se guardara la consulta \"" + nombre + "\":" + Environment.NewLine + Environment.NewLine +
@@ -264,7 +266,7 @@ namespace CapaVista_Consultas
 
 
 
-        private List<ClsCondicion> ConsultasFuncLeerCondiciones()
+        private List<ClsCondicion> ConsultasMetLeerCondiciones()
         {
             List<ClsCondicion> lista = new List<ClsCondicion>();
             bool hayCondicionPrevia = false;
@@ -299,7 +301,7 @@ namespace CapaVista_Consultas
             ConsultasRdoDescendente.Checked = false;
         }
 
-        private static string ConsultasFuncTexto(DataGridViewCell celda)
+        private static string ConsutlasFuncTexto(DataGridViewCell celda)
         {
             return celda.Value == null ? "" : celda.Value.ToString();
         }
