@@ -36,6 +36,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CapaControlador_Consultas\bin\Debug\CapaControlador_Consultas.dll</HintPath>
     </Reference>
+    <Reference Include="CapaVista_CbCampos">
+      <HintPath>..\..\Consultas_ComboBoxCampos\CapaVista_CbCampos\bin\Debug\CapaVista_CbCampos.dll</HintPath>
+    </Reference>
     <Reference Include="CapaVista_Componentes">
       <HintPath>..\..\Consultas_Componentes\CapaVista_Componentes\bin\Debug\CapaVista_Componentes.dll</HintPath>
     </Reference>
