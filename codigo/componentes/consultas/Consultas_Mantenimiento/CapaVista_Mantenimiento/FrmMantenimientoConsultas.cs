@@ -31,7 +31,7 @@ namespace CapaVista_Consultas
             try
             {
                 ConsultasProcConectarEventos();
-                ConsultasProcCargarOperadores();
+                
 
 
                 if (_Tabla == "")
@@ -50,23 +50,92 @@ namespace CapaVista_Consultas
         }
 
         private void ConsultasProcConectarEventos()
+
         {
+            ConsultasCboOperadorCampo.SelectedIndexChanged += ConsultasCboOperadorCampo_SelectedIndexChanged;
             ConsultasCboOperador.SelectedIndexChanged += ConsultasCboOperador_SelectedIndexChanged;
             ConsultasBtnIngresar.Click += ConsultasMetBtnIngresarClick;
             ConsultasBtnEliminar.Click += ConsultasMetBtnEliminarClick;
             ConsultasBtnGuardar.Click += ConsultasMetBtnGuardarClick;
         }
 
-        private void ConsultasProcCargarOperadores()
+        //Inicio del código de Miguel David Contreras Jacinto 0901-21-3878 el 22/09/2026
+        private void ConsultasProcCargarOperadores(string TipoCampo)
         {
             ConsultasCboOperador.Items.Clear();
-            ConsultasCboOperador.Items.AddRange(new object[]
+
+            if (string.IsNullOrWhiteSpace(TipoCampo))
             {
-                "=", "<>", ">", "<", ">=", "<=", "LIKE", "NOT LIKE", "IS NULL", "IS NOT NULL"
-            });
+                ConsultasCboOperador.SelectedIndex = -1;
+                return;
+            }
+
+            string Tipo = TipoCampo.Trim().ToLowerInvariant();
+            int PosicionParentesis = Tipo.IndexOf('(');
+
+            if (PosicionParentesis > 0)
+            {
+                Tipo = Tipo.Substring(0, PosicionParentesis);
+            }
+
+            if (Tipo.Contains("int") ||
+                Tipo == "integer" ||
+                Tipo == "bigint" ||
+                Tipo == "smallint" ||
+                Tipo == "mediumint" ||
+                Tipo == "tinyint" ||
+                Tipo == "decimal" ||
+                Tipo == "numeric" ||
+                Tipo == "float" ||
+                Tipo == "double" ||
+                Tipo == "real")
+            {
+                ConsultasCboOperador.Items.Add("=");
+                ConsultasCboOperador.Items.Add("<>");
+                ConsultasCboOperador.Items.Add(">");
+                ConsultasCboOperador.Items.Add("<");
+                ConsultasCboOperador.Items.Add(">=");
+                ConsultasCboOperador.Items.Add("<=");
+            }
+           
+            else if (Tipo.Contains("char") ||
+                     Tipo.Contains("text") ||
+                     Tipo.Contains("string") ||
+                     Tipo == "varchar")
+            {
+                ConsultasCboOperador.Items.Add("=");
+                ConsultasCboOperador.Items.Add("<>");
+                ConsultasCboOperador.Items.Add("LIKE");
+                ConsultasCboOperador.Items.Add("NOT LIKE");
+                ConsultasCboOperador.Items.Add("IS NULL");
+                ConsultasCboOperador.Items.Add("IS NOT NULL");
+            }
+       
+            else if (Tipo.Contains("date") ||
+                     Tipo.Contains("time"))
+            {
+                ConsultasCboOperador.Items.Add("=");
+                ConsultasCboOperador.Items.Add("<>");
+                ConsultasCboOperador.Items.Add(">");
+                ConsultasCboOperador.Items.Add("<");
+                ConsultasCboOperador.Items.Add(">=");
+                ConsultasCboOperador.Items.Add("<=");
+                ConsultasCboOperador.Items.Add("IS NULL");
+                ConsultasCboOperador.Items.Add("IS NOT NULL");
+            }
+       
+            else
+            {
+                ConsultasCboOperador.Items.Add("=");
+                ConsultasCboOperador.Items.Add("<>");
+                ConsultasCboOperador.Items.Add("IS NULL");
+                ConsultasCboOperador.Items.Add("IS NOT NULL");
+            }
+
             ConsultasCboOperador.SelectedIndex = -1;
         }
 
+        //Fin del código de Miguel David Contreras Jacinto 0901-21-3878 el 22/09/2026
         private void ConsultasProcCargarColumnas()
         {
             _Tipos = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -97,6 +166,27 @@ namespace CapaVista_Consultas
                 ConsultasTxtValor.Clear();
             }
         }
+
+        //Inicio del código de Miguel David Contreras Jacinto 0901-21-3878 el 22/09/2026
+        private void ConsultasCboOperadorCampo_SelectedIndexChanged(object Sender, EventArgs Evento)
+        {
+            if (ConsultasCboOperadorCampo.SelectedIndex < 0)
+            {
+                ConsultasProcCargarOperadores("");
+                return;
+            }
+
+            string Campo = ConsultasCboOperadorCampo.SelectedItem.ToString();
+
+            if (_Tipos.ContainsKey(Campo))
+            {
+                string TipoCampo = _Tipos[Campo];
+
+                ConsultasProcCargarOperadores(TipoCampo);
+            }
+        }
+
+        //Fin del código de Miguel David Contreras Jacinto 0901-21-3878 el 22/09/2026
 
         private void ConsultasMetBtnIngresarClick(object Sender, EventArgs Evento)
         {
