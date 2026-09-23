@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace CapaVista_Consultas.Controles
 {
     // Inicio de código de "José Pablo Cano Cóbar" - carné: "0901-23-1727" - Fecha: "15/09/26"
-    public partial class ClsAgregarFiltro : Componentes.ClsControlUsuarioConsultas
+    public partial class UsrAgregarFiltro : Componentes.ClsControlUsuarioConsultas
     {
         private readonly ClsControladorFiltroSimple _Controlador =
             new ClsControladorFiltroSimple();
@@ -18,7 +18,7 @@ namespace CapaVista_Consultas.Controles
 
         public event EventHandler ConsultasEvtRefrescarSolicitado;
 
-        public ClsAgregarFiltro()
+        public UsrAgregarFiltro()
         {
             InitializeComponent();
 

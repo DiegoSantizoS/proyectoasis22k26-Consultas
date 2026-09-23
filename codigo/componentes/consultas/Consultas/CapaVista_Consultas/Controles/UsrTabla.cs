@@ -8,7 +8,7 @@ using CapaControlador_Consultas;
 //Inicio del código de Carlos Andres Arriaza Lara 0901-23-13862 el 16/09/2026
 namespace CapaVista_Consultas.Controles
 {
-    public partial class ClsTabla : Componentes.ClsControlUsuarioConsultas
+    public partial class UsrTabla : Componentes.ClsControlUsuarioConsultas
     {
         private string _Campo;
         public string CampoSeleccionado { get; private set; }
@@ -32,7 +32,7 @@ namespace CapaVista_Consultas.Controles
 
         public event EventHandler
              ConsultasEvtFilaSeleccionada;
-        public ClsTabla()
+        public UsrTabla()
         {
             InitializeComponent();
 
@@ -42,7 +42,7 @@ namespace CapaVista_Consultas.Controles
                 ConsultasDgvSimples.AutoGenerateColumns = true;
             }
         }
-        public ClsTabla(string Tabla) : this()
+        public UsrTabla(string Tabla) : this()
         {
             if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
             {

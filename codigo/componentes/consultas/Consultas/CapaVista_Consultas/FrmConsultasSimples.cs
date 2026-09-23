@@ -81,7 +81,7 @@ namespace CapaVista_Consultas
             Close();
         }
 
-        private void ConsultasMetAgregarFiltroBuscarSolicitado(object Sender,ClsAgregarFiltro.ClsArgumentosFiltro ArgumentosFiltro)
+        private void ConsultasMetAgregarFiltroBuscarSolicitado(object Sender,UsrAgregarFiltro.ClsArgumentosFiltro ArgumentosFiltro)
         {
             _CampoFiltro = ArgumentosFiltro.Campo;
             _OperadorFiltro = ArgumentosFiltro.Operador;

@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultasComplejas));
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasGbxSeleccionConsulta = new CapaVista_Consultas.Componentes.ClsGrupoConsultas();
-            this.ConsultasUsrConsultasReutilizables = new CapaVista_Consultas.Controles.ClsSeleccioneUnaConsulta();
-            this.ConsultasUsrTabla = new CapaVista_Consultas.Controles.ClsTabla();
+            this.ConsultasUsrConsultasReutilizables = new CapaVista_Consultas.Controles.UsrSeleccioneUnaConsulta();
+            this.ConsultasUsrTabla = new CapaVista_Consultas.Controles.UsrTabla();
             this.ConsultasFlpBotones = new System.Windows.Forms.FlowLayoutPanel();
             this.ConsultasBtnRefrescar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasBtnAyuda = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
@@ -225,8 +225,8 @@
         private Componentes.ClsBotonConsultas ConsultasBtnSalir;
         private Componentes.ClsBotonConsultas ConsultasBtnRefrescar;
         private Componentes.ClsGrupoConsultas ConsultasGbxSeleccionConsulta;
-        private Controles.ClsSeleccioneUnaConsulta ConsultasUsrConsultasReutilizables;
-        private Controles.ClsTabla ConsultasUsrTabla;
+        private Controles.UsrSeleccioneUnaConsulta ConsultasUsrConsultasReutilizables;
+        private Controles.UsrTabla ConsultasUsrTabla;
         private System.Windows.Forms.FlowLayoutPanel ConsultasFlpBotones;
         private Componentes.ClsBotonConsultas ConsultasBtnInicio;
         private Componentes.ClsBotonConsultas ConsultasBtnAyuda;

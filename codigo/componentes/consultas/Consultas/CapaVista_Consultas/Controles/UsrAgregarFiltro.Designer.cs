@@ -1,6 +1,6 @@
 ﻿namespace CapaVista_Consultas.Controles
 {
-    partial class ClsAgregarFiltro
+    partial class UsrAgregarFiltro
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClsAgregarFiltro));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsrAgregarFiltro));
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasBtnAyuda = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasLblCampo = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();

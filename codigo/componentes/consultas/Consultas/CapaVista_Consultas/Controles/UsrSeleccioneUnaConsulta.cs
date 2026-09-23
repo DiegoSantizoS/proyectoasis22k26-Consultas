@@ -6,7 +6,7 @@ using CapaControlador_Consultas;
 namespace CapaVista_Consultas.Controles
 {
     // Inicio del código de Carlos Andres Arriaza Lara 0901-23-13862 el 16/09/2026
-    public partial class ClsSeleccioneUnaConsulta : Componentes.ClsControlUsuarioConsultas
+    public partial class UsrSeleccioneUnaConsulta : Componentes.ClsControlUsuarioConsultas
     {
         public event Action<string, string> ConsultaSeleccionada;
         public string Tabla { get; set; }
@@ -14,7 +14,7 @@ namespace CapaVista_Consultas.Controles
 
         private readonly ClsConsultaSeleccionada _Consultas = new ClsConsultaSeleccionada();
 
-        public ClsSeleccioneUnaConsulta()
+        public UsrSeleccioneUnaConsulta()
         {
             InitializeComponent();
             ConsultasProcActualizarConsultas();

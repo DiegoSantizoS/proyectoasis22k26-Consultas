@@ -32,6 +32,7 @@
             this.ConsultasTxtId = new CapaVista_Consultas.Componentes.ClsCajaTextoConsultas();
             this.ConsultasBtnConsultar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasLblId = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // ConsultasTxtId
@@ -79,11 +80,19 @@
             this.ConsultasLblId.Text = "Campo Seleccionado";
             this.ConsultasLblId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 100);
+            this.flowLayoutPanel1.TabIndex = 3;
+            // 
             // FrmEjecucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.ConsultasLblId);
             this.Controls.Add(this.ConsultasBtnConsultar);
             this.Controls.Add(this.ConsultasTxtId);
@@ -100,5 +109,6 @@
         private CapaVista_Consultas.Componentes.ClsCajaTextoConsultas ConsultasTxtId;
         private CapaVista_Consultas.Componentes.ClsBotonConsultas ConsultasBtnConsultar;
         private CapaVista_Consultas.Componentes.ClsEtiquetaConsultas ConsultasLblId;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
