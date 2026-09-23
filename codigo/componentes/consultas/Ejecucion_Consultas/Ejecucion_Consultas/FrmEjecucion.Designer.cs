@@ -87,6 +87,7 @@
             this.Controls.Add(this.ConsultasLblId);
             this.Controls.Add(this.ConsultasBtnConsultar);
             this.Controls.Add(this.ConsultasTxtId);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmEjecucion";
             this.Text = "4004 - EjecucionConsultas";
             this.ResumeLayout(false);

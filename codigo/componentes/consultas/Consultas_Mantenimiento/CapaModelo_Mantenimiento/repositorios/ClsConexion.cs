@@ -14,9 +14,9 @@ namespace CapaModelo_Consultas
             {
                 Conexion.Open();
             }
-            catch (OdbcException Exception)
+            catch (OdbcException Excepcion)
             {
-                Console.WriteLine("Conexion fallida. Error: " + Exception.Message);
+                Console.WriteLine("Conexion fallida. Error: " + Excepcion.Message);
             }
             return Conexion;
         }
@@ -27,9 +27,9 @@ namespace CapaModelo_Consultas
             {
                 Conexion.Close();
             }
-            catch (OdbcException Exception)
+            catch (OdbcException Excepcion)
             {
-                Console.WriteLine("Error al cerrar la conexión. Error: " + Exception.Message);
+                Console.WriteLine("Error al cerrar la conexión. Error: " + Excepcion.Message);
             }
         }
         //Fin del código realizado por Diego Fernando Santizo Samayoa 0901-22-15950 21/09/2026

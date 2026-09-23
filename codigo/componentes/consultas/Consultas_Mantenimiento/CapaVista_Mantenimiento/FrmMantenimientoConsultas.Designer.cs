@@ -617,7 +617,6 @@
             this.Name = "FrmMantenimientoConsultas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "4003 – MantenimientoConsultas";
-            this.TopMost = true;
             this.ConsultasTlpPrincipal.ResumeLayout(false);
             this.ConsultasTlpFiltros.ResumeLayout(false);
             this.ConsultasFlpBotones.ResumeLayout(false);

@@ -18,40 +18,22 @@ namespace CapaModelo_Consultas
             try
             {
                 ConsultasMetValidarNombreTabla(NombreTabla);
-                ConsultasMetValidarPaginacion(
-                    Pagina,
-                    RegistrosPorPagina);
+                ConsultasMetValidarPaginacion(Pagina,RegistrosPorPagina);
 
                 DataTable ResultadoTabla = new DataTable();
 
-                int Inicio =
-                    (Pagina - 1) * RegistrosPorPagina;
+                int Inicio = (Pagina - 1) * RegistrosPorPagina;
 
-                string Consulta =
-                    "SELECT * FROM " +
-                    NombreTabla +
-                    " LIMIT ? OFFSET ?;";
+                string Consulta = "SELECT * FROM " + NombreTabla + " LIMIT ? OFFSET ?;";
 
-                using (OdbcConnection Conexion =
-                    _Conexion.ConsultasFuncConexion())
+                using (OdbcConnection Conexion = _Conexion.ConsultasFuncConexion())
                 {
-                    using (OdbcCommand Comando =
-                        new OdbcCommand(
-                            Consulta,
-                            Conexion))
+                    using (OdbcCommand Comando = new OdbcCommand(Consulta, Conexion))
                     {
-                        Comando.Parameters.Add(
-                            "?",
-                            OdbcType.Int).Value =
-                            RegistrosPorPagina;
+                        Comando.Parameters.Add("?",OdbcType.Int).Value = RegistrosPorPagina;
+                        Comando.Parameters.Add("?",OdbcType.Int).Value = Inicio;
 
-                        Comando.Parameters.Add(
-                            "?",
-                            OdbcType.Int).Value =
-                            Inicio;
-
-                        using (OdbcDataAdapter AdaptadorTabla =
-                            new OdbcDataAdapter(Comando))
+                        using (OdbcDataAdapter AdaptadorTabla = new OdbcDataAdapter(Comando))
                         {
                             AdaptadorTabla.Fill(ResultadoTabla);
                         }
@@ -63,64 +45,44 @@ namespace CapaModelo_Consultas
             catch (OdbcException Excepcion)
             {
                 throw new InvalidOperationException(
-                    "Error al cargar la tabla '" +
+                    "Error al cargar la tabla: " +
                     NombreTabla + "'.",
                     Excepcion);
             }
         }
 
-        public DataTable ConsultasFuncCargarConsulta(
-        string Consulta,
-        int Pagina,
-        int RegistrosPorPagina)
+        public DataTable ConsultasFuncCargarConsulta(string Consulta, int Pagina, int RegistrosPorPagina)
         {
             try
             {
                 ConsultasMetValidarConsulta(Consulta);
 
-                ConsultasMetValidarPaginacion(
-                    Pagina,
-                    RegistrosPorPagina);
+                ConsultasMetValidarPaginacion(Pagina, RegistrosPorPagina);
 
-                int Inicio =
-                    (Pagina - 1) * RegistrosPorPagina;
+                int Inicio = (Pagina - 1) * RegistrosPorPagina;
 
-                Consulta =
-                    Consulta.Trim().TrimEnd(';');
+                Consulta = Consulta.Trim().TrimEnd(';');
 
-                string ConsultaPaginada =
-                    Consulta +
-                    " LIMIT " +
-                    RegistrosPorPagina +
-                    " OFFSET " +
-                    Inicio +
-                    ";";
+                string ConsultaPaginada = Consulta + " LIMIT " + RegistrosPorPagina + " OFFSET " + Inicio + ";";
 
-                DataTable ResultadoConsultaSeleccionada =
-                    new DataTable();
+                DataTable ResultadoConsultaSeleccionada = new DataTable();
 
-                using (OdbcConnection Conexion =
-                    _Conexion.ConsultasFuncConexion())
+                using (OdbcConnection Conexion = _Conexion.ConsultasFuncConexion())
                 {
-                    using (OdbcCommand Comando =
-                        new OdbcCommand(
-                            ConsultaPaginada,
-                            Conexion))
+                    using (OdbcCommand Comando = new OdbcCommand(ConsultaPaginada,Conexion))
                     {
-                        using (OdbcDataAdapter DaConsultas =
-                            new OdbcDataAdapter(Comando))
+                        using (OdbcDataAdapter DaConsultas = new OdbcDataAdapter(Comando))
                         {
-                            DaConsultas.Fill(
-                                ResultadoConsultaSeleccionada);
+                            DaConsultas.Fill(ResultadoConsultaSeleccionada);
                         }
                     }
                 }
 
                 return ResultadoConsultaSeleccionada;
             }
-            catch (OdbcException Ex)
+            catch (OdbcException Excepcion)
             {
-                foreach (OdbcError Error in Ex.Errors)
+                foreach (OdbcError Error in Excepcion.Errors)
                 {
                     if (Error.NativeError == 1146 ||
                         Error.SQLState == "42S02")
@@ -128,13 +90,13 @@ namespace CapaModelo_Consultas
                         throw new InvalidOperationException(
                             "La consulta hace referencia a una tabla " +
                             "que no existe en la base de datos.",
-                            Ex);
+                            Excepcion);
                     }
                 }
 
                 throw new InvalidOperationException(
                     "No fue posible ejecutar la consulta seleccionada.",
-                    Ex);
+                    Excepcion);
             }
         }
 
@@ -142,22 +104,15 @@ namespace CapaModelo_Consultas
         {
             try
             {
-                DataTable ResultadoTablas =
-                    new DataTable();
+                DataTable ResultadoTablas = new DataTable();
 
-                string Consulta =
-                    "SHOW TABLES;";
+                string Consulta = "SHOW TABLES;";
 
-                using (OdbcConnection Conexion =
-                    _Conexion.ConsultasFuncConexion())
+                using (OdbcConnection Conexion = _Conexion.ConsultasFuncConexion())
                 {
-                    using (OdbcCommand Comando =
-                        new OdbcCommand(
-                            Consulta,
-                            Conexion))
+                    using (OdbcCommand Comando = new OdbcCommand(Consulta,Conexion))
                     {
-                        using (OdbcDataAdapter AdaptadorTablas =
-                            new OdbcDataAdapter(Comando))
+                        using (OdbcDataAdapter AdaptadorTablas = new OdbcDataAdapter(Comando))
                         {
                             AdaptadorTablas.Fill(ResultadoTablas);
                         }
@@ -166,28 +121,23 @@ namespace CapaModelo_Consultas
 
                 return ResultadoTablas;
             }
-            catch (OdbcException Ex)
+            catch (OdbcException Excepcion)
             {
                 throw new InvalidOperationException(
                     "Error al obtener las tablas de la base de datos.",
-                    Ex);
+                    Excepcion);
             }
         }
 
-        public int ConsultasFuncContarRegistros(
-            string NombreTabla)
+        public int ConsultasFuncContarRegistros(string NombreTabla)
         {
             try
             {
-                ConsultasMetValidarNombreTabla(
-                    NombreTabla);
+                ConsultasMetValidarNombreTabla(NombreTabla);
 
-                string Consulta =
-                    "SELECT COUNT(*) FROM " +
-                    NombreTabla + ";";
+                string Consulta = "SELECT COUNT(*) FROM " + NombreTabla + ";";
 
-                using (OdbcConnection Conexion =
-                    _Conexion.ConsultasFuncConexion())
+                using (OdbcConnection Conexion = _Conexion.ConsultasFuncConexion())
                 {
                     if (Conexion.State !=
                         ConnectionState.Open)
@@ -196,21 +146,18 @@ namespace CapaModelo_Consultas
                     }
 
                     using (OdbcCommand Comando =
-                        new OdbcCommand(
-                            Consulta,
-                            Conexion))
+                        new OdbcCommand(Consulta,Conexion))
                     {
-                        return Convert.ToInt32(
-                            Comando.ExecuteScalar());
+                        return Convert.ToInt32(Comando.ExecuteScalar());
                     }
                 }
             }
-            catch (OdbcException Ex)
+            catch (OdbcException Excepcion)
             {
                 throw new InvalidOperationException(
                     "Error al contar los registros de la tabla '" +
                     NombreTabla + "'.",
-                    Ex);
+                    Excepcion);
             }
         }
 
@@ -218,8 +165,7 @@ namespace CapaModelo_Consultas
         {
             try
             {
-                DataTable ResultadoConsultas =
-                    new DataTable();
+                DataTable ResultadoConsultas = new DataTable();
 
                 string Consulta =
                     "SELECT " +
@@ -230,45 +176,37 @@ namespace CapaModelo_Consultas
 
                 using (OdbcConnection Conexion = _Conexion.ConsultasFuncConexion())
                 {
-                    using (OdbcCommand Comando =
-                        new OdbcCommand(
-                            Consulta,
-                            Conexion))
+                    using (OdbcCommand Comando = new OdbcCommand(Consulta,Conexion))
                     {
-                        using (OdbcDataAdapter AdaptadorConsultas =
-                            new OdbcDataAdapter(Comando))
+                        using (OdbcDataAdapter AdaptadorConsultas = new OdbcDataAdapter(Comando))
                         {
-                            AdaptadorConsultas.Fill(
-                                ResultadoConsultas);
+                            AdaptadorConsultas.Fill(ResultadoConsultas);
                         }
                     }
                 }
 
                 return ResultadoConsultas;
             }
-            catch (OdbcException Ex)
+            catch (OdbcException Excepcion)
             {
-                throw new InvalidOperationException("Error al cargar las consultas de la tabla '" + Ex);
+                throw new InvalidOperationException("Error al cargar las consultas de la tabla '" + Excepcion);
             }
         }
 
-        public int ConsultasFuncContarResultadosQuery(
-            string Consulta)
+        public int ConsultasFuncContarResultadosQuery(string Consulta)
         {
             try
             {
                 ConsultasMetValidarConsulta(Consulta);
 
-                Consulta =
-                    Consulta.Trim().TrimEnd(';');
+                Consulta = Consulta.Trim().TrimEnd(';');
 
                 string QueryConteo =
                     "SELECT COUNT(*) FROM (" +
                     Consulta +
                     ") AS ConsultaResultado;";
 
-                using (OdbcConnection Conexion =
-                    _Conexion.ConsultasFuncConexion())
+                using (OdbcConnection Conexion = _Conexion.ConsultasFuncConexion())
                 {
                     if (Conexion.State !=
                         ConnectionState.Open)
@@ -276,26 +214,21 @@ namespace CapaModelo_Consultas
                         Conexion.Open();
                     }
 
-                    using (OdbcCommand Comando =
-                        new OdbcCommand(
-                            QueryConteo,
-                            Conexion))
+                    using (OdbcCommand Comando = new OdbcCommand(QueryConteo,Conexion))
                     {
-                        return Convert.ToInt32(
-                            Comando.ExecuteScalar());
+                        return Convert.ToInt32(Comando.ExecuteScalar());
                     }
                 }
             }
-            catch (OdbcException Ex)
+            catch (OdbcException Excepcion)
             {
                 throw new InvalidOperationException(
                     "Error al contar los resultados de la consulta.",
-                    Ex);
+                    Excepcion);
             }
         }
 
-        private void ConsultasMetValidarNombreTabla(
-            string NombreTabla)
+        private void ConsultasMetValidarNombreTabla(string NombreTabla)
         {
             if (string.IsNullOrWhiteSpace(
                 NombreTabla))
@@ -313,14 +246,11 @@ namespace CapaModelo_Consultas
             }
         }
 
-        private void ConsultasMetValidarPaginacion(
-            int Pagina,
-            int RegistrosPorPagina)
+        private void ConsultasMetValidarPaginacion(int Pagina,int RegistrosPorPagina)
         {
             if (Pagina < 1)
             {
-                throw new ArgumentOutOfRangeException(
-                    nameof(Pagina),
+                throw new ArgumentOutOfRangeException(nameof(Pagina),
                     "La página debe ser mayor o igual a 1.");
             }
 
@@ -332,18 +262,15 @@ namespace CapaModelo_Consultas
             }
         }
 
-        private void ConsultasMetValidarConsulta(
-            string Consulta)
+        private void ConsultasMetValidarConsulta(string Consulta)
         {
-            if (string.IsNullOrWhiteSpace(
-                Consulta))
+            if (string.IsNullOrWhiteSpace(Consulta))
             {
                 throw new ArgumentException(
                     "La consulta no puede estar vacía.");
             }
 
-            string ConsultaValidada =
-                Consulta.TrimStart();
+            string ConsultaValidada = Consulta.TrimStart();
 
             if (!ConsultaValidada.StartsWith(
                     "SELECT",
@@ -364,6 +291,12 @@ namespace CapaModelo_Consultas
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(NombreTabla))
+                {
+                    throw new ArgumentException(
+                        "El nombre de la tabla no puede estar vacío.");
+                }
+
                 DataTable Consultas = new DataTable();
 
                 string Consulta =
@@ -402,32 +335,20 @@ namespace CapaModelo_Consultas
 
         public void ConsultasProcEliminarConsulta(int IdConsulta)
         {
-            OdbcConnection Conexion = null;
+            string Consulta = "DELETE FROM tblConsulta WHERE Pk_Consulta = ?";
 
-            try
+            using (OdbcConnection Conexion =_Conexion.ConsultasFuncConexion())
             {
-                Conexion = _Conexion.ConsultasFuncConexion();
-
-                string Query = "DELETE FROM tblConsulta WHERE Pk_Consulta = ?";
-
-                using (OdbcCommand Comando = new OdbcCommand(Query, Conexion))
+                using (OdbcCommand Comando = new OdbcCommand(Consulta, Conexion))
                 {
-                    Comando.Parameters.AddWithValue("@IdConsulta", IdConsulta);
+                    Comando.Parameters.Add("?",OdbcType.Int).Value = IdConsulta;
 
                     int FilasAfectadas = Comando.ExecuteNonQuery();
 
                     if (FilasAfectadas == 0)
                     {
-                        throw new InvalidOperationException(
-                            "No se encontró la consulta que se desea eliminar.");
+                        throw new InvalidOperationException("No se encontró la consulta que se desea eliminar.");
                     }
-                }
-            }
-            finally
-            {
-                if (Conexion != null)
-                {
-                    Conexion.Close();
                 }
             }
         }

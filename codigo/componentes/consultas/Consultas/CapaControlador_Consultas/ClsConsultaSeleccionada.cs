@@ -1,7 +1,6 @@
 ﻿using CapaModelo_Consultas;
 using System;
 using System.Data;
-using System.Runtime.InteropServices;
 
 namespace CapaControlador_Consultas
 {

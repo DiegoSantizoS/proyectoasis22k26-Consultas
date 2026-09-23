@@ -23,7 +23,7 @@ namespace CapaControlador_Consultas
         public List<KeyValuePair<string, string>> ConsultasMetObtenerColumnas(string Tabla)
         {
             ConsultasProcValidarIdentificador(Tabla, "tabla");
-            return _Modelo.ObtenerColumnas(Tabla);
+            return _Modelo.ConsultasFuncObtenerColumnas(Tabla);
         }
 
 
@@ -156,18 +156,18 @@ namespace CapaControlador_Consultas
             }
             ConsultasProcValidarEsSelect(Query);
 
-            if (_Modelo.ExisteNombre(Nombre))
+            if (_Modelo.ConsultasFuncExisteNombre(Nombre))
             {
                 throw new ArgumentException("Ya existe una consulta con ese nombre. Usa otro.");
             }
 
-            _Modelo.Insertar(Nombre, Tabla, Query);
+            _Modelo.ConsultasProcInsertarConsulta(Nombre, Tabla, Query);
         }
 
         public DataTable ConsultasFuncPrueba(string Query)
         {
             ConsultasProcValidarEsSelect(Query);
-            return _Modelo.Ejecutar(Query, 500);
+            return _Modelo.ConsultasFuncEjecutarConsulta(Query, 500);
         }
 
         private static void ConsultasProcValidarEsSelect(string Query)

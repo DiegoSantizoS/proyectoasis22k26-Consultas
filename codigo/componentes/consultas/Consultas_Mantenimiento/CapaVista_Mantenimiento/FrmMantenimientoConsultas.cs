@@ -44,9 +44,9 @@ namespace CapaVista_Consultas
 
                 ConsultasProcCargarColumnas();
             }
-            catch (Exception Exception)
+            catch (Exception Excepcion)
             {
-                ConsultasProcMostrarError("No se pudo cargar el formulario.", Exception);
+                ConsultasProcMostrarError("No se pudo cargar el formulario.", Excepcion);
                 BeginInvoke(new MethodInvoker(Close));
             }
         }
@@ -247,13 +247,13 @@ namespace CapaVista_Consultas
                 ConsultasRdoDescendente.Checked = false;
                 ConsultasCboConector.SelectedIndex = 0;
             }
-            catch (ArgumentException Exception)
+            catch (ArgumentException Excepcion)
             {
-                ConsultasProcAviso(Exception.Message);
+                ConsultasProcAviso(Excepcion.Message);
             }
-            catch (Exception Exception)
+            catch (Exception Excepcion)
             {
-                ConsultasProcMostrarError("No se pudo agregar la condicion.", Exception);
+                ConsultasProcMostrarError("No se pudo agregar la condicion.", Excepcion);
             }
         }
 
@@ -303,13 +303,13 @@ namespace CapaVista_Consultas
 
                 Close();
             }
-            catch (ArgumentException Exception)
+            catch (ArgumentException Excepcion)
             {
-                ConsultasProcAviso(Exception.Message);
+                ConsultasProcAviso(Excepcion.Message);
             }
-            catch (Exception Exception)
+            catch (Exception Excepcion)
             {
-                ConsultasProcMostrarError("No se pudo guardar la consulta.", Exception);
+                ConsultasProcMostrarError("No se pudo guardar la consulta.", Excepcion);
             }
         }
 
@@ -357,16 +357,16 @@ namespace CapaVista_Consultas
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        private void ConsultasProcMostrarError(string Mensaje, Exception Exception)
+        private void ConsultasProcMostrarError(string Mensaje, Exception Excepcion)
         {
-            MessageBox.Show(this, Mensaje + Environment.NewLine + Environment.NewLine + Exception.Message,
+            MessageBox.Show(this, Mensaje + Environment.NewLine + Environment.NewLine + Excepcion.Message,
                 "Mantenimiento de consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         //Fin del código realizado por Diana Mishel Loeiza Ramírez 9959-23-3457 20/09/2026
 
         //Inicio del código realizado por Diego Fernando Santizo Samayoa 0901-22-15950 22/09/2026
-        private void ConsultasMetBtnAyudaClick(object sender, EventArgs e)
+        private void ConsultasMetBtnAyudaClick(object Sender, EventArgs Evento)
         {
             DirectoryInfo Directorio = new DirectoryInfo(Application.StartupPath);
 
@@ -386,7 +386,7 @@ namespace CapaVista_Consultas
             MessageBox.Show("No se encontró el archivo de ayuda.");
         }
 
-        private void ConsultasMetBtnRefrescarClick(object sender, EventArgs e)
+        private void ConsultasMetBtnRefrescarClick(object Sender, EventArgs Evento)
         {
             ConsultasProcLimpiarFormulario();
         }

@@ -1,7 +1,6 @@
 ﻿using CapaControlador_Consultas;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
@@ -81,7 +80,7 @@ namespace CapaVista_Consultas.Controles
                     MessageBoxIcon.Warning);
             }
         }
-        private void ConsultasMetBtnBuscarClick(object Sender, EventArgs e)
+        private void ConsultasMetBtnBuscarClick(object Sender, EventArgs Evento)
         {
             string Campo = ConsultasCboCampo.SelectedItem == null
                 ? string.Empty
@@ -188,7 +187,7 @@ namespace CapaVista_Consultas.Controles
 
         //Fin del código de Miguel David Contreras Jacinto 0901-21-3878 el 21/09/2026
 
-        private void ConsultasMetBtnRefrescarClick(object Sender, EventArgs e)
+        private void ConsultasMetBtnRefrescarClick(object Sender, EventArgs Evento)
         {
             ConsultasProcLimpiar();
 
@@ -198,17 +197,17 @@ namespace CapaVista_Consultas.Controles
             }
         }
 
-        private void ConsultasMetTxtValorKeyDown(object Sender, KeyEventArgs e)
+        private void ConsultasMetTxtValorKeyDown(object Sender, KeyEventArgs Evento)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (Evento.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true;
+                Evento.SuppressKeyPress = true;
                 ConsultasMetBtnBuscarClick(Sender, EventArgs.Empty);
             }
         }
 
         //Inicio de código de Diego Fernando Santizo Samayoa 0901-22-15950 22/09/2026
-        private void ConsultasMetBtnAyudaClick(object sender, EventArgs e)
+        private void ConsultasMetBtnAyudaClick(object Sender, EventArgs Evento)
         {
             DirectoryInfo Directorio = new DirectoryInfo(Application.StartupPath);
 
