@@ -32,10 +32,10 @@ namespace CapaVista_Consultas
         {
             _TablaActual = Tabla;
             _CampoId = CampoId;
-            ConsultasUcTablaSimple.ConsultasMetConfigurarSeleccion(CampoId);
+            ConsultasUsrTablaSimple.ConsultasMetConfigurarSeleccion(CampoId);
             ClsTablaSeleccionada.ConsultasMetGuardarTabla(Tabla);
-            ConsultasUcTablaSimple.ConsultasProcActualizarTabla(Tabla);
-            ConsultasUcAgregarFiltro.ConsultasProcActualizarTabla(Tabla);
+            ConsultasUsrTablaSimple.ConsultasProcActualizarTabla(Tabla);
+            ConsultasUsrAgregarFiltro.ConsultasProcActualizarTabla(Tabla);
         }
 
         // Fin de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "20/09/26"
@@ -51,10 +51,10 @@ namespace CapaVista_Consultas
             }
             _TablaActual = Tablas[0];
             _CampoId = CampoId;
-            ConsultasUcTablaSimple.ConsultasMetConfigurarSeleccion(CampoId);
+            ConsultasUsrTablaSimple.ConsultasMetConfigurarSeleccion(CampoId);
             ClsTablaSeleccionada.ConsultasMetGuardarTablas(Tablas);
-            ConsultasUcTablaSimple.ConsultasProcActualizarTabla(_TablaActual);
-            ConsultasUcAgregarFiltro.ConsultasProcActualizarTabla(_TablaActual);
+            ConsultasUsrTablaSimple.ConsultasProcActualizarTabla(_TablaActual);
+            ConsultasUsrAgregarFiltro.ConsultasProcActualizarTabla(_TablaActual);
         }
         // Fin de código de "Pedro José Gómez Villalobos" - carné: "0901-23-4868" - Fecha: "20/09/26"
 
@@ -62,16 +62,16 @@ namespace CapaVista_Consultas
         // Inicio de código de "José Pablo Cano Cóbar" - carné: "0901-23-1727" - Fecha: "15/09/26"
         private void ConsultasMetSuscribirEventos()
         {
-            ConsultasUcAgregarFiltro.ConsultasEvtBuscarSolicitado += ConsultasMetAgregarFiltroBuscarSolicitado;
-            ConsultasUcAgregarFiltro.ConsultasEvtRefrescarSolicitado += ConsultasMetAgregarFiltroRefrescarSolicitado;
-            ConsultasUcTablaSimple.ConsultasEvtFilaSeleccionada += ConsultasMetTablaSimpleFilaSeleccionada;
+            ConsultasUsrAgregarFiltro.ConsultasEvtBuscarSolicitado += ConsultasMetAgregarFiltroBuscarSolicitado;
+            ConsultasUsrAgregarFiltro.ConsultasEvtRefrescarSolicitado += ConsultasMetAgregarFiltroRefrescarSolicitado;
+            ConsultasUsrTablaSimple.ConsultasEvtFilaSeleccionada += ConsultasMetTablaSimpleFilaSeleccionada;
         }
 
         private void ConsultasMetTablaSimpleFilaSeleccionada(object Sender, EventArgs Evento)
         {
-            CampoSeleccionado = ConsultasUcTablaSimple.CampoSeleccionado;
+            CampoSeleccionado = ConsultasUsrTablaSimple.CampoSeleccionado;
 
-            SeleccionRealizada = ConsultasUcTablaSimple.SeleccionRealizada;
+            SeleccionRealizada = ConsultasUsrTablaSimple.SeleccionRealizada;
 
             if (!SeleccionRealizada)
             {
@@ -96,7 +96,7 @@ namespace CapaVista_Consultas
             _OperadorFiltro = null;
             _ValorFiltro = null;
 
-            ConsultasUcTablaSimple.ConsultasProcActualizarTabla(_TablaActual);
+            ConsultasUsrTablaSimple.ConsultasProcActualizarTabla(_TablaActual);
         }
 
         private void ConsultasMetAplicarFiltro()
@@ -106,7 +106,7 @@ namespace CapaVista_Consultas
                 Cursor = Cursors.WaitCursor;
                 DataTable Resultado = _Controlador.ConsultasFuncBuscar(_TablaActual, _CampoFiltro, _OperadorFiltro, _ValorFiltro, 1, _RegistrosPorPagina);
                 int TotalRegistros = _Controlador.ConsultasFuncContar(_TablaActual,_CampoFiltro,_OperadorFiltro,_ValorFiltro);
-                ConsultasUcTablaSimple.ConsultasProcMostrarResultado(Resultado,TotalRegistros);
+                ConsultasUsrTablaSimple.ConsultasProcMostrarResultado(Resultado,TotalRegistros);
 
                 if (TotalRegistros == 0)
                 {

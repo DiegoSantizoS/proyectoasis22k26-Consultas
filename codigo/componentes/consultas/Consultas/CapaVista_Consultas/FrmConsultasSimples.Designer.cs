@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultasSimples));
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
-            this.ConsultasUcTablaSimple = new CapaVista_Consultas.Controles.ClsTabla();
+            this.ConsultasUsrTablaSimple = new CapaVista_Consultas.Controles.ClsTabla();
             this.ConsultasGbxAgregarFiltro = new CapaVista_Consultas.Componentes.ClsGrupoConsultas();
-            this.ConsultasUcAgregarFiltro = new CapaVista_Consultas.Controles.ClsAgregarFiltro();
+            this.ConsultasUsrAgregarFiltro = new CapaVista_Consultas.Controles.ClsAgregarFiltro();
             this.ConsultasFlpBotones = new System.Windows.Forms.FlowLayoutPanel();
             this.ConsultasBtnComplejas = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasBtnSalir = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
@@ -46,7 +46,7 @@
             this.ConsultasTlpPrincipal.ColumnCount = 2;
             this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
-            this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasUcTablaSimple, 0, 1);
+            this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasUsrTablaSimple, 0, 1);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasGbxAgregarFiltro, 0, 0);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasFlpBotones, 1, 0);
             this.ConsultasTlpPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -59,22 +59,22 @@
             this.ConsultasTlpPrincipal.Size = new System.Drawing.Size(982, 678);
             this.ConsultasTlpPrincipal.TabIndex = 19;
             // 
-            // ConsultasUcTablaSimple
+            // ConsultasUsrTablaSimple
             // 
-            this.ConsultasUcTablaSimple.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ConsultasTlpPrincipal.SetColumnSpan(this.ConsultasUcTablaSimple, 2);
-            this.ConsultasUcTablaSimple.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ConsultasUcTablaSimple.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ConsultasUcTablaSimple.Location = new System.Drawing.Point(5, 175);
-            this.ConsultasUcTablaSimple.Margin = new System.Windows.Forms.Padding(5);
-            this.ConsultasUcTablaSimple.Name = "ConsultasUcTablaSimple";
-            this.ConsultasUcTablaSimple.Size = new System.Drawing.Size(972, 498);
-            this.ConsultasUcTablaSimple.TabIndex = 18;
+            this.ConsultasUsrTablaSimple.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasTlpPrincipal.SetColumnSpan(this.ConsultasUsrTablaSimple, 2);
+            this.ConsultasUsrTablaSimple.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConsultasUsrTablaSimple.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ConsultasUsrTablaSimple.Location = new System.Drawing.Point(5, 175);
+            this.ConsultasUsrTablaSimple.Margin = new System.Windows.Forms.Padding(5);
+            this.ConsultasUsrTablaSimple.Name = "ConsultasUsrTablaSimple";
+            this.ConsultasUsrTablaSimple.Size = new System.Drawing.Size(972, 498);
+            this.ConsultasUsrTablaSimple.TabIndex = 18;
             // 
             // ConsultasGbxAgregarFiltro
             // 
             this.ConsultasGbxAgregarFiltro.BackColor = System.Drawing.Color.Transparent;
-            this.ConsultasGbxAgregarFiltro.Controls.Add(this.ConsultasUcAgregarFiltro);
+            this.ConsultasGbxAgregarFiltro.Controls.Add(this.ConsultasUsrAgregarFiltro);
             this.ConsultasGbxAgregarFiltro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasGbxAgregarFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ConsultasGbxAgregarFiltro.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -88,16 +88,16 @@
             this.ConsultasGbxAgregarFiltro.TabStop = false;
             this.ConsultasGbxAgregarFiltro.Text = "Agregar Filtro";
             // 
-            // ConsultasUcAgregarFiltro
+            // ConsultasUsrAgregarFiltro
             // 
-            this.ConsultasUcAgregarFiltro.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ConsultasUcAgregarFiltro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
-            this.ConsultasUcAgregarFiltro.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ConsultasUcAgregarFiltro.Location = new System.Drawing.Point(0, 31);
-            this.ConsultasUcAgregarFiltro.Margin = new System.Windows.Forms.Padding(5);
-            this.ConsultasUcAgregarFiltro.Name = "ConsultasUcAgregarFiltro";
-            this.ConsultasUcAgregarFiltro.Size = new System.Drawing.Size(876, 100);
-            this.ConsultasUcAgregarFiltro.TabIndex = 0;
+            this.ConsultasUsrAgregarFiltro.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ConsultasUsrAgregarFiltro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasUsrAgregarFiltro.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ConsultasUsrAgregarFiltro.Location = new System.Drawing.Point(0, 31);
+            this.ConsultasUsrAgregarFiltro.Margin = new System.Windows.Forms.Padding(5);
+            this.ConsultasUsrAgregarFiltro.Name = "ConsultasUsrAgregarFiltro";
+            this.ConsultasUsrAgregarFiltro.Size = new System.Drawing.Size(876, 100);
+            this.ConsultasUsrAgregarFiltro.TabIndex = 0;
             // 
             // ConsultasFlpBotones
             // 
@@ -170,9 +170,9 @@
         #endregion
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPrincipal;
         private Componentes.ClsGrupoConsultas ConsultasGbxAgregarFiltro;
-        private Controles.ClsAgregarFiltro ConsultasUcAgregarFiltro;
+        private Controles.ClsAgregarFiltro ConsultasUsrAgregarFiltro;
         private Componentes.ClsBotonConsultas ConsultasBtnComplejas;
-        private Controles.ClsTabla ConsultasUcTablaSimple;
+        private Controles.ClsTabla ConsultasUsrTablaSimple;
         private Componentes.ClsBotonConsultas ConsultasBtnSalir;
         private System.Windows.Forms.FlowLayoutPanel ConsultasFlpBotones;
     }
