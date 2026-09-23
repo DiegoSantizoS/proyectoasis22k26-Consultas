@@ -276,7 +276,6 @@
             this.ConsultasColConector.MinimumWidth = 6;
             this.ConsultasColConector.Name = "ConsultasColConector";
             this.ConsultasColConector.ReadOnly = true;
-            this.ConsultasColConector.Visible = false;
             // 
             // ConsultasGbxCondicionesLogicas
             // 
@@ -659,12 +658,12 @@
         private System.Windows.Forms.FlowLayoutPanel ConsultasFlpBotones;
         private Componentes.ClsBotonConsultas ConsultasBtnEliminar;
         private Componentes.ClsTablaDatosConsultas ConsultasDgvConsultasFiltros;
+        private Componentes.ClsBotonConsultas ConsultasBtnAyuda;
+        private Componentes.ClsBotonConsultas ConsultasBtnRefrescar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColCampo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColOperador;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColValor;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColOrdenamiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColConector;
-        private Componentes.ClsBotonConsultas ConsultasBtnAyuda;
-        private Componentes.ClsBotonConsultas ConsultasBtnRefrescar;
     }
 }

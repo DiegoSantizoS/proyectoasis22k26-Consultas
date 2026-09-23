@@ -82,32 +82,72 @@ namespace CapaVista_Consultas.Controles
             ConsultasProcRefrescarConsultas();
         }
 
+
+
         private void ConsultasMetBtnConsultarClick(object Sender, EventArgs Evento)
         {
-            if (ConsultasDgvConsultasReutilizables.CurrentRow == null)
-            {
-                MessageBox.Show(
-                    "Seleccione una fila para ejecutar la consulta.",
-                    "Consulta",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+            DataGridView Grilla = ConsultasDgvConsultasReutilizables;
 
-                return;
+            DataGridViewRow FilaSeleccionada = null;
+
+            if (Grilla.SelectedRows.Count > 0)
+            {
+                FilaSeleccionada = Grilla.SelectedRows[0];
+            }
+            else
+            {
+                foreach (DataGridViewRow Fila in Grilla.Rows)
+                {
+                    if (Fila.Visible && !Fila.IsNewRow)
+                    {
+                        FilaSeleccionada = Fila;
+                        break;
+                    }
+                }
+
+                if (FilaSeleccionada == null)
+                {
+                    MessageBox.Show(
+                        "No hay consultas disponibles para ejecutar.",
+                        "Consulta",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                DataGridViewCell CeldaVisible = null;
+
+                foreach (DataGridViewCell Celda in FilaSeleccionada.Cells)
+                {
+                    if (Celda.Visible)
+                    {
+                        CeldaVisible = Celda;
+                        break;
+                    }
+                }
+
+                if (CeldaVisible == null)
+                {
+                    MessageBox.Show(
+                        "No hay columnas visibles para seleccionar.",
+                        "Consulta",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                Grilla.ClearSelection();
+
+                Grilla.CurrentCell = CeldaVisible;
+
+                FilaSeleccionada.Selected = true;
             }
 
-            Query =
-                ConsultasDgvConsultasReutilizables
-                    .CurrentRow
-                    .Cells["Query"]
-                    .Value?
-                    .ToString();
+            Query = FilaSeleccionada.Cells["Query"].Value?.ToString();
 
-            Tabla =
-                ConsultasDgvConsultasReutilizables
-                    .CurrentRow
-                    .Cells["Tabla"]
-                    .Value?
-                    .ToString();
+            Tabla = FilaSeleccionada.Cells["Tabla"].Value?.ToString();
 
             if (string.IsNullOrWhiteSpace(Query))
             {
