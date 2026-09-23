@@ -1,74 +1,130 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <link href="css/estilos.css" rel="stylesheet" type="text/css" />
-    <title>Consultas Reutilizables - Ayuda</title>
-  </head>
-
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/estilos.css" rel="stylesheet" type="text/css">
+    <title>Mantenimiento de Consultas - Ayuda</title>
+    <style>
+        .ayuda-intro { margin-bottom: 18px; }
+        .pasos { margin: 12px 0 22px 22px; line-height: 1.6; }
+        .tabla-ayuda { width: 100%; border-collapse: collapse; margin: 14px 0 24px; }
+        .tabla-ayuda th { background: #2E4A63; color: white; text-align: left; padding: 10px; }
+        .tabla-ayuda td { border: 1px solid #d8d0c2; padding: 10px; vertical-align: top; }
+        .tabla-ayuda tr:nth-child(even) td { background: #f7f3eb; }
+        .nota { background: #EDE7DA; border-left: 5px solid #C4573F; padding: 12px 14px; margin: 16px 0; }
+        .captura { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
     <div class="encabezado">
-      <img class="logo" src="img/LogoConsultas.png" alt="Consultas" />
-      <h1>Capacitación - Consultas</h1>
-      <p class="subtitulo">
-        Creación, mantenimiento y selección de consultas guardadas
-      </p>
+        <img class="logo" src="img/LogoConsultas.png" alt="Consultas">
+        <h1>Capacitación - Consultas</h1>
+        <p class="subtitulo">Creación y guardado de consultas reutilizables</p>
     </div>
 
     <div class="container">
-      <div class="seccion">
-        <h2>Mantenimiento de consultas</h2>
+        <div class="seccion">
+            <h2>Mantenimiento de consultas</h2>
+            <p class="ayuda-intro">
+                Esta pantalla permite construir una consulta agregando una o varias condiciones,
+                definir el orden de los resultados y guardar la configuración con un nombre para
+                reutilizarla posteriormente.
+            </p>
 
-        <p>
-          La ventana de Mantenimiento de Consultas permite crear y guardar
-          consultas que podrán utilizarse nuevamente en el sistema.
-        </p>
+            <img class="captura" src="img/MantenimientoConsultas.png" alt="Pantalla de mantenimiento de consultas">
 
-        <p>
-          Para configurar una consulta, seleccione el campo, operador y valor
-          que correspondan. También puede establecer el tipo de ordenamiento que
-          desea aplicar a los resultados.
-        </p>
+            <h2>Cómo crear una consulta</h2>
+            <ol class="pasos">
+                <li>En <strong>Campo</strong>, seleccione la columna que desea evaluar.</li>
+                <li>En <strong>Operador</strong>, seleccione la comparación que desea realizar.</li>
+                <li>En <strong>Valor</strong>, escriba el dato que será utilizado por la condición.</li>
+                <li>Seleccione el <strong>Ordenamiento</strong>: <strong>ASC</strong> para ascendente o <strong>DESC</strong> para descendente.</li>
+                <li>En <strong>Conector</strong>, seleccione <strong>AND</strong> u <strong>OR</strong> cuando vaya a combinar esta condición con otras.</li>
+                <li>Presione <strong>Ingresar</strong>. La condición aparecerá en la tabla del lado derecho.</li>
+                <li>Repita los pasos anteriores para agregar todas las condiciones que necesite.</li>
+                <li>En <strong>Nombre</strong>, escriba un nombre claro para identificar la consulta.</li>
+                <li>Presione <strong>Guardar</strong> para almacenar la consulta y poder reutilizarla después.</li>
+            </ol>
 
-        <p>
-          Presione el botón <strong>Ingresar</strong> para agregar la condición
-          a la consulta. Cuando haya terminado de configurar las condiciones,
-          escriba un nombre para identificarla y presione
-          <strong>Guardar</strong>.
-        </p>
+            <h2>Botones y controles</h2>
+            <table class="tabla-ayuda">
+                <thead>
+                    <tr><th>Botón o control</th><th>Función</th><th>Cómo usarlo</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Campo</strong></td>
+                        <td>Selecciona la columna que será evaluada por la condición.</td>
+                        <td>Elija un campo disponible de la tabla sobre la que está trabajando.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Operador</strong></td>
+                        <td>Define la comparación que se realizará sobre el campo.</td>
+                        <td>Seleccione el operador disponible que corresponda a la condición que desea crear.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Valor</strong></td>
+                        <td>Indica el dato con el cual se comparará el campo.</td>
+                        <td>Escriba el valor requerido para la condición.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ASC</strong></td>
+                        <td>Ordena los resultados de menor a mayor o de A a Z.</td>
+                        <td>Seleccione esta opción cuando desee un orden ascendente.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DESC</strong></td>
+                        <td>Ordena los resultados de mayor a menor o de Z a A.</td>
+                        <td>Seleccione esta opción cuando desee un orden descendente.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AND</strong></td>
+                        <td>Une condiciones y exige que ambas se cumplan.</td>
+                        <td>Úselo cuando los registros deban cumplir todas las condiciones relacionadas.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OR</strong></td>
+                        <td>Une condiciones y permite que se cumpla una u otra.</td>
+                        <td>Úselo cuando sea suficiente que un registro cumpla cualquiera de las condiciones.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ingresar</strong></td>
+                        <td>Agrega la condición configurada a la lista de condiciones de la consulta.</td>
+                        <td>Complete Campo, Operador y Valor; configure ordenamiento y conector; luego presione el botón.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Eliminar</strong></td>
+                        <td>Quita de la consulta la condición seleccionada en la tabla.</td>
+                        <td>Seleccione primero una fila de la tabla de condiciones y luego presione <strong>Eliminar</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Refrescar</strong></td>
+                        <td>Recarga o reinicia la información de la pantalla.</td>
+                        <td>Úselo cuando quiera actualizar el contenido o comenzar nuevamente la configuración.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ayuda</strong></td>
+                        <td>Muestra este manual de uso.</td>
+                        <td>Presiónelo cuando necesite consultar las instrucciones.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nombre</strong></td>
+                        <td>Identifica la consulta que será guardada.</td>
+                        <td>Escriba un nombre breve y descriptivo para reconocerla posteriormente.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Guardar</strong></td>
+                        <td>Almacena la consulta configurada para poder utilizarla nuevamente.</td>
+                        <td>Agregue primero las condiciones necesarias, escriba un nombre y luego presione el botón.</td>
+                    </tr>
+                </tbody>
+            </table>
 
-        <p>
-          Si desea retirar una condición previamente agregada, selecciónela y
-          utilice la opción <strong>Eliminar</strong>.
-        </p>
-
-        <img
-          class="captura"
-          src="img/MantenimientoConsultas.png"
-          alt="Mantenimiento de consultas"
-        />
-      </div>
-
-      <div class="seccion">
-        <h2>Consultas reutilizables</h2>
-
-        <p>
-          Las consultas guardadas pueden utilizarse nuevamente sin necesidad de
-          volver a configurar sus condiciones. Esta opción facilita el acceso a
-          consultas que se utilizan con frecuencia.
-        </p>
-
-        <p>
-          Seleccione la consulta que desea utilizar y presione el botón
-          <strong>Consultar</strong> para ejecutarla.
-        </p>
-
-        <img
-          class="captura"
-          src="img/ConsultasReutilizables.png"
-          alt="Consultas reutilizables"
-        />
-      </div>
+            <div class="nota">
+                <strong>Importante:</strong> el conector <strong>AND/OR</strong> es relevante cuando existen dos o más condiciones. Antes de guardar, revise la tabla de condiciones para comprobar que el campo, operador, valor y ordenamiento sean los correctos.
+            </div>
+        </div>
     </div>
-  </body>
+</body>
 </html>

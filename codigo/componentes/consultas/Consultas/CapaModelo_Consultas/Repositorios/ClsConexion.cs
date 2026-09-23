@@ -8,27 +8,27 @@ namespace CapaModelo_Consultas
     {
         public OdbcConnection ConsultasFuncConexion()
         {
-            OdbcConnection Conn = new OdbcConnection("Dsn=EmbutidosS.A");
+            OdbcConnection Conexion = new OdbcConnection("Dsn=EmbutidosS.A");
             try
             {
-                Conn.Open();
+                Conexion.Open();
             }
-            catch (OdbcException Ex)
+            catch (OdbcException Exception)
             {
-                Console.WriteLine("Conexion fallida. Error: " + Ex.Message);
+                Console.WriteLine("Conexion fallida. Error: " + Exception.Message);
             }
-            return Conn;
+            return Conexion;
         }
 
-        public void ConsultasProcDesconexion(OdbcConnection conn)
+        public void ConsultasProcDesconexion(OdbcConnection Conexion)
         {
             try
             {
-                conn.Close();
+                Conexion.Close();
             }
-            catch (OdbcException Ex)
+            catch (OdbcException Exception)
             {
-                Console.WriteLine("Error al cerrar la conexión. Error: " + Ex.Message);
+                Console.WriteLine("Error al cerrar la conexión. Error: " + Exception.Message);
             }
         }
     }

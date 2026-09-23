@@ -71,12 +71,12 @@
             this.ConsultasLblId.BackColor = System.Drawing.Color.Transparent;
             this.ConsultasLblId.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.ConsultasLblId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.ConsultasLblId.Location = new System.Drawing.Point(98, 216);
+            this.ConsultasLblId.Location = new System.Drawing.Point(65, 216);
             this.ConsultasLblId.Margin = new System.Windows.Forms.Padding(3);
             this.ConsultasLblId.Name = "ConsultasLblId";
-            this.ConsultasLblId.Size = new System.Drawing.Size(122, 19);
+            this.ConsultasLblId.Size = new System.Drawing.Size(155, 19);
             this.ConsultasLblId.TabIndex = 2;
-            this.ConsultasLblId.Text = "ID Seleccionado";
+            this.ConsultasLblId.Text = "Campo Seleccionado";
             this.ConsultasLblId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FrmEjecucion
@@ -88,7 +88,7 @@
             this.Controls.Add(this.ConsultasBtnConsultar);
             this.Controls.Add(this.ConsultasTxtId);
             this.Name = "FrmEjecucion";
-            this.Text = "4004 - EjecucionComplejas";
+            this.Text = "4004 - EjecucionConsultas";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -18,10 +18,6 @@
 			<param name="Local" value="ConsultaSimple.html">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Agregar Filtros">
-			<param name="Local" value="Filtros.html">
-			</OBJECT>
-		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Resultados">
 			<param name="Local" value="Resultados.html">
 			</OBJECT>

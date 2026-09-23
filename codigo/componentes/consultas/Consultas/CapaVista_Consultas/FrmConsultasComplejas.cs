@@ -21,29 +21,29 @@ namespace CapaVista_Consultas
         public FrmConsultasComplejas(string Tabla, string CampoId): this()
         {
             TablaActual = Tabla;
-            ConsultasUcConsultasReutilizables.Tabla = TablaActual;
-            ConsultasUcConsultasReutilizables.ConsultasProcRefrescarConsultas();
+            ConsultasUsrConsultasReutilizables.Tabla = TablaActual;
+            ConsultasUsrConsultasReutilizables.ConsultasProcRefrescarConsultas();
 
-            ConsultasUcTabla.ConsultasMetConfigurarSeleccion(CampoId);
+            ConsultasUsrTabla.ConsultasMetConfigurarSeleccion(CampoId);
 
-            ConsultasUcTabla.ConsultasProcCambiarRegistrosPorPagina(30,TablaActual);
+            ConsultasUsrTabla.ConsultasProcCambiarRegistrosPorPagina(30,TablaActual);
         }
 
         private void ConsultasMetConfigurarFormulario()
         {
-            ConsultasUcTabla.ConsultasMetAjustarAlturaFilas(30);
-            ConsultasUcConsultasReutilizables.ConsultaSeleccionada += ConsultasMetEjecutarConsultaSeleccionada;
+            ConsultasUsrTabla.ConsultasMetAjustarAlturaFilas(30);
+            ConsultasUsrConsultasReutilizables.ConsultaSeleccionada += ConsultasMetEjecutarConsultaSeleccionada;
 
-            ConsultasUcTabla.ConsultasEvtFilaSeleccionada += ConsultasMetUcTablaFilaSeleccionada;
+            ConsultasUsrTabla.ConsultasEvtFilaSeleccionada += ConsultasMetUcTablaFilaSeleccionada;
         }
 
         private void ConsultasMetUcTablaFilaSeleccionada(object Sender, EventArgs Evento)
         {
             CampoSeleccionado =
-                ConsultasUcTabla.CampoSeleccionado;
+                ConsultasUsrTabla.CampoSeleccionado;
 
             SeleccionRealizada =
-                ConsultasUcTabla.SeleccionRealizada;
+                ConsultasUsrTabla.SeleccionRealizada;
 
             if (!SeleccionRealizada)
             {
@@ -64,12 +64,12 @@ namespace CapaVista_Consultas
         {
             TablaActual = Tabla;
 
-            ConsultasUcTabla.ConsultasProcCargarConsultaDesdeQuery(Query,Tabla);
+            ConsultasUsrTabla.ConsultasProcCargarConsultaDesdeQuery(Query,Tabla);
         }
 
         private void ConsultasMetBtnSeleccionarClick(object Sender,EventArgs Evento)
         {
-            bool ResultadoSeleccion = ConsultasUcTabla.ConsultasFuncSeleccionarRegistro();
+            bool ResultadoSeleccion = ConsultasUsrTabla.ConsultasFuncSeleccionarRegistro();
 
             if (!ResultadoSeleccion)
             {
@@ -81,8 +81,8 @@ namespace CapaVista_Consultas
 
                 return;
             }
-            CampoSeleccionado = ConsultasUcTabla.CampoSeleccionado;
-            SeleccionRealizada = ConsultasUcTabla.SeleccionRealizada;
+            CampoSeleccionado = ConsultasUsrTabla.CampoSeleccionado;
+            SeleccionRealizada = ConsultasUsrTabla.SeleccionRealizada;
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -109,8 +109,8 @@ namespace CapaVista_Consultas
 
         private void ConsultasMetBtnRefrescarClick(object Sender, EventArgs Evento)
         {
-            ConsultasUcTabla.ConsultasProcActualizarTabla(TablaActual);
-            ConsultasUcConsultasReutilizables.ConsultasProcRefrescarConsultas();
+            ConsultasUsrTabla.ConsultasProcActualizarTabla(TablaActual);
+            ConsultasUsrConsultasReutilizables.ConsultasProcRefrescarConsultas();
         }
         // Fin de código de "José Pablo Cano Cóbar" - carné: "0901-23-1727" - Fecha: "16/09/26"
 
