@@ -36,8 +36,6 @@ namespace CapaVista_Consultas
                 
 =======
                 ConsultasProcCargarOperadores();
-                ConsultasProcCargarConectores(); // NUEVO
->>>>>>> 417640ab1b18cc52920f7bdce91ea0d67cbf1067
 
 
                 if (_Tabla == "")
@@ -141,18 +139,6 @@ namespace CapaVista_Consultas
             ConsultasCboOperador.SelectedIndex = -1;
         }
 
-<<<<<<< HEAD
-        //Fin del código de Miguel David Contreras Jacinto 0901-21-3878 el 22/09/2026
-=======
-        
-        private void ConsultasProcCargarConectores()
-        {
-            ConsultasCboConector.Items.Clear();
-            ConsultasCboConector.Items.AddRange(new object[] { "AND", "OR" });
-            ConsultasCboConector.SelectedIndex = 0; 
-        }
-
->>>>>>> 417640ab1b18cc52920f7bdce91ea0d67cbf1067
         private void ConsultasProcCargarColumnas()
         {
             _Tipos = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -237,15 +223,10 @@ namespace CapaVista_Consultas
                 Fila.Valor = Valor;
                 Fila.Orden = Orden;
 
-                
-                bool ExisteCondicionPrevia = ConsultasDgvConsultasFiltros.Rows.Count > 0;
-                Fila.Conector = (Operador != "" && ExisteCondicionPrevia)
-                    ? ConsultasCboConector.SelectedItem.ToString()
-                    : "";
-
                 _Control.ConsultasProcValidarCondicion(Fila, _Tipos);
 
-                ConsultasDgvConsultasFiltros.Rows.Add(Fila.Campo, Fila.Operador, Fila.Valor, Fila.Orden, Fila.Conector); 
+                ConsultasDgvConsultasFiltros.Rows.Add(Fila.Campo, Fila.Operador, Fila.Valor, Fila.Orden);
+
                 ConsultasTxtValor.Clear();
                 ConsultasCboOperadorCampo.SelectedIndex = -1;
                 ConsultasCboOperador.SelectedIndex = -1;
