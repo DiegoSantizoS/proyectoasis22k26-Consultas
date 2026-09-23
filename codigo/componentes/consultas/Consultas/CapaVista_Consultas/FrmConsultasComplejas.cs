@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
@@ -11,6 +12,9 @@ namespace CapaVista_Consultas
         public string TablaActual { get; private set; }
         public string CampoSeleccionado { get; private set; }
         public bool SeleccionRealizada { get; private set; }
+
+        List<Form> _FormularioCerrar = new List<Form>();
+
 
         public FrmConsultasComplejas()
         {
@@ -98,7 +102,20 @@ namespace CapaVista_Consultas
 
             if (Respuesta == DialogResult.Yes)
             {
-                Application.Exit();
+
+                foreach (Form Formulario in Application.OpenForms)
+                {
+                    if (Formulario.Name == "FrmConsultasSimples")
+                    {
+                        _FormularioCerrar.Add(Formulario);
+                    }
+                }
+                foreach (Form Formulario in _FormularioCerrar)
+                {
+                    Formulario.Close();
+                }
+                this.Dispose();
+
             }
         }
 

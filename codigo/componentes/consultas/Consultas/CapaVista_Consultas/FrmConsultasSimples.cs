@@ -157,7 +157,7 @@ namespace CapaVista_Consultas
 
             if (Respuesta == DialogResult.Yes)
             {
-                Application.Exit();
+                this.Dispose();
             }
         }
     }
