@@ -18,6 +18,7 @@ namespace CapaVista_Consultas
         private const int _ColOperador = 1;
         private const int _ColValor = 2;
         private const int _ColOrden = 3;
+        private const int _ColConector = 4; // NUEVO: columna para AND/OR
 
         public FrmMantenimientoConsultas(string Tabla)
         {
@@ -31,7 +32,12 @@ namespace CapaVista_Consultas
             try
             {
                 ConsultasProcConectarEventos();
+<<<<<<< HEAD
                 
+=======
+                ConsultasProcCargarOperadores();
+                ConsultasProcCargarConectores(); // NUEVO
+>>>>>>> 417640ab1b18cc52920f7bdce91ea0d67cbf1067
 
 
                 if (_Tabla == "")
@@ -135,7 +141,18 @@ namespace CapaVista_Consultas
             ConsultasCboOperador.SelectedIndex = -1;
         }
 
+<<<<<<< HEAD
         //Fin del código de Miguel David Contreras Jacinto 0901-21-3878 el 22/09/2026
+=======
+        
+        private void ConsultasProcCargarConectores()
+        {
+            ConsultasCboConector.Items.Clear();
+            ConsultasCboConector.Items.AddRange(new object[] { "AND", "OR" });
+            ConsultasCboConector.SelectedIndex = 0; 
+        }
+
+>>>>>>> 417640ab1b18cc52920f7bdce91ea0d67cbf1067
         private void ConsultasProcCargarColumnas()
         {
             _Tipos = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -220,15 +237,21 @@ namespace CapaVista_Consultas
                 Fila.Valor = Valor;
                 Fila.Orden = Orden;
 
+                
+                bool ExisteCondicionPrevia = ConsultasDgvConsultasFiltros.Rows.Count > 0;
+                Fila.Conector = (Operador != "" && ExisteCondicionPrevia)
+                    ? ConsultasCboConector.SelectedItem.ToString()
+                    : "";
+
                 _Control.ConsultasProcValidarCondicion(Fila, _Tipos);
 
-                ConsultasDgvConsultasFiltros.Rows.Add(Fila.Campo, Fila.Operador, Fila.Valor, Fila.Orden);
-
+                ConsultasDgvConsultasFiltros.Rows.Add(Fila.Campo, Fila.Operador, Fila.Valor, Fila.Orden, Fila.Conector); 
                 ConsultasTxtValor.Clear();
                 ConsultasCboOperadorCampo.SelectedIndex = -1;
                 ConsultasCboOperador.SelectedIndex = -1;
                 ConsultasRdoAscendente.Checked = true;
                 ConsultasRdoDescendente.Checked = false;
+                ConsultasCboConector.SelectedIndex = 0; 
             }
             catch (ArgumentException Exception)
             {
@@ -266,9 +289,8 @@ namespace CapaVista_Consultas
                 string Query = _Control.ConsultasFuncConstruirQuery(_Tabla, ConsultasMetLeerCondiciones(), _Tipos);
 
                 DialogResult r = MessageBox.Show(this,
-                    "Se guardara la consulta \"" + Nombre + "\":" + Environment.NewLine + Environment.NewLine +
-                    Query + Environment.NewLine + Environment.NewLine + "¿Guardar?",
-                    "Guardar consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                 "¿Guardar la consulta \"" + Nombre + "\"?",
+                 "Guardar consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (r != DialogResult.Yes)
                 {
@@ -297,7 +319,6 @@ namespace CapaVista_Consultas
         private List<ClsCondicion> ConsultasMetLeerCondiciones()
         {
             List<ClsCondicion> Lista = new List<ClsCondicion>();
-            bool ExisteCondicionPrevia = false;
 
             foreach (DataGridViewRow Fila in ConsultasDgvConsultasFiltros.Rows)
             {
@@ -306,12 +327,8 @@ namespace CapaVista_Consultas
                 Condicion.Operador = ConsultasFuncTexto(Fila.Cells[_ColOperador]);
                 Condicion.Valor = ConsultasFuncTexto(Fila.Cells[_ColValor]);
                 Condicion.Orden = ConsultasFuncTexto(Fila.Cells[_ColOrden]);
+                Condicion.Conector = ConsultasFuncTexto(Fila.Cells[_ColConector]); 
 
-                if (Condicion.Operador != "")
-                {
-                    Condicion.Conector = ExisteCondicionPrevia ? "AND" : "";
-                    ExisteCondicionPrevia = true;
-                }
                 Lista.Add(Condicion);
             }
             return Lista;
@@ -327,6 +344,7 @@ namespace CapaVista_Consultas
             ConsultasCboOperador.SelectedIndex = -1;
             ConsultasRdoAscendente.Checked = false;
             ConsultasRdoDescendente.Checked = false;
+            ConsultasCboConector.SelectedIndex = 0; 
         }
 
         private static string ConsultasFuncTexto(DataGridViewCell Celda)
@@ -365,6 +383,16 @@ namespace CapaVista_Consultas
             }
 
             MessageBox.Show("No se encontró el archivo de ayuda.");
+        }
+
+        private void ConsultasTlpFiltros_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ConsultasDgvConsultasFiltros_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
         //Fin del código realizado por Diego Fernando Santizo Samayoa 0901-22-15950 22/09/2026
     }
