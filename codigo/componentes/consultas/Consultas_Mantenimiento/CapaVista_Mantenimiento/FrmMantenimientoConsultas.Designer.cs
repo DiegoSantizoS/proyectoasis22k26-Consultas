@@ -43,6 +43,7 @@
             this.ConsultasColOperador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConsultasColValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConsultasColOrdenamiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ConsultasColConector = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConsultasGbxCondicionesLogicas = new CapaVista_Consultas.Componentes.ClsGrupoConsultas();
             this.ConsultasTlpCondicionesLogicas = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasBtnIngresar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
@@ -56,6 +57,8 @@
             this.ConsultasCboOperador = new CapaVista_Consultas.Componentes.ClsListaComboBoxConsultas();
             this.ConsultasLblValor = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
             this.ConsultasTxtValor = new CapaVista_Consultas.Componentes.ClsCajaTextoConsultas();
+            this.ConsultasLblConector = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
+            this.ConsultasCboConector = new CapaVista_Consultas.Componentes.ClsListaComboBoxConsultas();
             this.ConsultasGbxGuardarConsultas = new CapaVista_Consultas.Componentes.ClsGrupoConsultas();
             this.ConsultasTlpGuardarConsulta = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasLblNombre = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
@@ -109,6 +112,7 @@
             this.ConsultasTlpFiltros.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ConsultasTlpFiltros.Size = new System.Drawing.Size(681, 472);
             this.ConsultasTlpFiltros.TabIndex = 19;
+            this.ConsultasTlpFiltros.Paint += new System.Windows.Forms.PaintEventHandler(this.ConsultasTlpFiltros_Paint);
             // 
             // ConsultasFlpBotones
             // 
@@ -186,7 +190,8 @@
             this.ConsultasColCampo,
             this.ConsultasColOperador,
             this.ConsultasColValor,
-            this.ConsultasColOrdenamiento});
+            this.ConsultasColOrdenamiento,
+            this.ConsultasColConector});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -216,6 +221,7 @@
             this.ConsultasDgvConsultasFiltros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ConsultasDgvConsultasFiltros.Size = new System.Drawing.Size(595, 464);
             this.ConsultasDgvConsultasFiltros.TabIndex = 3;
+            this.ConsultasDgvConsultasFiltros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConsultasDgvConsultasFiltros_CellContentClick);
             // 
             // ConsultasColCampo
             // 
@@ -245,6 +251,14 @@
             this.ConsultasColOrdenamiento.Name = "ConsultasColOrdenamiento";
             this.ConsultasColOrdenamiento.ReadOnly = true;
             // 
+            // ConsultasColConector
+            // 
+            this.ConsultasColConector.HeaderText = "Conector";
+            this.ConsultasColConector.MinimumWidth = 6;
+            this.ConsultasColConector.Name = "ConsultasColConector";
+            this.ConsultasColConector.ReadOnly = true;
+            this.ConsultasColConector.Visible = false;
+            // 
             // ConsultasGbxCondicionesLogicas
             // 
             this.ConsultasGbxCondicionesLogicas.BackColor = System.Drawing.Color.Transparent;
@@ -265,7 +279,7 @@
             this.ConsultasTlpCondicionesLogicas.ColumnCount = 2;
             this.ConsultasTlpCondicionesLogicas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
             this.ConsultasTlpCondicionesLogicas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasBtnIngresar, 1, 4);
+            this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasBtnIngresar, 1, 5);
             this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasLblOrdenamiento, 0, 3);
             this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasTlpOrdenamiento, 1, 3);
             this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasLblCampo, 0, 0);
@@ -274,15 +288,18 @@
             this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasCboOperador, 1, 1);
             this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasLblValor, 0, 2);
             this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasTxtValor, 1, 2);
+            this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasLblConector, 0, 4);
+            this.ConsultasTlpCondicionesLogicas.Controls.Add(this.ConsultasCboConector, 1, 4);
             this.ConsultasTlpCondicionesLogicas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasTlpCondicionesLogicas.Location = new System.Drawing.Point(3, 24);
             this.ConsultasTlpCondicionesLogicas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasTlpCondicionesLogicas.Name = "ConsultasTlpCondicionesLogicas";
-            this.ConsultasTlpCondicionesLogicas.RowCount = 5;
-            this.ConsultasTlpCondicionesLogicas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.ConsultasTlpCondicionesLogicas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.ConsultasTlpCondicionesLogicas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.ConsultasTlpCondicionesLogicas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ConsultasTlpCondicionesLogicas.RowCount = 6;
+            this.ConsultasTlpCondicionesLogicas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ConsultasTlpCondicionesLogicas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ConsultasTlpCondicionesLogicas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ConsultasTlpCondicionesLogicas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ConsultasTlpCondicionesLogicas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.ConsultasTlpCondicionesLogicas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
             this.ConsultasTlpCondicionesLogicas.Size = new System.Drawing.Size(445, 267);
             this.ConsultasTlpCondicionesLogicas.TabIndex = 2;
@@ -296,7 +313,7 @@
             this.ConsultasBtnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnIngresar.FlatAppearance.BorderSize = 0;
             this.ConsultasBtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnIngresar.Location = new System.Drawing.Point(251, 179);
+            this.ConsultasBtnIngresar.Location = new System.Drawing.Point(251, 178);
             this.ConsultasBtnIngresar.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasBtnIngresar.MaximumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnIngresar.MinimumSize = new System.Drawing.Size(80, 80);
@@ -312,7 +329,7 @@
             this.ConsultasLblOrdenamiento.BackColor = System.Drawing.Color.Transparent;
             this.ConsultasLblOrdenamiento.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.ConsultasLblOrdenamiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.ConsultasLblOrdenamiento.Location = new System.Drawing.Point(24, 141);
+            this.ConsultasLblOrdenamiento.Location = new System.Drawing.Point(24, 109);
             this.ConsultasLblOrdenamiento.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasLblOrdenamiento.Name = "ConsultasLblOrdenamiento";
             this.ConsultasLblOrdenamiento.Size = new System.Drawing.Size(110, 19);
@@ -328,12 +345,12 @@
             this.ConsultasTlpOrdenamiento.Controls.Add(this.ConsultasRdoDescendente, 1, 0);
             this.ConsultasTlpOrdenamiento.Controls.Add(this.ConsultasRdoAscendente, 0, 0);
             this.ConsultasTlpOrdenamiento.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ConsultasTlpOrdenamiento.Location = new System.Drawing.Point(137, 129);
+            this.ConsultasTlpOrdenamiento.Location = new System.Drawing.Point(137, 102);
             this.ConsultasTlpOrdenamiento.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasTlpOrdenamiento.Name = "ConsultasTlpOrdenamiento";
             this.ConsultasTlpOrdenamiento.RowCount = 1;
             this.ConsultasTlpOrdenamiento.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ConsultasTlpOrdenamiento.Size = new System.Drawing.Size(169, 43);
+            this.ConsultasTlpOrdenamiento.Size = new System.Drawing.Size(169, 34);
             this.ConsultasTlpOrdenamiento.TabIndex = 8;
             // 
             // ConsultasRdoDescendente
@@ -344,7 +361,7 @@
             this.ConsultasRdoDescendente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasRdoDescendente.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.ConsultasRdoDescendente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.ConsultasRdoDescendente.Location = new System.Drawing.Point(79, 11);
+            this.ConsultasRdoDescendente.Location = new System.Drawing.Point(79, 7);
             this.ConsultasRdoDescendente.Margin = new System.Windows.Forms.Padding(3, 7, 3, 4);
             this.ConsultasRdoDescendente.Name = "ConsultasRdoDescendente";
             this.ConsultasRdoDescendente.Size = new System.Drawing.Size(69, 23);
@@ -362,7 +379,7 @@
             this.ConsultasRdoAscendente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasRdoAscendente.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.ConsultasRdoAscendente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.ConsultasRdoAscendente.Location = new System.Drawing.Point(13, 11);
+            this.ConsultasRdoAscendente.Location = new System.Drawing.Point(13, 7);
             this.ConsultasRdoAscendente.Margin = new System.Windows.Forms.Padding(3, 7, 3, 4);
             this.ConsultasRdoAscendente.Name = "ConsultasRdoAscendente";
             this.ConsultasRdoAscendente.Size = new System.Drawing.Size(60, 23);
@@ -378,7 +395,7 @@
             this.ConsultasLblCampo.BackColor = System.Drawing.Color.Transparent;
             this.ConsultasLblCampo.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.ConsultasLblCampo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.ConsultasLblCampo.Location = new System.Drawing.Point(75, 12);
+            this.ConsultasLblCampo.Location = new System.Drawing.Point(75, 7);
             this.ConsultasLblCampo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasLblCampo.Name = "ConsultasLblCampo";
             this.ConsultasLblCampo.Size = new System.Drawing.Size(59, 19);
@@ -395,7 +412,7 @@
             this.ConsultasCboOperadorCampo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.ConsultasCboOperadorCampo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
             this.ConsultasCboOperadorCampo.FormattingEnabled = true;
-            this.ConsultasCboOperadorCampo.Location = new System.Drawing.Point(140, 6);
+            this.ConsultasCboOperadorCampo.Location = new System.Drawing.Point(140, 4);
             this.ConsultasCboOperadorCampo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasCboOperadorCampo.Name = "ConsultasCboOperadorCampo";
             this.ConsultasCboOperadorCampo.Size = new System.Drawing.Size(302, 31);
@@ -408,7 +425,7 @@
             this.ConsultasLblOperador.BackColor = System.Drawing.Color.Transparent;
             this.ConsultasLblOperador.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.ConsultasLblOperador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.ConsultasLblOperador.Location = new System.Drawing.Point(58, 55);
+            this.ConsultasLblOperador.Location = new System.Drawing.Point(58, 41);
             this.ConsultasLblOperador.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasLblOperador.Name = "ConsultasLblOperador";
             this.ConsultasLblOperador.Size = new System.Drawing.Size(76, 19);
@@ -425,7 +442,7 @@
             this.ConsultasCboOperador.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.ConsultasCboOperador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
             this.ConsultasCboOperador.FormattingEnabled = true;
-            this.ConsultasCboOperador.Location = new System.Drawing.Point(140, 49);
+            this.ConsultasCboOperador.Location = new System.Drawing.Point(140, 38);
             this.ConsultasCboOperador.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasCboOperador.Name = "ConsultasCboOperador";
             this.ConsultasCboOperador.Size = new System.Drawing.Size(302, 31);
@@ -438,7 +455,7 @@
             this.ConsultasLblValor.BackColor = System.Drawing.Color.Transparent;
             this.ConsultasLblValor.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.ConsultasLblValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.ConsultasLblValor.Location = new System.Drawing.Point(88, 98);
+            this.ConsultasLblValor.Location = new System.Drawing.Point(88, 75);
             this.ConsultasLblValor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasLblValor.Name = "ConsultasLblValor";
             this.ConsultasLblValor.Size = new System.Drawing.Size(46, 19);
@@ -453,11 +470,41 @@
             this.ConsultasTxtValor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ConsultasTxtValor.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.ConsultasTxtValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.ConsultasTxtValor.Location = new System.Drawing.Point(140, 92);
+            this.ConsultasTxtValor.Location = new System.Drawing.Point(140, 72);
             this.ConsultasTxtValor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasTxtValor.Name = "ConsultasTxtValor";
             this.ConsultasTxtValor.Size = new System.Drawing.Size(302, 30);
             this.ConsultasTxtValor.TabIndex = 16;
+            // 
+            // ConsultasLblConector
+            // 
+            this.ConsultasLblConector.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ConsultasLblConector.AutoSize = true;
+            this.ConsultasLblConector.BackColor = System.Drawing.Color.Transparent;
+            this.ConsultasLblConector.Font = new System.Drawing.Font("Tahoma", 9.5F);
+            this.ConsultasLblConector.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            this.ConsultasLblConector.Location = new System.Drawing.Point(62, 143);
+            this.ConsultasLblConector.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ConsultasLblConector.Name = "ConsultasLblConector";
+            this.ConsultasLblConector.Size = new System.Drawing.Size(72, 19);
+            this.ConsultasLblConector.TabIndex = 19;
+            this.ConsultasLblConector.Text = "Conector";
+            this.ConsultasLblConector.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ConsultasCboConector
+            // 
+            this.ConsultasCboConector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ConsultasCboConector.BackColor = System.Drawing.Color.White;
+            this.ConsultasCboConector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ConsultasCboConector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConsultasCboConector.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ConsultasCboConector.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            this.ConsultasCboConector.FormattingEnabled = true;
+            this.ConsultasCboConector.Location = new System.Drawing.Point(140, 140);
+            this.ConsultasCboConector.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ConsultasCboConector.Name = "ConsultasCboConector";
+            this.ConsultasCboConector.Size = new System.Drawing.Size(302, 31);
+            this.ConsultasCboConector.TabIndex = 20;
             // 
             // ConsultasGbxGuardarConsultas
             // 
@@ -588,6 +635,8 @@
         private Componentes.ClsListaComboBoxConsultas ConsultasCboOperador;
         private Componentes.ClsEtiquetaConsultas ConsultasLblValor;
         private Componentes.ClsCajaTextoConsultas ConsultasTxtValor;
+        private Componentes.ClsEtiquetaConsultas ConsultasLblConector;
+        private Componentes.ClsListaComboBoxConsultas ConsultasCboConector;
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpFiltros;
         private System.Windows.Forms.FlowLayoutPanel ConsultasFlpBotones;
         private Componentes.ClsBotonConsultas ConsultasBtnEliminar;
@@ -596,6 +645,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColOperador;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColValor;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColOrdenamiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColConector;
         private Componentes.ClsBotonConsultas ConsultasBtnAyuda;
     }
 }
