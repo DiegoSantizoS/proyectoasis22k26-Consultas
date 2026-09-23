@@ -32,9 +32,9 @@ namespace CapaVista_Consultas
             try
             {
                 ConsultasProcConectarEventos();
-                ConsultasProcCargarOperadores();
-                ConsultasProcCargarConectores(); // NUEVO
-
+                ConsultasProcCargarOperadores("");
+                ConsultasProcCargarConectores();
+                ConsultasCboConector.Enabled = false;
 
                 if (_Tabla == "")
                 {
@@ -52,29 +52,96 @@ namespace CapaVista_Consultas
         }
 
         private void ConsultasProcConectarEventos()
+
         {
+            ConsultasCboOperadorCampo.SelectedIndexChanged += ConsultasCboOperadorCampo_SelectedIndexChanged;
             ConsultasCboOperador.SelectedIndexChanged += ConsultasCboOperador_SelectedIndexChanged;
             ConsultasBtnIngresar.Click += ConsultasMetBtnIngresarClick;
             ConsultasBtnEliminar.Click += ConsultasMetBtnEliminarClick;
             ConsultasBtnGuardar.Click += ConsultasMetBtnGuardarClick;
         }
 
-        private void ConsultasProcCargarOperadores()
+        //Inicio del código de Miguel David Contreras Jacinto 0901-21-3878 el 22/09/2026
+        private void ConsultasProcCargarOperadores(string TipoCampo)
         {
             ConsultasCboOperador.Items.Clear();
-            ConsultasCboOperador.Items.AddRange(new object[]
+
+            if (string.IsNullOrWhiteSpace(TipoCampo))
             {
-                "=", "<>", ">", "<", ">=", "<=", "LIKE", "NOT LIKE", "IS NULL", "IS NOT NULL"
-            });
+                ConsultasCboOperador.SelectedIndex = -1;
+                return;
+            }
+
+            string Tipo = TipoCampo.Trim().ToLowerInvariant();
+            int PosicionParentesis = Tipo.IndexOf('(');
+
+            if (PosicionParentesis > 0)
+            {
+                Tipo = Tipo.Substring(0, PosicionParentesis);
+            }
+
+            if (Tipo.Contains("int") ||
+                Tipo == "integer" ||
+                Tipo == "bigint" ||
+                Tipo == "smallint" ||
+                Tipo == "mediumint" ||
+                Tipo == "tinyint" ||
+                Tipo == "decimal" ||
+                Tipo == "numeric" ||
+                Tipo == "float" ||
+                Tipo == "double" ||
+                Tipo == "real")
+            {
+                ConsultasCboOperador.Items.Add("=");
+                ConsultasCboOperador.Items.Add("<>");
+                ConsultasCboOperador.Items.Add(">");
+                ConsultasCboOperador.Items.Add("<");
+                ConsultasCboOperador.Items.Add(">=");
+                ConsultasCboOperador.Items.Add("<=");
+            }
+
+            else if (Tipo.Contains("char") ||
+                     Tipo.Contains("text") ||
+                     Tipo.Contains("string") ||
+                     Tipo == "varchar")
+            {
+                ConsultasCboOperador.Items.Add("=");
+                ConsultasCboOperador.Items.Add("<>");
+                ConsultasCboOperador.Items.Add("LIKE");
+                ConsultasCboOperador.Items.Add("NOT LIKE");
+                ConsultasCboOperador.Items.Add("IS NULL");
+                ConsultasCboOperador.Items.Add("IS NOT NULL");
+            }
+
+            else if (Tipo.Contains("date") ||
+                     Tipo.Contains("time"))
+            {
+                ConsultasCboOperador.Items.Add("=");
+                ConsultasCboOperador.Items.Add("<>");
+                ConsultasCboOperador.Items.Add(">");
+                ConsultasCboOperador.Items.Add("<");
+                ConsultasCboOperador.Items.Add(">=");
+                ConsultasCboOperador.Items.Add("<=");
+                ConsultasCboOperador.Items.Add("IS NULL");
+                ConsultasCboOperador.Items.Add("IS NOT NULL");
+            }
+
+            else
+            {
+                ConsultasCboOperador.Items.Add("=");
+                ConsultasCboOperador.Items.Add("<>");
+                ConsultasCboOperador.Items.Add("IS NULL");
+                ConsultasCboOperador.Items.Add("IS NOT NULL");
+            }
+
             ConsultasCboOperador.SelectedIndex = -1;
         }
 
-        
         private void ConsultasProcCargarConectores()
         {
             ConsultasCboConector.Items.Clear();
             ConsultasCboConector.Items.AddRange(new object[] { "AND", "OR" });
-            ConsultasCboConector.SelectedIndex = 0; 
+            ConsultasCboConector.SelectedIndex = 0;
         }
 
         private void ConsultasProcCargarColumnas()
@@ -96,6 +163,7 @@ namespace CapaVista_Consultas
 
             ConsultasCboOperadorCampo.SelectedIndex = -1;
         }
+
         private void ConsultasCboOperador_SelectedIndexChanged(object Sender, EventArgs Evento)
         {
             string Operador = ConsultasCboOperador.SelectedItem == null ? "" : ConsultasCboOperador.SelectedItem.ToString();
@@ -107,6 +175,27 @@ namespace CapaVista_Consultas
                 ConsultasTxtValor.Clear();
             }
         }
+
+        //Inicio del código de Miguel David Contreras Jacinto 0901-21-3878 el 22/09/2026
+        private void ConsultasCboOperadorCampo_SelectedIndexChanged(object Sender, EventArgs Evento)
+        {
+            if (ConsultasCboOperadorCampo.SelectedIndex < 0)
+            {
+                ConsultasProcCargarOperadores("");
+                return;
+            }
+
+            string Campo = ConsultasCboOperadorCampo.SelectedItem.ToString();
+
+            if (_Tipos.ContainsKey(Campo))
+            {
+                string TipoCampo = _Tipos[Campo];
+
+                ConsultasProcCargarOperadores(TipoCampo);
+            }
+        }
+
+        //Fin del código de Miguel David Contreras Jacinto 0901-21-3878 el 22/09/2026
 
         private void ConsultasMetBtnIngresarClick(object Sender, EventArgs Evento)
         {
@@ -128,6 +217,7 @@ namespace CapaVista_Consultas
                     ConsultasProcAviso("Selecciona un operador para usar el valor.");
                     return;
                 }
+
                 if (Operador == "" && Orden == "")
                 {
                     ConsultasProcAviso("Selecciona un operador con su valor, o un ordenamiento (ASC / DESC).");
@@ -140,7 +230,6 @@ namespace CapaVista_Consultas
                 Fila.Valor = Valor;
                 Fila.Orden = Orden;
 
-                
                 bool ExisteCondicionPrevia = ConsultasDgvConsultasFiltros.Rows.Count > 0;
                 Fila.Conector = (Operador != "" && ExisteCondicionPrevia)
                     ? ConsultasCboConector.SelectedItem.ToString()
@@ -148,13 +237,15 @@ namespace CapaVista_Consultas
 
                 _Control.ConsultasProcValidarCondicion(Fila, _Tipos);
 
-                ConsultasDgvConsultasFiltros.Rows.Add(Fila.Campo, Fila.Operador, Fila.Valor, Fila.Orden, Fila.Conector); 
+                ConsultasDgvConsultasFiltros.Rows.Add(Fila.Campo, Fila.Operador, Fila.Valor, Fila.Orden, Fila.Conector);
+
+                ConsultasCboConector.Enabled = true;
                 ConsultasTxtValor.Clear();
                 ConsultasCboOperadorCampo.SelectedIndex = -1;
                 ConsultasCboOperador.SelectedIndex = -1;
                 ConsultasRdoAscendente.Checked = true;
                 ConsultasRdoDescendente.Checked = false;
-                ConsultasCboConector.SelectedIndex = 0; 
+                ConsultasCboConector.SelectedIndex = 0;
             }
             catch (ArgumentException Exception)
             {
@@ -175,6 +266,11 @@ namespace CapaVista_Consultas
             }
 
             ConsultasDgvConsultasFiltros.Rows.Remove(ConsultasDgvConsultasFiltros.SelectedRows[0]);
+
+            if (ConsultasDgvConsultasFiltros.Rows.Count == 0)
+            {
+                ConsultasCboConector.Enabled = false;
+            }
         }
 
         private void ConsultasMetBtnGuardarClick(object Sender, EventArgs Evento)
@@ -217,8 +313,6 @@ namespace CapaVista_Consultas
             }
         }
 
-
-
         private List<ClsCondicion> ConsultasMetLeerCondiciones()
         {
             List<ClsCondicion> Lista = new List<ClsCondicion>();
@@ -230,10 +324,11 @@ namespace CapaVista_Consultas
                 Condicion.Operador = ConsultasFuncTexto(Fila.Cells[_ColOperador]);
                 Condicion.Valor = ConsultasFuncTexto(Fila.Cells[_ColValor]);
                 Condicion.Orden = ConsultasFuncTexto(Fila.Cells[_ColOrden]);
-                Condicion.Conector = ConsultasFuncTexto(Fila.Cells[_ColConector]); 
+                Condicion.Conector = ConsultasFuncTexto(Fila.Cells[_ColConector]);
 
                 Lista.Add(Condicion);
             }
+
             return Lista;
         }
 
@@ -245,9 +340,10 @@ namespace CapaVista_Consultas
             ConsultasTxtValor.Enabled = true;
             ConsultasCboOperadorCampo.SelectedIndex = -1;
             ConsultasCboOperador.SelectedIndex = -1;
-            ConsultasRdoAscendente.Checked = false;
+            ConsultasRdoAscendente.Checked = true;
             ConsultasRdoDescendente.Checked = false;
-            ConsultasCboConector.SelectedIndex = 0; 
+            ConsultasCboConector.SelectedIndex = 0;
+            ConsultasCboConector.Enabled = false;
         }
 
         private static string ConsultasFuncTexto(DataGridViewCell Celda)
@@ -266,6 +362,7 @@ namespace CapaVista_Consultas
             MessageBox.Show(this, Mensaje + Environment.NewLine + Environment.NewLine + Exception.Message,
                 "Mantenimiento de consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
         //Fin del código realizado por Diana Mishel Loeiza Ramírez 9959-23-3457 20/09/2026
 
         //Inicio del código realizado por Diego Fernando Santizo Samayoa 0901-22-15950 22/09/2026
@@ -282,21 +379,18 @@ namespace CapaVista_Consultas
                     Help.ShowHelp(this, Ruta, "ConsultasReutilizables.html");
                     return;
                 }
+
                 Directorio = Directorio.Parent;
             }
 
             MessageBox.Show("No se encontró el archivo de ayuda.");
         }
 
-        private void ConsultasTlpFiltros_Paint(object sender, PaintEventArgs e)
+        private void ConsultasMetBtnRefrescarClick(object sender, EventArgs e)
         {
-
+            ConsultasProcLimpiarFormulario();
         }
 
-        private void ConsultasDgvConsultasFiltros_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
         //Fin del código realizado por Diego Fernando Santizo Samayoa 0901-22-15950 22/09/2026
     }
 

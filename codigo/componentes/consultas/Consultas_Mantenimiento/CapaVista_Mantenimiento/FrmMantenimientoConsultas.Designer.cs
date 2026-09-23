@@ -37,6 +37,7 @@
             this.ConsultasTlpFiltros = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasFlpBotones = new System.Windows.Forms.FlowLayoutPanel();
             this.ConsultasBtnEliminar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasBtnRefrescar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasBtnAyuda = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasDgvConsultasFiltros = new CapaVista_Consultas.Componentes.ClsTablaDatosConsultas();
             this.ConsultasColCampo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -112,11 +113,11 @@
             this.ConsultasTlpFiltros.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ConsultasTlpFiltros.Size = new System.Drawing.Size(681, 472);
             this.ConsultasTlpFiltros.TabIndex = 19;
-            this.ConsultasTlpFiltros.Paint += new System.Windows.Forms.PaintEventHandler(this.ConsultasTlpFiltros_Paint);
             // 
             // ConsultasFlpBotones
             // 
             this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnEliminar);
+            this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnRefrescar);
             this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnAyuda);
             this.ConsultasFlpBotones.Dock = System.Windows.Forms.DockStyle.Top;
             this.ConsultasFlpBotones.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -144,6 +145,25 @@
             this.ConsultasBtnEliminar.TabIndex = 2;
             this.ConsultasBtnEliminar.UseVisualStyleBackColor = false;
             // 
+            // ConsultasBtnRefrescar
+            // 
+            this.ConsultasBtnRefrescar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ConsultasBtnRefrescar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasBtnRefrescar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnRefrescar.BackgroundImage")));
+            this.ConsultasBtnRefrescar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ConsultasBtnRefrescar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConsultasBtnRefrescar.FlatAppearance.BorderSize = 0;
+            this.ConsultasBtnRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConsultasBtnRefrescar.Location = new System.Drawing.Point(0, 80);
+            this.ConsultasBtnRefrescar.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasBtnRefrescar.MaximumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnRefrescar.MinimumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnRefrescar.Name = "ConsultasBtnRefrescar";
+            this.ConsultasBtnRefrescar.Size = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnRefrescar.TabIndex = 4;
+            this.ConsultasBtnRefrescar.UseVisualStyleBackColor = false;
+            this.ConsultasBtnRefrescar.Click += new System.EventHandler(this.ConsultasMetBtnRefrescarClick);
+            // 
             // ConsultasBtnAyuda
             // 
             this.ConsultasBtnAyuda.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -153,7 +173,7 @@
             this.ConsultasBtnAyuda.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnAyuda.FlatAppearance.BorderSize = 0;
             this.ConsultasBtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnAyuda.Location = new System.Drawing.Point(0, 80);
+            this.ConsultasBtnAyuda.Location = new System.Drawing.Point(0, 160);
             this.ConsultasBtnAyuda.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasBtnAyuda.MaximumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnAyuda.MinimumSize = new System.Drawing.Size(80, 80);
@@ -221,7 +241,6 @@
             this.ConsultasDgvConsultasFiltros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ConsultasDgvConsultasFiltros.Size = new System.Drawing.Size(595, 464);
             this.ConsultasDgvConsultasFiltros.TabIndex = 3;
-            this.ConsultasDgvConsultasFiltros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConsultasDgvConsultasFiltros_CellContentClick);
             // 
             // ConsultasColCampo
             // 
@@ -647,5 +666,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColOrdenamiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColConector;
         private Componentes.ClsBotonConsultas ConsultasBtnAyuda;
+        private Componentes.ClsBotonConsultas ConsultasBtnRefrescar;
     }
 }

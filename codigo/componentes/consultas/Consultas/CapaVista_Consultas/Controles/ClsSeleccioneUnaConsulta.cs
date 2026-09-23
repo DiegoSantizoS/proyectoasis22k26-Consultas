@@ -194,5 +194,76 @@ namespace CapaVista_Consultas.Controles
         }
 
         // Fin del código de Carlos Andres Arriaza Lara 0901-23-13862 el 16/09/2026
+
+        // Inicio del código de Diego Fernando Santizo Samayoa 0901-22-15950 el 22/09/2026
+        private void ConsultasMetBtnEliminarClick(object Sender, EventArgs Evento)
+        {
+            try
+            {
+                if (ConsultasDgvConsultasReutilizables.CurrentRow == null)
+                {
+                    MessageBox.Show(
+                        "Seleccione una consulta para eliminar.",
+                        "Eliminar consulta",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                if (ConsultasDgvConsultasReutilizables.Columns["Id"] == null)
+                {
+                    MessageBox.Show(
+                        "No se encontró el identificador de la consulta.",
+                        "Eliminar consulta",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+
+                    return;
+                }
+
+                int IdConsulta = Convert.ToInt32(
+                    ConsultasDgvConsultasReutilizables.CurrentRow.Cells["Id"].Value);
+
+                DialogResult Resultado = MessageBox.Show(
+                    "¿Está seguro de eliminar la consulta seleccionada?",
+                    "Eliminar consulta",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (Resultado != DialogResult.Yes)
+                {
+                    return;
+                }
+
+                _Consultas.ConsultasProcEliminarConsulta(IdConsulta);
+
+                MessageBox.Show(
+                    "Consulta eliminada correctamente.",
+                    "Eliminar consulta",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                ConsultasProcRefrescarConsultas();
+            }
+            catch (InvalidOperationException Excepcion)
+            {
+                MessageBox.Show(
+                    Excepcion.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            catch (Exception Excepcion)
+            {
+                MessageBox.Show(
+                    "Ocurrió un error inesperado al eliminar la consulta.\n\n" +
+                    Excepcion.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+        // Fin del código de Diego Fernando Santizo Samayoa 0901-22-15950 el 22/09/2026
     }
 }

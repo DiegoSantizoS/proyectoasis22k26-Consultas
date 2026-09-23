@@ -39,6 +39,7 @@
             this.ConsultasBtnNuevaConsulta = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasDgvConsultasReutilizables = new CapaVista_Consultas.Componentes.ClsTablaDatosConsultas();
             this.ConsultasColNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ConsultasBtnEliminar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.ConsultasFlpBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConsultasDgvConsultasReutilizables)).BeginInit();
@@ -65,6 +66,7 @@
             // 
             this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnConsultar);
             this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnNuevaConsulta);
+            this.ConsultasFlpBotones.Controls.Add(this.ConsultasBtnEliminar);
             this.ConsultasFlpBotones.Dock = System.Windows.Forms.DockStyle.Top;
             this.ConsultasFlpBotones.Location = new System.Drawing.Point(551, 12);
             this.ConsultasFlpBotones.Margin = new System.Windows.Forms.Padding(0, 12, 0, 0);
@@ -172,6 +174,25 @@
             this.ConsultasColNombre.Name = "ConsultasColNombre";
             this.ConsultasColNombre.ReadOnly = true;
             // 
+            // ConsultasBtnEliminar
+            // 
+            this.ConsultasBtnEliminar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ConsultasBtnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasBtnEliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnEliminar.BackgroundImage")));
+            this.ConsultasBtnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ConsultasBtnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConsultasBtnEliminar.FlatAppearance.BorderSize = 0;
+            this.ConsultasBtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConsultasBtnEliminar.Location = new System.Drawing.Point(0, 160);
+            this.ConsultasBtnEliminar.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasBtnEliminar.MaximumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnEliminar.MinimumSize = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnEliminar.Name = "ConsultasBtnEliminar";
+            this.ConsultasBtnEliminar.Size = new System.Drawing.Size(80, 80);
+            this.ConsultasBtnEliminar.TabIndex = 2;
+            this.ConsultasBtnEliminar.UseVisualStyleBackColor = false;
+            this.ConsultasBtnEliminar.Click += new System.EventHandler(this.ConsultasMetBtnEliminarClick);
+            // 
             // ClsSeleccioneUnaConsulta
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -195,5 +216,6 @@
         private Componentes.ClsBotonConsultas ConsultasBtnConsultar;
         private Componentes.ClsBotonConsultas ConsultasBtnNuevaConsulta;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColNombre;
+        private Componentes.ClsBotonConsultas ConsultasBtnEliminar;
     }
 }

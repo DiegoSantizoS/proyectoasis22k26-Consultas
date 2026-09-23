@@ -39,6 +39,16 @@ namespace CapaControlador_Consultas
             return _SentenciasTablas.ConsultasFuncCargarConsultasPorTabla(NombreTabla);
         }
 
+        public void ConsultasProcEliminarConsulta(int IdConsulta)
+        {
+            if (IdConsulta <= 0)
+            {
+                throw new ArgumentException("El identificador de la consulta no es válido.");
+            }
+
+            _SentenciasTablas.ConsultasProcEliminarConsulta(IdConsulta);
+        }
+
         // Fin de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "19/09/26"
     }
 }

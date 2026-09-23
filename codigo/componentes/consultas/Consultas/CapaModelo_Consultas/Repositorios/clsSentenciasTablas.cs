@@ -399,6 +399,40 @@ namespace CapaModelo_Consultas
                     Excepcion);
             }
         }
+
+        public void ConsultasProcEliminarConsulta(int IdConsulta)
+        {
+            OdbcConnection Conexion = null;
+
+            try
+            {
+                Conexion = _Conexion.ConsultasFuncConexion();
+
+                string Query = "DELETE FROM tblConsulta WHERE Pk_Consulta = ?";
+
+                using (OdbcCommand Comando = new OdbcCommand(Query, Conexion))
+                {
+                    Comando.Parameters.AddWithValue("@IdConsulta", IdConsulta);
+
+                    int FilasAfectadas = Comando.ExecuteNonQuery();
+
+                    if (FilasAfectadas == 0)
+                    {
+                        throw new InvalidOperationException(
+                            "No se encontró la consulta que se desea eliminar.");
+                    }
+                }
+            }
+            finally
+            {
+                if (Conexion != null)
+                {
+                    Conexion.Close();
+                }
+            }
+        }
+
+
         // Fin de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "20/09/26"
     }
 }
