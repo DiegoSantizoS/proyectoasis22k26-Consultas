@@ -58,9 +58,9 @@
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasLblOperador, 1, 0);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasCboOperador, 1, 1);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasLblValor, 2, 0);
-            this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasTxtValor, 2, 1);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasBtnBuscar, 3, 0);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasBtnRefrescar, 4, 0);
+            this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasTxtValor, 2, 1);
             this.ConsultasTlpPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasTlpPrincipal.Location = new System.Drawing.Point(0, 0);
             this.ConsultasTlpPrincipal.Margin = new System.Windows.Forms.Padding(0);
@@ -220,13 +220,13 @@
             this.ConsultasBtnRefrescar.TabIndex = 23;
             this.ConsultasBtnRefrescar.UseVisualStyleBackColor = false;
             // 
-            // ClsAgregarFiltro
+            // UsrAgregarFiltro
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.Controls.Add(this.ConsultasTlpPrincipal);
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "ClsAgregarFiltro";
+            this.Name = "UsrAgregarFiltro";
             this.Size = new System.Drawing.Size(775, 100);
             this.ConsultasTlpPrincipal.ResumeLayout(false);
             this.ConsultasTlpPrincipal.PerformLayout();

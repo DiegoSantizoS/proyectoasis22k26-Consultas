@@ -9,8 +9,7 @@ namespace CapaVista_Consultas.Controles
     // Inicio de código de "José Pablo Cano Cóbar" - carné: "0901-23-1727" - Fecha: "15/09/26"
     public partial class UsrAgregarFiltro : Componentes.ClsControlUsuarioConsultas
     {
-        private readonly ClsControladorFiltroSimple _Controlador =
-            new ClsControladorFiltroSimple();
+        private readonly ClsControladorFiltroSimple _Controlador =new ClsControladorFiltroSimple();
 
         private string _TablaActual;
 
@@ -27,6 +26,8 @@ namespace CapaVista_Consultas.Controles
 
             ConsultasTxtValor.KeyDown += ConsultasMetTxtValorKeyDown;
             ConsultasCboCampo.SelectedIndexChanged += ConsultasMetCboCampoSelectedIndexChanged;
+
+            ConsultasTxtValor.MaxLength = 50;
         }
         public void ConsultasProcActualizarTabla(string Tabla)
         {
@@ -46,6 +47,7 @@ namespace CapaVista_Consultas.Controles
         private void ConsultasMetCboCampoSelectedIndexChanged(object Sender, EventArgs Evento)
         {
             ConsultasMetCargarOperadoresPorTipo();
+            
         }
 
         //Fin del código de Miguel David Contreras Jacinto 0901-21-3878 el 21/09/2026
@@ -92,10 +94,7 @@ namespace CapaVista_Consultas.Controles
 
             string Valor = ConsultasTxtValor.Text;
 
-            string Mensaje = _Controlador.ConsultasFuncValidarFiltro(
-                Campo,
-                Operador,
-                Valor);
+            string Mensaje = _Controlador.ConsultasFuncValidarFiltro(Campo, Operador, Valor);
 
             if (Mensaje != null)
             {
@@ -118,8 +117,11 @@ namespace CapaVista_Consultas.Controles
 
         //Inicio del código de Miguel David Contreras Jacinto 0901-21-3878 el 21/09/2026
         private void ConsultasMetCargarOperadoresPorTipo()
-        {
-            // Guardar el operador seleccionado actualmente
+        {   // Guardar el operador seleccionado actualmente
+            ConsultasTxtValor.MaxLength = 50;
+            ConsultasTxtValor.Text = "";
+            
+
             string OperadorSeleccionado =
                 ConsultasCboOperador.SelectedItem == null
                 ? string.Empty
@@ -135,9 +137,7 @@ namespace CapaVista_Consultas.Controles
 
             string Campo = ConsultasCboCampo.SelectedItem.ToString();
 
-            Type TipoCampo = _Controlador.ConsultasFuncObtenerTipoCampo(
-                _TablaActual,
-                Campo);
+            Type TipoCampo = _Controlador.ConsultasFuncObtenerTipoCampo(_TablaActual,Campo);
 
             if (TipoCampo == null)
                 return;
@@ -156,6 +156,7 @@ namespace CapaVista_Consultas.Controles
                 ConsultasCboOperador.Items.Add("<");
                 ConsultasCboOperador.Items.Add(">=");
                 ConsultasCboOperador.Items.Add("<=");
+                ConsultasTxtValor.MaxLength = 10;
             }
             // Booleanos
             else if (TipoCampo == typeof(bool))

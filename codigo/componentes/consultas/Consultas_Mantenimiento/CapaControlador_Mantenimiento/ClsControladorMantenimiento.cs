@@ -91,8 +91,8 @@ namespace CapaControlador_Consultas
                 return Condicion.Campo + " " + Condicion.Operador;
             }
 
-            string valor = (Condicion.Valor ?? "").Trim();
-            if (valor.Length == 0)
+            string Valor = (Condicion.Valor ?? "").Trim();
+            if (Valor.Length == 0)
             {
                 throw new ArgumentException("Escribe un valor para el campo " + Condicion.Campo + ".");
             }
@@ -108,7 +108,7 @@ namespace CapaControlador_Consultas
             if (!ConfirmarLike && Tipo != null && _TiposNumericos.Contains(Tipo.ToLowerInvariant()))
             {
                 decimal numero;
-                if (!decimal.TryParse(valor,
+                if (!decimal.TryParse(Valor,
                         NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint,
                         CultureInfo.InvariantCulture, out numero))
                 {
@@ -118,7 +118,7 @@ namespace CapaControlador_Consultas
             }
             else
             {
-                literal = "'" + valor.Replace("\\", "\\\\").Replace("'", "''") + "'";
+                literal = "'" + Valor.Replace("\\", "\\\\").Replace("'", "''") + "'";
             }
 
             return Condicion.Campo + " " + Condicion.Operador + " " + literal;

@@ -25,6 +25,8 @@ namespace CapaVista_Consultas
             InitializeComponent();
             _Tabla = (Tabla ?? "").Trim();
             Load += ConsultasMetFrmMantenimientoConsultasLoad;
+            ConsultasTxtValor.MaxLength = 50;
+            ConsultasTxtNombre.MaxLength = 50;
         }
 
         private void ConsultasMetFrmMantenimientoConsultasLoad(object Sender, EventArgs Evento)
@@ -65,6 +67,9 @@ namespace CapaVista_Consultas
         private void ConsultasProcCargarOperadores(string TipoCampo)
         {
             ConsultasCboOperador.Items.Clear();
+            ConsultasTxtValor.MaxLength = 50;
+            ConsultasTxtValor.Text = "";
+
 
             if (string.IsNullOrWhiteSpace(TipoCampo))
             {
@@ -98,6 +103,7 @@ namespace CapaVista_Consultas
                 ConsultasCboOperador.Items.Add("<");
                 ConsultasCboOperador.Items.Add(">=");
                 ConsultasCboOperador.Items.Add("<=");
+                ConsultasTxtValor.MaxLength = 10;
             }
 
             else if (Tipo.Contains("char") ||
@@ -143,16 +149,15 @@ namespace CapaVista_Consultas
             ConsultasCboConector.Items.AddRange(new object[] { "AND", "OR" });
             ConsultasCboConector.SelectedIndex = 0;
         }
-
         private void ConsultasProcCargarColumnas()
         {
             _Tipos = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             ConsultasCboOperadorCampo.Items.Clear();
 
-            foreach (KeyValuePair<string, string> col in _Control.ConsultasMetObtenerColumnas(_Tabla))
+            foreach (KeyValuePair<string, string> Columna in _Control.ConsultasMetObtenerColumnas(_Tabla))
             {
-                _Tipos[col.Key] = col.Value;
-                ConsultasCboOperadorCampo.Items.Add(col.Key);
+                _Tipos[Columna.Key] = Columna.Value;
+                ConsultasCboOperadorCampo.Items.Add(Columna.Key);
             }
 
             if (_Tipos.Count == 0)
@@ -287,11 +292,11 @@ namespace CapaVista_Consultas
 
                 string Query = _Control.ConsultasFuncConstruirQuery(_Tabla, ConsultasMetLeerCondiciones(), _Tipos);
 
-                DialogResult r = MessageBox.Show(this,
+                DialogResult Resultado = MessageBox.Show(this,
                  "¿Guardar la consulta \"" + Nombre + "\"?",
                  "Guardar consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (r != DialogResult.Yes)
+                if (Resultado != DialogResult.Yes)
                 {
                     return;
                 }
