@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using CapaControlador_Consultas;
 using CapaVista_Consultas.Controles;
+using System.Globalization;
 
 namespace CapaVista_Consultas
 {
@@ -81,12 +82,40 @@ namespace CapaVista_Consultas
             Close();
         }
 
-        private void ConsultasMetAgregarFiltroBuscarSolicitado(object Sender,UsrAgregarFiltro.ClsArgumentosFiltro ArgumentosFiltro)
+        private void ConsultasMetAgregarFiltroBuscarSolicitado(object Sender, UsrAgregarFiltro.ClsArgumentosFiltro ArgumentosFiltro)
         {
+            Type TipoCampo = _Controlador.ConsultasFuncObtenerTipoCampo(
+                _TablaActual, ArgumentosFiltro.Campo);
+
+            string Valor = (ArgumentosFiltro.Valor ?? "").Trim();
+
+            bool EsNumerico =
+            TipoCampo == typeof(byte) ||
+            TipoCampo == typeof(short) ||
+            TipoCampo == typeof(int) ||
+            TipoCampo == typeof(long) ||
+            TipoCampo == typeof(float) ||
+            TipoCampo == typeof(double) ||
+            TipoCampo == typeof(decimal);
+
+            if (EsNumerico &&
+                !decimal.TryParse(
+                    Valor,
+                    NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint,
+                    CultureInfo.InvariantCulture,
+                    out _))
+            {
+                ConsultasUsrAgregarFiltro.ConsultasProcMostrarErrorValor(
+                    "El campo " + ArgumentosFiltro.Campo +
+                    " es numérico. Escriba un número válido.");
+                return;
+            }
+
             _CampoFiltro = ArgumentosFiltro.Campo;
             _OperadorFiltro = ArgumentosFiltro.Operador;
-            _ValorFiltro = ArgumentosFiltro.Valor;
+            _ValorFiltro = Valor;
 
+            ConsultasUsrAgregarFiltro.ConsultasProcLimpiarErrorValor();
             ConsultasMetAplicarFiltro();
         }
 
@@ -116,7 +145,7 @@ namespace CapaVista_Consultas
                     string Mensaje = TipoCampo == typeof(DateTime)
                         ? "Ningún registro cumple con el filtro. Verifique la fecha: " +
                           "aaaa-MM-dd HH:mm:ss."
-                        : "Ningún registro cumple con el filtro indicado.";
+                        : "Ningún registro cumple con el filtro indicado. Verifique el formato del campo";
 
                     ConsultasUsrAgregarFiltro.ConsultasProcMostrarErrorValor(Mensaje);
                 }

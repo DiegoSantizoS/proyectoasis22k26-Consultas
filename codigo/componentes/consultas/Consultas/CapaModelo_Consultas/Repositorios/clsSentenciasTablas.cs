@@ -222,9 +222,7 @@ namespace CapaModelo_Consultas
             }
             catch (OdbcException Excepcion)
             {
-                throw new InvalidOperationException(
-                    "Error al contar los resultados de la consulta.",
-                    Excepcion);
+                throw new InvalidOperationException("La consulta no devolvió ningún registro. Intente formularla nuevamente.", Excepcion);
             }
         }
 
