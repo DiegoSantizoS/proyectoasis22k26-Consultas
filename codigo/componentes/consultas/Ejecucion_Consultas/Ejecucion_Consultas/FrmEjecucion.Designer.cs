@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEjecucion));
             this.ConsultasTxtId = new CapaVista_Componentes.ClsCajaTextoConsultas();
-            this.ConsultasBtnConsultar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
-            this.ConsultasLblId = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
+            this.ConsultasBtnConsultar = new CapaVista_Componentes.ClsBotonConsultas();
+            this.ConsultasLblId = new CapaVista_Componentes.ClsEtiquetaConsultas();
             this.SuspendLayout();
             // 
             // ConsultasTxtId
@@ -98,7 +98,7 @@
         #endregion
 
         private CapaVista_Componentes.ClsCajaTextoConsultas ConsultasTxtId;
-        private CapaVista_Consultas.Componentes.ClsBotonConsultas ConsultasBtnConsultar;
-        private CapaVista_Consultas.Componentes.ClsEtiquetaConsultas ConsultasLblId;
+        private CapaVista_Componentes.ClsBotonConsultas ConsultasBtnConsultar;
+        private CapaVista_Componentes.ClsEtiquetaConsultas ConsultasLblId;
     }
 }

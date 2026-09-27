@@ -35,11 +35,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasFlpBotones = new System.Windows.Forms.FlowLayoutPanel();
-            this.ConsultasBtnConsultar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
-            this.ConsultasBtnNuevaConsulta = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
-            this.ConsultasDgvConsultasReutilizables = new CapaVista_Consultas.Componentes.ClsTablaDatosConsultas();
+            this.ConsultasBtnConsultar = new CapaVista_Componentes.ClsBotonConsultas();
+            this.ConsultasBtnNuevaConsulta = new CapaVista_Componentes.ClsBotonConsultas();
+            this.ConsultasDgvConsultasReutilizables = new CapaVista_Componentes.ClsTablaDatosConsultas();
             this.ConsultasColNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConsultasBtnEliminar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasBtnEliminar = new CapaVista_Componentes.ClsBotonConsultas();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.ConsultasFlpBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConsultasDgvConsultasReutilizables)).BeginInit();
@@ -212,10 +212,10 @@
 
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPrincipal;
         private System.Windows.Forms.FlowLayoutPanel ConsultasFlpBotones;
-        private Componentes.ClsTablaDatosConsultas ConsultasDgvConsultasReutilizables;
-        private Componentes.ClsBotonConsultas ConsultasBtnConsultar;
-        private Componentes.ClsBotonConsultas ConsultasBtnNuevaConsulta;
+        private CapaVista_Componentes.ClsTablaDatosConsultas ConsultasDgvConsultasReutilizables;
+        private CapaVista_Componentes.ClsBotonConsultas ConsultasBtnConsultar;
+        private CapaVista_Componentes.ClsBotonConsultas ConsultasBtnNuevaConsulta;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsultasColNombre;
-        private Componentes.ClsBotonConsultas ConsultasBtnEliminar;
+        private CapaVista_Componentes.ClsBotonConsultas ConsultasBtnEliminar;
     }
 }

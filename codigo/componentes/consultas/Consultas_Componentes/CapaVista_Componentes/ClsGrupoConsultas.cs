@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace CapaVista_Consultas.Componentes
+namespace CapaVista_Componentes
 {
     // Inicio de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "15/09/26"
     public class ClsGrupoConsultas : GroupBox

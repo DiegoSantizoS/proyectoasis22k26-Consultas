@@ -30,7 +30,7 @@
         {
             this.ConsultasTlpCampo = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasTxtCampo = new CapaVista_Componentes.ClsCajaTextoConsultas();
-            this.ConsultasLblError = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
+            this.ConsultasLblError = new CapaVista_Componentes.ClsEtiquetaConsultas();
             this.ConsultasTlpCampo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,7 +103,7 @@
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpCampo;
-        private CapaVista_Consultas.Componentes.ClsEtiquetaConsultas ConsultasLblError;
+        private CapaVista_Componentes.ClsEtiquetaConsultas ConsultasLblError;
         private ClsCajaTextoConsultas ConsultasTxtCampo;
     }
 }

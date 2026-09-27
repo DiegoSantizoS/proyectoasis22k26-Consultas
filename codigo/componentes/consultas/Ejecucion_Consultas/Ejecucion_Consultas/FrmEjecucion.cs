@@ -1,5 +1,5 @@
 ﻿using CapaVista_Consultas;
-using CapaVista_Consultas.Componentes;
+using CapaVista_Componentes;
 
 using System;
 

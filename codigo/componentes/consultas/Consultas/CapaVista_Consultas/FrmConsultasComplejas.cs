@@ -6,8 +6,7 @@ using System.Windows.Forms;
 namespace CapaVista_Consultas
 {
     // Inicio de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "19/09/26"
-    public partial class FrmConsultasComplejas :
-        Componentes.ClsBaseTerminus
+    public partial class FrmConsultasComplejas : CapaVista_Componentes.ClsBaseTerminus
     {
         public string TablaActual { get; private set; }
         public string CampoSeleccionado { get; private set; }

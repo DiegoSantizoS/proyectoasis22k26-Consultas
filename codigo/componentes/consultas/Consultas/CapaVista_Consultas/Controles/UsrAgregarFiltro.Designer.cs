@@ -30,15 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsrAgregarFiltro));
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
-            this.ConsultasLblCampo = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
-            this.ConsultasLblOperador = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
-            this.ConsultasCboCampo = new CapaVista_Consultas.Componentes.ClsListaComboBoxConsultas();
-            this.ConsultasCboOperador = new CapaVista_Consultas.Componentes.ClsListaComboBoxConsultas();
-            this.ConsultasLblValor = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
+            this.ConsultasLblCampo = new CapaVista_Componentes.ClsEtiquetaConsultas();
+            this.ConsultasLblOperador = new CapaVista_Componentes.ClsEtiquetaConsultas();
+            this.ConsultasCboCampo = new CapaVista_Componentes.ClsListaComboBoxConsultas();
+            this.ConsultasCboOperador = new CapaVista_Componentes.ClsListaComboBoxConsultas();
+            this.ConsultasLblValor = new CapaVista_Componentes.ClsEtiquetaConsultas();
             this.ConsultasUsrValor = new CapaVista_Componentes.UsrTextbox();
-            this.ConsultasBtnBuscar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
-            this.ConsultasBtnRefrescar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
-            this.ConsultasBtnAyuda = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasBtnBuscar = new CapaVista_Componentes.ClsBotonConsultas();
+            this.ConsultasBtnRefrescar = new CapaVista_Componentes.ClsBotonConsultas();
+            this.ConsultasBtnAyuda = new CapaVista_Componentes.ClsBotonConsultas();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -240,14 +240,14 @@
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPrincipal;
-        private Componentes.ClsBotonConsultas ConsultasBtnBuscar;
-        private Componentes.ClsEtiquetaConsultas ConsultasLblCampo;
-        private Componentes.ClsEtiquetaConsultas ConsultasLblOperador;
-        private Componentes.ClsEtiquetaConsultas ConsultasLblValor;
-        private Componentes.ClsListaComboBoxConsultas ConsultasCboCampo;
-        private Componentes.ClsListaComboBoxConsultas ConsultasCboOperador;
-        private Componentes.ClsBotonConsultas ConsultasBtnRefrescar;
-        private Componentes.ClsBotonConsultas ConsultasBtnAyuda;
+        private CapaVista_Componentes.ClsBotonConsultas ConsultasBtnBuscar;
+        private CapaVista_Componentes.ClsEtiquetaConsultas ConsultasLblCampo;
+        private CapaVista_Componentes.ClsEtiquetaConsultas ConsultasLblOperador;
+        private CapaVista_Componentes.ClsEtiquetaConsultas ConsultasLblValor;
+        private CapaVista_Componentes.ClsListaComboBoxConsultas ConsultasCboCampo;
+        private CapaVista_Componentes.ClsListaComboBoxConsultas ConsultasCboOperador;
+        private CapaVista_Componentes.ClsBotonConsultas ConsultasBtnRefrescar;
+        private CapaVista_Componentes.ClsBotonConsultas ConsultasBtnAyuda;
         private CapaVista_Componentes.UsrTextbox ConsultasUsrValor;
     }
 }

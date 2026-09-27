@@ -47,6 +47,97 @@
                 <li>Presione <strong>Guardar</strong> para almacenar la consulta y poder reutilizarla después.</li>
             </ol>
 
+            <h2>Operadores de comparación</h2>
+            <p>
+                El operador determina cómo se compara el campo con el valor escrito.
+                Las opciones disponibles pueden variar según el tipo de campo seleccionado.
+            </p>
+
+            <table class="tabla-ayuda">
+                <thead>
+                    <tr>
+                        <th>Operador</th>
+                        <th>Qué hace</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Igual a (=)</strong></td>
+                        <td>Busca registros cuyo valor coincide con el indicado.</td>
+                        <td>Edad = 30: muestra los registros con edad 30.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Diferente de (&lt;&gt;)</strong></td>
+                        <td>Busca registros cuyo valor no coincide con el indicado.</td>
+                        <td>Estado &lt;&gt; Inactivo: excluye los registros inactivos.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mayor que (&gt;)</strong></td>
+                        <td>Busca valores superiores al indicado, sin incluirlo.</td>
+                        <td>Edad &gt; 30: muestra edades mayores de 30.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mayor o igual que (&gt;=)</strong></td>
+                        <td>Busca valores iguales o superiores al indicado.</td>
+                        <td>Edad &gt;= 30: incluye 30 y las edades mayores.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Menor que (&lt;)</strong></td>
+                        <td>Busca valores inferiores al indicado, sin incluirlo.</td>
+                        <td>Edad &lt; 30: muestra edades menores de 30.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Menor o igual que (&lt;=)</strong></td>
+                        <td>Busca valores iguales o inferiores al indicado.</td>
+                        <td>Edad &lt;= 30: incluye 30 y las edades menores.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contiene</strong></td>
+                        <td>Busca el texto indicado en cualquier parte del campo.</td>
+                        <td>Nombre contiene «ana»: puede encontrar «Ana» y «Mariana».</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Empieza con</strong></td>
+                        <td>Busca valores que comienzan con el texto indicado.</td>
+                        <td>Nombre empieza con «Mar»: puede encontrar «María» y «Marcos».</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Termina con</strong></td>
+                        <td>Busca valores que terminan con el texto indicado.</td>
+                        <td>Apellido termina con «ez»: puede encontrar «López» y «Pérez».</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="nota">
+                <strong>Fechas:</strong> escriba la fecha en el formato solicitado por la pantalla.
+                «Mayor que» busca fechas posteriores y «menor que» busca fechas anteriores.
+            </div>
+
+            <h2>Cómo funcionan AND y OR</h2>
+            <table class="tabla-ayuda">
+                <thead>
+                    <tr>
+                        <th>Conector</th>
+                        <th>Qué hace</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>AND (Y)</strong></td>
+                        <td>El registro debe cumplir las dos condiciones.</td>
+                        <td>Edad &gt; 30 <strong>AND</strong> Estado = Activo: muestra registros activos con edad mayor de 30.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OR (O)</strong></td>
+                        <td>El registro debe cumplir al menos una de las condiciones.</td>
+                        <td>Estado = Activo <strong>OR</strong> Estado = Pendiente: muestra registros activos o pendientes.</td>
+                    </tr>
+                </tbody>
+            </table>
+
             <h2>Botones y controles</h2>
             <table class="tabla-ayuda">
                 <thead>
@@ -122,7 +213,9 @@
             </table>
 
             <div class="nota">
-                <strong>Importante:</strong> el conector <strong>AND/OR</strong> es relevante cuando existen dos o más condiciones. Antes de guardar, revise la tabla de condiciones para comprobar que el campo, operador, valor y ordenamiento sean los correctos.
+                <strong>Importante:</strong> el conector <strong>AND/OR</strong> es relevante cuando
+                existen dos o más condiciones. Antes de guardar, revise la tabla de condiciones
+                para comprobar que el campo, operador, valor y ordenamiento sean los correctos.
             </div>
         </div>
     </div>

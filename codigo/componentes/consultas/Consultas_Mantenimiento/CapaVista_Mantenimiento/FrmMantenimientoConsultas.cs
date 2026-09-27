@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace CapaVista_Consultas
 {
     //Inicio del código realizado por Diana Mishel Loeiza Ramírez 9959-23-3457 20/09/2026
-    public partial class FrmMantenimientoConsultas : Componentes.ClsBaseTerminus
+    public partial class FrmMantenimientoConsultas : CapaVista_Componentes.ClsBaseTerminus
     {
         private readonly ClsControladorMantenimiento _Control = new ClsControladorMantenimiento();
         private Dictionary<string, string> _Tipos = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -175,7 +175,7 @@ namespace CapaVista_Consultas
             if (SinValor)
             {
                 ConsultasUsrValor.Text = string.Empty;
-                ConsultasUsrValor.LimpiarError();
+                ConsultasUsrValor.ConsultasMetLimpiarError();
             }
         }
 
@@ -204,7 +204,7 @@ namespace CapaVista_Consultas
           // Valida el valor del filtro y muestra el error directamente bajo el campo.
         private void ConsultasMetBtnIngresarClick(object Sender, EventArgs Evento)
         {
-            ConsultasUsrValor.LimpiarError();
+            ConsultasUsrValor.ConsultasMetLimpiarError();
 
             try
             {
@@ -243,8 +243,8 @@ namespace CapaVista_Consultas
 
                 if (RequiereValor && string.IsNullOrWhiteSpace(Valor))
                 {
-                    ConsultasUsrValor.MostrarError("Ingrese un valor para el filtro.");
-                    ConsultasUsrValor.EnfocarTexto();
+                    ConsultasUsrValor.ConsultasMetMostrarError("Ingrese un valor para el filtro.");
+                    ConsultasUsrValor.ConsultasMetEnfocarTexto();
                     return;
                 }
 
@@ -261,8 +261,8 @@ namespace CapaVista_Consultas
                 }
                 catch (ArgumentException Excepcion)
                 {
-                    ConsultasUsrValor.MostrarError(Excepcion.Message);
-                    ConsultasUsrValor.EnfocarTexto();
+                    ConsultasUsrValor.ConsultasMetMostrarError(Excepcion.Message);
+                    ConsultasUsrValor.ConsultasMetEnfocarTexto();
                     return;
                 }
 
@@ -270,7 +270,7 @@ namespace CapaVista_Consultas
 
                 ConsultasCboConector.Enabled = true;
                 ConsultasUsrValor.Text = string.Empty;
-                ConsultasUsrValor.LimpiarError();
+                ConsultasUsrValor.ConsultasMetLimpiarError();
                 ConsultasCboOperadorCampo.SelectedIndex = -1;
                 ConsultasCboOperador.SelectedIndex = -1;
                 ConsultasRdoAscendente.Checked = true;
@@ -371,7 +371,7 @@ namespace CapaVista_Consultas
             ConsultasDgvConsultasFiltros.Rows.Clear();
             ConsultasTxtNombre.Clear();
             ConsultasUsrValor.Text = string.Empty;
-            ConsultasUsrValor.LimpiarError();
+            ConsultasUsrValor.ConsultasMetLimpiarError();
             ConsultasUsrValor.Enabled = true;
             ConsultasCboOperadorCampo.SelectedIndex = -1;
             ConsultasCboOperador.SelectedIndex = -1;

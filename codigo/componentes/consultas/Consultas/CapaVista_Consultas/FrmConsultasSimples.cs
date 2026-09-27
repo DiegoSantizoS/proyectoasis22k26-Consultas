@@ -8,8 +8,7 @@ using System.Globalization;
 namespace CapaVista_Consultas
 {
     
-    public partial class FrmConsultasSimples :
-        Componentes.ClsBaseTerminus
+    public partial class FrmConsultasSimples : CapaVista_Componentes.ClsBaseTerminus
     {
         private readonly ClsControladorFiltroSimple _Controlador = new ClsControladorFiltroSimple();
 

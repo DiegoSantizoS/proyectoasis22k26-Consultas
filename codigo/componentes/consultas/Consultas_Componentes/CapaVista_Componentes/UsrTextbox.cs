@@ -1,5 +1,4 @@
-﻿using CapaVista_Consultas.Componentes;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -18,7 +17,7 @@ namespace CapaVista_Componentes
             ConsultasTxtCampo.Clear();
             ConsultasTxtCampo.TextChanged += ConsultasMetTxtCampoTextChanged;
 
-            LimpiarError();
+            ConsultasMetLimpiarError();
         }
 
         public event KeyEventHandler TextoKeyDown
@@ -27,7 +26,7 @@ namespace CapaVista_Componentes
             remove { ConsultasTxtCampo.KeyDown -= value; }
         }
 
-        private void ConsultasMetTxtCampoTextChanged(object sender, EventArgs e)
+        private void ConsultasMetTxtCampoTextChanged(object Sender, EventArgs Evento)
         {
             base.Text = ConsultasTxtCampo.Text;
         }
@@ -60,7 +59,7 @@ namespace CapaVista_Componentes
         public int MaxLength
         {
             get => ConsultasTxtCampo.MaxLength;
-            set => EstablecerLimiteCaracteres(value);
+            set => ConsultasMetEstablecerLimiteCaracteres(value);
         }
 
         [Browsable(true)]
@@ -71,27 +70,27 @@ namespace CapaVista_Componentes
             set => ConsultasTxtCampo.ReadOnly = value;
         }
 
-        public void EstablecerLimiteCaracteres(int limite)
+        public void ConsultasMetEstablecerLimiteCaracteres(int Limite)
         {
-            ConsultasTxtCampo.EstablecerLimiteCaracteres(limite);
+            ConsultasTxtCampo.EstablecerLimiteCaracteres(Limite);
         }
 
-        public void MostrarError(string mensaje)
+        public void ConsultasMetMostrarError(string Mensaje)
         {
-            if (string.IsNullOrWhiteSpace(mensaje))
+            if (string.IsNullOrWhiteSpace(Mensaje))
             {
-                LimpiarError();
+                ConsultasMetLimpiarError();
                 return;
             }
 
             ConsultasTlpCampo.BackColor = _ColorError;
 
-            ConsultasLblError.Text = mensaje;
+            ConsultasLblError.Text = Mensaje;
             ConsultasLblError.Visible = true;
             Height = 60;
         }
 
-        public void LimpiarError()
+        public void ConsultasMetLimpiarError()
         {
             ConsultasLblError.Text = string.Empty;
             ConsultasLblError.Visible = false;
@@ -100,7 +99,7 @@ namespace CapaVista_Componentes
             Height = 35;
         }
 
-        public void EnfocarTexto()
+        public void ConsultasMetEnfocarTexto()
         {
             ConsultasTxtCampo.Focus();
         }

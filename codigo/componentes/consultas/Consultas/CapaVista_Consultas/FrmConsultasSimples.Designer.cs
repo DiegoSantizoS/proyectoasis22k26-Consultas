@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultasSimples));
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasUsrTablaSimple = new CapaVista_Consultas.Controles.UsrTabla();
-            this.ConsultasGbxAgregarFiltro = new CapaVista_Consultas.Componentes.ClsGrupoConsultas();
+            this.ConsultasGbxAgregarFiltro = new CapaVista_Componentes.ClsGrupoConsultas();
             this.ConsultasUsrAgregarFiltro = new CapaVista_Consultas.Controles.UsrAgregarFiltro();
             this.ConsultasFlpBotones = new System.Windows.Forms.FlowLayoutPanel();
-            this.ConsultasBtnComplejas = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
-            this.ConsultasBtnSalir = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
+            this.ConsultasBtnComplejas = new CapaVista_Componentes.ClsBotonConsultas();
+            this.ConsultasBtnSalir = new CapaVista_Componentes.ClsBotonConsultas();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.ConsultasGbxAgregarFiltro.SuspendLayout();
             this.ConsultasFlpBotones.SuspendLayout();
@@ -169,11 +169,11 @@
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPrincipal;
-        private Componentes.ClsGrupoConsultas ConsultasGbxAgregarFiltro;
+        private CapaVista_Componentes.ClsGrupoConsultas ConsultasGbxAgregarFiltro;
         private Controles.UsrAgregarFiltro ConsultasUsrAgregarFiltro;
-        private Componentes.ClsBotonConsultas ConsultasBtnComplejas;
+        private CapaVista_Componentes.ClsBotonConsultas ConsultasBtnComplejas;
         private Controles.UsrTabla ConsultasUsrTablaSimple;
-        private Componentes.ClsBotonConsultas ConsultasBtnSalir;
+        private CapaVista_Componentes.ClsBotonConsultas ConsultasBtnSalir;
         private System.Windows.Forms.FlowLayoutPanel ConsultasFlpBotones;
     }
 }

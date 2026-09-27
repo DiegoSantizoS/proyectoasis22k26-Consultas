@@ -8,7 +8,7 @@ namespace CapaVista_Consultas.Controles
 {
     // Inicio de código de "José Pablo Cano Cóbar" - carné: "0901-23-1727" - Fecha: "26/09/26"
             // Control que permite elegir un campo, un operador y un valor para solicitar una búsqueda.
-    public partial class UsrAgregarFiltro : Componentes.ClsControlUsuarioConsultas
+    public partial class UsrAgregarFiltro : CapaVista_Componentes.ClsControlUsuarioConsultas
     {
         private readonly ClsControladorFiltroSimple _Controlador = new ClsControladorFiltroSimple();
 
@@ -40,7 +40,7 @@ namespace CapaVista_Consultas.Controles
                 ConsultasCboCampo.Items.Clear();
                 ConsultasCboOperador.Items.Clear();
                 ConsultasUsrValor.Text = string.Empty;
-                ConsultasUsrValor.LimpiarError();
+                ConsultasUsrValor.ConsultasMetLimpiarError();
                 return;
             }
 
@@ -62,7 +62,7 @@ namespace CapaVista_Consultas.Controles
             ConsultasCboCampo.SelectedIndex = -1;
             ConsultasCboOperador.SelectedIndex = -1;
             ConsultasUsrValor.Text = string.Empty;
-            ConsultasUsrValor.LimpiarError();
+            ConsultasUsrValor.ConsultasMetLimpiarError();
         }
 
         private void ConsultasMetCargarCampos()
@@ -115,7 +115,7 @@ namespace CapaVista_Consultas.Controles
                 return;
             }
 
-            ConsultasUsrValor.LimpiarError();
+            ConsultasUsrValor.ConsultasMetLimpiarError();
 
             ConsultasEvtBuscarSolicitado?.Invoke(this, new ClsArgumentosFiltro(Campo, Operador, Valor));
         }
@@ -132,7 +132,7 @@ namespace CapaVista_Consultas.Controles
 
             ConsultasUsrValor.MaxLength = 50;
             ConsultasUsrValor.Text = string.Empty;
-            ConsultasUsrValor.LimpiarError();
+            ConsultasUsrValor.ConsultasMetLimpiarError();
             ConsultasCboOperador.Items.Clear();
 
             if (ConsultasCboCampo.SelectedItem == null ||
@@ -273,12 +273,12 @@ namespace CapaVista_Consultas.Controles
 
         public void ConsultasProcMostrarErrorValor(string Mensaje)
         {
-            ConsultasUsrValor.MostrarError(Mensaje);
+            ConsultasUsrValor.ConsultasMetMostrarError(Mensaje);
         }
 
         public void ConsultasProcLimpiarErrorValor()
         {
-            ConsultasUsrValor.LimpiarError();
+            ConsultasUsrValor.ConsultasMetLimpiarError();
         }
 
         public void ConsultasProcAvisarSinResultados()
@@ -293,7 +293,7 @@ namespace CapaVista_Consultas.Controles
 
             if (TipoCampo == typeof(DateTime))
             {
-                ConsultasUsrValor.MostrarError(
+                ConsultasUsrValor.ConsultasMetMostrarError(
                     "No se encontraron resultados. Verifique el formato: " +
                     "aaaa-MM-dd HH:mm:ss (ejemplo: 2026-09-27 14:30:00).");
             }

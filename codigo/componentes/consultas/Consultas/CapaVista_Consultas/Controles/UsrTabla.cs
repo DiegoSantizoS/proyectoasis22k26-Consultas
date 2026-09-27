@@ -8,7 +8,7 @@ using CapaControlador_Consultas;
 //Inicio del código de Carlos Andres Arriaza Lara 0901-23-13862 el 16/09/2026
 namespace CapaVista_Consultas.Controles
 {
-    public partial class UsrTabla : Componentes.ClsControlUsuarioConsultas
+    public partial class UsrTabla : CapaVista_Componentes.ClsControlUsuarioConsultas
     {
         private string _Campo;
         public string CampoSeleccionado { get; private set; }
@@ -306,9 +306,9 @@ namespace CapaVista_Consultas.Controles
                 NumeroPagina <= FinRango;
                 NumeroPagina++)
             {
-                Componentes.ClsBotonPaginacionConsultas
+                CapaVista_Componentes.ClsBotonPaginacionConsultas
                     BotonPagina =
-                        new Componentes.ClsBotonPaginacionConsultas();
+                        new CapaVista_Componentes.ClsBotonPaginacionConsultas();
 
                 BotonPagina.Name =
                     $"ConsultasBtnPagina{NumeroPagina}";
@@ -336,9 +336,9 @@ namespace CapaVista_Consultas.Controles
 
         private void ConsultasMetBtnPaginaClick(object Sender,EventArgs Evento)
         {
-            Componentes.ClsBotonPaginacionConsultas
+            CapaVista_Componentes.ClsBotonPaginacionConsultas
                 BotonPagina =
-                    (Componentes
+                    (CapaVista_Componentes
                         .ClsBotonPaginacionConsultas)Sender;
 
             _PaginaActual =

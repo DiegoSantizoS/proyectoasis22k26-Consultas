@@ -36,10 +36,10 @@
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasTlpPaginacion = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasFlpPaginas = new System.Windows.Forms.FlowLayoutPanel();
-            this.ConsultasBtnSiguiente = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
-            this.ConsultasBtnAnterior = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
-            this.ConsultasDgvSimples = new CapaVista_Consultas.Componentes.ClsTablaDatosConsultas();
-            this.ConsultasLblPaginacion = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
+            this.ConsultasBtnSiguiente = new CapaVista_Componentes.ClsBotonConsultas();
+            this.ConsultasBtnAnterior = new CapaVista_Componentes.ClsBotonConsultas();
+            this.ConsultasDgvSimples = new CapaVista_Componentes.ClsTablaDatosConsultas();
+            this.ConsultasLblPaginacion = new CapaVista_Componentes.ClsEtiquetaConsultas();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.ConsultasTlpPaginacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConsultasDgvSimples)).BeginInit();
@@ -220,9 +220,9 @@
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPrincipal;
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPaginacion;
         private System.Windows.Forms.FlowLayoutPanel ConsultasFlpPaginas;
-        private Componentes.ClsBotonConsultas ConsultasBtnAnterior;
-        private Componentes.ClsBotonConsultas ConsultasBtnSiguiente;
-        private Componentes.ClsTablaDatosConsultas ConsultasDgvSimples;
-        private Componentes.ClsEtiquetaConsultas ConsultasLblPaginacion;
+        private CapaVista_Componentes.ClsBotonConsultas ConsultasBtnAnterior;
+        private CapaVista_Componentes.ClsBotonConsultas ConsultasBtnSiguiente;
+        private CapaVista_Componentes.ClsTablaDatosConsultas ConsultasDgvSimples;
+        private CapaVista_Componentes.ClsEtiquetaConsultas ConsultasLblPaginacion;
     }
 }
