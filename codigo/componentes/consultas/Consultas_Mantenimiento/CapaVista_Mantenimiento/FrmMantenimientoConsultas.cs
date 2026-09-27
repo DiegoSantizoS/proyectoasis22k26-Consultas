@@ -229,20 +229,16 @@ namespace CapaVista_Consultas
                     return;
                 }
 
-                ClsCondicion Fila = new ClsCondicion();
-                Fila.Campo = Campo;
-                Fila.Operador = Operador;
-                Fila.Valor = Valor;
-                Fila.Orden = Orden;
-
                 bool ExisteCondicionPrevia = ConsultasDgvConsultasFiltros.Rows.Count > 0;
-                Fila.Conector = (Operador != "" && ExisteCondicionPrevia)
+                string Conector = (Operador != "" && ExisteCondicionPrevia)
                     ? ConsultasCboConector.SelectedItem.ToString()
                     : "";
 
-                _Control.ConsultasProcValidarCondicion(Fila, _Tipos);
+                // La Vista solo manda valores sueltos: no crea ni conoce ninguna clase
+                // "ClsCondicion" del Controlador ni del Modelo.
+                _Control.ConsultasProcValidarCondicion(Campo, Operador, Valor, _Tipos);
 
-                ConsultasDgvConsultasFiltros.Rows.Add(Fila.Campo, Fila.Operador, Fila.Valor, Fila.Orden, Fila.Conector);
+                ConsultasDgvConsultasFiltros.Rows.Add(Campo, Operador, Valor, Orden, Conector);
 
                 ConsultasCboConector.Enabled = true;
                 ConsultasTxtValor.Clear();
@@ -318,20 +314,22 @@ namespace CapaVista_Consultas
             }
         }
 
-        private List<ClsCondicion> ConsultasMetLeerCondiciones()
+        // Ya no devuelve List<ClsCondicion>: devuelve una lista de tuplas, un tipo
+        // del propio C#, para que la Vista no dependa de ninguna clase de otra capa.
+        private List<(string Campo, string Operador, string Valor, string Orden, string Conector)> ConsultasMetLeerCondiciones()
         {
-            List<ClsCondicion> Lista = new List<ClsCondicion>();
+            List<(string Campo, string Operador, string Valor, string Orden, string Conector)> Lista =
+                new List<(string Campo, string Operador, string Valor, string Orden, string Conector)>();
 
             foreach (DataGridViewRow Fila in ConsultasDgvConsultasFiltros.Rows)
             {
-                ClsCondicion Condicion = new ClsCondicion();
-                Condicion.Campo = ConsultasFuncTexto(Fila.Cells[_ColCampo]);
-                Condicion.Operador = ConsultasFuncTexto(Fila.Cells[_ColOperador]);
-                Condicion.Valor = ConsultasFuncTexto(Fila.Cells[_ColValor]);
-                Condicion.Orden = ConsultasFuncTexto(Fila.Cells[_ColOrden]);
-                Condicion.Conector = ConsultasFuncTexto(Fila.Cells[_ColConector]);
-
-                Lista.Add(Condicion);
+                Lista.Add((
+                    ConsultasFuncTexto(Fila.Cells[_ColCampo]),
+                    ConsultasFuncTexto(Fila.Cells[_ColOperador]),
+                    ConsultasFuncTexto(Fila.Cells[_ColValor]),
+                    ConsultasFuncTexto(Fila.Cells[_ColOrden]),
+                    ConsultasFuncTexto(Fila.Cells[_ColConector])
+                ));
             }
 
             return Lista;
