@@ -54,7 +54,7 @@
             this.ConsultasTlpPrincipal.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasTlpPrincipal.Name = "ConsultasTlpPrincipal";
             this.ConsultasTlpPrincipal.RowCount = 2;
-            this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 170F));
+            this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 165F));
             this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ConsultasTlpPrincipal.Size = new System.Drawing.Size(982, 678);
             this.ConsultasTlpPrincipal.TabIndex = 19;
@@ -65,10 +65,10 @@
             this.ConsultasTlpPrincipal.SetColumnSpan(this.ConsultasUsrTablaSimple, 2);
             this.ConsultasUsrTablaSimple.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasUsrTablaSimple.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ConsultasUsrTablaSimple.Location = new System.Drawing.Point(5, 175);
+            this.ConsultasUsrTablaSimple.Location = new System.Drawing.Point(5, 170);
             this.ConsultasUsrTablaSimple.Margin = new System.Windows.Forms.Padding(5);
             this.ConsultasUsrTablaSimple.Name = "ConsultasUsrTablaSimple";
-            this.ConsultasUsrTablaSimple.Size = new System.Drawing.Size(972, 498);
+            this.ConsultasUsrTablaSimple.Size = new System.Drawing.Size(972, 503);
             this.ConsultasUsrTablaSimple.TabIndex = 18;
             // 
             // ConsultasGbxAgregarFiltro
@@ -83,7 +83,7 @@
             this.ConsultasGbxAgregarFiltro.Margin = new System.Windows.Forms.Padding(10, 5, 5, 5);
             this.ConsultasGbxAgregarFiltro.Name = "ConsultasGbxAgregarFiltro";
             this.ConsultasGbxAgregarFiltro.Padding = new System.Windows.Forms.Padding(0);
-            this.ConsultasGbxAgregarFiltro.Size = new System.Drawing.Size(876, 160);
+            this.ConsultasGbxAgregarFiltro.Size = new System.Drawing.Size(876, 155);
             this.ConsultasGbxAgregarFiltro.TabIndex = 19;
             this.ConsultasGbxAgregarFiltro.TabStop = false;
             this.ConsultasGbxAgregarFiltro.Text = "Agregar Filtro";
@@ -96,7 +96,7 @@
             this.ConsultasUsrAgregarFiltro.Location = new System.Drawing.Point(0, 21);
             this.ConsultasUsrAgregarFiltro.Margin = new System.Windows.Forms.Padding(5);
             this.ConsultasUsrAgregarFiltro.Name = "ConsultasUsrAgregarFiltro";
-            this.ConsultasUsrAgregarFiltro.Size = new System.Drawing.Size(876, 139);
+            this.ConsultasUsrAgregarFiltro.Size = new System.Drawing.Size(876, 134);
             this.ConsultasUsrAgregarFiltro.TabIndex = 0;
             // 
             // ConsultasFlpBotones
@@ -107,7 +107,7 @@
             this.ConsultasFlpBotones.Location = new System.Drawing.Point(896, 5);
             this.ConsultasFlpBotones.Margin = new System.Windows.Forms.Padding(5);
             this.ConsultasFlpBotones.Name = "ConsultasFlpBotones";
-            this.ConsultasFlpBotones.Size = new System.Drawing.Size(81, 160);
+            this.ConsultasFlpBotones.Size = new System.Drawing.Size(81, 155);
             this.ConsultasFlpBotones.TabIndex = 23;
             // 
             // ConsultasBtnComplejas

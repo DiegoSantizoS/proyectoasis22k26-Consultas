@@ -25,7 +25,7 @@ namespace CapaVista_Consultas
             InitializeComponent();
             _Tabla = (Tabla ?? "").Trim();
             Load += ConsultasMetFrmMantenimientoConsultasLoad;
-            ConsultasTxtValor.MaxLength = 50;
+            ConsultasUsrValor.MaxLength = 50;
             ConsultasTxtNombre.MaxLength = 50;
         }
 
@@ -67,8 +67,8 @@ namespace CapaVista_Consultas
         private void ConsultasProcCargarOperadores(string TipoCampo)
         {
             ConsultasCboOperador.Items.Clear();
-            ConsultasTxtValor.MaxLength = 50;
-            ConsultasTxtValor.Text = "";
+            ConsultasUsrValor.MaxLength = 50;
+            ConsultasUsrValor.Text = "";
 
 
             if (string.IsNullOrWhiteSpace(TipoCampo))
@@ -103,7 +103,7 @@ namespace CapaVista_Consultas
                 ConsultasCboOperador.Items.Add("<");
                 ConsultasCboOperador.Items.Add(">=");
                 ConsultasCboOperador.Items.Add("<=");
-                ConsultasTxtValor.MaxLength = 10;
+                ConsultasUsrValor.MaxLength = 10;
             }
 
             else if (Tipo.Contains("char") ||
@@ -174,10 +174,11 @@ namespace CapaVista_Consultas
             string Operador = ConsultasCboOperador.SelectedItem == null ? "" : ConsultasCboOperador.SelectedItem.ToString();
             bool SinValor = Operador == "IS NULL" || Operador == "IS NOT NULL";
 
-            ConsultasTxtValor.Enabled = !SinValor;
+            ConsultasUsrValor.Enabled = !SinValor;
             if (SinValor)
             {
-                ConsultasTxtValor.Clear();
+                ConsultasUsrValor.Text = string.Empty;
+                ConsultasUsrValor.LimpiarError();
             }
         }
 
@@ -202,8 +203,12 @@ namespace CapaVista_Consultas
 
         //Fin del código de Miguel David Contreras Jacinto 0901-21-3878 el 22/09/2026
 
+        // Inicio de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "26/09/26"
+          // Valida el valor del filtro y muestra el error directamente bajo el campo.
         private void ConsultasMetBtnIngresarClick(object Sender, EventArgs Evento)
         {
+            ConsultasUsrValor.LimpiarError();
+
             try
             {
                 if (ConsultasCboOperadorCampo.SelectedItem == null)
@@ -213,9 +218,13 @@ namespace CapaVista_Consultas
                 }
 
                 string Campo = ConsultasCboOperadorCampo.SelectedItem.ToString();
-                string Operador = ConsultasCboOperador.SelectedItem == null ? "" : ConsultasCboOperador.SelectedItem.ToString();
-                string Valor = ConsultasTxtValor.Text.Trim();
-                string Orden = ConsultasRdoAscendente.Checked ? "ASC" : (ConsultasRdoDescendente.Checked ? "DESC" : "");
+                string Operador = ConsultasCboOperador.SelectedItem == null
+                    ? ""
+                    : ConsultasCboOperador.SelectedItem.ToString();
+                string Valor = ConsultasUsrValor.Text.Trim();
+                string Orden = ConsultasRdoAscendente.Checked
+                    ? "ASC"
+                    : (ConsultasRdoDescendente.Checked ? "DESC" : "");
 
                 if (Operador == "" && Valor != "")
                 {
@@ -225,27 +234,63 @@ namespace CapaVista_Consultas
 
                 if (Operador == "" && Orden == "")
                 {
-                    ConsultasProcAviso("Selecciona un operador con su valor, o un ordenamiento (ASC / DESC).");
+                    ConsultasProcAviso(
+                        "Selecciona un operador con su valor, o un ordenamiento (ASC / DESC).");
                     return;
                 }
 
-                ClsCondicion Fila = new ClsCondicion();
-                Fila.Campo = Campo;
-                Fila.Operador = Operador;
-                Fila.Valor = Valor;
-                Fila.Orden = Orden;
+                bool RequiereValor =
+                    Operador != "" &&
+                    Operador != "IS NULL" &&
+                    Operador != "IS NOT NULL";
 
-                bool ExisteCondicionPrevia = ConsultasDgvConsultasFiltros.Rows.Count > 0;
-                Fila.Conector = (Operador != "" && ExisteCondicionPrevia)
+                if (RequiereValor && string.IsNullOrWhiteSpace(Valor))
+                {
+                    ConsultasUsrValor.MostrarError("Ingrese un valor para el filtro.");
+                    ConsultasUsrValor.EnfocarTexto();
+                    return;
+                }
+
+                ClsCondicion Fila = new ClsCondicion
+                {
+                    Campo = Campo,
+                    Operador = Operador,
+                    Valor = Valor,
+                    Orden = Orden
+                };
+
+                bool ExisteCondicionPrevia =
+                    ConsultasDgvConsultasFiltros.Rows.Count > 0;
+
+                Fila.Conector = Operador != "" && ExisteCondicionPrevia
                     ? ConsultasCboConector.SelectedItem.ToString()
                     : "";
 
-                _Control.ConsultasProcValidarCondicion(Fila, _Tipos);
+                try
+                {
+                    _Control.ConsultasProcValidarCondicion(Fila, _Tipos);
+                }
+                catch (ArgumentException)
+                {
+                    string TipoCampo = _Tipos[Campo].ToLowerInvariant();
 
-                ConsultasDgvConsultasFiltros.Rows.Add(Fila.Campo, Fila.Operador, Fila.Valor, Fila.Orden, Fila.Conector);
+                    string Mensaje = TipoCampo.Contains("date") ||
+                                     TipoCampo.Contains("time")
+                        ? "Revise la fecha. Formato: aaaa-MM-dd HH:mm:ss. " +
+                          "Ejemplo: 2026-09-27 14:30:00."
+                        : "Revise el formato del valor ingresado.";
+
+                    ConsultasUsrValor.MostrarError(Mensaje);
+                    ConsultasUsrValor.EnfocarTexto();
+                    return;
+                }
+
+                ConsultasDgvConsultasFiltros.Rows.Add(
+                    Fila.Campo, Fila.Operador, Fila.Valor, Fila.Orden, Fila.Conector);
 
                 ConsultasCboConector.Enabled = true;
-                ConsultasTxtValor.Clear();
+                ConsultasUsrValor.Text = string.Empty;
+                ConsultasUsrValor.LimpiarError();
                 ConsultasCboOperadorCampo.SelectedIndex = -1;
                 ConsultasCboOperador.SelectedIndex = -1;
                 ConsultasRdoAscendente.Checked = true;
@@ -258,9 +303,11 @@ namespace CapaVista_Consultas
             }
             catch (Exception Excepcion)
             {
-                ConsultasProcMostrarError("No se pudo agregar la condicion.", Excepcion);
+                ConsultasProcMostrarError(
+                    "No se pudo agregar la condición.", Excepcion);
             }
         }
+        // Fin de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "26/09/26"
 
         private void ConsultasMetBtnEliminarClick(object Sender, EventArgs Evento)
         {
@@ -341,8 +388,9 @@ namespace CapaVista_Consultas
         {
             ConsultasDgvConsultasFiltros.Rows.Clear();
             ConsultasTxtNombre.Clear();
-            ConsultasTxtValor.Clear();
-            ConsultasTxtValor.Enabled = true;
+            ConsultasUsrValor.Text = string.Empty;
+            ConsultasUsrValor.LimpiarError();
+            ConsultasUsrValor.Enabled = true;
             ConsultasCboOperadorCampo.SelectedIndex = -1;
             ConsultasCboOperador.SelectedIndex = -1;
             ConsultasRdoAscendente.Checked = true;

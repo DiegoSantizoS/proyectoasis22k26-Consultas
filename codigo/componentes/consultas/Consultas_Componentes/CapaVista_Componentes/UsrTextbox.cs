@@ -88,7 +88,7 @@ namespace CapaVista_Componentes
 
             ConsultasLblError.Text = mensaje;
             ConsultasLblError.Visible = true;
-            Height = 55;
+            Height = 60;
         }
 
         public void LimpiarError()

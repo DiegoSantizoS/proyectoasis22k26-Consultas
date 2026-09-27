@@ -35,7 +35,7 @@
             this.ConsultasCboCampo = new CapaVista_Consultas.Componentes.ClsListaComboBoxConsultas();
             this.ConsultasCboOperador = new CapaVista_Consultas.Componentes.ClsListaComboBoxConsultas();
             this.ConsultasLblValor = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
-            this.ConsultasTxtValor = new CapaVista_Componentes.UsrTextbox();
+            this.ConsultasUsrValor = new CapaVista_Componentes.UsrTextbox();
             this.ConsultasBtnBuscar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasBtnRefrescar = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
             this.ConsultasBtnAyuda = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
@@ -46,7 +46,7 @@
             // 
             this.ConsultasTlpPrincipal.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolTip;
             this.ConsultasTlpPrincipal.ColumnCount = 5;
-            this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
             this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.ConsultasTlpPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
@@ -56,7 +56,7 @@
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasCboCampo, 1, 0);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasCboOperador, 1, 1);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasLblValor, 0, 2);
-            this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasTxtValor, 1, 2);
+            this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasUsrValor, 1, 2);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasBtnBuscar, 2, 0);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasBtnRefrescar, 3, 0);
             this.ConsultasTlpPrincipal.Controls.Add(this.ConsultasBtnAyuda, 4, 0);
@@ -75,32 +75,34 @@
             // 
             // ConsultasLblCampo
             // 
-            this.ConsultasLblCampo.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ConsultasLblCampo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ConsultasLblCampo.AutoSize = true;
             this.ConsultasLblCampo.BackColor = System.Drawing.Color.Transparent;
+            this.ConsultasLblCampo.CampoObligatorio = true;
             this.ConsultasLblCampo.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.ConsultasLblCampo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.ConsultasLblCampo.Location = new System.Drawing.Point(58, 10);
+            this.ConsultasLblCampo.Location = new System.Drawing.Point(20, 4);
             this.ConsultasLblCampo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasLblCampo.Name = "ConsultasLblCampo";
-            this.ConsultasLblCampo.Size = new System.Drawing.Size(59, 19);
+            this.ConsultasLblCampo.Size = new System.Drawing.Size(92, 19);
             this.ConsultasLblCampo.TabIndex = 17;
-            this.ConsultasLblCampo.Text = "Campo";
+            this.ConsultasLblCampo.Text = "Campo   ";
             this.ConsultasLblCampo.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // ConsultasLblOperador
             // 
-            this.ConsultasLblOperador.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ConsultasLblOperador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ConsultasLblOperador.AutoSize = true;
             this.ConsultasLblOperador.BackColor = System.Drawing.Color.Transparent;
+            this.ConsultasLblOperador.CampoObligatorio = true;
             this.ConsultasLblOperador.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.ConsultasLblOperador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.ConsultasLblOperador.Location = new System.Drawing.Point(41, 50);
+            this.ConsultasLblOperador.Location = new System.Drawing.Point(3, 44);
             this.ConsultasLblOperador.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasLblOperador.Name = "ConsultasLblOperador";
-            this.ConsultasLblOperador.Size = new System.Drawing.Size(76, 19);
+            this.ConsultasLblOperador.Size = new System.Drawing.Size(109, 19);
             this.ConsultasLblOperador.TabIndex = 16;
-            this.ConsultasLblOperador.Text = "Operador";
+            this.ConsultasLblOperador.Text = "Operador   ";
             this.ConsultasLblOperador.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // ConsultasCboCampo
@@ -113,10 +115,10 @@
             this.ConsultasCboCampo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.ConsultasCboCampo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
             this.ConsultasCboCampo.FormattingEnabled = true;
-            this.ConsultasCboCampo.Location = new System.Drawing.Point(123, 4);
+            this.ConsultasCboCampo.Location = new System.Drawing.Point(118, 4);
             this.ConsultasCboCampo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasCboCampo.Name = "ConsultasCboCampo";
-            this.ConsultasCboCampo.Size = new System.Drawing.Size(312, 31);
+            this.ConsultasCboCampo.Size = new System.Drawing.Size(317, 31);
             this.ConsultasCboCampo.TabIndex = 20;
             // 
             // ConsultasCboOperador
@@ -129,39 +131,40 @@
             this.ConsultasCboOperador.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.ConsultasCboOperador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
             this.ConsultasCboOperador.FormattingEnabled = true;
-            this.ConsultasCboOperador.Location = new System.Drawing.Point(123, 44);
+            this.ConsultasCboOperador.Location = new System.Drawing.Point(118, 44);
             this.ConsultasCboOperador.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasCboOperador.Name = "ConsultasCboOperador";
-            this.ConsultasCboOperador.Size = new System.Drawing.Size(312, 31);
+            this.ConsultasCboOperador.Size = new System.Drawing.Size(317, 31);
             this.ConsultasCboOperador.TabIndex = 21;
             // 
             // ConsultasLblValor
             // 
-            this.ConsultasLblValor.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ConsultasLblValor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ConsultasLblValor.AutoSize = true;
             this.ConsultasLblValor.BackColor = System.Drawing.Color.Transparent;
+            this.ConsultasLblValor.CampoObligatorio = true;
             this.ConsultasLblValor.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.ConsultasLblValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            this.ConsultasLblValor.Location = new System.Drawing.Point(71, 90);
+            this.ConsultasLblValor.Location = new System.Drawing.Point(33, 84);
             this.ConsultasLblValor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsultasLblValor.Name = "ConsultasLblValor";
-            this.ConsultasLblValor.Size = new System.Drawing.Size(46, 19);
+            this.ConsultasLblValor.Size = new System.Drawing.Size(79, 19);
             this.ConsultasLblValor.TabIndex = 15;
-            this.ConsultasLblValor.Text = "Valor";
+            this.ConsultasLblValor.Text = "Valor   ";
             this.ConsultasLblValor.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // ConsultasTxtValor
+            // ConsultasUsrValor
             // 
-            this.ConsultasTxtValor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.ConsultasUsrValor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ConsultasTxtValor.BackColor = System.Drawing.Color.Transparent;
-            this.ConsultasTxtValor.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ConsultasTxtValor.Location = new System.Drawing.Point(120, 80);
-            this.ConsultasTxtValor.Margin = new System.Windows.Forms.Padding(0);
-            this.ConsultasTxtValor.Name = "ConsultasTxtValor";
-            this.ConsultasTlpPrincipal.SetRowSpan(this.ConsultasTxtValor, 2);
-            this.ConsultasTxtValor.Size = new System.Drawing.Size(318, 37);
-            this.ConsultasTxtValor.TabIndex = 26;
+            this.ConsultasUsrValor.BackColor = System.Drawing.Color.Transparent;
+            this.ConsultasUsrValor.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ConsultasUsrValor.Location = new System.Drawing.Point(115, 80);
+            this.ConsultasUsrValor.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasUsrValor.Name = "ConsultasUsrValor";
+            this.ConsultasTlpPrincipal.SetRowSpan(this.ConsultasUsrValor, 2);
+            this.ConsultasUsrValor.Size = new System.Drawing.Size(323, 37);
+            this.ConsultasUsrValor.TabIndex = 26;
             // 
             // ConsultasBtnBuscar
             // 
@@ -245,6 +248,6 @@
         private Componentes.ClsListaComboBoxConsultas ConsultasCboOperador;
         private Componentes.ClsBotonConsultas ConsultasBtnRefrescar;
         private Componentes.ClsBotonConsultas ConsultasBtnAyuda;
-        private CapaVista_Componentes.UsrTextbox ConsultasTxtValor;
+        private CapaVista_Componentes.UsrTextbox ConsultasUsrValor;
     }
 }

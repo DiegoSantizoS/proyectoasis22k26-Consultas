@@ -110,10 +110,15 @@ namespace CapaVista_Consultas
 
                 if (TotalRegistros == 0)
                 {
-                    MessageBox.Show("Ningún registro cumple con el filtro indicado.",
-                        "Consultas",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                    ConsultasUsrAgregarFiltro.ConsultasProcMostrarErrorValor(
-                        "No se encontraron resultados. Revise el formato del valor ingresado.");
+                    Type TipoCampo = _Controlador.ConsultasFuncObtenerTipoCampo(
+                        _TablaActual, _CampoFiltro);
+
+                    string Mensaje = TipoCampo == typeof(DateTime)
+                        ? "Ningún registro cumple con el filtro. Verifique la fecha: " +
+                          "aaaa-MM-dd HH:mm:ss."
+                        : "Ningún registro cumple con el filtro indicado.";
+
+                    ConsultasUsrAgregarFiltro.ConsultasProcMostrarErrorValor(Mensaje);
                 }
                 else
                 {

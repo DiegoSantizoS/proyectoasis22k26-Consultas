@@ -25,11 +25,11 @@ namespace CapaVista_Consultas.Controles
             ConsultasBtnRefrescar.Click += ConsultasMetBtnRefrescarClick;
 
             // TextoKeyDown transmite las teclas del TextBox interno de UsrTextbox.
-            ConsultasTxtValor.TextoKeyDown += ConsultasMetTxtValorKeyDown;
+            ConsultasUsrValor.TextoKeyDown += ConsultasMetTxtValorKeyDown;
             ConsultasCboCampo.SelectedIndexChanged +=
                 ConsultasMetCboCampoSelectedIndexChanged;
 
-            ConsultasTxtValor.MaxLength = 50;
+            ConsultasUsrValor.MaxLength = 50;
         }
 
         public void ConsultasProcActualizarTabla(string Tabla)
@@ -39,8 +39,8 @@ namespace CapaVista_Consultas.Controles
                 _TablaActual = null;
                 ConsultasCboCampo.Items.Clear();
                 ConsultasCboOperador.Items.Clear();
-                ConsultasTxtValor.Text = string.Empty;
-                ConsultasTxtValor.LimpiarError();
+                ConsultasUsrValor.Text = string.Empty;
+                ConsultasUsrValor.LimpiarError();
                 return;
             }
 
@@ -61,8 +61,8 @@ namespace CapaVista_Consultas.Controles
         {
             ConsultasCboCampo.SelectedIndex = -1;
             ConsultasCboOperador.SelectedIndex = -1;
-            ConsultasTxtValor.Text = string.Empty;
-            ConsultasTxtValor.LimpiarError();
+            ConsultasUsrValor.Text = string.Empty;
+            ConsultasUsrValor.LimpiarError();
         }
 
         private void ConsultasMetCargarCampos()
@@ -100,7 +100,7 @@ namespace CapaVista_Consultas.Controles
                 ? string.Empty
                 : ConsultasCboOperador.SelectedItem.ToString();
 
-            string Valor = ConsultasTxtValor.Text;
+            string Valor = ConsultasUsrValor.Text;
 
             string Mensaje = _Controlador.ConsultasFuncValidarFiltro(Campo, Operador, Valor);
 
@@ -115,7 +115,7 @@ namespace CapaVista_Consultas.Controles
                 return;
             }
 
-            ConsultasTxtValor.LimpiarError();
+            ConsultasUsrValor.LimpiarError();
 
             ConsultasEvtBuscarSolicitado?.Invoke(this, new ClsArgumentosFiltro(Campo, Operador, Valor));
         }
@@ -130,9 +130,9 @@ namespace CapaVista_Consultas.Controles
                     ? string.Empty
                     : ConsultasCboOperador.SelectedItem.ToString();
 
-            ConsultasTxtValor.MaxLength = 50;
-            ConsultasTxtValor.Text = string.Empty;
-            ConsultasTxtValor.LimpiarError();
+            ConsultasUsrValor.MaxLength = 50;
+            ConsultasUsrValor.Text = string.Empty;
+            ConsultasUsrValor.LimpiarError();
             ConsultasCboOperador.Items.Clear();
 
             if (ConsultasCboCampo.SelectedItem == null ||
@@ -149,13 +149,8 @@ namespace CapaVista_Consultas.Controles
             if (TipoCampo == null)
                 return;
 
-            // Campos numéricos y fechas.
-            if (TipoCampo == typeof(decimal) ||
-                TipoCampo == typeof(int) ||
-                TipoCampo == typeof(long) ||
-                TipoCampo == typeof(double) ||
-                TipoCampo == typeof(float) ||
-                TipoCampo == typeof(DateTime))
+            // Campos de fecha y hora.
+            if (TipoCampo == typeof(DateTime))
             {
                 ConsultasCboOperador.Items.Add("=");
                 ConsultasCboOperador.Items.Add("<>");
@@ -164,7 +159,23 @@ namespace CapaVista_Consultas.Controles
                 ConsultasCboOperador.Items.Add(">=");
                 ConsultasCboOperador.Items.Add("<=");
 
-                ConsultasTxtValor.MaxLength = 10;
+                ConsultasUsrValor.MaxLength = 19; // aaaa-MM-dd HH:mm:ss
+            }
+            // Campos numéricos.
+            else if (TipoCampo == typeof(decimal) ||
+                     TipoCampo == typeof(int) ||
+                     TipoCampo == typeof(long) ||
+                     TipoCampo == typeof(double) ||
+                     TipoCampo == typeof(float))
+            {
+                ConsultasCboOperador.Items.Add("=");
+                ConsultasCboOperador.Items.Add("<>");
+                ConsultasCboOperador.Items.Add(">");
+                ConsultasCboOperador.Items.Add("<");
+                ConsultasCboOperador.Items.Add(">=");
+                ConsultasCboOperador.Items.Add("<=");
+
+                ConsultasUsrValor.MaxLength = 10;
             }
             // Campos booleanos.
             else if (TipoCampo == typeof(bool))
@@ -262,12 +273,30 @@ namespace CapaVista_Consultas.Controles
 
         public void ConsultasProcMostrarErrorValor(string Mensaje)
         {
-            ConsultasTxtValor.MostrarError(Mensaje);
+            ConsultasUsrValor.MostrarError(Mensaje);
         }
 
         public void ConsultasProcLimpiarErrorValor()
         {
-            ConsultasTxtValor.LimpiarError();
+            ConsultasUsrValor.LimpiarError();
+        }
+
+        public void ConsultasProcAvisarSinResultados()
+        {
+            if (ConsultasCboCampo.SelectedItem == null ||
+                string.IsNullOrWhiteSpace(_TablaActual))
+                return;
+
+            string Campo = ConsultasCboCampo.SelectedItem.ToString();
+            Type TipoCampo =
+                _Controlador.ConsultasFuncObtenerTipoCampo(_TablaActual, Campo);
+
+            if (TipoCampo == typeof(DateTime))
+            {
+                ConsultasUsrValor.MostrarError(
+                    "No se encontraron resultados. Verifique el formato: " +
+                    "aaaa-MM-dd HH:mm:ss (ejemplo: 2026-09-27 14:30:00).");
+            }
         }
 
         // Fin de código de Diego Fernando Santizo Samayoa - carné: "0901-22-15950" - Fecha: "26/09/26"

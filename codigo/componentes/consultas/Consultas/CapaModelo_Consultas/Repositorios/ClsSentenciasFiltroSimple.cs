@@ -103,7 +103,7 @@ namespace CapaModelo_Consultas
                         case "float":
                         case "double":
                             return typeof(decimal);
-
+                        
                         case "date":
                         case "datetime":
                         case "timestamp":
@@ -120,6 +120,7 @@ namespace CapaModelo_Consultas
                         case "tinytext":
                         case "mediumtext":
                         case "longtext":
+                        
                             return typeof(string);
 
                         default:
