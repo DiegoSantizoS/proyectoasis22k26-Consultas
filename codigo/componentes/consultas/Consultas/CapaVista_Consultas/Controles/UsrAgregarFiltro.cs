@@ -6,15 +6,15 @@ using System.Windows.Forms;
 
 namespace CapaVista_Consultas.Controles
 {
-    // Inicio de código de "José Pablo Cano Cóbar" - carné: "0901-23-1727" - Fecha: "15/09/26"
+    // Inicio de código de "José Pablo Cano Cóbar" - carné: "0901-23-1727" - Fecha: "26/09/26"
+            // Control que permite elegir un campo, un operador y un valor para solicitar una búsqueda.
     public partial class UsrAgregarFiltro : Componentes.ClsControlUsuarioConsultas
     {
-        private readonly ClsControladorFiltroSimple _Controlador =new ClsControladorFiltroSimple();
+        private readonly ClsControladorFiltroSimple _Controlador = new ClsControladorFiltroSimple();
 
         private string _TablaActual;
 
         public event EventHandler<ClsArgumentosFiltro> ConsultasEvtBuscarSolicitado;
-
         public event EventHandler ConsultasEvtRefrescarSolicitado;
 
         public UsrAgregarFiltro()
@@ -24,38 +24,45 @@ namespace CapaVista_Consultas.Controles
             ConsultasBtnBuscar.Click += ConsultasMetBtnBuscarClick;
             ConsultasBtnRefrescar.Click += ConsultasMetBtnRefrescarClick;
 
-            ConsultasTxtValor.KeyDown += ConsultasMetTxtValorKeyDown;
-            ConsultasCboCampo.SelectedIndexChanged += ConsultasMetCboCampoSelectedIndexChanged;
+            // TextoKeyDown transmite las teclas del TextBox interno de UsrTextbox.
+            ConsultasTxtValor.TextoKeyDown += ConsultasMetTxtValorKeyDown;
+            ConsultasCboCampo.SelectedIndexChanged +=
+                ConsultasMetCboCampoSelectedIndexChanged;
 
             ConsultasTxtValor.MaxLength = 50;
         }
+
         public void ConsultasProcActualizarTabla(string Tabla)
         {
             if (string.IsNullOrWhiteSpace(Tabla))
             {
-                ConsultasCboCampo.Items.Clear();
                 _TablaActual = null;
+                ConsultasCboCampo.Items.Clear();
+                ConsultasCboOperador.Items.Clear();
+                ConsultasTxtValor.Text = string.Empty;
+                ConsultasTxtValor.LimpiarError();
                 return;
             }
 
             _TablaActual = Tabla;
-
             ConsultasMetCargarCampos();
         }
 
-        //Inicio del código de Miguel David Contreras Jacinto 0901-21-3878 el 21/09/2026
-        private void ConsultasMetCboCampoSelectedIndexChanged(object Sender, EventArgs Evento)
+        // Inicio del código de Miguel David Contreras Jacinto - carné: "0901-21-3878" - Fecha: "26/09/26"
+             // Actualiza los operadores y el límite del valor cuando cambia el campo seleccionado.
+        private void ConsultasMetCboCampoSelectedIndexChanged(
+            object Sender, EventArgs Evento)
         {
             ConsultasMetCargarOperadoresPorTipo();
-            
         }
+        // Fin del código de Miguel David Contreras Jacinto - carné: "0901-21-3878" - Fecha: "26/09/26"
 
-        //Fin del código de Miguel David Contreras Jacinto 0901-21-3878 el 21/09/2026
         public void ConsultasProcLimpiar()
         {
             ConsultasCboCampo.SelectedIndex = -1;
             ConsultasCboOperador.SelectedIndex = -1;
-            ConsultasTxtValor.Clear();
+            ConsultasTxtValor.Text = string.Empty;
+            ConsultasTxtValor.LimpiarError();
         }
 
         private void ConsultasMetCargarCampos()
@@ -82,6 +89,7 @@ namespace CapaVista_Consultas.Controles
                     MessageBoxIcon.Warning);
             }
         }
+
         private void ConsultasMetBtnBuscarClick(object Sender, EventArgs Evento)
         {
             string Campo = ConsultasCboCampo.SelectedItem == null
@@ -107,42 +115,41 @@ namespace CapaVista_Consultas.Controles
                 return;
             }
 
-            if (ConsultasEvtBuscarSolicitado != null)
-            {
-                ConsultasEvtBuscarSolicitado(
-                    this,
-                    new ClsArgumentosFiltro(Campo, Operador, Valor));
-            }
+            ConsultasTxtValor.LimpiarError();
+
+            ConsultasEvtBuscarSolicitado?.Invoke(this, new ClsArgumentosFiltro(Campo, Operador, Valor));
         }
+        // Fin de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "26/09/26"
 
-        //Inicio del código de Miguel David Contreras Jacinto 0901-21-3878 el 21/09/2026
+        // Inicio del código de Miguel David Contreras Jacinto - carné: "0901-21-3878" - Fecha: "26/09/26"
+             // Carga los operadores compatibles con el tipo del campo y ajusta el límite del valor.
         private void ConsultasMetCargarOperadoresPorTipo()
-        {   // Guardar el operador seleccionado actualmente
-            ConsultasTxtValor.MaxLength = 50;
-            ConsultasTxtValor.Text = "";
-            
-
+        {
             string OperadorSeleccionado =
                 ConsultasCboOperador.SelectedItem == null
-                ? string.Empty
-                : ConsultasCboOperador.SelectedItem.ToString();
+                    ? string.Empty
+                    : ConsultasCboOperador.SelectedItem.ToString();
 
+            ConsultasTxtValor.MaxLength = 50;
+            ConsultasTxtValor.Text = string.Empty;
+            ConsultasTxtValor.LimpiarError();
             ConsultasCboOperador.Items.Clear();
 
-            if (ConsultasCboCampo.SelectedItem == null)
+            if (ConsultasCboCampo.SelectedItem == null ||
+                string.IsNullOrWhiteSpace(_TablaActual))
+            {
                 return;
-
-            if (string.IsNullOrWhiteSpace(_TablaActual))
-                return;
+            }
 
             string Campo = ConsultasCboCampo.SelectedItem.ToString();
 
-            Type TipoCampo = _Controlador.ConsultasFuncObtenerTipoCampo(_TablaActual,Campo);
+            Type TipoCampo =
+                _Controlador.ConsultasFuncObtenerTipoCampo(_TablaActual, Campo);
 
             if (TipoCampo == null)
                 return;
 
-            // Campos numéricos y fechas
+            // Campos numéricos y fechas.
             if (TipoCampo == typeof(decimal) ||
                 TipoCampo == typeof(int) ||
                 TipoCampo == typeof(long) ||
@@ -156,15 +163,16 @@ namespace CapaVista_Consultas.Controles
                 ConsultasCboOperador.Items.Add("<");
                 ConsultasCboOperador.Items.Add(">=");
                 ConsultasCboOperador.Items.Add("<=");
+
                 ConsultasTxtValor.MaxLength = 10;
             }
-            // Booleanos
+            // Campos booleanos.
             else if (TipoCampo == typeof(bool))
             {
                 ConsultasCboOperador.Items.Add("=");
                 ConsultasCboOperador.Items.Add("<>");
             }
-            // Texto
+            // Campos de texto.
             else
             {
                 ConsultasCboOperador.Items.Add("=");
@@ -174,7 +182,6 @@ namespace CapaVista_Consultas.Controles
                 ConsultasCboOperador.Items.Add("Termina con");
             }
 
-            // Volver a seleccionar el operador anterior si todavía existe
             if (!string.IsNullOrWhiteSpace(OperadorSeleccionado) &&
                 ConsultasCboOperador.Items.Contains(OperadorSeleccionado))
             {
@@ -185,20 +192,17 @@ namespace CapaVista_Consultas.Controles
                 ConsultasCboOperador.SelectedIndex = -1;
             }
         }
+        // Fin del código de Miguel David Contreras Jacinto - carné: "0901-21-3878" - Fecha: "26/09/26"
 
-        //Fin del código de Miguel David Contreras Jacinto 0901-21-3878 el 21/09/2026
-
-        private void ConsultasMetBtnRefrescarClick(object Sender, EventArgs Evento)
+        private void ConsultasMetBtnRefrescarClick(
+            object Sender, EventArgs Evento)
         {
             ConsultasProcLimpiar();
-
-            if (ConsultasEvtRefrescarSolicitado != null)
-            {
-                ConsultasEvtRefrescarSolicitado(this, EventArgs.Empty);
-            }
+            ConsultasEvtRefrescarSolicitado?.Invoke(this, EventArgs.Empty);
         }
 
-        private void ConsultasMetTxtValorKeyDown(object Sender, KeyEventArgs Evento)
+        private void ConsultasMetTxtValorKeyDown(
+            object Sender, KeyEventArgs Evento)
         {
             if (Evento.KeyCode == Keys.Enter)
             {
@@ -207,40 +211,66 @@ namespace CapaVista_Consultas.Controles
             }
         }
 
-        //Inicio de código de Diego Fernando Santizo Samayoa 0901-22-15950 22/09/2026
-        private void ConsultasMetBtnAyudaClick(object Sender, EventArgs Evento)
-        {
-            DirectoryInfo Directorio = new DirectoryInfo(Application.StartupPath);
-
-            while (Directorio != null)
-            {
-                string Ruta = Path.Combine(Directorio.FullName,"ayuda","componentes","consultas","Ayuda_Consultas.chm");
-
-                if (File.Exists(Ruta))
-                {
-                    Help.ShowHelp(this,Ruta,"ConsultaSimple.html");
-                    return;
-                }
-                Directorio = Directorio.Parent;
-            }
-
-            MessageBox.Show("No se encontró el archivo de ayuda.");
-        }
-        //Fin de código de Diego Fernando Santizo Samayoa 0901-22-15950 22/09/2026
-
+        
+        // Guarda los datos del filtro que se envían al solicitar una búsqueda.
         public class ClsArgumentosFiltro : EventArgs
         {
             public string Campo { get; private set; }
             public string Operador { get; private set; }
             public string Valor { get; private set; }
 
-            public ClsArgumentosFiltro(string Campo, string Operador, string Valor)
+            public ClsArgumentosFiltro(
+                string Campo, string Operador, string Valor)
             {
                 this.Campo = Campo;
                 this.Operador = Operador;
                 this.Valor = Valor;
             }
         }
-        // Fin del código de "José Pablo Cano Cóbar" - Carné: "0901-23-1727" - Fecha: "15/09/26"
+        // Fin del código de "José Pablo Cano Cóbar" - carné: "0901-23-1727" - Fecha: "26/09/26"
+
+        // Inicio de código de Diego Fernando Santizo Samayoa - carné: "0901-22-15950" - Fecha: "26/09/26"
+        
+        // Busca el archivo CHM desde la carpeta de ejecución y abre la ayuda de consulta simple.
+        private void ConsultasMetBtnAyudaClick(object Sender, EventArgs Evento)
+        {
+            DirectoryInfo Directorio =
+                new DirectoryInfo(Application.StartupPath);
+
+            while (Directorio != null)
+            {
+                string Ruta = Path.Combine(
+                    Directorio.FullName,
+                    "ayuda",
+                    "componentes",
+                    "consultas",
+                    "Ayuda_Consultas.chm");
+
+                if (File.Exists(Ruta))
+                {
+                    Help.ShowHelp(this, Ruta, "ConsultaSimple.html");
+                    return;
+                }
+
+                Directorio = Directorio.Parent;
+            }
+
+            MessageBox.Show("No se encontró el archivo de ayuda.");
+        }
+
+        // Procedimientos para actualizar textbox
+
+        public void ConsultasProcMostrarErrorValor(string Mensaje)
+        {
+            ConsultasTxtValor.MostrarError(Mensaje);
+        }
+
+        public void ConsultasProcLimpiarErrorValor()
+        {
+            ConsultasTxtValor.LimpiarError();
+        }
+
+        // Fin de código de Diego Fernando Santizo Samayoa - carné: "0901-22-15950" - Fecha: "26/09/26"
+
     }
 }

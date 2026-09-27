@@ -90,13 +90,13 @@
             // 
             // ConsultasUsrAgregarFiltro
             // 
-            this.ConsultasUsrAgregarFiltro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ConsultasUsrAgregarFiltro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ConsultasUsrAgregarFiltro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasUsrAgregarFiltro.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ConsultasUsrAgregarFiltro.Location = new System.Drawing.Point(0, 31);
+            this.ConsultasUsrAgregarFiltro.Location = new System.Drawing.Point(0, 21);
             this.ConsultasUsrAgregarFiltro.Margin = new System.Windows.Forms.Padding(5);
             this.ConsultasUsrAgregarFiltro.Name = "ConsultasUsrAgregarFiltro";
-            this.ConsultasUsrAgregarFiltro.Size = new System.Drawing.Size(876, 100);
+            this.ConsultasUsrAgregarFiltro.Size = new System.Drawing.Size(876, 139);
             this.ConsultasUsrAgregarFiltro.TabIndex = 0;
             // 
             // ConsultasFlpBotones

@@ -112,6 +112,12 @@ namespace CapaVista_Consultas
                 {
                     MessageBox.Show("Ningún registro cumple con el filtro indicado.",
                         "Consultas",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    ConsultasUsrAgregarFiltro.ConsultasProcMostrarErrorValor(
+                        "No se encontraron resultados. Revise el formato del valor ingresado.");
+                }
+                else
+                {
+                    ConsultasUsrAgregarFiltro.ConsultasProcLimpiarErrorValor();
                 }
             }
             catch (Exception Excepcion)
