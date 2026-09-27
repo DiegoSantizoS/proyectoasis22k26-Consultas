@@ -1,14 +1,25 @@
-﻿using System;
+﻿using CapaControlador_Consultas;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Odbc;
+using System.Globalization;
+using System.Text;
 
 namespace CapaModelo_Consultas
 {
-
     //Inicio del código realizado por Diana Mishel Loeiza Ramírez 9959-23-3457 20/09/2026
     public class ClsModeloMantenimiento
     {
+        // Estas listas son conocimiento de SQL puro (operadores válidos, tipos numéricos),
+        // por lo que pertenecen al Modelo y no al Controlador.
+        private static readonly string[] _OperadoresValidos =
+            { "=", "<>", ">", "<", ">=", "<=", "LIKE", "NOT LIKE", "IS NULL", "IS NOT NULL" };
+
+        private static readonly HashSet<string> _TiposNumericos = new HashSet<string>(
+            new string[] { "int", "integer", "bigint", "smallint", "mediumint", "tinyint",
+                           "decimal", "numeric", "float", "double" });
+
         private static OdbcConnection ConsultasFuncAbrirConexion()
         {
             OdbcConnection Conexion = new ClsConexion().ConsultasFuncConexion();
@@ -19,7 +30,7 @@ namespace CapaModelo_Consultas
             }
             return Conexion;
         }
-        
+
         public List<string> ConsultasFuncObtenerTablas()
         {
             List<string> Lista = new List<string>();
@@ -41,7 +52,6 @@ namespace CapaModelo_Consultas
             return Lista;
         }
 
-        
         public List<KeyValuePair<string, string>> ConsultasFuncObtenerColumnas(string Tabla)
         {
             List<KeyValuePair<string, string>> Lista = new List<KeyValuePair<string, string>>();
@@ -92,7 +102,6 @@ namespace CapaModelo_Consultas
             }
         }
 
-      
         public DataTable ConsultasFuncEjecutarConsulta(string Query, int FilasMaximas)
         {
             using (OdbcConnection Conexion = ConsultasFuncAbrirConexion())
@@ -103,7 +112,100 @@ namespace CapaModelo_Consultas
                 return Datos.Tables["resultado"];
             }
         }
-    }
 
-    //Fin del código realizado por Diana Mishel Loeiza Ramírez 9959-23-3457 20/09/2026
+        // ===== Construcción de SQL (antes vivía en el Controlador; se movió aquí porque
+        // implica conocimiento del dialecto SQL, que es responsabilidad del Modelo) =====
+
+        public string ConsultasFuncConstruirQuery(string Tabla, List<ClsCondicion> Filas, Dictionary<string, string> Tipos)
+        {
+            StringBuilder Where = new StringBuilder();
+            List<string> Orden = new List<string>();
+
+            foreach (ClsCondicion Condicion in Filas)
+            {
+                if (Tipos != null && Tipos.Count > 0 && !Tipos.ContainsKey(Condicion.Campo))
+                {
+                    throw new ArgumentException("El campo " + Condicion.Campo + " no existe en " + Tabla + ".");
+                }
+
+                if (!string.IsNullOrEmpty(Condicion.Operador))
+                {
+                    if (Where.Length > 0)
+                    {
+                        Where.Append(Condicion.Conector == "OR" ? " OR " : " AND ");
+                    }
+                    Where.Append(ConsultasFuncFormatearCondicion(Condicion, Tipos));
+                }
+
+                if (Condicion.Orden == "ASC" || Condicion.Orden == "DESC")
+                {
+                    Orden.Add(Condicion.Campo + " " + Condicion.Orden);
+                }
+            }
+
+            StringBuilder Sql = new StringBuilder("SELECT * FROM " + Tabla);
+            if (Where.Length > 0)
+            {
+                Sql.Append(" WHERE ").Append(Where.ToString());
+            }
+            if (Orden.Count > 0)
+            {
+                Sql.Append(" ORDER BY ").Append(string.Join(", ", Orden));
+            }
+            Sql.Append(";");
+            return Sql.ToString();
+        }
+
+        public string ConsultasFuncFormatearCondicion(ClsCondicion Condicion, Dictionary<string, string> Tipos)
+        {
+            if (Array.IndexOf(_OperadoresValidos, Condicion.Operador) < 0)
+            {
+                throw new ArgumentException("Operador no valido: " + Condicion.Operador);
+            }
+
+            if (Condicion.Operador == "IS NULL" || Condicion.Operador == "IS NOT NULL")
+            {
+                return Condicion.Campo + " " + Condicion.Operador;
+            }
+
+            string Valor = (Condicion.Valor ?? "").Trim();
+            if (Valor.Length == 0)
+            {
+                throw new ArgumentException("Escribe un valor para el campo " + Condicion.Campo + ".");
+            }
+
+            bool ConfirmarLike = Condicion.Operador.EndsWith("LIKE");
+            string Tipo = null;
+            if (Tipos != null)
+            {
+                Tipos.TryGetValue(Condicion.Campo, out Tipo);
+            }
+
+            string literal;
+            if (!ConfirmarLike && Tipo != null && _TiposNumericos.Contains(Tipo.ToLowerInvariant()))
+            {
+                decimal numero;
+                if (!decimal.TryParse(Valor,
+                        NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint,
+                        CultureInfo.InvariantCulture, out numero))
+                {
+                    throw new ArgumentException("El campo " + Condicion.Campo + " es numerico. Escribe un numero, por ejemplo 5000 o 12.50.");
+                }
+                literal = numero.ToString(CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                literal = "'" + Valor.Replace("\\", "\\\\").Replace("'", "''") + "'";
+            }
+
+            return Condicion.Campo + " " + Condicion.Operador + " " + literal;
+        }
+
+        public bool ConsultasFuncEsInstruccionSelect(string Query)
+        {
+            return !string.IsNullOrWhiteSpace(Query) &&
+                   Query.TrimStart().StartsWith("SELECT ", StringComparison.OrdinalIgnoreCase);
+        }
+    }
+    //Fin del código realizado por Diana Mishel Loeiza Ramírez 9959-23-3457
 }
