@@ -1,19 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/* 
+    VELVETH SARAI CHAVEZ MEJIA 0901 23 6269
+ */
+
+using CapaControlador_Reporteador;
+using CapaModelo_Reporteador.Entidades;
+using System;
 using System.IO;
 using System.Windows.Forms;
-using CapaControlador_Reporteador;
 
 namespace CapaVista_Reporteador
 {
     public partial class FrmReportes : Form
     {
         // =========================================================
-        // MODELO
+        // VARIABLES DEL FORMULARIO
         // =========================================================
 
-        private ClsModeloReporteador modeloReporteador;
+        private ClsModeloReporteador
+            _ModeloReporteador;
 
+        private bool _ModoEdicion =
+            false;
+
+        private int _NumeroReporteEdicion =
+            0;
 
         // =========================================================
         // CONSTRUCTOR
@@ -23,545 +33,672 @@ namespace CapaVista_Reporteador
         {
             InitializeComponent();
 
-            modeloReporteador = new ClsModeloReporteador();
+            _ModeloReporteador =
+                new ClsModeloReporteador();
 
-            // =====================================================
-            // BTN RUTA
-            // =====================================================
-            // NO QUITAR.
-            // BtnRuta sigue llenando el TextBox de la ruta.
+            // -----------------------------------------------------
+            // Configuración de los campos principales.
+            // -----------------------------------------------------
 
-            if (BtnRuta != null)
+            ReporteadorTxtNombreReporte.Enabled =
+                true;
+
+            ReporteadorTxtNombreReporte.ReadOnly =
+                false;
+
+            ReporteadorTxtNombreReporte.TabStop =
+                true;
+
+            ReporteadorTxtNombreReporte2.Enabled =
+                true;
+
+            ReporteadorTxtNombreReporte2.ReadOnly =
+                false;
+
+            ReporteadorTxtNombreReporte2.TabStop =
+                true;
+
+            ReporteadorTxtRutaReporte.Enabled =
+                true;
+
+            ReporteadorTxtRutaReporte.ReadOnly =
+                true;
+
+            ReporteadorTxtRutaReporte.TabStop =
+                false;
+
+            // -----------------------------------------------------
+            // Configurar componente Ruta.
+            // -----------------------------------------------------
+
+            if (ReporteadorBtnRuta != null)
             {
-                BtnRuta.CampoTextoRuta =
+                ReporteadorBtnRuta.CampoTextoRuta =
                     ReporteadorTxtRutaReporte;
             }
 
+            // -----------------------------------------------------
+            // Configurar DataGridView.
+            // -----------------------------------------------------
 
-            // =====================================================
-            // BTN GUARDAR
-            // =====================================================
-
-            if (BtnGuardar != null)
+            if (ReporteadorDgvReportes != null)
             {
-                BtnGuardar.TxtNombreReporte =
+                ReporteadorDgvReportes.SelectionChanged +=
+                    ReporteadorDgvReportes_SelectionChanged;
+            }
+
+            // -----------------------------------------------------
+            // Configurar componente de búsqueda.
+            // -----------------------------------------------------
+
+            if (ReporteadorBtnBusqueda != null)
+            {
+                ReporteadorBtnBusqueda.TxtNombreReporte =
+                    ReporteadorTxtNombreReporte2;
+
+                ReporteadorBtnBusqueda.DtpFechaReporte =
+                    ReporteadorDtpFechaReporte;
+
+                ReporteadorBtnBusqueda.ChkNombreReporte =
+                    ReporteadorChkNombreReporte;
+
+                ReporteadorBtnBusqueda.ChkFechaReporte =
+                    ReporteadorChkFechaReporte;
+
+                ReporteadorBtnBusqueda.DgvReportes =
+                    ReporteadorDgvReportes;
+            }
+
+            // -----------------------------------------------------
+            // Configurar componente de actualización.
+            // -----------------------------------------------------
+
+            if (ReporteadorBtnActualizar != null)
+            {
+                ReporteadorBtnActualizar.DgvReportes =
+                    ReporteadorDgvReportes;
+            }
+
+            // -----------------------------------------------------
+            // Configurar componente de edición.
+            // -----------------------------------------------------
+
+            if (ReporteadorBtnEditar != null)
+            {
+                ReporteadorBtnEditar
+                    .ReporteadorTxtNombreReporte =
                     ReporteadorTxtNombreReporte;
 
-                BtnGuardar.TxtRutaReporte =
+                ReporteadorBtnEditar
+                    .ReporteadorTxtRutaReporte =
                     ReporteadorTxtRutaReporte;
 
-                // El UserControl solamente avisa del Click.
-                BtnGuardar.Click += BtnGuardar1_Click;
+                ReporteadorBtnEditar.Click +=
+                    BtnEditar_Click;
             }
 
-            // =====================================================
-            // BTN Imprimir
-            // =====================================================
-            if (BtnImprimir != null)
+            // -----------------------------------------------------
+            // Configurar componente de limpieza.
+            // -----------------------------------------------------
+
+            if (ReporteadorBtnLimpiar != null)
             {
-                BtnImprimir.RutaReporte = null;
+                ReporteadorBtnLimpiar.Click +=
+                    BtnLimpiar_Click;
             }
 
-            ReporteadorDgvReportes.SelectionChanged +=
-                ReporteadorDgvReportes_SelectionChanged;
+            // -----------------------------------------------------
+            // Configurar componente de impresión.
+            // -----------------------------------------------------
 
+            if (ReporteadorBtnImprimir != null)
+            {
+                ReporteadorBtnImprimir.RutaReporte =
+                    null;
+            }
 
-            // Cargar formulario
-            Load += FrmReportes_Load;
+            // -----------------------------------------------------
+            // Evento Load del formulario.
+            // -----------------------------------------------------
+
+            Load +=
+                FrmReportes_Load;
         }
 
-
         // =========================================================
-        // LOAD
+        // CARGA DEL FORMULARIO
         // =========================================================
 
-        private void FrmReportes_Load(object sender, EventArgs e)
+        private void FrmReportes_Load(
+            object Sender,
+            EventArgs E)
         {
             try
             {
-                // Volver a asegurar la conexión de los controles
-                if (BtnRuta != null)
-                {
-                    BtnRuta.CampoTextoRuta =
-                        ReporteadorTxtRutaReporte;
-                }
+                ReporteadorMetCargarTabla();
 
-                if (BtnGuardar != null)
-                {
-                    BtnGuardar.TxtNombreReporte =
-                        ReporteadorTxtNombreReporte;
+                _ModoEdicion =
+                    false;
 
-                    BtnGuardar.TxtRutaReporte =
-                        ReporteadorTxtRutaReporte;
-                }
+                _NumeroReporteEdicion =
+                    0;
 
-                // Cargar registros
-                CargarTabla();
+                ReporteadorMetPrepararNuevoRegistro();
 
-                // Preparar nuevo registro
-                PrepararNuevoRegistro();
+                ReporteadorTxtNombreReporte.Focus();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MostrarError(
-                    "No se pudo cargar el formulario.\n\n" +
-                    ex.Message
-                );
+                ReporteadorMetMostrarError(
+                    "No se pudo cargar el formulario.");
             }
         }
-
-
-        // =========================================================
-        // CLICK DEL BTN GUARDAR
-        // =========================================================
-
-        private void BtnGuardar1_Click(object sender, EventArgs e)
-        {
-            GuardarReporte();
-        }
-
 
         // =========================================================
         // GUARDAR REPORTE
         // =========================================================
 
-        private void GuardarReporte()
+        /// <summary>
+        /// Guarda un nuevo reporte o actualiza
+        /// el reporte seleccionado.
+        /// </summary>
+        public void GuardarReporte()
         {
             try
             {
-                // -------------------------------------------------
-                // VALIDAR NOMBRE
-                // -------------------------------------------------
+                string NombreReporte =
+                    ReporteadorTxtNombreReporte
+                    .Text
+                    .Trim();
 
-                string nombre =
-                    ReporteadorTxtNombreReporte.Text.Trim();
-
-                if (string.IsNullOrWhiteSpace(nombre))
+                // Validar nombre.
+                if (string.IsNullOrWhiteSpace(
+                    NombreReporte))
                 {
-                    MostrarError(
-                        "Debe ingresar el nombre del reporte."
-                    );
+                    ReporteadorMetMostrarError(
+                        "Debe ingresar el nombre del reporte.");
 
                     ReporteadorTxtNombreReporte.Focus();
 
                     return;
                 }
 
+                string RutaReporte =
+                    ReporteadorTxtRutaReporte
+                    .Text
+                    .Trim();
 
-                // -------------------------------------------------
-                // VALIDAR RUTA
-                // -------------------------------------------------
-
-                string ruta =
-                    ReporteadorTxtRutaReporte.Text.Trim();
-
-                if (string.IsNullOrWhiteSpace(ruta))
+                // Validar ruta.
+                if (string.IsNullOrWhiteSpace(
+                    RutaReporte))
                 {
-                    MostrarError(
-                        "Debe seleccionar el archivo PDF del reporte."
-                    );
+                    ReporteadorMetMostrarError(
+                        "Debe seleccionar el archivo PDF " +
+                        "del reporte.");
 
                     return;
                 }
 
-
-                // -------------------------------------------------
-                // VALIDAR EXTENSIÓN
-                // -------------------------------------------------
-
-                if (!ruta.EndsWith(
+                // Validar extensión.
+                if (!RutaReporte.EndsWith(
                     ".pdf",
                     StringComparison.OrdinalIgnoreCase))
                 {
-                    MostrarError(
-                        "El archivo seleccionado debe ser un PDF."
-                    );
+                    ReporteadorMetMostrarError(
+                        "El archivo seleccionado debe ser un PDF.");
 
                     return;
                 }
 
-
-                // -------------------------------------------------
-                // VALIDAR QUE EL ARCHIVO EXISTA
-                // -------------------------------------------------
-
-                if (!File.Exists(ruta))
+                // Validar existencia.
+                if (!File.Exists(
+                    RutaReporte))
                 {
-                    MostrarError(
-                        "El archivo seleccionado no existe.\n\n" +
-                        "Seleccione nuevamente el PDF."
-                    );
+                    ReporteadorMetMostrarError(
+                        "El archivo seleccionado no existe.");
 
                     return;
                 }
 
-
-                // -------------------------------------------------
-                // ASEGURAR MODELO
-                // -------------------------------------------------
-
-                if (modeloReporteador == null)
+                // Crear modelo si fuera necesario.
+                if (_ModeloReporteador == null)
                 {
-                    modeloReporteador =
+                    _ModeloReporteador =
                         new ClsModeloReporteador();
                 }
 
-
                 // -------------------------------------------------
-                // PREPARAR NUEVO REGISTRO
-                // -------------------------------------------------
-
-                PrepararNuevoRegistro();
-
-
-                // -------------------------------------------------
-                // ASIGNAR DATOS
+                // Determinar número de reporte.
                 // -------------------------------------------------
 
-                modeloReporteador.NombreReporte =
-                    nombre;
-
-                modeloReporteador.RutaReporte =
-                    ruta;
-
-                modeloReporteador.FechaReporte =
-                    DateTime.Now.Date;
-
-
-                // -------------------------------------------------
-                // GUARDAR
-                // -------------------------------------------------
-
-                string resultado =
-                    modeloReporteador.GrabarCambios();
-
-
-                // -------------------------------------------------
-                // RESULTADO
-                // -------------------------------------------------
-
-                if (resultado == "Grabación exitosa")
+                if (_ModoEdicion)
                 {
-                    MostrarExito(
-                        "El reporte se guardó correctamente."
-                    );
+                    _ModeloReporteador.NumeroReporte =
+                        _NumeroReporteEdicion;
+                }
+                else
+                {
+                    _ModeloReporteador.NumeroReporte =
+                        ReporteadorMetObtenerSiguienteNumeroReporte();
+                }
 
-                    LimpiarFormulario();
+                _ModeloReporteador.NombreReporte =
+                    NombreReporte;
 
-                    modeloReporteador =
-                        new ClsModeloReporteador();
+                _ModeloReporteador.RutaReporte =
+                    RutaReporte;
 
-                    PrepararNuevoRegistro();
+                _ModeloReporteador.FechaReporte =
+                    ReporteadorDtpFechaReporte
+                    .Value
+                    .Date;
 
-                    CargarTabla();
+                // -------------------------------------------------
+                // Determinar operación.
+                // -------------------------------------------------
+
+                _ModeloReporteador.Estado =
+                    _ModoEdicion
+                    ? ClsEstadoEntidad.Modified
+                    : ClsEstadoEntidad.Added;
+
+                // -------------------------------------------------
+                // Ejecutar operación.
+                // -------------------------------------------------
+
+                string Resultado =
+                    _ModeloReporteador
+                    .ReporteadorMetGuardarReporte();
+
+                if (Resultado ==
+                    "Grabación exitosa")
+                {
+                    ReporteadorMetMostrarExito(
+                        "El reporte se guardó correctamente.");
+
+                    _ModoEdicion =
+                        false;
+
+                    _NumeroReporteEdicion =
+                        0;
+
+                    ReporteadorMetLimpiarFormulario();
+                    ReporteadorMetCargarTabla();
+                    ReporteadorMetPrepararNuevoRegistro();
 
                     return;
                 }
 
+                if (Resultado ==
+                    "Actualización exitosa")
+                {
+                    ReporteadorMetMostrarExito(
+                        "El reporte se actualizó correctamente.");
 
-                // -------------------------------------------------
-                // ERROR DEVUELTO POR EL MODELO
-                // -------------------------------------------------
+                    _ModoEdicion =
+                        false;
 
-                MostrarError(
-                    "No se pudo guardar el reporte.\n\n" +
-                    resultado
-                );
+                    _NumeroReporteEdicion =
+                        0;
+
+                    ReporteadorMetLimpiarFormulario();
+                    ReporteadorMetCargarTabla();
+                    ReporteadorMetPrepararNuevoRegistro();
+
+                    return;
+                }
+
+                ReporteadorMetMostrarError(
+                    Resultado);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MostrarError(
-                    "Ocurrió un error al guardar el reporte.\n\n" +
-                    ex.Message
-                );
+                ReporteadorMetMostrarError(
+                    "Ocurrió un error al guardar el reporte.");
             }
         }
 
-
         // =========================================================
-        // PREPARAR NUEVO REGISTRO
-        // =========================================================
-
-        private void PrepararNuevoRegistro()
-        {
-            try
-            {
-                if (modeloReporteador == null)
-                {
-                    modeloReporteador =
-                        new ClsModeloReporteador();
-                }
-
-                modeloReporteador.Estado =
-                    ClsEstadoEntidad.Added;
-
-                // El modelo genera el siguiente número.
-                modeloReporteador.NumeroReporte =
-                    modeloReporteador
-                    .GenerarSiguienteNumeroReporte(30);
-
-                modeloReporteador.FechaReporte =
-                    DateTime.Now.Date;
-            }
-            catch (Exception ex)
-            {
-                MostrarError(
-                    "No se pudo generar el número del reporte.\n\n" +
-                    ex.Message
-                );
-            }
-        }
-
-
-        // =========================================================
-        // CARGAR DATAGRIDVIEW
+        // CARGAR TABLA
         // =========================================================
 
+        /// <summary>
+        /// Carga todos los reportes en el DataGridView.
+        /// </summary>
         public void CargarTabla()
         {
+            ReporteadorMetCargarTabla();
+        }
+
+        private void ReporteadorMetCargarTabla()
+        {
             try
             {
-                if (modeloReporteador == null)
+                if (_ModeloReporteador == null)
                 {
-                    modeloReporteador =
+                    _ModeloReporteador =
                         new ClsModeloReporteador();
                 }
 
-                var lista =
-                    modeloReporteador.GetAll();
-
-
-                // =================================================
-                // LIMPIAR COLUMNAS
-                // =================================================
-
-                ReporteadorDgvReportes.DataSource = null;
-
-                ReporteadorDgvReportes.Columns.Clear();
-
-                ReporteadorDgvReportes.AutoGenerateColumns =
-                    false;
-
-
-                // =================================================
-                // NUMERO REPORTE
-                // =================================================
-
-                DataGridViewTextBoxColumn colNumero =
-                    new DataGridViewTextBoxColumn();
-
-                colNumero.Name =
-                    "NumeroReporte";
-
-                colNumero.HeaderText =
-                    "NumeroReporte";
-
-                colNumero.DataPropertyName =
-                    "NumeroReporte";
-
-                colNumero.Width = 100;
-
-                ReporteadorDgvReportes.Columns.Add(
-                    colNumero
-                );
-
-
-                // =================================================
-                // NOMBRE REPORTE
-                // =================================================
-
-                DataGridViewTextBoxColumn colNombre =
-                    new DataGridViewTextBoxColumn();
-
-                colNombre.Name =
-                    "NombreReporte";
-
-                colNombre.HeaderText =
-                    "NombreReporte";
-
-                colNombre.DataPropertyName =
-                    "NombreReporte";
-
-                colNombre.Width = 180;
-
-                ReporteadorDgvReportes.Columns.Add(
-                    colNombre
-                );
-
-
-                // =================================================
-                // RUTA REPORTE
-                // =================================================
-
-                DataGridViewTextBoxColumn colRuta =
-                    new DataGridViewTextBoxColumn();
-
-                colRuta.Name =
-                    "RutaReporte";
-
-                colRuta.HeaderText =
-                    "RutaReporte";
-
-                colRuta.DataPropertyName =
-                    "RutaReporte";
-
-                colRuta.AutoSizeMode =
-                    DataGridViewAutoSizeColumnMode.Fill;
-
-                ReporteadorDgvReportes.Columns.Add(
-                    colRuta
-                );
-
-
-                // =================================================
-                // FECHA REPORTE
-                // =================================================
-
-                DataGridViewTextBoxColumn colFecha =
-                    new DataGridViewTextBoxColumn();
-
-                colFecha.Name =
-                    "FechaReporte";
-
-                colFecha.HeaderText =
-                    "FechaReporte";
-
-                colFecha.DataPropertyName =
-                    "FechaReporte";
-
-                colFecha.Width = 100;
-
-                colFecha.DefaultCellStyle.Format =
-                    "dd/MM/yyyy";
-
-                ReporteadorDgvReportes.Columns.Add(
-                    colFecha
-                );
-
-
-                // =================================================
-                // CARGAR DATOS
-                // =================================================
-
                 ReporteadorDgvReportes.DataSource =
-                    lista;
+                    _ModeloReporteador
+                    .ReporteadorMetObtenerTodos();
 
                 ReporteadorDgvReportes.Refresh();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MostrarError(
-                    "No se pudo cargar la lista de reportes.\n\n" +
-                    ex.Message
-                );
+                ReporteadorMetMostrarError(
+                    "No se pudo cargar la lista de reportes.");
             }
         }
 
         // =========================================================
-        // SELECCIONAR REPORTE PARA IMPRIMIR
+        // EDITAR
         // =========================================================
 
-        private void ReporteadorDgvReportes_SelectionChanged(
-            object sender,
-            EventArgs e)
+        private void BtnEditar_Click(
+            object Sender,
+            EventArgs E)
+        {
+            ReporteadorMetPrepararEdicion();
+        }
+
+        /// <summary>
+        /// Carga los datos del reporte seleccionado
+        /// en los campos del formulario.
+        /// </summary>
+        private void ReporteadorMetPrepararEdicion()
         {
             try
             {
-                if (BtnImprimir == null)
+                if (ReporteadorDgvReportes.CurrentRow == null)
+                {
+                    ReporteadorMetMostrarError(
+                        "Debe seleccionar un reporte para editar.");
+
+                    return;
+                }
+
+                object Numero =
+                    ReporteadorDgvReportes
+                    .CurrentRow
+                    .Cells["NumeroReporte"]
+                    .Value;
+
+                object Nombre =
+                    ReporteadorDgvReportes
+                    .CurrentRow
+                    .Cells["NombreReporte"]
+                    .Value;
+
+                object Ruta =
+                    ReporteadorDgvReportes
+                    .CurrentRow
+                    .Cells["RutaReporte"]
+                    .Value;
+
+                object Fecha =
+                    ReporteadorDgvReportes
+                    .CurrentRow
+                    .Cells["FechaReporte"]
+                    .Value;
+
+                if (Numero == null ||
+                    Numero == DBNull.Value)
+                {
+                    ReporteadorMetMostrarError(
+                        "El reporte seleccionado " +
+                        "no tiene número.");
+
+                    return;
+                }
+
+                _NumeroReporteEdicion =
+                    Convert.ToInt32(Numero);
+
+                ReporteadorTxtNombreReporte.Text =
+                    Nombre == null ||
+                    Nombre == DBNull.Value
+                    ? string.Empty
+                    : Nombre.ToString();
+
+                ReporteadorTxtRutaReporte.Text =
+                    Ruta == null ||
+                    Ruta == DBNull.Value
+                    ? string.Empty
+                    : Ruta.ToString();
+
+                if (Fecha != null &&
+                    Fecha != DBNull.Value)
+                {
+                    ReporteadorDtpFechaReporte.Value =
+                        Convert.ToDateTime(Fecha);
+                }
+
+                _ModoEdicion =
+                    true;
+
+                ReporteadorTxtNombreReporte.Focus();
+            }
+            catch (Exception)
+            {
+                ReporteadorMetMostrarError(
+                    "No se pudo preparar el reporte " +
+                    "para editar.");
+            }
+        }
+
+        // =========================================================
+        // LIMPIAR FORMULARIO
+        // =========================================================
+
+        /// <summary>
+        /// Limpia todos los campos utilizados
+        /// por el formulario.
+        /// </summary>
+        public void LimpiarFormulario()
+        {
+            ReporteadorMetLimpiarFormulario();
+        }
+
+        private void ReporteadorMetLimpiarFormulario()
+        {
+            ReporteadorTxtNombreReporte.Clear();
+
+            ReporteadorTxtRutaReporte.Clear();
+
+            ReporteadorTxtNombreReporte2.Clear();
+
+            ReporteadorDtpFechaReporte.Value =
+                DateTime.Now;
+
+            if (ReporteadorChkNombreReporte != null)
+            {
+                ReporteadorChkNombreReporte.Checked =
+                    false;
+            }
+
+            if (ReporteadorChkFechaReporte != null)
+            {
+                ReporteadorChkFechaReporte.Checked =
+                    false;
+            }
+
+            if (ReporteadorBtnImprimir != null)
+            {
+                ReporteadorBtnImprimir.RutaReporte =
+                    null;
+            }
+
+            ReporteadorTxtNombreReporte.Focus();
+        }
+
+        // =========================================================
+        // EVENTO DEL BOTÓN LIMPIAR
+        // =========================================================
+
+        private void BtnLimpiar_Click(
+            object Sender,
+            EventArgs E)
+        {
+            try
+            {
+                ReporteadorMetLimpiarFormulario();
+
+                _ModoEdicion =
+                    false;
+
+                _NumeroReporteEdicion =
+                    0;
+
+                ReporteadorMetPrepararNuevoRegistro();
+
+                ReporteadorMetCargarTabla();
+            }
+            catch (Exception)
+            {
+                ReporteadorMetMostrarError(
+                    "No se pudo limpiar el formulario.");
+            }
+        }
+
+        // =========================================================
+        // SELECCIÓN DEL DATAGRIDVIEW
+        // =========================================================
+
+        /// <summary>
+        /// Actualiza la ruta del componente de impresión
+        /// cuando el usuario selecciona un reporte.
+        /// </summary>
+        private void ReporteadorDgvReportes_SelectionChanged(
+            object Sender,
+            EventArgs E)
+        {
+            try
+            {
+                if (ReporteadorBtnImprimir == null)
                 {
                     return;
                 }
 
                 if (ReporteadorDgvReportes.CurrentRow == null)
                 {
-                    BtnImprimir.RutaReporte = null;
+                    ReporteadorBtnImprimir.RutaReporte =
+                        null;
+
                     return;
                 }
 
-                object valorRuta =
+                if (!ReporteadorDgvReportes.Columns.Contains(
+                    "RutaReporte"))
+                {
+                    ReporteadorBtnImprimir.RutaReporte =
+                        null;
+
+                    return;
+                }
+
+                object Ruta =
                     ReporteadorDgvReportes
                     .CurrentRow
                     .Cells["RutaReporte"]
                     .Value;
 
-                if (valorRuta == null ||
-                    valorRuta == DBNull.Value)
+                ReporteadorBtnImprimir.RutaReporte =
+                    Ruta == null ||
+                    Ruta == DBNull.Value
+                    ? null
+                    : Ruta.ToString();
+            }
+            catch (Exception)
+            {
+                if (ReporteadorBtnImprimir != null)
                 {
-                    BtnImprimir.RutaReporte = null;
-                    return;
+                    ReporteadorBtnImprimir.RutaReporte =
+                        null;
+                }
+            }
+        }
+
+        // =========================================================
+        // OBTENER SIGUIENTE NÚMERO
+        // =========================================================
+
+        private int
+            ReporteadorMetObtenerSiguienteNumeroReporte()
+        {
+            try
+            {
+                if (_ModeloReporteador == null)
+                {
+                    _ModeloReporteador =
+                        new ClsModeloReporteador();
                 }
 
-                BtnImprimir.RutaReporte =
-                    valorRuta.ToString();
+                // Código de módulo 30:
+                // rango 3000 - 3099.
+                return _ModeloReporteador
+                    .ReporteadorMetObtenerSiguienteNumeroReporte(
+                        30);
             }
-            catch
+            catch (Exception)
             {
-                BtnImprimir.RutaReporte = null;
+                // Valor inicial utilizado si no se puede
+                // consultar temporalmente la numeración.
+                return 3001;
             }
         }
 
-
         // =========================================================
-        // LIMPIAR FORMULARIO
+        // PREPARAR NUEVO REGISTRO
         // =========================================================
 
-        private void LimpiarFormulario()
+        private void
+            ReporteadorMetPrepararNuevoRegistro()
         {
-            ReporteadorTxtNombreReporte.Clear();
+            if (_ModeloReporteador == null)
+            {
+                _ModeloReporteador =
+                    new ClsModeloReporteador();
+            }
 
-            ReporteadorTxtRutaReporte.Clear();
+            _ModeloReporteador.NumeroReporte =
+                ReporteadorMetObtenerSiguienteNumeroReporte();
 
-            ReporteadorTxtNombreReporte.Focus();
+            _ModeloReporteador.FechaReporte =
+                DateTime.Now.Date;
+
+            ReporteadorDtpFechaReporte.Value =
+                DateTime.Now;
         }
 
-
         // =========================================================
-        // DIÁLOGO DE ÉXITO
+        // MOSTRAR MENSAJE DE ÉXITO
         // =========================================================
 
-        private void MostrarExito(string mensaje)
+        private void ReporteadorMetMostrarExito(
+            string Mensaje)
         {
             MessageBox.Show(
-                mensaje,
-                "Operación exitosa",
+                Mensaje,
+                "Éxito",
                 MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+                MessageBoxIcon.Information);
         }
 
-
         // =========================================================
-        // DIÁLOGO DE ERROR
+        // MOSTRAR MENSAJE DE ERROR
         // =========================================================
 
-        private void MostrarError(string mensaje)
+        private void ReporteadorMetMostrarError(
+            string Mensaje)
         {
             MessageBox.Show(
-                mensaje,
+                Mensaje,
                 "Ocurrió un error",
                 MessageBoxButtons.OK,
-                MessageBoxIcon.Error
-            );
-        }
-
-
-        // =========================================================
-        // DIÁLOGO DE CONFIRMACIÓN
-        // =========================================================
-        // Este método lo utilizaremos para ELIMINAR.
-        // NO se utiliza para Guardar.
-
-        private bool MostrarConfirmacion(string mensaje)
-        {
-            DialogResult resultado =
-                MessageBox.Show(
-                    mensaje,
-                    "Confirmar",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning
-                );
-
-            return resultado == DialogResult.Yes;
+                MessageBoxIcon.Error);
         }
     }
 }

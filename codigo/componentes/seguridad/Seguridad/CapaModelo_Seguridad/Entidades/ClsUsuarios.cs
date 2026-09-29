@@ -1,4 +1,19 @@
-﻿using System;
+﻿/*
+ * ==================================================================
+ * Área : Seguridad
+ * Autor : Victor Omar Gomez Carrascosa
+ * Carné : 9959-23-10733
+ * Fecha : 23/09/2026
+ * ==================================================================
+ * Propósito :
+ *  La clase ClsUsuarios representa la entidad Usuario, con los mismos
+ *  campos que la tabla tblUsuario en la base de datos. Se usa para
+ *  transportar los datos de un usuario entre el repositorio y el
+ *  controlador.
+ * ===================================================================
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,5 +29,6 @@ namespace CapaModelo_Seguridad.Entidades
         public int IsActive { get; set; }
         public string ContrasenaUsuario { get; set; }
         public DateTime UltimoAccesoUsuario { get; set; }
+        public string NombreEmpleado { get; set; }
     }
 }
