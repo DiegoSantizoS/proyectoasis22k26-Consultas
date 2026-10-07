@@ -4,6 +4,7 @@ using CapaModelo_Consultas.Repositorios;
 
 namespace CapaControlador_Consultas
 {
+    //Inicio Diego Fernando Santizo Samayoa 0901-22-15950 05/10/2026
     public sealed class ClsControladorConsultas : IContextoConsulta
     {
         private readonly ClsServicioConsultasCompartidas _Compartidas;
@@ -130,5 +131,6 @@ namespace CapaControlador_Consultas
         {
             return _Compartidas.ConsultasFuncMensajeSinResultados(NombreCampo);
         }
+        //Fin Diego Fernando Santizo Samayoa 0901-22-15950 05/10/2026
     }
 }

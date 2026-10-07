@@ -8,6 +8,7 @@ using CapaModelo_Consultas.Repositorios;
 
 namespace CapaControlador_Consultas
 {
+    //Inicio Diego Fernando Santizo Samayoa 0901-22-15950 05/10/2026
     public sealed class ClsMetadatosDisenadorConsultas
     {
         private readonly IRepositorioMetadatos _Metadatos;
@@ -55,5 +56,6 @@ namespace CapaControlador_Consultas
             }
             return Solicitud.Wait(TimeSpan.FromSeconds(3)) ? (string[])Solicitud.Result.Clone() : new string[0];
         }
+        //Fin Diego Fernando Santizo Samayoa 0901-22-15950 05/10/2026
     }
 }

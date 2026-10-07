@@ -6,6 +6,7 @@ using CapaControlador_Consultas;
 
 namespace CapaVista_Consultas
 {
+    //Inicio Diego Fernando Santizo Samayoa 0901-22-15950 05/10/2026
     public partial class FrmConsultas : Form
     {
         private readonly UsrConsultasSimples _ConsultasSimples;
@@ -261,5 +262,6 @@ namespace CapaVista_Consultas
                 _TransicionesVista--;
             }
         }
+        //Fin Diego Fernando Santizo Samayoa 0901-22-15950 05/10/2026
     }
 }

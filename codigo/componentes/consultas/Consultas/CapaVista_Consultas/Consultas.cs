@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 namespace CapaVista_Consultas
 {
+    //Inicio Diego Fernando Santizo Samayoa 0901-22-15950 05/10/2026
     public class Consultas : Button, ISupportInitialize
     {
         private string _Tabla = "";
@@ -97,5 +98,6 @@ namespace CapaVista_Consultas
                 }
             });
         }
+        //Fin Diego Fernando Santizo Samayoa 0901-22-15950 05/10/2026
     }
 }

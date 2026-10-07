@@ -8,6 +8,7 @@ using CapaVista_Consultas.Componentes;
 
 namespace CapaVista_Consultas
 {
+    //Inicio Diego Fernando Santizo Samayoa 0901-22-15950 05/10/2026
     public sealed class ClsConvertidorControlRetornoConsultas : ReferenceConverter
     {
         public ClsConvertidorControlRetornoConsultas() : base(typeof(Control))
@@ -49,5 +50,6 @@ namespace CapaVista_Consultas
                 if (!(Hijo is UsrTextBoxConsultas)) ConsultasProcAgregarControles(Hijo, Controles);
             }
         }
+        //Fin Diego Fernando Santizo Samayoa 0901-22-15950 05/10/2026
     }
 }

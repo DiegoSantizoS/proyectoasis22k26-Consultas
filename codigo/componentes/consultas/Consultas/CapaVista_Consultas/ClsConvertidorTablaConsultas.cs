@@ -3,6 +3,7 @@ using CapaControlador_Consultas;
 
 namespace CapaVista_Consultas
 {
+    //Inicio Diego Fernando Santizo Samayoa 0901-22-15950 05/10/2026
     public class ClsConvertidorTablaConsultas : StringConverter
     {
         private static readonly ClsMetadatosDisenadorConsultas _Metadatos = new ClsMetadatosDisenadorConsultas();
@@ -14,4 +15,5 @@ namespace CapaVista_Consultas
             return new StandardValuesCollection(Metadatos.ConsultasFuncObtenerTablas());
         }
     }
+    //Fin Diego Fernando Santizo Samayoa 0901-22-15950 05/10/2026
 }
