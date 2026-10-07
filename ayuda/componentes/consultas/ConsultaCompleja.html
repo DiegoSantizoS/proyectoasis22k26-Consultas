@@ -26,76 +26,65 @@
 
     <div class="container">
         <div class="seccion">
-            <h2>Consulta compleja</h2>
-            <p class="ayuda-intro">
-                Esta pantalla permite localizar, consultar, crear y administrar consultas guardadas.
-                La tabla central muestra las consultas disponibles y la lista del lado izquierdo facilita
-                la selección de una consulta reutilizable.
-            </p>
-
+            <h2>Consultas complejas</h2>
+            <p class="ayuda-intro">Esta pantalla permite combinar filtros y ordenamientos de la tabla configurada, revisar los resultados y guardar consultas para reutilizarlas. La lista <strong>Seleccione una Consulta</strong> muestra los nombres de las consultas guardadas para la tabla actual; <strong>Mantenimiento</strong> contiene sus condiciones y <strong>Seleccione un Registro</strong> muestra los datos obtenidos.</p>
             <img class="captura" src="img/ConsultaCompleja.png" alt="Pantalla de consultas complejas">
 
-            <h2>Cómo utilizar la pantalla</h2>
+            <h2>Consultar o modificar una consulta guardada</h2>
             <ol class="pasos">
-                <li>Revise la lista <strong>Seleccione una consulta</strong> y haga clic sobre la consulta que desea utilizar.</li>
-                <li>Presione <strong>Consultar</strong> para ejecutar o abrir la consulta seleccionada.</li>
-                <li>Si necesita crear una consulta diferente, presione <strong>Nueva Consulta</strong>.</li>
-                <li>Use la tabla central para revisar las consultas registradas, su tabla de origen, consulta SQL y fechas de creación o actualización.</li>
-                <li>Cuando existan muchos registros, utilice <strong>Anterior</strong>, <strong>Siguiente</strong> o los números de página para desplazarse.</li>
+                <li>Para consultar, haga <strong>doble clic</strong> sobre un nombre de la lista izquierda. Se cargan sus condiciones y resultados en modo de visualización.</li>
+                <li>Para editar, seleccione la consulta con un clic y presione <strong>Modificar</strong> en los controles de consultas. Se habilitan el nombre y los controles de filtros.</li>
+                <li>Seleccione una fila de Mantenimiento para cargar sus datos en los controles. Ajuste los valores y presione <strong>Modificar</strong> en los controles de filtros para reemplazar esa fila.</li>
+                <li>Revise los resultados y presione <strong>Guardar Consulta</strong>. Confirme el guardado de los cambios cuando se solicite.</li>
             </ol>
+            <div class="nota">Seleccionar un nombre con un clic habilita Modificar y Eliminar Consulta, pero no carga sus resultados. Los filtros y el nombre se editan únicamente después de presionar Ingresar o Modificar en los controles de consultas.</div>
+
+            <h2>Crear una consulta</h2>
+            <ol class="pasos">
+                <li>Presione <strong>Ingresar</strong> en los controles de consultas para iniciar una consulta nueva.</li>
+                <li>Escriba un <strong>Nombre de Consulta</strong> de 1 a 50 caracteres. El nombre no debe existir ya; se eliminan los espacios al inicio y al final al guardar.</li>
+                <li>Seleccione <strong>Campo</strong>, <strong>Operador</strong> y escriba <strong>Valor</strong>. Si lo necesita, elija un <strong>Ordenamiento</strong>.</li>
+                <li>Presione <strong>Ingresar</strong> en los controles de filtros para agregar la condición a Mantenimiento.</li>
+                <li>Para cada filtro posterior al primero, seleccione <strong>AND</strong> u <strong>OR</strong>. Si el sistema solicita el conector, selecciónelo y vuelva a presionar Ingresar.</li>
+                <li>Revise la vista previa, que se actualiza al ingresar, modificar o eliminar filas.</li>
+                <li>Presione <strong>Guardar Consulta</strong> para registrar el nombre y las condiciones. Después de guardar, la consulta queda en modo de visualización y aparece en el catálogo.</li>
+            </ol>
+
+            <h2>Campos, operadores y formatos</h2>
+            <table class="tabla-ayuda">
+                <thead><tr><th>Control</th><th>Uso</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Campo</strong></td><td>Columna sobre la que se aplica el filtro u ordenamiento. Cambiarla borra Valor y actualiza los operadores.</td></tr>
+                    <tr><td><strong>Operador</strong></td><td>Texto: =, &lt;&gt;, Contiene, Comienza con y Termina con. Números y fechas: =, &lt;&gt;, &gt;, &lt;, &gt;= y &lt;=. Booleanos: = y &lt;&gt;. Consulte los ejemplos en <a href="ConsultaSimple.html">Consultas simples</a>.</td></tr>
+                    <tr><td><strong>Valor</strong></td><td>Dato que se compara. Use enteros sin decimales, punto decimal (125.50), fechas aaaa-MM-dd o dd/MM/aaaa, fecha y hora con HH:mm:ss, horas HH:mm:ss y booleanos 1, 0, true o false. Respete la longitud máxima del campo de texto.</td></tr>
+                    <tr><td><strong>Ordenamiento</strong></td><td>ASC ordena de menor a mayor; DESC, de mayor a menor. Puede combinarlo con un filtro o crear una fila solo de ordenamiento: seleccione Campo, deje Operador vacío y elija ASC o DESC. Esa fila no requiere Valor ni Conector.</td></tr>
+                    <tr><td><strong>Conector</strong></td><td>AND exige que se cumplan ambas condiciones; OR admite cualquiera de ellas. El primer filtro no lleva conector. Al combinar ambos, AND tiene prioridad sobre OR; la pantalla no permite agregar paréntesis.</td></tr>
+                </tbody>
+            </table>
+            <p>Ejemplo: Edad &gt;= 18 y Estado = Activo con AND busca personas adultas activas. Nombre Comienza con Mar busca nombres como María o Marcos. Un ordenamiento ASC por Nombre presenta los nombres en orden ascendente.</p>
 
             <h2>Botones y controles</h2>
             <table class="tabla-ayuda">
-                <thead>
-                    <tr><th>Botón o control</th><th>Función</th><th>Cómo usarlo</th></tr>
-                </thead>
+                <thead><tr><th>Botón o control</th><th>Función</th></tr></thead>
                 <tbody>
-                    <tr>
-                        <td><strong>Consultar</strong></td>
-                        <td>Abre o ejecuta la consulta seleccionada.</td>
-                        <td>Seleccione primero una consulta en la lista de la izquierda y luego presione el botón.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Nueva Consulta</strong></td>
-                        <td>Abre la pantalla de mantenimiento para construir y guardar una nueva consulta.</td>
-                        <td>Úselo cuando la consulta que necesita todavía no existe.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Eliminar</strong></td>
-                        <td>Elimina la consulta guardada que esté seleccionada.</td>
-                        <td>Seleccione la consulta y confirme la eliminación cuando el sistema lo solicite.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Refrescar</strong></td>
-                        <td>Vuelve a cargar la información mostrada en pantalla.</td>
-                        <td>Úselo después de crear, modificar o eliminar una consulta, o cuando desee actualizar el listado.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Ayuda</strong></td>
-                        <td>Muestra este manual de uso.</td>
-                        <td>Presiónelo cuando necesite recordar la función de los controles de la pantalla.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Inicio</strong></td>
-                        <td>Regresa a la pantalla principal del componente de Consultas.</td>
-                        <td>Úselo para salir de esta función sin cerrar completamente el módulo.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Salir</strong></td>
-                        <td>Cierra la ventana actual.</td>
-                        <td>Presiónelo cuando haya terminado de trabajar en esta pantalla.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Anterior / Siguiente / páginas</strong></td>
-                        <td>Permiten desplazarse entre páginas de resultados.</td>
-                        <td>Úselos cuando la cantidad de consultas sea mayor que la cantidad visible en una sola página.</td>
-                    </tr>
+                    <tr><td><strong>Ingresar (consulta)</strong></td><td>Inicia una consulta nueva y limpia el mantenimiento actual. Confirme el descarte cuando se solicite.</td></tr>
+                    <tr><td><strong>Modificar (consulta)</strong></td><td>Carga la consulta seleccionada y habilita su edición.</td></tr>
+                    <tr><td><strong>Ingresar (filtro)</strong></td><td>Agrega una nueva fila a Mantenimiento. Si parte de una fila seleccionada, cambie algún dato antes de ingresarla como nueva; para reemplazarla use Modificar.</td></tr>
+                    <tr><td><strong>Modificar (filtro)</strong></td><td>Reemplaza la fila seleccionada con los datos de los controles.</td></tr>
+                    <tr><td><strong>Eliminar (filtro)</strong></td><td>Quita la fila seleccionada y actualiza la vista previa. La primera fila de Mantenimiento no se puede eliminar; puede modificarla.</td></tr>
+                    <tr><td><strong>Guardar Consulta</strong></td><td>Guarda una consulta nueva o los cambios de la consulta en edición. Requiere nombre y entre 1 y 100 filas de condiciones u ordenamientos.</td></tr>
+                    <tr><td><strong>Eliminar Consulta</strong></td><td>Elimina la definición seleccionada en la lista izquierda después de confirmar. Si hay una sesión de edición, la confirmación también advierte que se descartará.</td></tr>
+                    <tr><td><strong>Refrescar</strong></td><td>Recarga el catálogo y los datos sin filtros, limpia Mantenimiento y vuelve al estado inicial. Durante una edición solicita confirmar el descarte.</td></tr>
+                    <tr><td><strong>Consultas Simples</strong></td><td>Solicita volver a la pantalla de filtros simples.</td></tr>
+                    <tr><td><strong>Ayuda / Salir</strong></td><td>Abre la ayuda o solicita cerrar la ventana actual.</td></tr>
+                    <tr><td><strong>Anterior / Siguiente / páginas</strong></td><td>Recorre los resultados, con 10 registros por página. Los controles se habilitan según las páginas disponibles.</td></tr>
                 </tbody>
             </table>
 
-            <div class="nota">
-                <strong>Importante:</strong> antes de usar <strong>Consultar</strong> o <strong>Eliminar</strong>, verifique que la consulta correcta esté seleccionada.
-            </div>
+            <h2>Resultados y avisos</h2>
+            <p>Haga clic en el encabezado de una columna de resultados para ordenar y vuelva a hacer clic para alternar la dirección. Haga doble clic en una fila de resultados o selecciónela y presione <kbd>Enter</kbd> para devolver ese registro a la pantalla que abrió Consultas.</p>
+            <p>Los errores de nombre se muestran debajo de Nombre de Consulta; los errores de filtros y los avisos sin resultados, debajo de Valor. Revise campo, operador, formato y conectores antes de volver a intentar.</p>
+            <div class="nota"><strong>Consultas antiguas:</strong> algunas pueden contener LIKE, IS NULL o IS NOT NULL. Sus filas se conservan, pero para modificar una fila con un operador antiguo debe elegir un operador disponible y un valor válido. Las consultas con límites de registros o desplazamiento que Mantenimiento no puede representar no se pueden abrir como filtros.</div>
         </div>
     </div>
 </body>

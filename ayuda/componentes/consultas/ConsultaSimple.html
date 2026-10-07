@@ -39,7 +39,7 @@
                 <li>En <strong>Campo</strong>, seleccione la columna sobre la que desea buscar.</li>
                 <li>En <strong>Operador</strong>, seleccione la comparación que desea aplicar.</li>
                 <li>En <strong>Valor</strong>, escriba el dato que desea localizar.</li>
-                <li>Presione <strong>Buscar</strong> para aplicar el filtro.</li>
+                <li>Presione <strong>Buscar</strong> o la tecla <strong>Enter</strong> desde Valor para aplicar el filtro. Buscar se habilita al seleccionar campo y operador e ingresar un valor.</li>
                 <li>Revise los resultados en la tabla inferior.</li>
                 <li>Si desea volver a mostrar la información sin el filtro actual, presione <strong>Refrescar</strong>.</li>
             </ol>
@@ -47,8 +47,9 @@
             <h2>¿Qué hace cada operador?</h2>
             <p>
                 Los operadores disponibles pueden cambiar según el tipo de campo seleccionado.
-                Los campos numéricos y de fecha permiten comparar valores; los campos de texto
-                también pueden permitir búsquedas por fragmentos.
+                Los campos de texto ofrecen =, &lt;&gt;, Contiene, Comienza con y Termina con.
+                Los campos numéricos y de fecha ofrecen =, &lt;&gt;, &gt;, &lt;, &gt;= y &lt;=.
+                Los campos booleanos ofrecen únicamente = y &lt;&gt;.
             </p>
 
             <table class="tabla-ayuda">
@@ -96,9 +97,9 @@
                         <td>Nombre contiene <strong>ana</strong>: puede encontrar «Ana» y «Mariana».</td>
                     </tr>
                     <tr>
-                        <td><strong>Empieza con</strong></td>
+                        <td><strong>Comienza con</strong></td>
                         <td>Busca valores que comienzan con el texto indicado.</td>
-                        <td>Nombre empieza con <strong>Mar</strong>: puede encontrar «María» y «Marcos».</td>
+                        <td>Nombre comienza con <strong>Mar</strong>: puede encontrar «María» y «Marcos».</td>
                     </tr>
                     <tr>
                         <td><strong>Termina con</strong></td>
@@ -109,10 +110,15 @@
             </table>
 
             <div class="nota">
-                <strong>Fechas:</strong> escriba la fecha en el formato solicitado por la pantalla.
+                <strong>Fechas:</strong> use <strong>aaaa-MM-dd</strong> o <strong>dd/MM/aaaa</strong> (por ejemplo, 2026-10-07 o 07/10/2026). Para fecha y hora, agregue <strong>HH:mm:ss</strong> (2026-10-07 14:30:00).
                 Los operadores «mayor que» y «menor que» permiten buscar fechas posteriores
                 o anteriores, respectivamente.
             </div>
+
+            <h2>Valores y selección de resultados</h2>
+            <p>Escriba enteros sin decimales, números decimales con punto (125.50), horas como HH:mm:ss y valores booleanos como 1, 0, true o false. Respete la longitud permitida del campo de texto.</p>
+            <p>Al cambiar Campo se borra Valor y se actualizan los operadores. Los errores de formato y los avisos de búsqueda sin resultados aparecen debajo de Valor; corrija el dato y vuelva a buscar.</p>
+            <p>La tabla muestra 15 registros por página. Haga clic en el encabezado de una columna para ordenar y vuelva a hacer clic para alternar la dirección. Para devolver un registro a la pantalla que abrió Consultas, haga doble clic en su fila o selecciónela y presione Enter.</p>
 
             <h2>Botones y controles</h2>
             <table class="tabla-ayuda">
