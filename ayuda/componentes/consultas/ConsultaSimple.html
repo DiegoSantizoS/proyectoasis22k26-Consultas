@@ -39,15 +39,95 @@
                 <li>En <strong>Campo</strong>, seleccione la columna sobre la que desea buscar.</li>
                 <li>En <strong>Operador</strong>, seleccione la comparación que desea aplicar.</li>
                 <li>En <strong>Valor</strong>, escriba el dato que desea localizar.</li>
-                <li>Presione <strong>Buscar</strong> para aplicar el filtro.</li>
+                <li>Presione <strong>Buscar</strong> o la tecla <strong>Enter</strong> desde Valor para aplicar el filtro. Buscar se habilita al seleccionar campo y operador e ingresar un valor.</li>
                 <li>Revise los resultados en la tabla inferior.</li>
                 <li>Si desea volver a mostrar la información sin el filtro actual, presione <strong>Refrescar</strong>.</li>
             </ol>
 
+            <h2>¿Qué hace cada operador?</h2>
+            <p>
+                Los operadores disponibles pueden cambiar según el tipo de campo seleccionado.
+                Los campos de texto ofrecen =, &lt;&gt;, Contiene, Comienza con y Termina con.
+                Los campos numéricos y de fecha ofrecen =, &lt;&gt;, &gt;, &lt;, &gt;= y &lt;=.
+                Los campos booleanos ofrecen únicamente = y &lt;&gt;.
+            </p>
+
+            <table class="tabla-ayuda">
+                <thead>
+                    <tr>
+                        <th>Operador</th>
+                        <th>Qué hace</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Igual a (=)</strong></td>
+                        <td>Muestra los registros cuyo campo coincide con el valor indicado.</td>
+                        <td>Edad igual a <strong>30</strong>: muestra los registros con edad 30.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Diferente de (&lt;&gt;)</strong></td>
+                        <td>Muestra los registros cuyo campo no coincide con el valor indicado.</td>
+                        <td>Estado diferente de <strong>Inactivo</strong>: excluye los registros inactivos.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mayor que (&gt;)</strong></td>
+                        <td>Muestra los valores superiores al indicado, sin incluirlo.</td>
+                        <td>Edad mayor que <strong>30</strong>: muestra 31, 32, 33, etc.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mayor o igual que (&gt;=)</strong></td>
+                        <td>Muestra los valores iguales o superiores al indicado.</td>
+                        <td>Edad mayor o igual que <strong>30</strong>: incluye 30, 31, 32, etc.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Menor que (&lt;)</strong></td>
+                        <td>Muestra los valores inferiores al indicado, sin incluirlo.</td>
+                        <td>Edad menor que <strong>30</strong>: muestra 29, 28, 27, etc.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Menor o igual que (&lt;=)</strong></td>
+                        <td>Muestra los valores iguales o inferiores al indicado.</td>
+                        <td>Edad menor o igual que <strong>30</strong>: incluye 30, 29, 28, etc.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contiene</strong></td>
+                        <td>Busca el texto indicado en cualquier parte del campo.</td>
+                        <td>Nombre contiene <strong>ana</strong>: puede encontrar «Ana» y «Mariana».</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Comienza con</strong></td>
+                        <td>Busca valores que comienzan con el texto indicado.</td>
+                        <td>Nombre comienza con <strong>Mar</strong>: puede encontrar «María» y «Marcos».</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Termina con</strong></td>
+                        <td>Busca valores que finalizan con el texto indicado.</td>
+                        <td>Apellido termina con <strong>ez</strong>: puede encontrar «López» y «Pérez».</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="nota">
+                <strong>Fechas:</strong> use <strong>aaaa-MM-dd</strong> o <strong>dd/MM/aaaa</strong> (por ejemplo, 2026-10-07 o 07/10/2026). Para fecha y hora, agregue <strong>HH:mm:ss</strong> (2026-10-07 14:30:00).
+                Los operadores «mayor que» y «menor que» permiten buscar fechas posteriores
+                o anteriores, respectivamente.
+            </div>
+
+            <h2>Valores y selección de resultados</h2>
+            <p>Escriba enteros sin decimales, números decimales con punto (125.50), horas como HH:mm:ss y valores booleanos como 1, 0, true o false. Respete la longitud permitida del campo de texto.</p>
+            <p>Al cambiar Campo se borra Valor y se actualizan los operadores. Los errores de formato y los avisos de búsqueda sin resultados aparecen debajo de Valor; corrija el dato y vuelva a buscar.</p>
+            <p>La tabla muestra 15 registros por página. Haga clic en el encabezado de una columna para ordenar y vuelva a hacer clic para alternar la dirección. Para devolver un registro a la pantalla que abrió Consultas, haga doble clic en su fila o selecciónela y presione Enter.</p>
+
             <h2>Botones y controles</h2>
             <table class="tabla-ayuda">
                 <thead>
-                    <tr><th>Botón o control</th><th>Función</th><th>Cómo usarlo</th></tr>
+                    <tr>
+                        <th>Botón o control</th>
+                        <th>Función</th>
+                        <th>Cómo usarlo</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>
@@ -63,7 +143,7 @@
                     <tr>
                         <td><strong>Valor</strong></td>
                         <td>Contiene el dato que será comparado durante la búsqueda.</td>
-                        <td>Escriba el texto, número o valor correspondiente al campo elegido.</td>
+                        <td>Escriba el texto, número o fecha correspondiente al campo elegido.</td>
                     </tr>
                     <tr>
                         <td><strong>Buscar</strong></td>
@@ -99,7 +179,8 @@
             </table>
 
             <div class="nota">
-                <strong>Consejo:</strong> si la búsqueda no devuelve resultados, revise que el campo, operador y valor correspondan entre sí y luego vuelva a presionar <strong>Buscar</strong>.
+                <strong>Consejo:</strong> si la búsqueda no devuelve resultados, revise que el campo,
+                operador y valor correspondan entre sí y luego vuelva a presionar <strong>Buscar</strong>.
             </div>
         </div>
     </div>

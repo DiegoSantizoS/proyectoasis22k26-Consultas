@@ -1,4 +1,27 @@
-﻿using CapaControlador_Seguridad;
+﻿/*
+ * ==================================================================
+ * Área : Seguridad
+ * Autor : Victor Omar Gomez Carrascosa
+ * Carné : 9959-23-10733
+ * Fecha : 24/09/2026
+ * ==================================================================
+ * Propósito :
+ *  El FrmLogin es el formulario de inicio de sesión: valida las
+ *  credenciales a través de ClsModeloUsuario, inicia la sesión
+ *  del usuario en ClsSesionSeguridad y abre el FrmSplash; también
+ *  da acceso a la recuperación de contraseña y a mostrar/ocultar
+ *  la contraseña ingresada.
+ * Reglas especificas:
+ *  Si las credenciales son incorrectas, se limpia el campo de
+ *  contraseña y se devuelve el foco a él, mostrando el mensaje
+ *  "Usuario o contraseña incorrectos"; la contraseña se oculta
+ *  por defecto y solo se muestra en texto plano si el usuario
+ *  activa el checkbox correspondiente.
+ * ===================================================================
+*/
+
+using CapaControlador_Seguridad;
+using CapaControlador_Seguridad.Objetos_de_valor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,10 +61,36 @@ namespace CapaVista_Seguridad
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FrmMDISeguridad Perfil = new FrmMDISeguridad();
-            this.Hide();
-            Perfil.ShowDialog();
-            this.Show();
+            try
+            {
+                var modelo = new ClsModeloUsuario();
+                bool acceso = modelo.SeguridadMetIniciarSesion(SeguridadTxtUsuario.Text, SeguridadTxtContraseña.Text);
+
+                if (acceso)
+                {
+                    ClsSesionSeguridad.SeguridadMetIniciarSesion(
+                        idUsuario: modelo.IdUsuario,
+                        nombreUsuario: modelo.NombreUsuario,
+                        nombreEmpleado: modelo.NombreEmpleado,
+                        roles: modelo.Roles
+                    );
+
+                    this.Hide();
+                    var frmPrincipal = new FrmSplash();
+                    frmPrincipal.ShowDialog();
+                    this.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario o contraseña incorrectos", "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    SeguridadTxtContraseña.Clear();
+                    SeguridadTxtContraseña.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -53,6 +102,11 @@ namespace CapaVista_Seguridad
             Recuperacion.ShowDialog();
 
             this.Show();
+        }
+
+        private void SeguridadChkMostrarContra_CheckedChanged(object sender, EventArgs e)
+        {
+            SeguridadTxtContraseña.PasswordChar = SeguridadChkMostrarContra.Checked ? '\0' : '*';
         }
     }
 }

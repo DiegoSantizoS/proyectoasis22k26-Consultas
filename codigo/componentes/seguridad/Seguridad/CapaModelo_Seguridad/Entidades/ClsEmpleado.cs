@@ -4,12 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+/*
+ * ==================================================================
+ * Área : Seguridad
+ * Autor : Carlos David Calderón Ramirez
+ * Carné : 9959-23-848
+ * Fecha : 22/09/2026
+ * ==================================================================
+ * Propósito :
+ * Aqui en esta clase se encuentran los get y set necesarios y 
+ * utilizados en la vista del formulario
+ * ===================================================================
+*/
+
 namespace CapaModelo_Seguridad.Entidades
 {
     public class ClsEmpleado
     {
-        //IMPORTANTE TODOS ESTOS CAMPOS DEBEN SER IGUAL A COMO
-        //LO TENGAN EN SU BASE DE DATOS PARA QUE HAGAN MATCH
         public int IdEmpleado { get; set; }
         public string CodigoEmpleado { get; set; }
         public string DpiEmpleado { get; set; }

@@ -1,13 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaVista_Consultas;
 
 namespace Ejecucion_Consultas
 {
     internal static class Program
     {
+        /// <summary>
+        /// Punto de entrada principal para la aplicación.
+        /// </summary>
         [STAThread]
-        static void Main()
+        static int Main(string[] Argumentos)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -19,7 +24,7 @@ namespace Ejecucion_Consultas
                 "tblConsulta"
             };
             Application.Run(new FrmEjecucion());
-            
+            return 0;
         }
     }
 }

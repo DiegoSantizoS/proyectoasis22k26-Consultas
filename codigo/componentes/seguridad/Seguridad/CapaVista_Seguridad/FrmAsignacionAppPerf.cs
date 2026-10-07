@@ -1,3 +1,4 @@
+using CapaControlador_Seguridad.Objetos_de_valor;
 using CapaControlador_Seguridad;
 using CapaVista_Seguridad;
 using CapaVista_Seguridad.Ayudas;
@@ -10,6 +11,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaVista_Seguridad.frmReportes;
+
+/*
+ * ==================================================================
+ * Área: Seguridad
+ * Autores: Lourdes Isabel Melendez Pineda
+ * Fecha o ultima edicion: 23/09/2026
+ * ==================================================================
+ * Propósito : Ventana que administra la asignación de aplicaciones
+ * a perfiles, definiendo para cada Rol Módulo y aplicación
+ * los permisos de Insertar, Editar, Eliminar e Imprimir,
+ * con listado, filtrado, seguridad por botón, registro
+ * en bitácora y generación de reporte y ayudas.
+ * ===================================================================
+ */
 
 namespace CapaVista_Seguridad
 {
@@ -17,16 +33,119 @@ namespace CapaVista_Seguridad
     {
         private ClsModeloAsigAppPerf _AsigAppPerf = new ClsModeloAsigAppPerf();
 
+        private ClsPermisoAplicacion _MisPermisos;
+        private const int ID_MODULO = 4;
+        private const int ID_APLICACION = 10;
+
         public FrmAsignacionAppPerf()
-        {
+        {   
             InitializeComponent();
         }
 
         private void FrmAsignacionAppPerf_Load(object sender, EventArgs e)
         {
+            var MapaBotones = new Dictionary<Control, TipoPermiso>
+            {
+                { BtnSeguridadAgregar,   TipoPermiso.Insertar },
+                { BtnSeguridadModificar, TipoPermiso.Editar   },
+                { BtnSeguridadQuitar,    TipoPermiso.Eliminar }
+            };
+
+            _MisPermisos = ClsSeguridadFormHelper.SeguridadMetInicializarSeguridad(
+             this, ID_MODULO, ID_APLICACION, MapaBotones);
+
+            if (!_MisPermisos.TieneAcceso)
+            return;
+
             SeguridadMetCargarCombos();
+            SeguridadMetConfigurarColumnas();
             SeguridadMetListarAsigAppPerf();
         }
+
+        private void SeguridadMetConfigurarColumnas()
+        {
+            DgvSeguridadListaUsuarios.AutoGenerateColumns = false;
+            DgvSeguridadListaUsuarios.Columns.Clear();
+
+            DgvSeguridadListaUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "IdRol",
+                Name = "IdRol",
+                Visible = false
+            });
+            DgvSeguridadListaUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "IdModulo",
+                Name = "IdModulo",
+                Visible = false
+            });
+            DgvSeguridadListaUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "IdAplicacion",
+                Name = "IdAplicacion",
+                Visible = false
+            });
+
+            DgvSeguridadListaUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "NombreRol",
+                HeaderText = "Perfil",
+                Name = "NombreRol"
+            });
+            DgvSeguridadListaUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "NombreModulo",
+                HeaderText = "Módulo",
+                Name = "NombreModulo"
+            });
+            DgvSeguridadListaUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "NombreAplicacion",
+                HeaderText = "Aplicación",
+                Name = "NombreAplicacion"
+            });
+
+            DgvSeguridadListaUsuarios.Columns.Add(new DataGridViewCheckBoxColumn
+            {
+                DataPropertyName = "DerInsertarRolModuloAplicacion",
+                HeaderText = "Insertar",
+                Name = "DerInsertar"
+            });
+            DgvSeguridadListaUsuarios.Columns.Add(new DataGridViewCheckBoxColumn
+            {
+                DataPropertyName = "DerEditarRolModuloAplicacion",
+                HeaderText = "Editar",
+                Name = "DerEditar"
+            });
+            DgvSeguridadListaUsuarios.Columns.Add(new DataGridViewCheckBoxColumn
+            {
+                DataPropertyName = "DerEliminarRolModuloAplicacion",
+                HeaderText = "Eliminar",
+                Name = "DerEliminar"
+            });
+            DgvSeguridadListaUsuarios.Columns.Add(new DataGridViewCheckBoxColumn
+            {
+                DataPropertyName = "DerImprimirRolModuloAplicacion",
+                HeaderText = "Imprimir",
+                Name = "DerImprimir"
+            });
+
+            DgvSeguridadListaUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "CreatedAt",
+                HeaderText = "Fecha de creación",
+                Name = "CreatedAt",
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy HH:mm" }
+            });
+            DgvSeguridadListaUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "UpdatedAt",
+                HeaderText = "Última actualización",
+                Name = "UpdatedAt",
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy HH:mm" }
+            });
+        }
+
 
         private void SeguridadMetCargarCombos()
         {
@@ -55,6 +174,8 @@ namespace CapaVista_Seguridad
             try
             {
                 DgvSeguridadListaUsuarios.DataSource = _AsigAppPerf.SeguridadMetObtenerTodos();
+                SeguridadMetActualizarContador();
+
             }
             catch (Exception ex)
             {
@@ -62,9 +183,26 @@ namespace CapaVista_Seguridad
             }
         }
 
+        private void SeguridadMetActualizarContador()
+        {
+            int Total = DgvSeguridadListaUsuarios.Rows.Count;
+
+            if (Total == 0)
+            {
+                LblSeguridadContador.Text = "Mostrando 0 de 0 registros";
+                return;
+            }
+
+            int FilaActual = (DgvSeguridadListaUsuarios.CurrentCell != null)
+                ? DgvSeguridadListaUsuarios.CurrentCell.RowIndex + 1
+                : 1;
+
+            LblSeguridadContador.Text = $"Mostrando {FilaActual} de {Total} registros";
+        }
+
         private void BtnSeguridadAyuda_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Seleccione un Perfil, Módulo y Aplicación, marque los permisos deseados y presione Agregar.");
+            Help.ShowHelp(this, "C:/SeguridadAyudas/SeguridadAyudas.chm", "AsigAplPerfiles_Seguridad.html");
         }
 
         private void BtnSeguridadAgregar_Click(object sender, EventArgs e)
@@ -91,16 +229,12 @@ namespace CapaVista_Seguridad
             {
                 if (string.IsNullOrWhiteSpace(TxtSeguridadFiltro.Text))
                 {
-                    MessageBox.Show("Ingrese un ID de Rol para filtrar");
+                    MessageBox.Show("Ingrese un Nombre de Rol para filtrar");
                     return;
                 }
 
-                int IdRol = Convert.ToInt32(TxtSeguridadFiltro.Text);
-                DgvSeguridadListaUsuarios.DataSource = _AsigAppPerf.SeguridadMetBuscarPorRol(IdRol);
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("El ID de Rol debe ser un número");
+                DgvSeguridadListaUsuarios.DataSource = _AsigAppPerf.SeguridadMetBuscarPorNombreRol(TxtSeguridadFiltro.Text);
+                SeguridadMetActualizarContador();
             }
             catch (Exception ex)
             {
@@ -113,9 +247,9 @@ namespace CapaVista_Seguridad
             if (DgvSeguridadListaUsuarios.SelectedRows.Count > 0)
             {
                 _AsigAppPerf.Estado = EstadoEntidad.Deleted;
-                _AsigAppPerf.IdRol = Convert.ToInt32(DgvSeguridadListaUsuarios.CurrentRow.Cells[0].Value);
-                _AsigAppPerf.IdModulo = Convert.ToInt32(DgvSeguridadListaUsuarios.CurrentRow.Cells[1].Value);
-                _AsigAppPerf.IdAplicacion = Convert.ToInt32(DgvSeguridadListaUsuarios.CurrentRow.Cells[2].Value);
+                _AsigAppPerf.IdRol = Convert.ToInt32(DgvSeguridadListaUsuarios.CurrentRow.Cells["IdRol"].Value);
+                _AsigAppPerf.IdModulo = Convert.ToInt32(DgvSeguridadListaUsuarios.CurrentRow.Cells["IdModulo"].Value);
+                _AsigAppPerf.IdAplicacion = Convert.ToInt32(DgvSeguridadListaUsuarios.CurrentRow.Cells["IdAplicacion"].Value);
 
                 string Resultado = _AsigAppPerf.SeguridadMetGrabarCambios();
                 MessageBox.Show(Resultado);
@@ -134,13 +268,14 @@ namespace CapaVista_Seguridad
             if (DgvSeguridadListaUsuarios.SelectedRows.Count > 0)
             {
                 _AsigAppPerf.Estado = EstadoEntidad.Modified;
-                CboSeguridadPerfiles.SelectedValue = Convert.ToInt32(DgvSeguridadListaUsuarios.CurrentRow.Cells[0].Value);
-                CboSeguridadModulos.SelectedValue = Convert.ToInt32(DgvSeguridadListaUsuarios.CurrentRow.Cells[1].Value);
-                CboSeguridadAplicaciones.SelectedValue = Convert.ToInt32(DgvSeguridadListaUsuarios.CurrentRow.Cells[2].Value);
-                chkSeguridadInsertar.Checked = Convert.ToBoolean(DgvSeguridadListaUsuarios.CurrentRow.Cells[3].Value);
-                chkSeguridadEditar.Checked = Convert.ToBoolean(DgvSeguridadListaUsuarios.CurrentRow.Cells[4].Value);
-                chkSeguridadeliminar.Checked = Convert.ToBoolean(DgvSeguridadListaUsuarios.CurrentRow.Cells[5].Value);
-                chkSeguridadImprimir.Checked = Convert.ToBoolean(DgvSeguridadListaUsuarios.CurrentRow.Cells[6].Value);
+                CboSeguridadPerfiles.SelectedValue = Convert.ToInt32(DgvSeguridadListaUsuarios.CurrentRow.Cells["IdRol"].Value);
+                CboSeguridadModulos.SelectedValue = Convert.ToInt32(DgvSeguridadListaUsuarios.CurrentRow.Cells["IdModulo"].Value);
+                CboSeguridadAplicaciones.SelectedValue = Convert.ToInt32(DgvSeguridadListaUsuarios.CurrentRow.Cells["IdAplicacion"].Value);
+                chkSeguridadInsertar.Checked = Convert.ToBoolean(DgvSeguridadListaUsuarios.CurrentRow.Cells["DerInsertar"].Value);
+                chkSeguridadEditar.Checked = Convert.ToBoolean(DgvSeguridadListaUsuarios.CurrentRow.Cells["DerEditar"].Value);
+                chkSeguridadeliminar.Checked = Convert.ToBoolean(DgvSeguridadListaUsuarios.CurrentRow.Cells["DerEliminar"].Value);
+                chkSeguridadImprimir.Checked = Convert.ToBoolean(DgvSeguridadListaUsuarios.CurrentRow.Cells["DerImprimir"].Value);
+                SeguridadMetActualizarContador();
             }
         }
 
@@ -226,7 +361,9 @@ namespace CapaVista_Seguridad
             {
                 DgvSeguridadListaUsuarios.ClearSelection();
                 DgvSeguridadListaUsuarios.Rows[0].Selected = true;
-                DgvSeguridadListaUsuarios.CurrentCell = DgvSeguridadListaUsuarios.Rows[0].Cells[0];
+                DgvSeguridadListaUsuarios.CurrentCell = DgvSeguridadListaUsuarios.Rows[0].Cells["NombreRol"];
+                SeguridadMetActualizarContador();
+
             }
         }
 
@@ -239,7 +376,8 @@ namespace CapaVista_Seguridad
                 {
                     DgvSeguridadListaUsuarios.ClearSelection();
                     DgvSeguridadListaUsuarios.Rows[FilaActual - 1].Selected = true;
-                    DgvSeguridadListaUsuarios.CurrentCell = DgvSeguridadListaUsuarios.Rows[FilaActual - 1].Cells[0];
+                    DgvSeguridadListaUsuarios.CurrentCell = DgvSeguridadListaUsuarios.Rows[FilaActual - 1].Cells["NombreRol"];
+                    SeguridadMetActualizarContador();
                 }
             }
         }
@@ -253,7 +391,8 @@ namespace CapaVista_Seguridad
                 {
                     DgvSeguridadListaUsuarios.ClearSelection();
                     DgvSeguridadListaUsuarios.Rows[FilaActual + 1].Selected = true;
-                    DgvSeguridadListaUsuarios.CurrentCell = DgvSeguridadListaUsuarios.Rows[FilaActual + 1].Cells[0];
+                    DgvSeguridadListaUsuarios.CurrentCell = DgvSeguridadListaUsuarios.Rows[FilaActual + 1].Cells["NombreRol"];
+                    SeguridadMetActualizarContador();
                 }
             }
         }
@@ -265,8 +404,16 @@ namespace CapaVista_Seguridad
                 int UltimaFila = DgvSeguridadListaUsuarios.Rows.Count - 1;
                 DgvSeguridadListaUsuarios.ClearSelection();
                 DgvSeguridadListaUsuarios.Rows[UltimaFila].Selected = true;
-                DgvSeguridadListaUsuarios.CurrentCell = DgvSeguridadListaUsuarios.Rows[UltimaFila].Cells[0];
+                DgvSeguridadListaUsuarios.CurrentCell = DgvSeguridadListaUsuarios.Rows[UltimaFila].Cells["NombreRol"];
+                SeguridadMetActualizarContador();
             }
+        }
+
+
+        private void BtnSeguridadReporte_Click(object sender, EventArgs e)
+        {
+            FrmReporteAsigAppPerf reporte = new FrmReporteAsigAppPerf();
+            reporte.Show();
         }
     }
 }
