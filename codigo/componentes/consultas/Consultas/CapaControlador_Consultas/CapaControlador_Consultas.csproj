@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CapaModelo_Consultas">
-      <HintPath>..\CapaModelo_Consultas\bin\Debug\CapaModelo_Consultas.dll</HintPath>
+      <HintPath>..\CapaModelo_Consultas\bin\$(Configuration)\CapaModelo_Consultas.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -44,6 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClsServicioConsultasCompartidas.cs" />
+    <Compile Include="ClsServicioConsultasGuardadas.cs" />
+    <Compile Include="ClsControladorConsultasSimples.cs" />
+    <Compile Include="ClsControladorConsultasComplejas.cs" />
+    <Compile Include="ClsPaginaConsulta.cs" />
+    <Compile Include="ClsValidadorConsultas.cs" />
+    <Compile Include="IContextoConsulta.cs" />
+    <Compile Include="ClsControladorConsultas.cs" />
+    <Compile Include="ClsMetadatosDisenadorConsultas.cs" />
+    <Compile Include="ClsErrorValidacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.37710.0 d17.14
+VisualStudioVersion = 17.14.37710.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaVista_Consultas", "CapaVista_Consultas\CapaVista_Consultas.csproj", "{F6CA6337-19FB-4E82-8FAC-8D77FFA082DA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{55BABC25-0423-4FFC-8EE5-F7BD177DEA86} = {55BABC25-0423-4FFC-8EE5-F7BD177DEA86}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaControlador_Consultas", "CapaControlador_Consultas\CapaControlador_Consultas.csproj", "{55BABC25-0423-4FFC-8EE5-F7BD177DEA86}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D083E366-064B-4AE9-A69E-93C901BD76BC} = {D083E366-064B-4AE9-A69E-93C901BD76BC}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaModelo_Consultas", "CapaModelo_Consultas\CapaModelo_Consultas.csproj", "{D083E366-064B-4AE9-A69E-93C901BD76BC}"
 EndProject

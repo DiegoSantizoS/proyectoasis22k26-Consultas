@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Repositorios\ClsLectorConsultaAntigua.cs" />
+    <Compile Include="Repositorios\ClsConsultaPreparada.cs" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,6 +44,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contratos\IRepositorioConsultasGuardadas.cs" />
+    <Compile Include="Contratos\IRepositorioEjecucionConsultas.cs" />
+    <Compile Include="Contratos\IRepositorioMetadatos.cs" />
+    <Compile Include="Entidades\ClsCampoConsulta.cs" />
+    <Compile Include="Entidades\ClsCondicion.cs" />
+    <Compile Include="Entidades\ClsConsultaGuardada.cs" />
+    <Compile Include="Entidades\ClsDefinicionConsulta.cs" />
+    <Compile Include="Entidades\ClsResultadoPaginado.cs" />
+    <Compile Include="Repositorios\ClsConexion.cs" />
+    <Compile Include="Repositorios\ClsConstructorConsulta.cs" />
+    <Compile Include="Repositorios\ClsFormatoDefinicion.cs" />
+    <Compile Include="Repositorios\ClsRepositorio.cs" />
+    <Compile Include="Repositorios\ClsRepositorioConsultasGuardadas.cs" />
+    <Compile Include="Repositorios\ClsRepositorioEjecucionConsultas.cs" />
+    <Compile Include="Repositorios\ClsRepositorioMetadatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
