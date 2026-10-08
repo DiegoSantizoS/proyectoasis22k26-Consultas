@@ -2,6 +2,9 @@ using System;
 using System.Data;
 using CapaModelo_Consultas.Entidades;
 
+// Inicio código José Cano - 0901-23-1727
+// Fecha: 03/10/2026
+
 namespace CapaControlador_Consultas
 {
     public sealed class ClsControladorConsultasComplejas
@@ -63,4 +66,7 @@ namespace CapaControlador_Consultas
             }
         }
     }
+    // Fin código José Cano - 0901-23-1727
+    // Fecha: 03/10/2026
+
 }
