@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CapaVista_Consultas;
 using System.Windows.Forms;
 
 namespace Ejecucion_Consultas
@@ -15,6 +8,18 @@ namespace Ejecucion_Consultas
         public FrmEjecucion()
         {
             InitializeComponent();
+            ConsultasUsrCampoRetornado.ConsultasMetLimpiarError();
+            ConsultasUsrPkRetornado.ConsultasMetLimpiarError();
+            consultas1.ConsultasEvtSeleccion += ConsultasMetSeleccionar;
+        }
+
+        private void ConsultasMetSeleccionar(object Sender, ClsSeleccionConsulta Evento)
+        {
+            string Pk = consultas1.LlavePrimaria();
+            ConsultasUsrPkRetornado.Text = Pk;
+
+            ConsultasUsrPkRetornado.ConsultasMetMostrarError("Esta es la llave primaria del registro");
+            ConsultasUsrCampoRetornado.ConsultasMetMostrarError("Este es el campo deseado del registro");
         }
     }
 }

@@ -12,6 +12,7 @@ namespace CapaControlador_Consultas
         void ConsultasProcLimpiarFiltro();
         ClsPaginaConsulta ConsultasFuncEjecutar(int Pagina, int RegistrosPorPagina, string CampoOrden, bool Descendente);
         object ConsultasFuncSeleccionar(DataRow Registro);
+        string ConsultasFuncObtenerPk(DataRow Registro);
         string ConsultasFuncMensajeSinResultados(string NombreCampo);
     }
     /* fin de código de Miguel David Contreras Jacinto 0901-21-3878 el 8/10/2026*/

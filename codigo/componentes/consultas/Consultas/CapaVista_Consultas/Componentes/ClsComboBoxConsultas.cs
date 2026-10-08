@@ -24,5 +24,6 @@ namespace CapaVista_Consultas.Componentes
             new Size(200, 27);
     }
     /*Fin del código de Carlos Andres Arriaza Lara 0901-23-13862 el 5/10/2026*/
+    // Fin de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "15/09/26"
 
 }

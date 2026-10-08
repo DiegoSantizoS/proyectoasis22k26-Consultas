@@ -15,14 +15,15 @@ namespace Ejecucion_Consultas
         static int Main(string[] Argumentos)
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            string[] Tablas =
+            Application.SetCompatibleTextRenderingDefault(false);/*
+            if (Argumentos.Length == 1 && Argumentos[0] == "--verificar-dll")
             {
-                "vwDetalleCompras",
-                "vwComprasPorProveedor",
-                "vwComprasPorProducto",
-                "tblConsulta"
-            };
+                using (CapaVista_Consultas.FrmConsultas Consulta = new CapaVista_Consultas.FrmConsultas("tblConsulta", "Pk_Consulta"))
+                {
+                    return !Consulta.SeleccionRealizada && Consulta.ValorSeleccionado == null && Consulta.ErrorCarga == null ? 0 : 1;
+                }
+            }*/
+            //Application.Run(new CapaVista_Consultas.FrmConsultas("tblConsulta", "Pk_Consulta"));
             Application.Run(new FrmEjecucion());
             return 0;
         }

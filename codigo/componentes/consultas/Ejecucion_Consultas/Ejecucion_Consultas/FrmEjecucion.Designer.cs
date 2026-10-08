@@ -29,51 +29,73 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEjecucion));
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.consultas1 = new CapaVista_Consultas.Consultas();
+            this.ConsultasUsrPkRetornado = new CapaVista_Consultas.Componentes.UsrTextBoxConsultas();
+            this.ConsultasUsrCampoRetornado = new CapaVista_Consultas.Componentes.UsrTextBoxConsultas();
             ((System.ComponentModel.ISupportInitialize)(this.consultas1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(256, 22);
-            this.textBox1.TabIndex = 0;
-            // 
             // consultas1
             // 
-            this.consultas1.CampoRetorno = "nombrePaciente";
-            this.consultas1.ControlRetorno = this.textBox1;
-            this.consultas1.Location = new System.Drawing.Point(12, 40);
+            this.consultas1.CampoRetorno = "queryConsulta";
+            this.consultas1.ControlRetorno = this.ConsultasUsrCampoRetornado;
+            this.consultas1.Location = new System.Drawing.Point(72, 183);
+            this.consultas1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.consultas1.Name = "consultas1";
-            this.consultas1.Size = new System.Drawing.Size(256, 83);
+            this.consultas1.Size = new System.Drawing.Size(256, 66);
             this.consultas1.TabIndex = 1;
-            this.consultas1.Tabla = "tblpaciente";
+            this.consultas1.Tabla = "tblconsulta";
             this.consultas1.Text = "consultas1";
             this.consultas1.UseVisualStyleBackColor = true;
+            // 
+            // ConsultasUsrPkRetornado
+            // 
+            this.ConsultasUsrPkRetornado.Enabled = false;
+            this.ConsultasUsrPkRetornado.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ConsultasUsrPkRetornado.Location = new System.Drawing.Point(9, 23);
+            this.ConsultasUsrPkRetornado.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasUsrPkRetornado.MaximumSize = new System.Drawing.Size(1000, 62);
+            this.ConsultasUsrPkRetornado.MaxLength = 2147483647;
+            this.ConsultasUsrPkRetornado.Name = "ConsultasUsrPkRetornado";
+            this.ConsultasUsrPkRetornado.Size = new System.Drawing.Size(397, 62);
+            this.ConsultasUsrPkRetornado.TabIndex = 2;
+            // 
+            // ConsultasUsrCampoRetornado
+            // 
+            this.ConsultasUsrCampoRetornado.Enabled = false;
+            this.ConsultasUsrCampoRetornado.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ConsultasUsrCampoRetornado.Location = new System.Drawing.Point(9, 103);
+            this.ConsultasUsrCampoRetornado.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasUsrCampoRetornado.MaximumSize = new System.Drawing.Size(1000, 62);
+            this.ConsultasUsrCampoRetornado.MaxLength = 2147483647;
+            this.ConsultasUsrCampoRetornado.Name = "ConsultasUsrCampoRetornado";
+            this.ConsultasUsrCampoRetornado.Size = new System.Drawing.Size(397, 62);
+            this.ConsultasUsrCampoRetornado.TabIndex = 3;
             // 
             // FrmEjecucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 139);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            this.ClientSize = new System.Drawing.Size(413, 271);
+            this.Controls.Add(this.ConsultasUsrCampoRetornado);
+            this.Controls.Add(this.ConsultasUsrPkRetornado);
             this.Controls.Add(this.consultas1);
-            this.Controls.Add(this.textBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(431, 318);
+            this.MinimumSize = new System.Drawing.Size(431, 318);
             this.Name = "FrmEjecucion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "4001 - Ejecución";
             ((System.ComponentModel.ISupportInitialize)(this.consultas1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private CapaVista_Consultas.Consultas consultas1;
+        private CapaVista_Consultas.Componentes.UsrTextBoxConsultas ConsultasUsrPkRetornado;
+        private CapaVista_Consultas.Componentes.UsrTextBoxConsultas ConsultasUsrCampoRetornado;
     }
 }

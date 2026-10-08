@@ -258,7 +258,8 @@ namespace CapaVista_Consultas
                     throw new InvalidOperationException("Seleccione un registro.");
                 }
                 object Valor = _Controlador.ConsultasFuncSeleccionar(Registro.Row);
-                ConsultasEvtFilaSeleccionada?.Invoke(this, new ClsSeleccionConsulta(Valor));
+                string Pk = _Controlador.ConsultasFuncObtenerPk(Registro.Row);
+                ConsultasEvtFilaSeleccionada?.Invoke(this, new ClsSeleccionConsulta(Valor, Pk));
             });
         }
         /*Fin del código de Carlos Andres Arriaza Lara 0901-23-13862 el 5/10/2026*/

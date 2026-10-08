@@ -55,18 +55,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Consultas.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="FrmConsultas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmConsultas.Designer.cs">
-      <DependentUpon>FrmConsultas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ClsConvertidorControlRetornoConsultas.cs" />
-    <Compile Include="ClsConvertidorTablaConsultas.cs" />
-    <Compile Include="ClsConvertidorCampoRetornoConsultas.cs" />
     <Compile Include="Componentes\ClsTableLayoutPanelConsultas.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -118,9 +106,32 @@
     <Compile Include="Componentes\UsrTextBoxConsultas.Designer.cs">
       <DependentUpon>UsrTextBoxConsultas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Consultas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FrmConsultas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConsultas.Designer.cs">
+      <DependentUpon>FrmConsultas.cs</DependentUpon>
+    </Compile>
     <Compile Include="IEstadoVistaConsultas.cs" />
     <Compile Include="ClsInteraccionConsultas.cs" />
+    <Compile Include="ClsConvertidorControlRetornoConsultas.cs" />
+    <Compile Include="ClsConvertidorTablaConsultas.cs" />
+    <Compile Include="ClsConvertidorCampoRetornoConsultas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UsrConsultasComplejas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsrConsultasComplejas.Designer.cs">
+      <DependentUpon>UsrConsultasComplejas.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsrConsultasSimples.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -155,20 +166,25 @@
       <DependentUpon>UsrTextBoxConsultas.cs</DependentUpon>
       <LogicalName>CapaVista_Consultas.Componentes.UsrTextBoxConsultas.resources</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmConsultas.resx">
+      <DependentUpon>FrmConsultas.cs</DependentUpon>
+      <LogicalName>CapaVista_Consultas.FrmConsultas.resources</LogicalName>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UsrConsultasComplejas.resx">
+      <DependentUpon>UsrConsultasComplejas.cs</DependentUpon>
+      <LogicalName>CapaVista_Consultas.UsrConsultasComplejas.resources</LogicalName>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsrConsultasSimples.resx">
       <DependentUpon>UsrConsultasSimples.cs</DependentUpon>
+      <LogicalName>CapaVista_Consultas.UsrConsultasSimples.resources</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="UsrTabla.resx">
       <DependentUpon>UsrTabla.cs</DependentUpon>
       <LogicalName>CapaVista_Consultas.UsrTabla.resources</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmConsultas.resx">
-      <DependentUpon>FrmConsultas.cs</DependentUpon>
-      <LogicalName>CapaVista_Consultas.FrmConsultas.resources</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

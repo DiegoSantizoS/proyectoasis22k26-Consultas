@@ -45,15 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClsControladorConsultas.cs" />
-    <Compile Include="ClsErrorValidacion.cs" />
-    <Compile Include="ClsControladorConsultasSimples.cs" />
-    <Compile Include="ClsMetadatosDisenadorConsultas.cs" />
-    <Compile Include="ClsPaginaConsulta.cs" />
     <Compile Include="ClsServicioConsultasCompartidas.cs" />
     <Compile Include="ClsServicioConsultasGuardadas.cs" />
+    <Compile Include="ClsControladorConsultasSimples.cs" />
+    <Compile Include="ClsControladorConsultasComplejas.cs" />
+    <Compile Include="ClsPaginaConsulta.cs" />
     <Compile Include="ClsValidadorConsultas.cs" />
     <Compile Include="IContextoConsulta.cs" />
+    <Compile Include="ClsControladorConsultas.cs" />
+    <Compile Include="ClsMetadatosDisenadorConsultas.cs" />
+    <Compile Include="ClsErrorValidacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
