@@ -5,6 +5,9 @@ using System.Windows.Forms;
 using CapaControlador_Consultas;
 using CapaVista_Consultas.Componentes;
 
+// Inicio código José Cano - 0901-23-1727
+// Fecha: 06/10/2026
+
 namespace CapaVista_Consultas
 {
     public partial class UsrConsultasComplejas : UsrBaseConsultas, IEstadoVistaConsultas
@@ -569,4 +572,9 @@ namespace CapaVista_Consultas
             SolicitarSimples?.Invoke(this, EventArgs.Empty);
         }
     }
+
+    // Fin código José Cano - 0901-23-1727
+    // Fecha: 06/10/2026
+
+
 }
