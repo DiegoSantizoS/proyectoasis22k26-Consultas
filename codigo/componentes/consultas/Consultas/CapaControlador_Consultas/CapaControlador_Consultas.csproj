@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClsControladorConsultas.cs" />
+    <Compile Include="ClsControladorConsultasComplejas.cs" />
     <Compile Include="ClsErrorValidacion.cs" />
     <Compile Include="ClsControladorConsultasSimples.cs" />
     <Compile Include="ClsMetadatosDisenadorConsultas.cs" />
