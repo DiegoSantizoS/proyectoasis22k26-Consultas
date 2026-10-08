@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -32,6 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Componentes\ClsEtiquetaConsultas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ClsSeleccionConsulta.cs" />
+    <Compile Include="Componentes\ClsPanelConsultas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Componentes\ClsActualizacionDisenoConsultas.cs" />
     <Reference Include="CapaControlador_Consultas">
       <HintPath>..\CapaControlador_Consultas\bin\$(Configuration)\CapaControlador_Consultas.dll</HintPath>
     </Reference>
@@ -47,7 +55,112 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consultas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FrmConsultas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConsultas.Designer.cs">
+      <DependentUpon>FrmConsultas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClsConvertidorControlRetornoConsultas.cs" />
+    <Compile Include="ClsConvertidorTablaConsultas.cs" />
+    <Compile Include="ClsConvertidorCampoRetornoConsultas.cs" />
+    <Compile Include="Componentes\ClsTableLayoutPanelConsultas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Componentes\ClsButtonConsultas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Componentes\ClsButtonConsultas.Designer.cs">
+      <DependentUpon>ClsButtonConsultas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Componentes\ClsComboBoxConsultas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Componentes\ClsComboBoxConsultas.Designer.cs">
+      <DependentUpon>ClsComboBoxConsultas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Componentes\ClsGroupBoxConsultas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Componentes\ClsGroupBoxConsultas.Designer.cs">
+      <DependentUpon>ClsGroupBoxConsultas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Componentes\ClsRadioButtonConsultas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Componentes\ClsTableButtonConsultas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Componentes\UsrBaseConsultas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Componentes\UsrBaseConsultas.Designer.cs">
+      <DependentUpon>UsrBaseConsultas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Componentes\UsrDataGridViewConsultas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Componentes\UsrDataGridViewConsultas.Designer.cs">
+      <DependentUpon>UsrDataGridViewConsultas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Componentes\UsrLabelConsultas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Componentes\UsrLabelConsultas.Designer.cs">
+      <DependentUpon>UsrLabelConsultas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Componentes\UsrTextBoxConsultas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Componentes\UsrTextBoxConsultas.Designer.cs">
+      <DependentUpon>UsrTextBoxConsultas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IEstadoVistaConsultas.cs" />
+    <Compile Include="ClsInteraccionConsultas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsrTabla.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsrTabla.Designer.cs">
+      <DependentUpon>UsrTabla.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Componentes\ClsComboBoxConsultas.resx">
+      <DependentUpon>ClsComboBoxConsultas.cs</DependentUpon>
+      <LogicalName>CapaVista_Consultas.Componentes.ClsComboBoxConsultas.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Componentes\UsrBaseConsultas.resx">
+      <DependentUpon>UsrBaseConsultas.cs</DependentUpon>
+      <LogicalName>CapaVista_Consultas.Componentes.UsrBaseConsultas.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Componentes\UsrDataGridViewConsultas.resx">
+      <DependentUpon>UsrDataGridViewConsultas.cs</DependentUpon>
+      <LogicalName>CapaVista_Consultas.Componentes.UsrDataGridViewConsultas.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Componentes\UsrLabelConsultas.resx">
+      <DependentUpon>UsrLabelConsultas.cs</DependentUpon>
+      <LogicalName>CapaVista_Consultas.Componentes.ClsEtiquetaConsultas.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Componentes\UsrTextBoxConsultas.resx">
+      <DependentUpon>UsrTextBoxConsultas.cs</DependentUpon>
+      <LogicalName>CapaVista_Consultas.Componentes.UsrTextBoxConsultas.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsrTabla.resx">
+      <DependentUpon>UsrTabla.cs</DependentUpon>
+      <LogicalName>CapaVista_Consultas.UsrTabla.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConsultas.resx">
+      <DependentUpon>FrmConsultas.cs</DependentUpon>
+      <LogicalName>CapaVista_Consultas.FrmConsultas.resources</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -32,7 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Repositorios\ClsLectorConsultaAntigua.cs" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,10 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contratos\IRepositorioConsultasGuardadas.cs" />
-    <Compile Include="Entidades\ClsConsultaGuardada.cs" />
-    <Compile Include="Repositorios\ClsFormatoDefinicion.cs" />
-    <Compile Include="Repositorios\ClsRepositorioConsultasGuardadas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
