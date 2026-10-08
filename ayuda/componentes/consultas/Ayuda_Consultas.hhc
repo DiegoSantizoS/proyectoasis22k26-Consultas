@@ -17,10 +17,6 @@
 			<param name="Name" value="Consultas Simples">
 			<param name="Local" value="ConsultaSimple.html">
 			</OBJECT>
-		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Resultados">
-			<param name="Local" value="Resultados.html">
-			</OBJECT>
 	</UL>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Consultas Complejas">
@@ -30,10 +26,6 @@
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Consultas Complejas">
 			<param name="Local" value="ConsultaCompleja.html">
-			</OBJECT>
-		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Consultas Reutilizables">
-			<param name="Local" value="ConsultasReutilizables.html">
 			</OBJECT>
 	</UL>
 </UL>
