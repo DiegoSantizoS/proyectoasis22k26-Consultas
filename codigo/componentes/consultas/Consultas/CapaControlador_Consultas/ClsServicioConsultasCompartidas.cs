@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using CapaModelo_Consultas.Contratos;
@@ -156,6 +157,31 @@ namespace CapaControlador_Consultas
                 throw new ArgumentException("El campo de retorno del registro seleccionado es nulo.");
             }
             return Registro[CampoRetorno];
+        }
+
+        public string ConsultasFuncObtenerPk(DataRow Registro)
+        {
+            ConsultasProcCargarCampos();
+            ClsCampoConsulta[] Primarios = _Campos.Where(Campo => Campo.EsPrimario).ToArray();
+            if (Primarios.Length == 0)
+            {
+                throw new ArgumentException("La tabla seleccionada no tiene una llave primaria. No se puede confirmar la selección.");
+            }
+            if (Primarios.Length != 1)
+            {
+                throw new ArgumentException("La tabla seleccionada tiene una llave primaria compuesta. Solo se admiten llaves primarias de una columna.");
+            }
+            string Nombre = Primarios[0].Nombre;
+            if (Registro == null || !Registro.Table.Columns.Contains(Nombre))
+            {
+                throw new ArgumentException("El registro seleccionado no contiene la columna de llave primaria.");
+            }
+            object Valor = Registro[Nombre];
+            if (Valor == null || Valor == DBNull.Value)
+            {
+                throw new ArgumentException("La llave primaria del registro seleccionado es nula.");
+            }
+            return Convert.ToString(Valor, CultureInfo.InvariantCulture);
         }
 
         public string ConsultasFuncMensajeSinResultados(string NombreCampo)

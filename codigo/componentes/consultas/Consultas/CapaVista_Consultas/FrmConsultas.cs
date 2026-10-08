@@ -18,6 +18,7 @@ namespace CapaVista_Consultas
         private bool _Cargado;
         private bool _ComplejasCargadas;
         private ClsControladorConsultas _ControladorComplejas;
+        private string _LlavePrimaria;
         public string CampoSeleccionado { get; private set; }
         public object ValorSeleccionado { get; private set; }
         public bool SeleccionRealizada { get; private set; }
@@ -149,10 +150,16 @@ namespace CapaVista_Consultas
             });
         }
 
+        public string LlavePrimaria()
+        {
+            return _LlavePrimaria;
+        }
+
         private void ConsultasMetSeleccionar(object Sender, ClsSeleccionConsulta Evento)
         {
             if (SeleccionRealizada) return;
             ValorSeleccionado = Evento.Valor;
+            _LlavePrimaria = Evento.Pk;
             CampoSeleccionado = Convert.ToString(Evento.Valor, System.Globalization.CultureInfo.InvariantCulture);
             SeleccionRealizada = true;
             DialogResult = DialogResult.OK;

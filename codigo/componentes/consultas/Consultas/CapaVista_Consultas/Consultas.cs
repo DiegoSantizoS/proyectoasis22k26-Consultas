@@ -9,6 +9,7 @@ namespace CapaVista_Consultas
     {
         private string _Tabla = "";
         private bool _Inicializando;
+        private string _LlavePrimaria;
 
         [Category("Consultas"), Description("Tabla de la base activa que se consultará."), DefaultValue(""), Browsable(true), TypeConverter(typeof(ClsConvertidorTablaConsultas)), RefreshProperties(RefreshProperties.All)]
         public string Tabla
@@ -70,13 +71,19 @@ namespace CapaVista_Consultas
             return Destino;
         }
 
-        private void ConsultasProcAceptarSeleccion(object Valor, Control Destino)
+        public string LlavePrimaria()
+        {
+            return _LlavePrimaria;
+        }
+
+        private void ConsultasProcAceptarSeleccion(object Valor, string Pk, Control Destino)
         {
             ValorSeleccionado = Valor;
+            _LlavePrimaria = Pk;
             CampoSeleccionado = Convert.ToString(Valor, CultureInfo.InvariantCulture);
             SeleccionRealizada = true;
             if (Destino != null) Destino.Text = CampoSeleccionado;
-            ConsultasEvtSeleccion?.Invoke(this, new ClsSeleccionConsulta(Valor));
+            ConsultasEvtSeleccion?.Invoke(this, new ClsSeleccionConsulta(Valor, Pk));
         }
 
         private void ConsultasMetAbrir()
@@ -93,7 +100,7 @@ namespace CapaVista_Consultas
                 using (FrmConsultas Dialogo = new FrmConsultas(Controladores))
                 {
                     if (Dialogo.ShowDialog(Propietario) != DialogResult.OK || !Dialogo.SeleccionRealizada) return;
-                    ConsultasProcAceptarSeleccion(Dialogo.ValorSeleccionado, Destino);
+                    ConsultasProcAceptarSeleccion(Dialogo.ValorSeleccionado, Dialogo.LlavePrimaria(), Destino);
                 }
             });
         }

@@ -71,6 +71,11 @@ namespace CapaControlador_Consultas
             return _Compartidas.ConsultasFuncSeleccionar(Registro);
         }
 
+        public string ConsultasFuncObtenerPk(DataRow Registro)
+        {
+            return _Compartidas.ConsultasFuncObtenerPk(Registro);
+        }
+
         public DataTable ConsultasFuncListarGuardadas()
         {
             return _Guardadas.ConsultasFuncListarGuardadas();

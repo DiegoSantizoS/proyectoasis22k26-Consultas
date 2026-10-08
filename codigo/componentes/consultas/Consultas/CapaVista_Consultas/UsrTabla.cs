@@ -257,7 +257,8 @@ namespace CapaVista_Consultas
                     throw new InvalidOperationException("Seleccione un registro.");
                 }
                 object Valor = _Controlador.ConsultasFuncSeleccionar(Registro.Row);
-                ConsultasEvtFilaSeleccionada?.Invoke(this, new ClsSeleccionConsulta(Valor));
+                string Pk = _Controlador.ConsultasFuncObtenerPk(Registro.Row);
+                ConsultasEvtFilaSeleccionada?.Invoke(this, new ClsSeleccionConsulta(Valor, Pk));
             });
         }
     }
