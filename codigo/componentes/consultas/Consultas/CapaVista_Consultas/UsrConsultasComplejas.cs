@@ -80,7 +80,7 @@ namespace CapaVista_Consultas
             ConsultasBtnEliminarConsulta.Click += ConsultasMetEliminarConsulta;
             ConsultasBtnRefrescar.Click += ConsultasMetRefrescar;
             ConsultasBtnSalir.Click += (Sender, Evento) => SolicitarSalir?.Invoke(this, EventArgs.Empty);
-            ConsultasBtnAyuda.Click += (Sender, Evento) => ClsInteraccionConsultas.ConsultasProcAyuda(this);
+            ConsultasBtnAyuda.Click += (Sender, Evento) => ClsInteraccionConsultas.ConsultasProcAyuda(this, "ConsultaCompleja.html");
             ConsultasUsrTabla.ConsultasEvtFilaSeleccionada += (Sender, Evento) => ConsultasEvtSeleccion?.Invoke(this, Evento);
             ConsultasUsrConsultas.CellDoubleClick += (Sender, Evento) =>
             {
@@ -396,7 +396,7 @@ namespace CapaVista_Consultas
         private object[] ConsultasFuncCaptura()
         {
             if (!ConsultasFuncEditable || _Controlador == null) throw new ClsErrorValidacion("Valor", "Use Agregar o Modificar para editar filtros.");
-            if (_OperadorNoDisponible != null && ConsultasCboOperador.SelectedIndex < 0) throw new ClsErrorValidacion("Valor", "El operador antiguo " + _OperadorNoDisponible + " no puede editarse. Elija explÃ­citamente un operador disponible y su valor.");
+            if (_OperadorNoDisponible != null && ConsultasCboOperador.SelectedIndex < 0) throw new ClsErrorValidacion("Valor", "El operador antiguo " + _OperadorNoDisponible + " no puede editarse. Elija explícitamente un operador disponible y su valor.");
             if (ConsultasCboOperador.SelectedIndex < 0) throw new ClsErrorValidacion("Valor", "Seleccione un operador o un ordenamiento.");
             return new object[] { ConsultasCboCampo.Text, ConsultasCboOperador.Text, ConsultasUsrValor.Text, ConsultasCboOrden.Text, ConsultasCboConector.Text };
         }
@@ -425,7 +425,7 @@ namespace CapaVista_Consultas
             ClsInteraccionConsultas.ConsultasProcEjecutar(this, () =>
             {
                 object[] Datos = ConsultasFuncCaptura();
-                if (ConsultasFuncIndiceFiltro() >= 0 && _FilaFiltroSeleccionada.ItemArray.SequenceEqual(Datos)) throw new ClsErrorValidacion("Valor", "Cambie algÃºn dato de la fila seleccionada antes de ingresar una nueva; use Modificar para reemplazarla.");
+                if (ConsultasFuncIndiceFiltro() >= 0 && _FilaFiltroSeleccionada.ItemArray.SequenceEqual(Datos)) throw new ClsErrorValidacion("Valor", "Cambie algún dato de la fila seleccionada antes de ingresar una nueva; use Modificar para reemplazarla.");
                 if (_Condiciones.Rows.Count >= 100) throw new ClsErrorValidacion("Valor", "Se permiten hasta 100 condiciones.");
                 bool TieneFiltro = _Condiciones.AsEnumerable().Any(Fila => Convert.ToString(Fila["Operador"]) != "");
                 if (TieneFiltro && Convert.ToString(Datos[1]) != "" && Convert.ToString(Datos[4]) == "")
@@ -512,7 +512,7 @@ namespace CapaVista_Consultas
             {
                 if (_Controlador == null)
                 {
-                    throw new InvalidOperationException("Configure el contexto de bÃºsqueda.");
+                    throw new InvalidOperationException("Configure el contexto de búsqueda.");
                 }
                 if (!ConsultasFuncEditable) throw new InvalidOperationException("Inicie Agregar o Modificar antes de guardar.");
                 _Controlador.Guardadas.ConsultasProcValidarGuardado(ConsultasUsrNombreConsulta.Text, _Condiciones, _IdEdicion);
@@ -549,7 +549,7 @@ namespace CapaVista_Consultas
             if (!ConsultasFuncConfirmarDescarte(true)) return;
             ClsInteraccionConsultas.ConsultasProcEjecutar(this, () =>
             {
-                if (_Controlador == null) throw new InvalidOperationException("Configure el contexto de bÃºsqueda.");
+                if (_Controlador == null) throw new InvalidOperationException("Configure el contexto de búsqueda.");
                 DataTable Catalogo = _Controlador.Guardadas.ConsultasFuncListarGuardadas();
                 ConsultasProcInicializar();
                 _CargandoDefinicion = true;

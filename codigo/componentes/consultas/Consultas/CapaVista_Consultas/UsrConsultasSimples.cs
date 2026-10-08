@@ -23,7 +23,7 @@ namespace CapaVista_Consultas
             ConsultasBtnBuscar.Click += ConsultasMetBuscar;
             ConsultasBtnRefrescar.Click += ConsultasMetLimpiar;
             ConsultasBtnSalir.Click += (Sender, Evento) => SolicitarSalir?.Invoke(this, EventArgs.Empty);
-            ConsultasBtnAyuda.Click += (Sender, Evento) => ClsInteraccionConsultas.ConsultasProcAyuda(this);
+            ConsultasBtnAyuda.Click += (Sender, Evento) => ClsInteraccionConsultas.ConsultasProcAyuda(this, "ConsultaSimple.html");
             ConsultasCboCampo.SelectedIndexChanged += ConsultasMetCambiarCampo;
             ConsultasCboOperador.SelectedIndexChanged += (Sender, Evento) =>
             {

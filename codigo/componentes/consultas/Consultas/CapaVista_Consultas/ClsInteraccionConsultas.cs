@@ -48,7 +48,7 @@ namespace CapaVista_Consultas
             }
         }
 
-        internal static void ConsultasProcAyuda(Control Vista)
+        internal static void ConsultasProcAyuda(Control Vista, string Tema = null)
         {
             DirectoryInfo Directorio = new DirectoryInfo(Application.StartupPath);
             while (Directorio != null)
@@ -56,7 +56,14 @@ namespace CapaVista_Consultas
                 string Ruta = Path.Combine(Directorio.FullName, "ayuda", "componentes", "consultas", "Ayuda_Consultas.chm");
                 if (File.Exists(Ruta))
                 {
-                    Help.ShowHelp(Vista, Ruta);
+                    if (string.IsNullOrWhiteSpace(Tema))
+                    {
+                        Help.ShowHelp(Vista, Ruta);
+                    }
+                    else
+                    {
+                        Help.ShowHelp(Vista, Ruta, HelpNavigator.Topic, Tema);
+                    }
                     return;
                 }
                 Directorio = Directorio.Parent;

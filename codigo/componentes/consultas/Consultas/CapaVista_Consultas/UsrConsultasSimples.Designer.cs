@@ -64,7 +64,7 @@ namespace CapaVista_Consultas
             this.ConsultasTlpPrincipal.RowCount = 2;
             this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 145F));
             this.ConsultasTlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ConsultasTlpPrincipal.Size = new System.Drawing.Size(950, 650);
+            this.ConsultasTlpPrincipal.Size = new System.Drawing.Size(1000, 650);
             this.ConsultasTlpPrincipal.TabIndex = 20;
             // 
             // ConsultasGbxAgregarFiltro
@@ -79,7 +79,7 @@ namespace CapaVista_Consultas
             this.ConsultasGbxAgregarFiltro.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.ConsultasGbxAgregarFiltro.Name = "ConsultasGbxAgregarFiltro";
             this.ConsultasGbxAgregarFiltro.Padding = new System.Windows.Forms.Padding(0);
-            this.ConsultasGbxAgregarFiltro.Size = new System.Drawing.Size(944, 142);
+            this.ConsultasGbxAgregarFiltro.Size = new System.Drawing.Size(994, 142);
             this.ConsultasGbxAgregarFiltro.TabIndex = 19;
             this.ConsultasGbxAgregarFiltro.TabStop = false;
             this.ConsultasGbxAgregarFiltro.Text = "Agregar Filtro";
@@ -118,7 +118,7 @@ namespace CapaVista_Consultas
             this.ConsultasTlpAgregarFiltro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.ConsultasTlpAgregarFiltro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.ConsultasTlpAgregarFiltro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ConsultasTlpAgregarFiltro.Size = new System.Drawing.Size(944, 121);
+            this.ConsultasTlpAgregarFiltro.Size = new System.Drawing.Size(994, 121);
             this.ConsultasTlpAgregarFiltro.TabIndex = 0;
             // 
             // ConsultasUsrEtiquetaValor
@@ -156,7 +156,7 @@ namespace CapaVista_Consultas
             this.ConsultasCboCampo.Location = new System.Drawing.Point(103, 14);
             this.ConsultasCboCampo.Margin = new System.Windows.Forms.Padding(3, 9, 3, 3);
             this.ConsultasCboCampo.Name = "ConsultasCboCampo";
-            this.ConsultasCboCampo.Size = new System.Drawing.Size(163, 31);
+            this.ConsultasCboCampo.Size = new System.Drawing.Size(213, 31);
             this.ConsultasCboCampo.TabIndex = 3;
             // 
             // ConsultasUsrValor
@@ -171,7 +171,7 @@ namespace CapaVista_Consultas
             this.ConsultasUsrValor.MaximumSize = new System.Drawing.Size(1000, 62);
             this.ConsultasUsrValor.MaxLength = 2147483647;
             this.ConsultasUsrValor.Name = "ConsultasUsrValor";
-            this.ConsultasUsrValor.Size = new System.Drawing.Size(394, 62);
+            this.ConsultasUsrValor.Size = new System.Drawing.Size(444, 62);
             this.ConsultasUsrValor.TabIndex = 5;
             // 
             // ConsultasCboOperador
@@ -182,7 +182,7 @@ namespace CapaVista_Consultas
             this.ConsultasCboOperador.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.ConsultasCboOperador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
             this.ConsultasCboOperador.FormattingEnabled = true;
-            this.ConsultasCboOperador.Location = new System.Drawing.Point(372, 14);
+            this.ConsultasCboOperador.Location = new System.Drawing.Point(422, 14);
             this.ConsultasCboOperador.Margin = new System.Windows.Forms.Padding(3, 9, 3, 3);
             this.ConsultasCboOperador.Name = "ConsultasCboOperador";
             this.ConsultasCboOperador.Size = new System.Drawing.Size(119, 31);
@@ -191,7 +191,7 @@ namespace CapaVista_Consultas
             // ConsultasUsrOperador
             // 
             this.ConsultasUsrOperador.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.ConsultasUsrOperador.Location = new System.Drawing.Point(272, 14);
+            this.ConsultasUsrOperador.Location = new System.Drawing.Point(322, 14);
             this.ConsultasUsrOperador.Margin = new System.Windows.Forms.Padding(3, 9, 3, 3);
             this.ConsultasUsrOperador.MaximumSize = new System.Drawing.Size(1000, 22);
             this.ConsultasUsrOperador.Name = "ConsultasUsrOperador";
@@ -209,7 +209,7 @@ namespace CapaVista_Consultas
             this.ConsultasBtnBuscar.FlatAppearance.BorderSize = 0;
             this.ConsultasBtnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ConsultasBtnBuscar.ImagenDeshabilitado = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnBuscar.ImagenDeshabilitado")));
-            this.ConsultasBtnBuscar.Location = new System.Drawing.Point(499, 20);
+            this.ConsultasBtnBuscar.Location = new System.Drawing.Point(549, 20);
             this.ConsultasBtnBuscar.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasBtnBuscar.MaximumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnBuscar.MinimumSize = new System.Drawing.Size(80, 80);
@@ -229,7 +229,7 @@ namespace CapaVista_Consultas
             this.ConsultasBtnRefrescar.FlatAppearance.BorderSize = 0;
             this.ConsultasBtnRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ConsultasBtnRefrescar.ImagenDeshabilitado = ((System.Drawing.Image)(resources.GetObject("ConsultasBtnRefrescar.ImagenDeshabilitado")));
-            this.ConsultasBtnRefrescar.Location = new System.Drawing.Point(589, 20);
+            this.ConsultasBtnRefrescar.Location = new System.Drawing.Point(639, 20);
             this.ConsultasBtnRefrescar.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasBtnRefrescar.MaximumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnRefrescar.MinimumSize = new System.Drawing.Size(80, 80);
@@ -248,7 +248,7 @@ namespace CapaVista_Consultas
             this.ConsultasBtnAyuda.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnAyuda.FlatAppearance.BorderSize = 0;
             this.ConsultasBtnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnAyuda.Location = new System.Drawing.Point(679, 20);
+            this.ConsultasBtnAyuda.Location = new System.Drawing.Point(729, 20);
             this.ConsultasBtnAyuda.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasBtnAyuda.MaximumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnAyuda.MinimumSize = new System.Drawing.Size(80, 80);
@@ -267,7 +267,7 @@ namespace CapaVista_Consultas
             this.ConsultasBtnConsultasComplejas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnConsultasComplejas.FlatAppearance.BorderSize = 0;
             this.ConsultasBtnConsultasComplejas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnConsultasComplejas.Location = new System.Drawing.Point(769, 20);
+            this.ConsultasBtnConsultasComplejas.Location = new System.Drawing.Point(819, 20);
             this.ConsultasBtnConsultasComplejas.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasBtnConsultasComplejas.MaximumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnConsultasComplejas.MinimumSize = new System.Drawing.Size(80, 80);
@@ -287,7 +287,7 @@ namespace CapaVista_Consultas
             this.ConsultasBtnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConsultasBtnSalir.FlatAppearance.BorderSize = 0;
             this.ConsultasBtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsultasBtnSalir.Location = new System.Drawing.Point(859, 20);
+            this.ConsultasBtnSalir.Location = new System.Drawing.Point(909, 20);
             this.ConsultasBtnSalir.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasBtnSalir.MaximumSize = new System.Drawing.Size(80, 80);
             this.ConsultasBtnSalir.MinimumSize = new System.Drawing.Size(80, 80);
@@ -309,7 +309,7 @@ namespace CapaVista_Consultas
             this.ConsultasGbxSeleccioneUnRegistro.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.ConsultasGbxSeleccioneUnRegistro.Name = "ConsultasGbxSeleccioneUnRegistro";
             this.ConsultasGbxSeleccioneUnRegistro.Padding = new System.Windows.Forms.Padding(0);
-            this.ConsultasGbxSeleccioneUnRegistro.Size = new System.Drawing.Size(944, 502);
+            this.ConsultasGbxSeleccioneUnRegistro.Size = new System.Drawing.Size(994, 502);
             this.ConsultasGbxSeleccioneUnRegistro.TabIndex = 20;
             this.ConsultasGbxSeleccioneUnRegistro.TabStop = false;
             this.ConsultasGbxSeleccioneUnRegistro.Text = "Seleccione un Registro";
@@ -323,7 +323,7 @@ namespace CapaVista_Consultas
             this.ConsultasUsrTabla.Margin = new System.Windows.Forms.Padding(0);
             this.ConsultasUsrTabla.MaximumSize = new System.Drawing.Size(1150, 750);
             this.ConsultasUsrTabla.Name = "ConsultasUsrTabla";
-            this.ConsultasUsrTabla.Size = new System.Drawing.Size(944, 481);
+            this.ConsultasUsrTabla.Size = new System.Drawing.Size(994, 481);
             this.ConsultasUsrTabla.TabIndex = 0;
             // 
             // UsrConsultasSimples
@@ -331,9 +331,9 @@ namespace CapaVista_Consultas
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ConsultasTlpPrincipal);
-            this.MaximumSize = new System.Drawing.Size(950, 650);
+            this.MaximumSize = new System.Drawing.Size(1000, 650);
             this.Name = "UsrConsultasSimples";
-            this.Size = new System.Drawing.Size(950, 650);
+            this.Size = new System.Drawing.Size(1000, 650);
             this.ConsultasTlpPrincipal.ResumeLayout(false);
             this.ConsultasGbxAgregarFiltro.ResumeLayout(false);
             this.ConsultasGbxAgregarFiltro.PerformLayout();

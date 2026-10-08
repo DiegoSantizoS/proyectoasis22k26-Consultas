@@ -30,35 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEjecucion));
             this.consultas1 = new CapaVista_Consultas.Consultas();
-            this.ConsultasUsrPkRetornado = new CapaVista_Consultas.Componentes.UsrTextBoxConsultas();
             this.ConsultasUsrCampoRetornado = new CapaVista_Consultas.Componentes.UsrTextBoxConsultas();
+            this.ConsultasUsrPkRetornado = new CapaVista_Consultas.Componentes.UsrTextBoxConsultas();
             ((System.ComponentModel.ISupportInitialize)(this.consultas1)).BeginInit();
             this.SuspendLayout();
             // 
             // consultas1
             // 
-            this.consultas1.CampoRetorno = "queryConsulta";
+            this.consultas1.CampoRetorno = "detallesBitacora";
             this.consultas1.ControlRetorno = this.ConsultasUsrCampoRetornado;
-            this.consultas1.Location = new System.Drawing.Point(72, 183);
+            this.consultas1.Location = new System.Drawing.Point(87, 180);
             this.consultas1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.consultas1.Name = "consultas1";
             this.consultas1.Size = new System.Drawing.Size(256, 66);
             this.consultas1.TabIndex = 1;
-            this.consultas1.Tabla = "tblconsulta";
+            this.consultas1.Tabla = "tblbitacora";
             this.consultas1.Text = "consultas1";
             this.consultas1.UseVisualStyleBackColor = true;
-            // 
-            // ConsultasUsrPkRetornado
-            // 
-            this.ConsultasUsrPkRetornado.Enabled = false;
-            this.ConsultasUsrPkRetornado.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.ConsultasUsrPkRetornado.Location = new System.Drawing.Point(9, 23);
-            this.ConsultasUsrPkRetornado.Margin = new System.Windows.Forms.Padding(0);
-            this.ConsultasUsrPkRetornado.MaximumSize = new System.Drawing.Size(1000, 62);
-            this.ConsultasUsrPkRetornado.MaxLength = 2147483647;
-            this.ConsultasUsrPkRetornado.Name = "ConsultasUsrPkRetornado";
-            this.ConsultasUsrPkRetornado.Size = new System.Drawing.Size(397, 62);
-            this.ConsultasUsrPkRetornado.TabIndex = 2;
             // 
             // ConsultasUsrCampoRetornado
             // 
@@ -71,6 +59,18 @@
             this.ConsultasUsrCampoRetornado.Name = "ConsultasUsrCampoRetornado";
             this.ConsultasUsrCampoRetornado.Size = new System.Drawing.Size(397, 62);
             this.ConsultasUsrCampoRetornado.TabIndex = 3;
+            // 
+            // ConsultasUsrPkRetornado
+            // 
+            this.ConsultasUsrPkRetornado.Enabled = false;
+            this.ConsultasUsrPkRetornado.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ConsultasUsrPkRetornado.Location = new System.Drawing.Point(9, 23);
+            this.ConsultasUsrPkRetornado.Margin = new System.Windows.Forms.Padding(0);
+            this.ConsultasUsrPkRetornado.MaximumSize = new System.Drawing.Size(1000, 62);
+            this.ConsultasUsrPkRetornado.MaxLength = 2147483647;
+            this.ConsultasUsrPkRetornado.Name = "ConsultasUsrPkRetornado";
+            this.ConsultasUsrPkRetornado.Size = new System.Drawing.Size(397, 62);
+            this.ConsultasUsrPkRetornado.TabIndex = 2;
             // 
             // FrmEjecucion
             // 

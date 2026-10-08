@@ -24,7 +24,7 @@ namespace CapaVista_Consultas.Componentes
         public ClsTableButtonConsultas()
         {
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            Size = new Size(35, 30);
+            Size = new Size(36, 30);
             FlatStyle = FlatStyle.Flat;
             FlatAppearance.BorderSize = 0;
             BackColor = _Primario;
@@ -35,7 +35,7 @@ namespace CapaVista_Consultas.Componentes
             Margin = new Padding(2);
         }
 
-        protected override Size DefaultSize => new Size(35, 30);
+        protected override Size DefaultSize => new Size(36, 30);
 
         protected override void OnMouseEnter(EventArgs Evento)
         {
