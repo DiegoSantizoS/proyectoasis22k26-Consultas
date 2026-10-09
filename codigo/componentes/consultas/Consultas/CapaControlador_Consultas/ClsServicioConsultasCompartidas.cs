@@ -16,6 +16,7 @@ namespace CapaControlador_Consultas
         private readonly IRepositorioEjecucionConsultas _Ejecucion;
         private string[] _Tablas = new string[0];
         private IList<ClsCampoConsulta> _Campos;
+        private bool _EsVista;
         private ClsDefinicionConsulta _Definicion;
         internal ClsValidadorConsultas Validador { get; }
         internal ClsDefinicionConsulta Definicion { get { return _Definicion; } set { _Definicion = value; } }
@@ -34,7 +35,7 @@ namespace CapaControlador_Consultas
         {
             if (Tablas == null || Tablas.Length == 0)
             {
-                throw new ArgumentException("Proporcione al menos una tabla autorizada.");
+                throw new ArgumentException("Proporcione al menos una tabla o vista autorizada.");
             }
             foreach (string Nombre in Tablas)
             {
@@ -55,7 +56,7 @@ namespace CapaControlador_Consultas
             IList<string> Permitidas = _Metadatos.ConsultasFuncObtenerTablas();
             foreach (string Nombre in _Tablas)
             {
-                if (!Permitidas.Contains(Nombre, StringComparer.OrdinalIgnoreCase)) throw new ArgumentException("La tabla no existe entre las tablas permitidas.");
+                if (!Permitidas.Contains(Nombre, StringComparer.OrdinalIgnoreCase)) throw new ArgumentException("La tabla o vista no existe entre los orígenes permitidos.");
             }
             ConsultasProcCargarCampos();
         }
@@ -64,7 +65,7 @@ namespace CapaControlador_Consultas
         {
             if (!_Tablas.Contains(Nombre, StringComparer.OrdinalIgnoreCase))
             {
-                throw new ArgumentException("La tabla no pertenece al contexto autorizado.");
+                throw new ArgumentException("La tabla o vista no pertenece al contexto autorizado.");
             }
             Tabla = _Tablas.First(Actual => string.Equals(Actual, Nombre, StringComparison.OrdinalIgnoreCase));
             _Campos = null;
@@ -82,15 +83,16 @@ namespace CapaControlador_Consultas
         {
             if (_Definicion == null)
             {
-                throw new InvalidOperationException("Configure la tabla y el campo de retorno antes de consultar.");
+                throw new InvalidOperationException("Configure la tabla o vista y el campo de retorno antes de consultar.");
             }
             if (_Campos == null)
             {
                 IList<ClsCampoConsulta> Campos = _Metadatos.ConsultasFuncObtenerCampos(Tabla);
                 if (!Campos.Any(Campo => string.Equals(Campo.Nombre, CampoRetorno, StringComparison.OrdinalIgnoreCase)))
                 {
-                    throw new ArgumentException("El campo de retorno no existe en la tabla.");
+                    throw new ArgumentException("El campo de retorno no existe en la tabla o vista.");
                 }
+                _EsVista = _Metadatos.ConsultasFuncEsVista(Tabla);
                 _Campos = Campos;
             }
         }
@@ -101,7 +103,7 @@ namespace CapaControlador_Consultas
             ClsCampoConsulta Campo = _Campos.FirstOrDefault(Actual => string.Equals(Actual.Nombre, Nombre, StringComparison.OrdinalIgnoreCase));
             if (Campo == null)
             {
-                throw new ArgumentException("Seleccione un campo de la tabla autorizada.");
+                throw new ArgumentException("Seleccione un campo de la tabla o vista autorizada.");
             }
             return Campo;
         }
@@ -163,6 +165,7 @@ namespace CapaControlador_Consultas
         public string ConsultasFuncObtenerPk(DataRow Registro)
         {
             ConsultasProcCargarCampos();
+            if (_EsVista) return null;
             ClsCampoConsulta[] Primarios = _Campos.Where(Campo => Campo.EsPrimario).ToArray();
             if (Primarios.Length == 0)
             {

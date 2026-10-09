@@ -12,7 +12,7 @@ namespace CapaVista_Consultas
         private bool _Inicializando;
         private string _LlavePrimaria;
 
-        [Category("Consultas"), Description("Tabla de la base activa que se consultará."), DefaultValue(""), Browsable(true), TypeConverter(typeof(ClsConvertidorTablaConsultas)), RefreshProperties(RefreshProperties.All)]
+        [Category("Consultas"), Description("Tabla o vista de la base activa que se consultará."), DefaultValue(""), Browsable(true), TypeConverter(typeof(ClsConvertidorTablaConsultas)), RefreshProperties(RefreshProperties.All)]
         public string Tabla
         {
             get { return _Tabla; }
@@ -26,7 +26,7 @@ namespace CapaVista_Consultas
             }
         }
 
-        [Category("Consultas"), Description("Columna de la tabla seleccionada cuyo valor se devolverá."), DefaultValue(""), Browsable(true), TypeConverter(typeof(ClsConvertidorCampoRetornoConsultas))]
+        [Category("Consultas"), Description("Columna de la tabla o vista seleccionada cuyo valor se devolverá."), DefaultValue(""), Browsable(true), TypeConverter(typeof(ClsConvertidorCampoRetornoConsultas))]
         public string CampoRetorno { get; set; } = "";
 
         [Category("Consultas"), Description("Control opcional del formulario consumidor que recibirá el texto seleccionado."), DefaultValue(null), Browsable(true), TypeConverter(typeof(ClsConvertidorControlRetornoConsultas)), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]

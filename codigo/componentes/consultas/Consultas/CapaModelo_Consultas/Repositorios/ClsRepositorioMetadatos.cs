@@ -21,7 +21,7 @@ namespace CapaModelo_Consultas.Repositorios
         {
             List<string> Tablas = new List<string>();
             using (OdbcConnection Conexion = ConsultasFuncAbrirConexion())
-            using (OdbcCommand Comando = new OdbcCommand("SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE() AND TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA NOT IN ('information_schema', 'mysql', 'performance_schema', 'sys') ORDER BY TABLE_NAME", Conexion))
+            using (OdbcCommand Comando = new OdbcCommand("SELECT DISTINCT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE() AND TABLE_TYPE IN ('BASE TABLE', 'VIEW') AND TABLE_SCHEMA NOT IN ('information_schema', 'mysql', 'performance_schema', 'sys') ORDER BY TABLE_NAME", Conexion))
             {
                 Comando.CommandTimeout = _TiempoEspera;
                 using (OdbcDataReader Lector = Comando.ExecuteReader())
@@ -32,12 +32,29 @@ namespace CapaModelo_Consultas.Repositorios
             return Tablas;
         }
 
+        public bool ConsultasFuncEsVista(string Tabla)
+        {
+            ConsultasFuncIdentificador(Tabla);
+            using (OdbcConnection Conexion = ConsultasFuncAbrirConexion())
+            using (OdbcCommand Comando = new OdbcCommand("SELECT TABLE_TYPE FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ? AND TABLE_TYPE IN ('BASE TABLE', 'VIEW')", Conexion))
+            {
+                Comando.CommandTimeout = _TiempoEspera;
+                ConsultasProcAgregarParametro(Comando, Tabla);
+                object Tipo = Comando.ExecuteScalar();
+                if (Tipo == null || Tipo == DBNull.Value)
+                {
+                    throw new InvalidOperationException("La tabla o vista no existe o no es accesible en la conexión actual.");
+                }
+                return string.Equals(Convert.ToString(Tipo), "VIEW", StringComparison.Ordinal);
+            }
+        }
+
         public IList<ClsCampoConsulta> ConsultasFuncObtenerCampos(string Tabla)
         {
             ConsultasFuncIdentificador(Tabla);
             List<ClsCampoConsulta> Campos = new List<ClsCampoConsulta>();
             using (OdbcConnection Conexion = ConsultasFuncAbrirConexion())
-            using (OdbcCommand Comando = new OdbcCommand("SELECT COLUMN_NAME, DATA_TYPE, COLUMN_KEY, COALESCE(CHARACTER_MAXIMUM_LENGTH, 0) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ? ORDER BY ORDINAL_POSITION", Conexion))
+            using (OdbcCommand Comando = new OdbcCommand("SELECT COLUMN_NAME, DATA_TYPE, COALESCE(COLUMN_KEY, ''), COALESCE(CHARACTER_MAXIMUM_LENGTH, 0) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ? ORDER BY ORDINAL_POSITION", Conexion))
             {
                 Comando.CommandTimeout = _TiempoEspera;
                 ConsultasProcAgregarParametro(Comando, Tabla);
@@ -51,7 +68,7 @@ namespace CapaModelo_Consultas.Repositorios
             }
             if (Campos.Count == 0)
             {
-                throw new InvalidOperationException("La tabla no existe o no tiene columnas accesibles en la conexión actual.");
+                throw new InvalidOperationException("La tabla o vista no existe o no tiene columnas accesibles en la conexión actual.");
             }
             return Campos;
         }

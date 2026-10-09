@@ -12,7 +12,7 @@ namespace CapaVista_Consultas
         public override bool GetStandardValuesExclusive(ITypeDescriptorContext Contexto) { return false; }
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext Contexto)
         {
-            return new StandardValuesCollection(Metadatos.ConsultasFuncObtenerTablas());
+            return new StandardValuesCollection(Metadatos.ConsultasFuncObtenerTablasYVistas());
         }
     }
     //Fin Diego Fernando Santizo Samayoa 0901-22-15950 05/10/2026
