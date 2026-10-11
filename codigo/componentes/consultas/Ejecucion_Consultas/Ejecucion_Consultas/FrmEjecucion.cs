@@ -15,8 +15,13 @@ namespace Ejecucion_Consultas
 
         private void ConsultasMetSeleccionar(object Sender, ClsSeleccionConsulta Evento)
         {
-            string Pk = consultas1.LlavePrimaria();
-            ConsultasUsrPkRetornado.Text = Pk;
+            //Obtener llave primaria del registro seleccionado y mostrarla en el control de usuario
+            //string Pk = consultas1.LlavePrimaria(); 
+            //ConsultasUsrPkRetornado.Text = Pk;
+
+            //Obtener un campo del registro seleccionado y mostrarlo en el control de usuario
+            string Campo = consultas1.ObtenerCampoSeleccionado("tablaConsulta");
+            ConsultasUsrPkRetornado.Text = Campo;
 
             ConsultasUsrPkRetornado.ConsultasMetMostrarError("Esta es la llave primaria del registro");
             ConsultasUsrCampoRetornado.ConsultasMetMostrarError("Este es el campo deseado del registro");
