@@ -15,7 +15,7 @@ namespace CapaVista_Consultas.Componentes
             ConsultasUsrError.ConsultasProcConservarRojo();
             ConsultasTxtTexto.TextChanged += (Sender, Evento) =>
             {
-                ConsultasMetLimpiarError();
+                ConsultasProcLimpiarError();
                 OnTextChanged(Evento);
             };
             Enter += (Sender, Evento) => ConsultasTxtTexto.Focus();
@@ -37,7 +37,7 @@ namespace CapaVista_Consultas.Componentes
                 base.Text = value;
                 if (Cambiado && ConsultasTxtTexto != null && !ConsultasTxtTexto.IsHandleCreated)
                 {
-                    ConsultasMetLimpiarError();
+                    ConsultasProcLimpiarError();
                     OnTextChanged(System.EventArgs.Empty);
                 }
             }
@@ -69,11 +69,11 @@ namespace CapaVista_Consultas.Componentes
             }
         }
 
-        public void ConsultasMetMostrarError(string Mensaje)
+        public void ConsultasProcMostrarError(string Mensaje)
         {
             if (string.IsNullOrWhiteSpace(Mensaje))
             {
-                ConsultasMetLimpiarError();
+                ConsultasProcLimpiarError();
                 return;
             }
 
@@ -106,7 +106,7 @@ namespace CapaVista_Consultas.Componentes
             }
         }
 
-        public void ConsultasMetLimpiarError()
+        public void ConsultasProcLimpiarError()
         {
             using (new ClsActualizacionDisenoConsultas(ConsultasTlpMain))
             {

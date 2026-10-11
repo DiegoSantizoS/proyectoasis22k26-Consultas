@@ -54,7 +54,7 @@ namespace CapaVista_Consultas.Componentes
         public bool MostrarAsterisco
         {
             get { return _MostrarAsterisco; }
-            set { ConsultasMetMostrarAsterisco(value); }
+            set { ConsultasProcMostrarAsterisco(value); }
         }
 
         [Category("Consultas")]
@@ -69,7 +69,7 @@ namespace CapaVista_Consultas.Componentes
         }
 
 
-        public void ConsultasMetMostrarAsterisco(bool Mostrar)
+        public void ConsultasProcMostrarAsterisco(bool Mostrar)
         {
             if (_MostrarAsterisco == Mostrar && ConsultasTlpMain.ColumnCount == (Mostrar ? 2 : 1)) return;
             using (new ClsActualizacionDisenoConsultas(ConsultasTlpMain))

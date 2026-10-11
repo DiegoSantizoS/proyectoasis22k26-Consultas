@@ -153,20 +153,19 @@ namespace CapaVista_Consultas
         }
 
 
-        /// <summary>Lee otra columna del ultimo registro confirmado, sin abrir otra consulta.</summary>
-        public string ObtenerCampoSeleccionado(string Campo)
+        public string ConsultasFuncObtenerCampoSeleccionado(string Campo)
         {
             if (!SeleccionRealizada) throw new InvalidOperationException("Seleccione un registro antes de obtener sus campos.");
-            return Seleccion.ObtenerCampoSeleccionado(Campo);
+            return Seleccion.ConsultasFuncObtenerCampoSeleccionado(Campo);
         }
 
-        public object ObtenerValorSeleccionado(string Campo)
+        public object ConsultasFuncObtenerValorSeleccionado(string Campo)
         {
             if (!SeleccionRealizada) throw new InvalidOperationException("Seleccione un registro antes de obtener sus campos.");
-            return Seleccion.ObtenerValorSeleccionado(Campo);
+            return Seleccion.ConsultasFuncObtenerValorSeleccionado(Campo);
         }
 
-        public string LlavePrimaria()
+        public string ConsultasFuncObtenerLlavePrimaria()
         {
             return _LlavePrimaria;
         }

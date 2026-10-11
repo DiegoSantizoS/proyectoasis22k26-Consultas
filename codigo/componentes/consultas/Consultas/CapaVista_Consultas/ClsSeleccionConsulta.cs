@@ -32,8 +32,7 @@ namespace CapaVista_Consultas
             this.Campos = new ReadOnlyDictionary<string, object>(Copia);
         }
 
-        /// <summary>Devuelve el valor original de una columna de la fila seleccionada.</summary>
-        public object ObtenerValorSeleccionado(string Campo)
+        public object ConsultasFuncObtenerValorSeleccionado(string Campo)
         {
             if (string.IsNullOrWhiteSpace(Campo)) throw new ArgumentException("Indique el nombre del campo.", nameof(Campo));
             object ValorCampo;
@@ -41,10 +40,9 @@ namespace CapaVista_Consultas
             return ValorCampo;
         }
 
-        /// <summary>Devuelve el texto de una columna; los valores NULL se devuelven como texto vacio.</summary>
-        public string ObtenerCampoSeleccionado(string Campo)
+        public string ConsultasFuncObtenerCampoSeleccionado(string Campo)
         {
-            return Convert.ToString(ObtenerValorSeleccionado(Campo), CultureInfo.InvariantCulture);
+            return Convert.ToString(ConsultasFuncObtenerValorSeleccionado(Campo), CultureInfo.InvariantCulture);
         }
         /*Fin del código de Carlos Andres Arriaza Lara 0901-23-13862 el 5/10/2026*/
     }

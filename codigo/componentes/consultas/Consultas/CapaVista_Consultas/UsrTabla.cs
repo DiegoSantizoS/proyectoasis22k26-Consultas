@@ -171,7 +171,7 @@ namespace CapaVista_Consultas
                 Columna.HeaderCell.SortGlyphDirection = Columna.Name == _CampoOrden ? (_Descendente ? SortOrder.Descending : SortOrder.Ascending) : SortOrder.None;
             }
             if (_AjustarFilasContenido) ConsultasUsrResultados.Tabla.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-            ConsultasUsrResultados.ClearSelection();
+            ConsultasUsrResultados.ConsultasProcLimpiarSeleccion();
             ConsultasUsrResultados.CurrentCell = null;
             long Paginas = ConsultasFuncTotalPaginas(Resultado);
             ConsultasUsrPaginacion.Texto = "Página " + Resultado.Pagina + " de " + Paginas + " — " + Resultado.TotalRegistros + " registros";

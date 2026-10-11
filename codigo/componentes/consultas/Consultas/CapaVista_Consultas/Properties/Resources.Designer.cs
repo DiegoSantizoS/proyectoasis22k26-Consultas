@@ -11,9 +11,6 @@
 namespace CapaVista_Consultas.Properties {
     
     
-    /// <summary>
-    ///   Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
-    /// </summary>
     // StronglyTypedResourceBuilder generó automáticamente esta clase
     // a través de una herramienta como ResGen o Visual Studio.
     // Para agregar o quitar un miembro, edite el archivo .ResX y, a continuación, vuelva a ejecutar ResGen
@@ -31,9 +28,6 @@ namespace CapaVista_Consultas.Properties {
         internal Resources() {
         }
         
-        /// <summary>
-        ///   Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
-        /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
@@ -45,10 +39,6 @@ namespace CapaVista_Consultas.Properties {
             }
         }
         
-        /// <summary>
-        ///   Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
-        ///   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
-        /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Globalization.CultureInfo Culture {
             get {

@@ -70,15 +70,15 @@ namespace CapaVista_Consultas.Componentes
             ConsultasDgvMain.DataBindingComplete += ConsultasMetEnlaceCompletado;
             ConsultasDgvMain.HandleCreated += ConsultasMetTablaCreada;
 
-            ConsultasMetActivarDobleBuffer();
+            ConsultasProcActivarDobleBuffer();
         }
 
         private void ConsultasMetTablaCreada(object Remitente, EventArgs Evento)
         {
-            ConsultasMetActivarDobleBuffer();
-            ConsultasMetAjustarAlturaFilas();
+            ConsultasProcActivarDobleBuffer();
+            ConsultasProcAjustarAlturaFilas();
         }
-        private void ConsultasMetActivarDobleBuffer()
+        private void ConsultasProcActivarDobleBuffer()
         {
             System.Reflection.PropertyInfo PropiedadDobleBuffer =
                 typeof(DataGridView).GetProperty(
@@ -204,7 +204,7 @@ namespace CapaVista_Consultas.Componentes
             set
             {
                 ConsultasDgvMain.ColumnHeadersVisible = value;
-                ConsultasMetAjustarAlturaFilas();
+                ConsultasProcAjustarAlturaFilas();
             }
         }
 
@@ -370,54 +370,54 @@ namespace CapaVista_Consultas.Componentes
             remove { ConsultasDgvMain.KeyUp -= value; }
         }
 
-        public void ClearSelection()
+        public void ConsultasProcLimpiarSeleccion()
         {
             ConsultasDgvMain.ClearSelection();
         }
 
-        public bool BeginEdit(bool SeleccionarTodo)
+        public bool ConsultasFuncIniciarEdicion(bool SeleccionarTodo)
         {
             return ConsultasDgvMain.BeginEdit(SeleccionarTodo);
         }
 
-        public bool EndEdit()
+        public bool ConsultasFuncFinalizarEdicion()
         {
             return ConsultasDgvMain.EndEdit();
         }
 
-        public bool CancelEdit()
+        public bool ConsultasFuncCancelarEdicion()
         {
             return ConsultasDgvMain.CancelEdit();
         }
 
-        public void ConsultasMetEnfocarTabla()
+        public void ConsultasProcEnfocarTabla()
         {
             ConsultasDgvMain.Focus();
         }
 
         private void ConsultasMetActualizarAlturaFilas(object Remitente, EventArgs Evento)
         {
-            ConsultasMetAjustarAlturaFilas();
+            ConsultasProcAjustarAlturaFilas();
         }
 
         private void ConsultasMetFilasAgregadas(object Remitente, DataGridViewRowsAddedEventArgs Evento)
         {
-            ConsultasMetAjustarAlturaFilas();
+            ConsultasProcAjustarAlturaFilas();
         }
 
         private void ConsultasMetFilasEliminadas(object Remitente, DataGridViewRowsRemovedEventArgs Evento)
         {
-            ConsultasMetAjustarAlturaFilas();
+            ConsultasProcAjustarAlturaFilas();
         }
 
         private void ConsultasMetEnlaceCompletado(object Remitente, DataGridViewBindingCompleteEventArgs Evento)
         {
-            ConsultasMetAjustarAlturaFilas();
+            ConsultasProcAjustarAlturaFilas();
         }
 
         internal bool ConsultasFilasUniformes { get; set; }
 
-        private void ConsultasMetAjustarAlturaFilas()
+        private void ConsultasProcAjustarAlturaFilas()
         {
             if (ConsultasDgvMain.AutoSizeRowsMode != DataGridViewAutoSizeRowsMode.None)
             {
