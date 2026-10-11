@@ -20,6 +20,7 @@ namespace CapaVista_Consultas
         private bool _ComplejasCargadas;
         private ClsControladorConsultas _ControladorComplejas;
         private string _LlavePrimaria;
+        internal ClsSeleccionConsulta Seleccion { get; private set; }
         public string CampoSeleccionado { get; private set; }
         public object ValorSeleccionado { get; private set; }
         public bool SeleccionRealizada { get; private set; }
@@ -151,6 +152,20 @@ namespace CapaVista_Consultas
             });
         }
 
+
+        /// <summary>Lee otra columna del ultimo registro confirmado, sin abrir otra consulta.</summary>
+        public string ObtenerCampoSeleccionado(string Campo)
+        {
+            if (!SeleccionRealizada) throw new InvalidOperationException("Seleccione un registro antes de obtener sus campos.");
+            return Seleccion.ObtenerCampoSeleccionado(Campo);
+        }
+
+        public object ObtenerValorSeleccionado(string Campo)
+        {
+            if (!SeleccionRealizada) throw new InvalidOperationException("Seleccione un registro antes de obtener sus campos.");
+            return Seleccion.ObtenerValorSeleccionado(Campo);
+        }
+
         public string LlavePrimaria()
         {
             return _LlavePrimaria;
@@ -159,6 +174,7 @@ namespace CapaVista_Consultas
         private void ConsultasMetSeleccionar(object Sender, ClsSeleccionConsulta Evento)
         {
             if (SeleccionRealizada) return;
+            Seleccion = Evento;
             ValorSeleccionado = Evento.Valor;
             _LlavePrimaria = Evento.Pk;
             CampoSeleccionado = Convert.ToString(Evento.Valor, System.Globalization.CultureInfo.InvariantCulture);

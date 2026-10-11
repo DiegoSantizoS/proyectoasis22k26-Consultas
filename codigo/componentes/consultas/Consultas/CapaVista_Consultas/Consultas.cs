@@ -11,6 +11,7 @@ namespace CapaVista_Consultas
         private string _Tabla = "";
         private bool _Inicializando;
         private string _LlavePrimaria;
+        private ClsSeleccionConsulta Seleccion;
 
         [Category("Consultas"), Description("Tabla o vista de la base activa que se consultará."), DefaultValue(""), Browsable(true), TypeConverter(typeof(ClsConvertidorTablaConsultas)), RefreshProperties(RefreshProperties.All)]
         public string Tabla
@@ -72,19 +73,34 @@ namespace CapaVista_Consultas
             return Destino;
         }
 
+
+        /// <summary>Lee otra columna del ultimo registro confirmado, sin abrir otra consulta.</summary>
+        public string ObtenerCampoSeleccionado(string Campo)
+        {
+            if (!SeleccionRealizada) throw new InvalidOperationException("Seleccione un registro antes de obtener sus campos.");
+            return Seleccion.ObtenerCampoSeleccionado(Campo);
+        }
+
+        public object ObtenerValorSeleccionado(string Campo)
+        {
+            if (!SeleccionRealizada) throw new InvalidOperationException("Seleccione un registro antes de obtener sus campos.");
+            return Seleccion.ObtenerValorSeleccionado(Campo);
+        }
+
         public string LlavePrimaria()
         {
             return _LlavePrimaria;
         }
 
-        private void ConsultasProcAceptarSeleccion(object Valor, string Pk, Control Destino)
+        private void ConsultasProcAceptarSeleccion(ClsSeleccionConsulta Evento, Control Destino)
         {
-            ValorSeleccionado = Valor;
-            _LlavePrimaria = Pk;
-            CampoSeleccionado = Convert.ToString(Valor, CultureInfo.InvariantCulture);
+            Seleccion = Evento;
+            ValorSeleccionado = Evento.Valor;
+            _LlavePrimaria = Evento.Pk;
+            CampoSeleccionado = Convert.ToString(Evento.Valor, CultureInfo.InvariantCulture);
             SeleccionRealizada = true;
             if (Destino != null) Destino.Text = CampoSeleccionado;
-            ConsultasEvtSeleccion?.Invoke(this, new ClsSeleccionConsulta(Valor, Pk));
+            ConsultasEvtSeleccion?.Invoke(this, Evento);
         }
 
         private void ConsultasMetAbrir()
@@ -101,7 +117,7 @@ namespace CapaVista_Consultas
                 using (FrmConsultas Dialogo = new FrmConsultas(Controladores))
                 {
                     if (Dialogo.ShowDialog(Propietario) != DialogResult.OK || !Dialogo.SeleccionRealizada) return;
-                    ConsultasProcAceptarSeleccion(Dialogo.ValorSeleccionado, Dialogo.LlavePrimaria(), Destino);
+                    ConsultasProcAceptarSeleccion(Dialogo.Seleccion, Destino);
                 }
             });
         }
