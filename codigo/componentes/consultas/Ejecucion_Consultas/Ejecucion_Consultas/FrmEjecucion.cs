@@ -8,18 +8,24 @@ namespace Ejecucion_Consultas
         public FrmEjecucion()
         {
             InitializeComponent();
-            ConsultasUsrCampoRetornado.ConsultasMetLimpiarError();
-            ConsultasUsrPkRetornado.ConsultasMetLimpiarError();
+            ConsultasUsrCampoRetornado.ConsultasProcLimpiarError();
+            ConsultasUsrPkRetornado.ConsultasProcLimpiarError();
             consultas1.ConsultasEvtSeleccion += ConsultasMetSeleccionar;
         }
 
         private void ConsultasMetSeleccionar(object Sender, ClsSeleccionConsulta Evento)
         {
-            string Pk = consultas1.LlavePrimaria();
+            //Obtener llave primaria del registro seleccionado y mostrarla en el control de usuario
+            string Pk = consultas1.ConsultasFuncObtenerLlavePrimaria(); 
             ConsultasUsrPkRetornado.Text = Pk;
+            
+            //Obtener un campo del registro seleccionado y mostrarlo en el control de usuario
+            string Campo = consultas1.ConsultasFuncObtenerCampoSeleccionado("tablaConsulta");
+            // ↓ Descomentar para probar esta función ↓
+            //ConsultasUsrCampoRetornado.Text = Campo;
 
-            ConsultasUsrPkRetornado.ConsultasMetMostrarError("Esta es la llave primaria del registro");
-            ConsultasUsrCampoRetornado.ConsultasMetMostrarError("Este es el campo deseado del registro");
+            ConsultasUsrPkRetornado.ConsultasProcMostrarError("Esta es la llave primaria del registro");
+            ConsultasUsrCampoRetornado.ConsultasProcMostrarError("Este es el campo deseado del registro");
         }
     }
 }

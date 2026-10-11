@@ -51,7 +51,7 @@ namespace CapaVista_Consultas
             };
             ConsultasUsrConsultas.DataBindingComplete += (Sender, Evento) =>
             {
-                ConsultasUsrConsultas.ClearSelection();
+                ConsultasUsrConsultas.ConsultasProcLimpiarSeleccion();
                 ConsultasUsrConsultas.CurrentCell = null;
             };
             ConsultasUsrMantenimiento.ReadOnly = true;
@@ -59,7 +59,7 @@ namespace CapaVista_Consultas
             {
                 if (_FilaFiltroSeleccionada == null)
                 {
-                    ConsultasUsrMantenimiento.ClearSelection();
+                    ConsultasUsrMantenimiento.ConsultasProcLimpiarSeleccion();
                     ConsultasUsrMantenimiento.CurrentCell = null;
                 }
             };
@@ -138,11 +138,11 @@ namespace CapaVista_Consultas
             int AlturaPrincipal = ConsultasFuncEscalarAltura(277) + Extra;
             using (new ClsActualizacionDisenoConsultas(ConsultasTlpNuevoFiltro, _InicializandoMantenimiento ? null : ConsultasTlpMantenimiento))
             {
-                if (string.IsNullOrWhiteSpace(Mensaje)) Entrada.ConsultasMetLimpiarError();
+                if (string.IsNullOrWhiteSpace(Mensaje)) Entrada.ConsultasProcLimpiarError();
                 else
                 {
-                    if (Entrada == ConsultasUsrNombreConsulta) Entrada.ConsultasMetLimpiarError();
-                    Entrada.ConsultasMetMostrarError(Mensaje);
+                    if (Entrada == ConsultasUsrNombreConsulta) Entrada.ConsultasProcLimpiarError();
+                    Entrada.ConsultasProcMostrarError(Mensaje);
                 }
                 if (Ampliar) Entrada.ConsultasProcAmpliarError(Altura);
                 ClsActualizacionDisenoConsultas.ConsultasProcAltura(ConsultasTlpNuevoFiltro.RowStyles[Fila], Altura);
@@ -239,7 +239,7 @@ namespace CapaVista_Consultas
             }
             ConsultasUsrTabla.ConsultasProcConfigurarContexto(_Contexto, _RegistrosPorPagina);
             ConsultasUsrTabla.ConsultasProcCargarPagina();
-            ConsultasUsrConsultas.ClearSelection();
+            ConsultasUsrConsultas.ConsultasProcLimpiarSeleccion();
             ConsultasUsrConsultas.CurrentCell = null;
             ConsultasProcActualizarEstado();
         }
@@ -360,7 +360,7 @@ namespace CapaVista_Consultas
                     ConsultasUsrValor.Text = "";
                     ConsultasCboOrden.SelectedIndex = 0;
                     ConsultasCboConector.SelectedIndex = -1;
-                    ConsultasUsrMantenimiento.ClearSelection();
+                    ConsultasUsrMantenimiento.ConsultasProcLimpiarSeleccion();
                     ConsultasUsrMantenimiento.CurrentCell = null;
                     ConsultasProcLimpiarErrorValor();
                 }
@@ -499,7 +499,7 @@ namespace CapaVista_Consultas
                 _IdSeleccionado = 0;
                 ConsultasUsrConsultas.DataSource = _Controlador.Guardadas.ConsultasFuncListarGuardadas();
                 ConsultasUsrConsultas.Columns["Id"].Visible = false;
-                ConsultasUsrConsultas.ClearSelection();
+                ConsultasUsrConsultas.ConsultasProcLimpiarSeleccion();
                 ConsultasUsrConsultas.CurrentCell = null;
             }
             finally
@@ -560,14 +560,14 @@ namespace CapaVista_Consultas
                 {
                     ConsultasUsrConsultas.DataSource = Catalogo;
                     ConsultasUsrConsultas.Columns["Id"].Visible = false;
-                    ConsultasUsrConsultas.ClearSelection();
+                    ConsultasUsrConsultas.ConsultasProcLimpiarSeleccion();
                     ConsultasUsrConsultas.CurrentCell = null;
                 }
                 finally { _CargandoDefinicion = false; }
             });
         }
 
-        private void ConsultasMetBtnConsultasSimplesClick(object Sender, EventArgs Evento)
+        private void ConsultasMetMostrarSimples(object Sender, EventArgs Evento)
         {
             SolicitarSimples?.Invoke(this, EventArgs.Empty);
         }

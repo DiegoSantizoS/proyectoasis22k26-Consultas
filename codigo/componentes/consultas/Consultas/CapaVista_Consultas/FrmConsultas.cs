@@ -20,6 +20,7 @@ namespace CapaVista_Consultas
         private bool _ComplejasCargadas;
         private ClsControladorConsultas _ControladorComplejas;
         private string _LlavePrimaria;
+        internal ClsSeleccionConsulta Seleccion { get; private set; }
         public string CampoSeleccionado { get; private set; }
         public object ValorSeleccionado { get; private set; }
         public bool SeleccionRealizada { get; private set; }
@@ -151,7 +152,20 @@ namespace CapaVista_Consultas
             });
         }
 
-        public string LlavePrimaria()
+
+        public string ConsultasFuncObtenerCampoSeleccionado(string Campo)
+        {
+            if (!SeleccionRealizada) throw new InvalidOperationException("Seleccione un registro antes de obtener sus campos.");
+            return Seleccion.ConsultasFuncObtenerCampoSeleccionado(Campo);
+        }
+
+        public object ConsultasFuncObtenerValorSeleccionado(string Campo)
+        {
+            if (!SeleccionRealizada) throw new InvalidOperationException("Seleccione un registro antes de obtener sus campos.");
+            return Seleccion.ConsultasFuncObtenerValorSeleccionado(Campo);
+        }
+
+        public string ConsultasFuncObtenerLlavePrimaria()
         {
             return _LlavePrimaria;
         }
@@ -159,6 +173,7 @@ namespace CapaVista_Consultas
         private void ConsultasMetSeleccionar(object Sender, ClsSeleccionConsulta Evento)
         {
             if (SeleccionRealizada) return;
+            Seleccion = Evento;
             ValorSeleccionado = Evento.Valor;
             _LlavePrimaria = Evento.Pk;
             CampoSeleccionado = Convert.ToString(Evento.Valor, System.Globalization.CultureInfo.InvariantCulture);

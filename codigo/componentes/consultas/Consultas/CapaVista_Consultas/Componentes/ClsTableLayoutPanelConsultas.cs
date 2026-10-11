@@ -10,16 +10,16 @@ namespace CapaVista_Consultas.Componentes
         private int _ActualizacionesVisuales;
         private IntPtr _VentanaOculta;
 
-        [DllImport("user32.dll")]
-        private static extern IntPtr SendMessage(IntPtr Ventana, int Mensaje, IntPtr Parametro, IntPtr Datos);
+        [DllImport("user32.dll", EntryPoint = "SendMessage")]
+        private static extern IntPtr ConsultasFuncEnviarMensaje(IntPtr Ventana, int Mensaje, IntPtr Parametro, IntPtr Datos);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", EntryPoint = "IsWindowVisible")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool IsWindowVisible(IntPtr Ventana);
+        private static extern bool ConsultasFuncEsVentanaVisible(IntPtr Ventana);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", EntryPoint = "RedrawWindow")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool RedrawWindow(IntPtr Ventana, IntPtr Rectangulo, IntPtr Region, uint Opciones);
+        private static extern bool ConsultasFuncRedibujarVentana(IntPtr Ventana, IntPtr Rectangulo, IntPtr Region, uint Opciones);
 
         public ClsTableLayoutPanelConsultas()
         {
@@ -29,9 +29,9 @@ namespace CapaVista_Consultas.Componentes
 
         internal void ConsultasProcOcultarActualizacion()
         {
-            if (_ActualizacionesVisuales++ != 0 || !IsHandleCreated || !IsWindowVisible(Handle)) return;
+            if (_ActualizacionesVisuales++ != 0 || !IsHandleCreated || !ConsultasFuncEsVentanaVisible(Handle)) return;
             _VentanaOculta = Handle;
-            SendMessage(_VentanaOculta, 0x000B, IntPtr.Zero, IntPtr.Zero);
+            ConsultasFuncEnviarMensaje(_VentanaOculta, 0x000B, IntPtr.Zero, IntPtr.Zero);
         }
 
         internal void ConsultasProcRestaurarActualizacion()
@@ -40,8 +40,8 @@ namespace CapaVista_Consultas.Componentes
             IntPtr Ventana = _VentanaOculta;
             _VentanaOculta = IntPtr.Zero;
             if (Ventana == IntPtr.Zero || IsDisposed || Disposing || !IsHandleCreated || Handle != Ventana) return;
-            SendMessage(Ventana, 0x000B, new IntPtr(1), IntPtr.Zero);
-            RedrawWindow(Ventana, IntPtr.Zero, IntPtr.Zero, 0x0485);
+            ConsultasFuncEnviarMensaje(Ventana, 0x000B, new IntPtr(1), IntPtr.Zero);
+            ConsultasFuncRedibujarVentana(Ventana, IntPtr.Zero, IntPtr.Zero, 0x0485);
         }
         /*Fin del código de Carlos Andres Arriaza Lara 0901-23-13862 el 5/10/2026*/
     }

@@ -25,7 +25,12 @@ namespace CapaControlador_Consultas
 
         public string[] ConsultasFuncObtenerTablas()
         {
-            return ConsultasFuncOpciones("Tablas", () => _Metadatos.ConsultasFuncObtenerTablas());
+            return ConsultasFuncObtenerTablasYVistas();
+        }
+
+        public string[] ConsultasFuncObtenerTablasYVistas()
+        {
+            return ConsultasFuncOpciones("TablasYVistas", () => _Metadatos.ConsultasFuncObtenerTablas());
         }
 
         public string[] ConsultasFuncObtenerCampos(string Tabla)

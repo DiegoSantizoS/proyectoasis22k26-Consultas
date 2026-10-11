@@ -84,8 +84,8 @@ namespace CapaVista_Consultas
             int AlturaPrincipal = ConsultasFuncEscalarAltura(145) + Extra;
             using (new ClsActualizacionDisenoConsultas(ConsultasTlpAgregarFiltro))
             {
-                if (string.IsNullOrWhiteSpace(Mensaje)) Entrada.ConsultasMetLimpiarError();
-                else Entrada.ConsultasMetMostrarError(Mensaje);
+                if (string.IsNullOrWhiteSpace(Mensaje)) Entrada.ConsultasProcLimpiarError();
+                else Entrada.ConsultasProcMostrarError(Mensaje);
                 ClsActualizacionDisenoConsultas.ConsultasProcAltura(ConsultasTlpAgregarFiltro.RowStyles[Fila], Altura);
                 ClsActualizacionDisenoConsultas.ConsultasProcAltura(ConsultasTlpPrincipal.RowStyles[0], AlturaPrincipal);
                 ConsultasProcNotificarTamano();
@@ -186,7 +186,7 @@ namespace CapaVista_Consultas
             });
         }
 
-        private void ConsultasMetBtnConsultasComplejasClick(object Sender, EventArgs Evento)
+        private void ConsultasMetMostrarComplejas(object Sender, EventArgs Evento)
         {
             SolicitarComplejas?.Invoke(this, EventArgs.Empty);
         }

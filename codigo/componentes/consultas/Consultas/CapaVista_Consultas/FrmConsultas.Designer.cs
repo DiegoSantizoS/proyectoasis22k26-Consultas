@@ -3,15 +3,8 @@ namespace CapaVista_Consultas
 {
     partial class FrmConsultas
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer _Componentes = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="LiberarRecursos">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool LiberarRecursos)
         {
             if (LiberarRecursos && (_Componentes != null))
@@ -23,10 +16,6 @@ namespace CapaVista_Consultas
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultas));

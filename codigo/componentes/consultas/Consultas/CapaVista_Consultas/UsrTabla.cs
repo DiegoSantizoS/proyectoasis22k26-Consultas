@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using CapaControlador_Consultas;
@@ -170,7 +171,7 @@ namespace CapaVista_Consultas
                 Columna.HeaderCell.SortGlyphDirection = Columna.Name == _CampoOrden ? (_Descendente ? SortOrder.Descending : SortOrder.Ascending) : SortOrder.None;
             }
             if (_AjustarFilasContenido) ConsultasUsrResultados.Tabla.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-            ConsultasUsrResultados.ClearSelection();
+            ConsultasUsrResultados.ConsultasProcLimpiarSeleccion();
             ConsultasUsrResultados.CurrentCell = null;
             long Paginas = ConsultasFuncTotalPaginas(Resultado);
             ConsultasUsrPaginacion.Texto = "Página " + Resultado.Pagina + " de " + Paginas + " — " + Resultado.TotalRegistros + " registros";
@@ -259,7 +260,12 @@ namespace CapaVista_Consultas
                 }
                 object Valor = _Controlador.ConsultasFuncSeleccionar(Registro.Row);
                 string Pk = _Controlador.ConsultasFuncObtenerPk(Registro.Row);
-                ConsultasEvtFilaSeleccionada?.Invoke(this, new ClsSeleccionConsulta(Valor, Pk));
+                var Campos = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
+                foreach (DataColumn Columna in Registro.Row.Table.Columns)
+                {
+                    Campos.Add(Columna.ColumnName, Registro.Row[Columna]);
+                }
+                ConsultasEvtFilaSeleccionada?.Invoke(this, new ClsSeleccionConsulta(Valor, Pk, Campos));
             });
         }
         /*Fin del código de Carlos Andres Arriaza Lara 0901-23-13862 el 5/10/2026*/
